@@ -1,0 +1,111 @@
+import { ColDef } from 'ag-grid';
+import { ProjectUtils } from '../../../acore/utility';
+
+export const columnDefsTitleProcessing: Array<ColDef> = [
+      {
+            headerName: 'ISBN',
+            field: 'Vendor Code',
+            minWidth: ProjectUtils.ag_SetWidth(25)
+      },
+      {
+            headerName: 'Title',
+            field: 'Vendor Name',
+            minWidth: ProjectUtils.ag_SetWidth(25)
+      },
+      {
+            headerName: 'Author',
+            field: 'Vendor Workflow Type',
+            minWidth: ProjectUtils.ag_SetWidth(25)
+      },
+      {
+            headerName: 'PS',
+            field: 'State',
+            minWidth: ProjectUtils.ag_SetWidth(25)
+      },
+      {
+            headerName: 'PL',
+            field: 'State',
+            minWidth: ProjectUtils.ag_SetWidth(25)
+      },
+      {
+            headerName: 'PPC',
+            field: 'State',
+            minWidth: ProjectUtils.ag_SetWidth(25)
+      },
+      {
+            headerName: 'Vendor Code',
+            field: 'State',
+            minWidth: ProjectUtils.ag_SetWidth(25)
+      },
+      {
+            headerName: 'Vendor Is',
+            field: 'State',
+            minWidth: ProjectUtils.ag_SetWidth(25)
+      },
+      {
+            headerName: 'Vendor Is',
+            field: 'State',
+            minWidth: ProjectUtils.ag_SetWidth(25)
+      },
+      {
+            headerName: 'Metadata Received date',
+            field: 'State',
+            minWidth: ProjectUtils.ag_SetWidth(25)
+      },
+      {
+            headerName: 'Last Content Upload Date',
+            field: 'State',
+            minWidth: ProjectUtils.ag_SetWidth(25)
+      },
+      {
+            headerName: 'QCed Date',
+            field: 'State',
+            minWidth: ProjectUtils.ag_SetWidth(25)
+      },
+      {
+            headerName: 'Ready To Release Date',
+            field: 'State',
+            minWidth: ProjectUtils.ag_SetWidth(25)
+      },
+      {
+            headerName: 'Distribution Date',
+            field: 'State',
+            minWidth: ProjectUtils.ag_SetWidth(25)
+      },
+      {
+            headerName: 'Vendor Confirmation Date',
+            field: 'State',
+            minWidth: ProjectUtils.ag_SetWidth(25)
+      },
+      {
+            headerName: 'Vendor Status',
+            field: 'State',
+            minWidth: ProjectUtils.ag_SetWidth(25)
+      },
+      {
+            headerName: 'Current Pad Status',
+            field: 'State',
+            minWidth: ProjectUtils.ag_SetWidth(25)
+      }
+      // {
+      //       headerName: 'Vendor Code',
+      //       field: 'Vendor Code',
+      //       minWidth: ProjectUtils.ag_SetWidth(25)
+      // },
+      // {
+      //       headerName: 'Vendor Name',
+      //       field: 'Vendor Name',
+      //       minWidth: ProjectUtils.ag_SetWidth(25)
+      // },
+      // {
+      //       headerName: 'Vendor Workflow Type',
+      //       field: 'Vendor Workflow Type',
+      //       minWidth: ProjectUtils.ag_SetWidth(25)
+      // },
+      // {
+      //       headerName: 'State',
+      //       field: 'State',
+      //       minWidth: ProjectUtils.ag_SetWidth(25)
+      // }
+
+];

@@ -1,0 +1,11 @@
+.text-right {
+  text-align: right !important;
+}
+
+ul.dropdown-menu.curPointer {
+  font-size: 14px;
+}
+
+.download-dropdown {
+  min-width: 5rem;
+}

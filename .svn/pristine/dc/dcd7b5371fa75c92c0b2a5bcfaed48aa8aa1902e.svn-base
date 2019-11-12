@@ -1,0 +1,123 @@
+<header class="container-fluid mainBg">
+  <div class="custWrapper">
+    <div class="row">
+      <div class="col-md-4">
+        <h1 class="logo">
+          <a href="index.html">
+            <img src="./assets/images/logo.png" />
+          </a>
+        </h1>
+      </div>
+      <div class="col-md-8">
+        <ul class="nav justify-content-end text-uppercase fontsize13">
+          <li class="nav-item">
+            <a class="nav-link active linkBlock" href="#">Welcome Admin</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-gray" href="my-account.html">My Account</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-gray" href="index.html">Logout</a>
+          </li>
+        </ul>
+      </div>
+      <nav class="navbar navbar-expand-lg navbar-light  col-md-12" id="nav">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto custNav" data-dropdown-in="fadeInDown" data-dropdown-out="fadeOut">
+            <li class="nav-item homeIcon">
+              <a href="index.html">
+                <span class="icon-home"></span>
+              </a>
+            </li>
+            <li class="nav-item active dropdown">
+              <a class="nav-link text-white pl-0" href="#" data-toggle="dropdown">PAD Project
+                <i class="icon-noun_167932_cc"></i>
+              </a>
+              <div class="dropdown-menu mainSubMenu" aria-labelledby="dropdownMenuButton">
+                <div class="submenuHeading">
+                  PAD Project
+                  <button type="button" class="close" data-dismiss="mainSubMenu" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <ul class="sumenuLinks">
+                  <li>
+                    <a href="search-title.html">Search Title</a>
+                  </li>
+                  <li>
+                    <a href="metadata-upload.html">Metadata Upload</a>
+                  </li>
+                  <li>
+                    <a href="metadata-processing-status.html">Metadata Processing Status</a>
+                  </li>
+                  <li>
+                    <a href="price-update.html">Price Update</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link text-white" href="#" data-toggle="dropdown">User Management
+                <i class="icon-noun_167932_cc"></i>
+              </a>
+              <div class="dropdown dropdown-menu mainSubMenu" aria-labelledby="dropdownMenuButton">
+                <div class="submenuHeading">
+                  User Management
+                  <button type="button" class="close" data-dismiss="mainSubMenu" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <ul class="sumenuLinks">
+                  <li>
+                    <a href="create-vendor.html">Create Vendor</a>
+                  </li>
+                  <li>
+                    <a href="search-vendor.html">Search Vendor</a>
+                  </li>
+                  <li>
+                    <a href="create-user.html">Create User</a>
+                  </li>
+                  <li>
+                    <a href="search-user.html">Search User</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="dropdown">
+              <a class="nav-link text-white submenuLink" href="#" data-toggle="dropdown">
+                Reports
+                <i class="icon-noun_167932_cc"></i>
+              </a>
+              <div class="dropdown-menu mainSubMenu" aria-labelledby="dropdownMenuButton">
+                <div class="submenuHeading">
+                  Reports
+                  <button type="button" class="close closeBtn" data-dismiss="mainSubMenu" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <ul class="sumenuLinks">
+                  <li>
+                    <a href="title-stages.html">Title Stages</a>
+                  </li>
+                  <li>
+                    <a href="title-overview.html">Title Overview</a>
+                  </li>
+                  <li>
+                    <a href="title-processing.html">Title Processing</a>
+                  </li>
+                  <li>
+                    <a href="title-deliveries.html">Title Deliveries</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>

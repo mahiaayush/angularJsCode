@@ -1,0 +1,15 @@
+<br>
+
+<h5 *ngIf="rowData; else show">Details of ISBN ({{rowData[0].isbn}}) for {{rowData[0].vendorcode}}</h5>
+<ng-template #show>
+  <h5>Details of ISBN ({{id}}) for {{vendor}}</h5>
+</ng-template>
+<br>
+<div class="agGridSize">
+  <app-ag-grid [name]="'searchUser'" [myGridOptions]="gridOptions" (myGridReady)="doOnGridReadyHistory($event)">
+  </app-ag-grid>
+</div>
+<app-custom-modal-pop-up [basicSetting]="basicSetting" [template]="History"></app-custom-modal-pop-up>
+<ng-template #History>
+  <p>{{comments}} !!!</p>
+</ng-template>

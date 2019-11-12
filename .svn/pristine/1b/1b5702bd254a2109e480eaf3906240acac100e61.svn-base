@@ -1,0 +1,15 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-title-processing',
+  templateUrl: './title-processing.component.html',
+  styleUrls: ['./title-processing.component.css']
+})
+export class TitleProcessingComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}

@@ -1,0 +1,21 @@
+import { Component, OnInit } from '@angular/core';
+import { ConstantService } from '../../../acore/services';
+
+@Component({
+  selector: 'app-price-update',
+  templateUrl: './price-update.component.html',
+  styleUrls: ['./price-update.component.css']
+})
+export class PriceUpdateComponent implements OnInit {
+  myNavData: any = {};
+  activeLink: any = null;
+
+  constructor(public constantService: ConstantService) {
+    this.myNavData = constantService.routerNav.PAD_PROJECT;
+    this.activeLink = constantService.routerNav.PAD_PROJECT.links[3];
+  }
+
+  ngOnInit() {
+  }
+
+}

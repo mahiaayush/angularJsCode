@@ -1,0 +1,143 @@
+
+
+export class UrlConstants {
+      static WILEY_BASE_URL = 'http://betawileypadservice.mpstechnologies.com/wileypad-service/rest/';
+      // static WILEY_BASE_URL = 'http://ss.mpstechnologies.com/scholarlystats_alpha/services/';
+
+
+      // static WILEY_BASE_URL = 'http://10.50.8.220/scholarlystats_alpha/services/';
+      // scholarlystats_alpha/services/
+      static THIRD = UrlConstants.WILEY_BASE_URL + `platformReport/getPlatformSpecificReports`;
+
+      // "COUNTER &
+      // Custom Reports"	Reporting Period
+      //       Get Available Reports
+      //       Download Report
+      //       Get Chart
+
+
+      /* **************  USER DETAILS  *************** */
+      static LOGIN = UrlConstants.WILEY_BASE_URL + 'login';
+      static NEWPASSWORD = UrlConstants.WILEY_BASE_URL + 'userservice/getnewpassword';
+      static FORGETPASSWORD = UrlConstants.WILEY_BASE_URL + 'userservice/getsecquestion';
+      static REPORTING_PERIOD = UrlConstants.WILEY_BASE_URL + 'platformReport/reportingPeriod';
+      static PLATFORM_DETAILS = UrlConstants.WILEY_BASE_URL + 'platformReport/getAllPlatformDetails';
+      /* **************  USER DETAILS  *************** */
+
+      /* **************  DASHBOARD  *************** */
+      static DASHBOARD_GRAPH_USAGE_DIVISION = UrlConstants.WILEY_BASE_URL + 'summary/usagedivision';
+      static DASHBOARD_GRAPH_TRENDYEAR = UrlConstants.WILEY_BASE_URL + 'summary/trendyear';
+      static DASHBOARD_GRAPH_TOP_JOURNALS = UrlConstants.WILEY_BASE_URL + 'summary/toptenjournals';
+      static DASHBOARD_GRAPH_ZERO_USAGE_JOURNALS = UrlConstants.WILEY_BASE_URL + 'summary/zerousagejournals';
+      static DASHBOARD_GRAPH_JOURNAL_TOP_ACCESS_DENAIL = UrlConstants.WILEY_BASE_URL + 'summary/journalaccessdenial';
+      static DASHBOARD_GRAPH_DENIED_CATEGORY_PERC = UrlConstants.WILEY_BASE_URL + 'summary/denialcategory';
+      static DASHBOARD_GRAPH_PLATFORM_CONTRIBUTION = UrlConstants.WILEY_BASE_URL + 'summary/platformcontribution';
+      static DASHBOARD_GRAPH_PLATFORM_PLATFORM_AVERAGE_FULLTEXT_VIEW = UrlConstants.WILEY_BASE_URL +
+            'summary/platformaveragefulltextviews';
+      static DASHBOARD_GRAPH_HIGHEST_ZERO_USAGE = UrlConstants.WILEY_BASE_URL +
+            'summary/highestzerousage';
+      static DASHBOARD_GRAPH_HIGHEST_LOW_USAGESTATS = UrlConstants.WILEY_BASE_URL +
+            'summary/lowusagestats';
+      static DASHBOARD_GRAPH_TOP_BOOK_PLATFORM = UrlConstants.WILEY_BASE_URL +
+            'summary/topbookplatform';
+      static LOGGED_IN_USER = UrlConstants.WILEY_BASE_URL + 'manageuser/useraccountdetails';
+      static UPDATE_PROFILE = UrlConstants.WILEY_BASE_URL + 'manageuser/updateUserDetails';
+      static CONTACT_QUERY_LIST = UrlConstants.WILEY_BASE_URL + 'contactus/gettypeofquery';
+      static SEND_QUERY_MAIL = UrlConstants.WILEY_BASE_URL + 'contactus/sendquerymail';
+      static MAKE_DIRECT_PAYMENT = UrlConstants.WILEY_BASE_URL + '';
+
+
+
+      static GETUSERGRAPH = UrlConstants.WILEY_BASE_URL + 'summary/getGraph';
+      /* **************  DASHBOARD  *************** */
+
+
+      /* **************  REPORTS  *************** */
+      // static REPORTS = UrlConstants.WILEY_BASE_URL + 'accounts/generatedreports?user_id=1864470&year=2018&month=01&screen=LIVE';
+
+      static REPORTS = UrlConstants.WILEY_BASE_URL + 'accounts/generatedreports';
+      static SOURCEREPORTS = UrlConstants.WILEY_BASE_URL + 'platformReport/getPlatformSpecificReports';
+
+      static REPORTS_COUNTER_REPORTING_PERIOD = UrlConstants.WILEY_BASE_URL +
+            'platformReport/reportingPeriod?platform_id=19';
+      static REPORTS_COUNTER_GET_AVAILABLE_REPORTS = UrlConstants.WILEY_BASE_URL +
+            'platformReport/getPlatformSpecificReports?platform_id=19&year=2013&month=12';
+      static REPORTS_GET_CHART = UrlConstants.WILEY_BASE_URL + 'report/getchart';
+
+
+      // GET
+      static REPORTS_DOWNLOAD_REPORTS = UrlConstants.WILEY_BASE_URL +
+            'report/download';
+
+      static DOWNLOAD_SOURCE_REPORT = UrlConstants.WILEY_BASE_URL + 'report/download/platform/acm';
+
+      static DYNAMIC_REPORTS_TYPE = UrlConstants.WILEY_BASE_URL +
+            'dynamicReport/getReportType';
+
+      static GET_DYNAMIC_REPORTS_DATA = UrlConstants.WILEY_BASE_URL +
+            'dynamicReport/getreport';
+      static GETDEFAULTREPORTINGPERIOD = UrlConstants.WILEY_BASE_URL + 'platformReport/defaultReportingPeriod';
+      static GETISSNISBNDETAIL = UrlConstants.WILEY_BASE_URL + 'bookjournal/getBookJournalDetails';
+      static GETSEARCHTYPE = UrlConstants.WILEY_BASE_URL + 'search/getsearchtype';
+      static SETTING_OF_ISSN_ISBN = UrlConstants.WILEY_BASE_URL +
+            'bookjournal/fetchIssnIsbn';
+      //   '/dynamicReport/getreport?user_id=1864470&from=01-2016&to=03-2016&report=jr1'
+      /* **************  REPORTS  *************** */
+
+
+      /* **************  ADMINISTRATIVE FEATURES  *************** */
+      static SELECTED_PLATFORM_DETAILS = UrlConstants.WILEY_BASE_URL + 'platformReport/getAllPlatformWithReportId';
+
+      static GET_PLATFORM_DETAILS = UrlConstants.WILEY_BASE_URL + 'platformReport/getAllPlatformDetails';
+
+      static EDIT_ACCESS_DETAILS = UrlConstants.WILEY_BASE_URL + 'platformReport/getPlatformDetail/';
+
+      static UPDATE_PLATFORM_ACCESS_DETAILS = UrlConstants.WILEY_BASE_URL + 'platformReport/updatePlatformAccessDetails/';
+
+      static GET_LIBRARY_DETAILS = UrlConstants.WILEY_BASE_URL + 'manageuser/getLibraryDetails';
+
+      static AVAILABLE_SUSHI_PARTNER = UrlConstants.WILEY_BASE_URL + 'manageuser/getAvailableSushiPartners';
+
+      static GET_SUSHI_PARTNER = UrlConstants.WILEY_BASE_URL + 'manageuser/getSushiPartnerDetails';
+
+      static UPDATE_SUSHI_PARTNER = UrlConstants.WILEY_BASE_URL + 'manageuser/insertsushipartnermapping';
+
+      static ADDITIONAL_USER_ACCOUNT = UrlConstants.WILEY_BASE_URL + 'manageuser/getAllManageUser';
+
+      static CREATE_NEW_USER_URL = UrlConstants.WILEY_BASE_URL + 'manageuser/createNewUser';
+
+      static UPDATE_USER_ROLE = UrlConstants.WILEY_BASE_URL + 'manageuser/updaterole';
+
+      static COST_DATA_DOWNLOAD_REPORTS = UrlConstants.WILEY_BASE_URL +
+            'report/download/template/Price_per_Use_Template.xlsx';
+
+      static EXPORT_PLATFORM_ACCESS_DETAILS_DOWNLOAD = UrlConstants.WILEY_BASE_URL +
+            'platformReport/downloadAllPlatformDetails';
+
+      static EXPORT_SELECTED_PLATFORM_DETAILS = UrlConstants.WILEY_BASE_URL +
+            'platformReport/downloadAllPlatformWithReportId';
+
+      static EXPORT_RECENT_REPORT_COLLECTION = UrlConstants.WILEY_BASE_URL +
+            'report/download/platform/recentReportCollectionStatus';
+
+
+      /* **************  ADMINISTRATIVE FEATURES  *************** */
+
+
+      /* **************  DATA ANALYSIS TOOL  *************** */
+      static ZERO_USAGE_CONTRIBUTION = UrlConstants.WILEY_BASE_URL +
+            'monthvariation/zeroUsageContribution';
+      static INCREASE_IN_USAGE_IN_JOURNAL = UrlConstants.WILEY_BASE_URL +
+            'monthvariation/increaseInUsageJournal';
+      static DECLINE_IN_USAGE_IN_JOURNAL = UrlConstants.WILEY_BASE_URL +
+            'monthvariation/continouslyFallInJournal';
+      static JOURNAL_CONTRIBUTION = UrlConstants.WILEY_BASE_URL +
+            'monthvariation/journalYearContribution';
+      static MONTHLY_VARIATION_JOURNAL = UrlConstants.WILEY_BASE_URL +
+            'monthvariation/variationInJournal';
+
+      /* **************  DATA ANALYSIS TOOL  *************** */
+
+}
+
+

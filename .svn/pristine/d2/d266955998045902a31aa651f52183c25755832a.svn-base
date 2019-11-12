@@ -1,0 +1,102 @@
+<div class="container">
+  <div class="card card-body" style="margin-right: 300px; margin-left: 300px;">
+    <div>
+      <h2 style="text-align: center; font-weight: 700">Make Direct Payment</h2>
+    </div>
+    <hr>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3>
+          Payment Details
+        </h3>
+      </div>
+      <br>
+      <div class="panel-body">
+        <form role="form">
+          <div class="row">
+            <div class="col">
+              <label class="sr-only" for="cardNumber">CARD NUMBER</label>
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="fa fa-lock" aria-hidden="true "></i>
+                  </div>
+                </div>
+                <input type="number" onKeyPress="if(this.value.length==16) return false;" class="form-control" name="cardNumber" [(ngModel)]="makeDirectPaymentModel.Cardnumber.value"
+                  id="cardNumber" placeholder="Valid Card Number" required autofocus />
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col">
+              <label for="expityMonth">
+                EXPIRY DATE</label>
+            </div>
+            <div class="col">
+
+            </div>
+            <div class="col">
+              <label for="cvCode">
+                CVV CODE</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <input type="number" class="form-control" [(ngModel)]="makeDirectPaymentModel.month.value" onKeyPress="if(this.value.length==2) return false;"
+                name="cardMonth" id="expityMonth" placeholder="MM" required />
+            </div>
+            <div class="col">
+              <input type="number" class="form-control" [(ngModel)]="makeDirectPaymentModel.year.value" onKeyPress="if(this.value.length==2) return false;"
+                name="cardYear" id="expityYear" placeholder="YY" required />
+            </div>
+            <div class="col">
+              <input type="number" onKeyPress="if(this.value.length==3) return false;" class="form-control" [(ngModel)]="makeDirectPaymentModel.Card_CVV.value"
+                name="cardCVV" id="cvvCode" placeholder="CVV" required />
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col">
+              <label for="cust_name">
+                NAME ON CARD</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <input type="text" class="form-control" id="cust_name" placeholder="Name On Card" [(ngModel)]="makeDirectPaymentModel.Name.value"
+                name="nameOnCard" required/>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col">
+              <label for="cust_email">
+                EMAIL</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <input type="email" class="form-control" id="cust_email" placeholder="Your Email" [(ngModel)]="makeDirectPaymentModel.emailID.value"
+                name="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required/>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-4">
+              <label for="PaymentAmount">Payment Amount</label>
+            </div>
+            <div class="col-8">
+              <i class=" form-control input-group-prepend input-group-text fa fa-usd" aria-hidden="true ">
+                <input type="number" [(ngModel)]="makeDirectPaymentModel.price.value" name="paymentAmount" onKeyPress="if(this.value.length==10) return false;"
+                  id="paymentAmount" required="required">
+              </i>
+            </div>
+          </div>
+          <br>
+          <button type="submit" class="btn btn-success btn-lg btn-block" role="button">Pay</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

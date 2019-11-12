@@ -1,0 +1,72 @@
+<app-loader #baseLoader>
+</app-loader>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 brand-home-left-bg">
+      <!-- <h1 class="brand-home-title">Getting Started</h1> -->
+
+    </div>
+
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 brand-home-right-bg">
+      <!-- <div class="text-center">
+        <img src="loginImgUrl" alt="AccessEdit">
+      </div> -->
+      <h3 class="home-subhead">Forgot Password</h3>
+
+      <p>Enter your information below to submit forgot password:
+      </p>
+      <hr/>
+      <form class="form" name="form" (ngSubmit)="f.form.valid " #f="ngForm" ngNativeValidate>
+
+        <div class="input-group input-group-lg" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+          <span class="input-group-addon" id="sizing-addon1">
+            <i class="fa fa-user fa-1-5x"></i>
+          </span>
+          <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon1" name="email" [(ngModel)]="forgetPasswordModel.email.value"
+            #email="ngModel" required />
+
+          <div *ngIf="f.submitted && !email.valid" class="help-block">Username is required</div>
+        </div>
+
+
+
+        <!-- <div class="input-group input-group-lg" [ngClass]="{ 'has-error': f.submitted && !Question.valid }">
+          <span class="input-group-addon" id="sizing-addon1">
+            <i class="fa fa-question-circle fa-1-5x"></i>
+          </span>
+
+          <input type="text" placeholder="Question" required id="Question" name="Question" class="form-control" aria-describedby="sizing-addon1"
+            [(ngModel)]="forgetPasswordModel.Question" #Question="ngModel">
+          <div *ngIf="Question.invalid && (Question.dirty || Question.touched)" class="alert alert-danger">
+                    <div *ngIf="Question.errors.required">
+                      Question is required.
+                    </div>
+                  </div>
+        </div>
+
+        <div class="input-group input-group-lg" [ngClass]="{ 'has-error': f.submitted && !Answer.valid }">
+          <span class="input-group-addon" id="sizing-addon1">
+            <i class="fa fa-question-circle fa-1-5x"></i>
+          </span>
+
+          <input type="text" [readonly]="editCheck" name="Answer" required placeholder="" id="Answer" class="form-control select-class"
+            [(ngModel)]="forgetPasswordModel.Answer" #Answer="ngModel">
+
+        </div> -->
+        <hr/>
+
+        <button type="submit" class="btn btn-primary btn-lg btn-block btn-dkblue" (click)="doOnSubmit()" [disabled]="!f.form.valid">Reset Password</button>
+
+      </form>
+      <!-- <a href="forgetPasswordController">Click for forget password</a> -->
+    </div>
+
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 brand-home-left-bg">
+      <!-- <h1 class="brand-home-title">Getting Started</h1> -->
+
+    </div>
+
+  </div>
+
+</div>

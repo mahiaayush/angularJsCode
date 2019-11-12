@@ -1,0 +1,1 @@
+export const environment = {"production":true,"version":"1.0.36","date":"Tue May 29 2018 10:41:39 AM"};

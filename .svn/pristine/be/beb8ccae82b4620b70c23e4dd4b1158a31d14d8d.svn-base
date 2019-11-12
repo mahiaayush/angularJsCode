@@ -1,0 +1,48 @@
+
+
+export class UrlConstants {
+      static WILEY_BASE_URL = 'http://betawileypadservice.mpstechnologies.com/wileypad-service/rest/';
+      // static WILEY_BASE_URL = 'http://ss.mpstechnologies.com/scholarlystats_alpha/services/';
+
+
+      // static WILEY_BASE_URL = 'http://10.50.8.220/scholarlystats_alpha/services/';
+      // scholarlystats_alpha/services/
+      static THIRD = UrlConstants.WILEY_BASE_URL + `platformReport/getPlatformSpecificReports`;
+
+      // "COUNTER &
+      // Custom Reports"	Reporting Period
+      //       Get Available Reports
+      //       Download Report
+      //       Get Chart
+
+
+      /* **************  USER DETAILS  *************** */
+      static LOGIN = UrlConstants.WILEY_BASE_URL + 'login';
+
+      /* **************  USER DETAILS  *************** */
+
+      /* **************  DASHBOARD  *************** */
+      /* **************  DASHBOARD  *************** */
+
+
+      /* **************  REPORTS  *************** */
+
+      // GET
+      /* **************  REPORTS  *************** */
+
+
+      /* **************  ADMINISTRATIVE FEATURES  *************** */
+      static SEARCH_VENDOR = 'https://mysocietyconnect.com/mps/wiley/venderList.json';
+      static SEARCH_USER = 'https://mysocietyconnect.com/mps/wiley/searchUser.json';
+      static SEARCH_TITLE = 'https://mysocietyconnect.com/mps/wiley/searchTitle.json';
+      /* **************  ADMINISTRATIVE FEATURES  *************** */
+
+
+      /* **************  DATA ANALYSIS TOOL  *************** */
+      static META_PROCESSING_STATUS = 'https://mysocietyconnect.com/mps/wiley/metaprocessingStatus.json';
+      static TITLE_STAGES = 'https://mysocietyconnect.com/mps/wiley/titleStages.json';
+      /* **************  DATA ANALYSIS TOOL  *************** */
+
+}
+
+

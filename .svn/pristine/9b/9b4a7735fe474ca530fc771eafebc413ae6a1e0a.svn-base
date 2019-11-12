@@ -1,0 +1,117 @@
+import { Component, OnInit } from '@angular/core';
+import { BaseComponent, GridAPII } from '../../../acore/base';
+import { GridApi, ColumnApi, ColDef, GridOptions } from 'ag-grid';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Subject } from 'rxjs/Subject';
+// import { TitleOverviewModel } from './title-overview.model';
+import { UrlConstants, SessionObject, ProjectUtils } from '../../../acore/utility';
+import { DataDropDownOptions, AutoCompleteModel } from '../../../acore/components';
+import { columnDefs } from './history.data';
+import { ReportsService } from '../reports.service';
+
+@Component({
+  selector: 'app-history',
+  templateUrl: './history.component.html',
+  styleUrls: ['./history.component.css']
+})
+export class HistoryComponent extends BaseComponent {
+
+  NAME_HISTORY = 'HISTORY';
+  // titleOverviewModel: TitleOverviewModel;
+
+
+  gridOptions: GridOptions = {};
+
+  constructor(private reportsService: ReportsService) {
+    super(reportsService);
+    this.gridOptions.onCellClicked = this.agCellClicked;
+  }
+
+
+
+
+  agCellClicked = (event) => {
+    debugger
+    const headerName: string = event.colDef.headerName;
+    const row = event['data'];
+    if (headerName === 'Comments') {
+
+    }
+
+  }
+
+  xtBaseOnInit() {
+
+  }
+
+
+  xtBaseLoadDataFromApiProcessData(name: string, data: Array<any>) {
+
+    const singleObj = data[0];
+    if (name === this.NAME_HISTORY) {
+      this.createDynamicColumns(singleObj, name);
+      // debugger
+      this.bindDataToGrid(this.NAME_HISTORY, data);
+      if (data === null) {
+        this.gridApi.hideOverlay();
+      }
+
+    }
+  }
+  // initSearchModels() {
+  //   this.titleOverviewModel = new TitleOverviewModel();
+  //   const counterReportsSession = ProjectUtils.getCounterReports();
+  // }
+
+
+  // getSearchModel(name: string) {
+  //   if (name === this.NAME_HISTORY) {
+  //     return this.titleOverviewModel;
+  //   } else {
+  //     return this.titleOverviewModel;
+  //   }
+  // }
+
+  // setSearchModel(name: string) {
+  //   const searchModel = this.getValueFromSearchModel(name);
+  //   if (name === this.NAME_HISTORY) {
+  //     ProjectUtils.setCounterReports(searchModel);
+  //   }
+  // }
+
+  setColumnDef(name: string): Array<ColDef> {
+    if (name === this.NAME_HISTORY) {
+      return [];
+    }
+  }
+
+  getServiceUrl(name): string {
+    if (name === this.NAME_HISTORY) {
+      return UrlConstants.TITLE_DELIVERIES_HISTORY;
+    }
+  }
+
+  // doOnSubmit(e) {
+  //   console.log('doOnSubmit', e);
+  //   this.OnSubmit(this.NAME_HISTORY);
+
+  // }
+
+  getGridApi(name: string): GridAPII {
+    if (name === this.NAME_HISTORY) {
+      return {
+        gridApi: this.gridApi,
+        columnApi: this.columnApi
+      };
+    }
+  }
+
+  doOnGridReadyTitleOverview(api) {
+    this.gridApi = api.api;
+    this.columnApi = api.columnApi;
+    this.doOnGridReady(this.NAME_HISTORY);
+    this.OnSubmit(this.NAME_HISTORY);
+  }
+
+
+}

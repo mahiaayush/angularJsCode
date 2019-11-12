@@ -1,0 +1,121 @@
+<div class="container ">
+  <div class="row">
+    <div class="col-md-12 py-2 ">
+
+      <div class="bg-white p-3 mh320">
+
+        <div class="row">
+          <div class="col-md-12">
+
+            <h4 class="subHeading">User Details</h4>
+
+            <form>
+              <div class="form-group row">
+                <div class="col-md-4">
+                  <label for="staticEmail" class="col-form-label">Role
+                    <sup class="text-danger">*</sup>
+                  </label>
+
+                  <input type="text" class="form-control" id="inputPassword" placeholder="">
+
+                </div>
+                <div class="col-md-4">
+                  <label for="inputPassword" class=" col-form-label">First Name
+                    <sup class="text-danger">*</sup>
+                  </label>
+
+                  <input type="text" class="form-control" id="inputPassword" placeholder="">
+
+                </div>
+                <div class="col-md-4">
+                  <label for="inputPassword" class=" col-form-label">Last Name</label>
+
+                  <input type="text" class="form-control" id="inputPassword" placeholder="">
+
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-md-4">
+                  <label for="staticEmail" class="col-form-label">Phone
+                    <sup class="text-danger">*</sup>
+                  </label>
+
+                  <input type="text" class="form-control" id="inputPassword" placeholder="">
+
+                </div>
+                <div class="col-md-4">
+                  <label for="inputPassword" class=" col-form-label">Address </label>
+
+                  <input type="text" class="form-control" id="inputPassword" placeholder="">
+                  <small>(Please write not more than 255 characters)</small>
+                </div>
+                <div class="col-md-4">
+                  <label for="inputPassword" class=" col-form-label">City/Town
+                    <sup class="text-danger">*</sup>
+                  </label>
+
+                  <input type="text" class="form-control" id="inputPassword" placeholder="">
+
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-4">
+                  <label for="staticEmail" class="col-form-label">Email/Login</label>
+
+                  <input type="text" class="form-control" id="inputPassword" placeholder="">
+
+                </div>
+                <div class="col-md-4">
+                  <label for="inputPassword" class=" col-form-label">Password </label>
+
+                  <input type="text" class="form-control" id="inputPassword" placeholder="">
+
+                </div>
+                <div class="col-md-4">
+                  <label for="inputPassword1" class=" col-form-label">Confirm Password*</label>
+
+                  <input type="text" class="form-control" id="inputPassword1" placeholder="">
+
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-4">
+                  <label for="inputPassword" class=" col-form-label">State/Province </label>
+
+                  <input type="text" class="form-control" id="inputPassword" placeholder="">
+
+                </div>
+                <div class="col-md-4">
+                  <label for="inputPassword" class=" col-form-label">Post/Zip Code </label>
+
+                  <input type="text" class="form-control" id="inputPassword" placeholder="">
+
+                </div>
+                <div class="col-md-4">
+                  <label for="staticEmail" class="col-form-label">Country </label>
+
+                  <select class="form-control">
+                    <option>Choose Country</option>
+                    <option>India</option>
+                  </select>
+
+                </div>
+
+
+              </div>
+            </form>
+
+            <p class="text-right mt-5 mb-5">
+              <a href="javascript:;" class="btn btn-primary btn-sm" id="btnLogin">Save</a>
+              <a href="javascript:;" class="btn btn-secondary btn-sm mr-2" id="btnLogin">Reset</a>
+            </p>
+
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

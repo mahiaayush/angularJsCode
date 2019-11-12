@@ -1,0 +1,109 @@
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { BaseComponent, GridAPII } from '../../../acore/base';
+import { GridApi, ColumnApi, ColDef, GridOptions } from 'ag-grid';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Subject } from 'rxjs/Subject';
+import { TitleDeliveriesModel } from './title-deliveries.model';
+import { UrlConstants, SessionObject, ProjectUtils } from '../../../acore/utility';
+import { DataDropDownOptions, AutoCompleteModel, TabsComponent } from '../../../acore/components';
+import { columnDefsTitleDeliveries } from './title-deliveries.data';
+import { ReportsService } from '../reports.service';
+import { ConstantService } from '../../../acore/services';
+
+@Component({
+  selector: 'app-title-deliveries',
+  templateUrl: './title-deliveries.component.html',
+  styleUrls: ['./title-deliveries.component.css']
+})
+export class TitleDeliveriesComponent extends BaseComponent {
+
+  NAME_TITLE_DELIVERIES = 'TITLE_DELIVERIES';
+  titleDeliveriesModel: TitleDeliveriesModel;
+  myNavData: any = {};
+  activeLink: any = null;
+
+  @ViewChild('history') historyTemplate;
+  @ViewChild(TabsComponent) tabsComponent;
+  gridOptions: GridOptions = {};
+
+  constructor(private reportsService: ReportsService,
+    public constantService: ConstantService) {
+    super(reportsService);
+    this.gridOptions.onCellClicked = this.agCellClicked;
+    this.myNavData = constantService.routerNav.REPORT;
+    this.activeLink = constantService.routerNav.REPORT.links[3];
+  }
+
+  agCellClicked = (event) => {
+    const headerName: string = event.colDef.headerName;
+    const row = event['data'];
+    if (headerName === 'History') {
+      this.openListTab();
+    }
+  }
+
+  xtBaseOnInit() {
+  }
+
+  initSearchModels() {
+    this.titleDeliveriesModel = new TitleDeliveriesModel();
+    const counterReportsSession = ProjectUtils.getCounterReports();
+  }
+
+  getSearchModel(name: string) {
+    if (name === this.NAME_TITLE_DELIVERIES) {
+      return this.titleDeliveriesModel;
+    } else {
+      return this.titleDeliveriesModel;
+    }
+  }
+
+  setSearchModel(name: string) {
+    const searchModel = this.getValueFromSearchModel(name);
+    if (name === this.NAME_TITLE_DELIVERIES) {
+      ProjectUtils.setCounterReports(searchModel);
+    } else {
+      ProjectUtils.setCounterReports(searchModel);
+    }
+  }
+
+  setColumnDef(name: string): Array<ColDef> {
+    if (name === this.NAME_TITLE_DELIVERIES) {
+      return columnDefsTitleDeliveries;
+    }
+  }
+
+  openListTab() {
+    this.tabsComponent.openTab('History',
+      this.historyTemplate, {}, true, 'historyTemplate');
+
+  }
+
+  getServiceUrl(name): string {
+    if (name === this.NAME_TITLE_DELIVERIES) {
+      return UrlConstants.TITLE_DELIVERIES;
+    }
+  }
+
+  doOnSubmit(e) {
+    console.log('doOnSubmit', e);
+    this.OnSubmit(this.NAME_TITLE_DELIVERIES);
+
+  }
+
+  getGridApi(name: string): GridAPII {
+    if (name === this.NAME_TITLE_DELIVERIES) {
+      return {
+        gridApi: this.gridApi,
+        columnApi: this.columnApi
+      };
+    }
+  }
+
+  doOnGridReadyTitleDeliveries(api) {
+    this.gridApi = api.api;
+    this.columnApi = api.columnApi;
+    this.doOnGridReady(this.NAME_TITLE_DELIVERIES);
+
+  }
+}

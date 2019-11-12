@@ -1,0 +1,16 @@
+import { Injectable } from '@angular/core';
+import { PathConstants } from './path-constants';
+import { DropdownConstant } from './dropdown-constants';
+import { TopMenuNavigationData } from './navigation-data';
+
+@Injectable()
+
+export class ConstantService {
+
+      public path = new PathConstants();
+      public dropdown = new DropdownConstant();
+      public routerNav = new TopMenuNavigationData();
+
+      constructor() {
+      }
+}

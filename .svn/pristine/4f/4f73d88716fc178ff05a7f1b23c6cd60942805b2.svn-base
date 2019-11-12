@@ -1,0 +1,35 @@
+<router-outlet>
+
+</router-outlet>
+
+
+<app-time-out>
+
+</app-time-out>
+
+
+
+<app-custom-modal-pop-up [basicSetting]="basicSettingHttpError" [template]="httpErrorTemplate"></app-custom-modal-pop-up>
+<app-custom-modal-pop-up [basicSetting]="basicSettingSessionOut" [template]="sessionOutTemplate"></app-custom-modal-pop-up>
+<app-custom-modal-pop-up [basicSetting]="basicSettingAutoLogout" [template]="autoLogout"></app-custom-modal-pop-up>
+
+<ng-template #sessionOutTemplate>
+  <div style="color: red">
+    Your session has been exprired
+    <br> or somebody else has been logged in
+    <br> using same user name.
+  </div>
+</ng-template>
+
+<ng-template #httpErrorTemplate>
+  <div style="color: red">
+    Services not available.
+    <br> Please try after sometime.
+  </div>
+</ng-template>
+
+<ng-template #autoLogout>
+  <div style="color: red">
+    Your are not allowed to refresh and use browser navigation.
+  </div>
+</ng-template>

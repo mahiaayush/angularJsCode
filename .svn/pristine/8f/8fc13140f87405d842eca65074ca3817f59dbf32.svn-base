@@ -1,0 +1,37 @@
+import { BasicSearchModelI } from '../../../acore/base';
+
+export class SearchTitleModel {
+
+      conIsbn: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'conIsbn',
+            placeholder: 'Select a Name',
+            name: 'name'
+      };
+      conTitleName: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'conTitleName',
+            placeholder: 'Select a Code',
+            name: 'code'
+      };
+      autName: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'autName',
+            placeholder: 'Select a Code',
+            name: 'code'
+      };
+      firstFlag: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'firstFlag',
+            placeholder: 'Select a Code',
+            name: 'code'
+      }
+}

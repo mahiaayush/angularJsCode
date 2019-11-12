@@ -1,0 +1,82 @@
+<div class="row justify-content-between mt-3">
+  <div class="col-3 d-flex pt-2 form-group mb-0">
+    <label class="pr-2 pt-1 pb-0 mb-0">Entries</label>
+    <select class="form-control" (change)="onPageSizeChanged($event.target.value)" id="page-size" style="width:70px">
+      <option value="10" selected>10</option>
+      <!-- <option value="25">25</option> -->
+      <option value="50">50</option>
+      <option value="100">100</option>
+      <option value="500">500</option>
+      <option value="1000">1000</option>
+    </select>
+
+  </div>
+  <div class="  col-4 ">
+    <!-- <span class="ml-1">
+      <button   class="btn btn-primary">
+        <i class="fa fa-bars"></i>
+      </button>
+    </span> -->
+    <div class="d-flex form-group mb-0">
+      <label class="pr-2 pt-1 pb-0 mb-0">Search</label>
+      <input (keyup)="onQuickFilterChanged($event)" class="form-control" type="text" placeholder="Type text to search..." />
+      <span *ngIf="export" class="ml-1">
+        <button class="btn btn-primary" data-toggle="dropdown">
+          <i class="fa fa-download"></i>
+        </button>
+        <ul class="dropdown-menu curPointer px-2 download-dropdown">
+          <li>
+            <a (click)="onBtExport()">
+              <img src="./assets/images/csv.png " style="width:20px; "> CSV
+            </a>
+          </li>
+          <div class="dropdown-divider"></div>
+          <li>
+            <a (click)="onBtExportExcel()">
+              <img src="./assets/images/xlsx.png " style="width:20px; "> Excel
+            </a>
+          </li>
+        </ul>
+      </span>
+    </div>
+  </div>
+</div>
+
+<ag-grid-angular suppressColumnVirtualisation=true (filterChanged)="onFilterChanged($event)" [getRowHeight]="getRowHeight" [context]="context" [frameworkComponents]="frameworkComponents"
+  paginationSetPageSize=true pagination=true style="width: 100%; height: 74%;" animateRows="true" enableColResize="true" class="ag-theme-balham my-2" enableSorting="true"
+  [rowSelection]="rowSelection" [gridOptions]="gridOptions" (rowDataChanged)="onRowDataChanged($event)" (rowDataUpdated)="onRowDataUpdated($event)" (gridReady)="onGridReady($event)"
+  [overlayLoadingTemplate]="overlayLoadingTemplate" [overlayNoRowsTemplate]="overlayNoRowsTemplate" (sortChanged)="onSortChanged($event, e, b)">
+</ag-grid-angular>
+
+<div>
+  <app-pagination *ngIf="paging" [pageSize]="pageSize" [totalEntries]="totalEntries" [newSetup]="newSetup" (pageChanged)="onPageChanged($event)">
+  </app-pagination>
+</div>
+
+<!-- <app-pagination [newSetup]="newSetup" (pageChanged)="onPageChanged($event)"> -->
+<!-- </app-pagination> -->
+<!-- <nav aria-label="...">
+  <ul class="pagination">
+    <li (click)="onPageClick('first', firstPage)" #firstPage class="page-item">
+      <a class="page-link">First</a>
+    </li>
+
+    <li (click)="onPageClick('prev', prePage)" #prePage class="page-item ">
+      <a class="page-link">Previous</a>
+    </li>
+
+    <ng-container *ngFor="let pageNum of pagesArray">
+      <li (click)="onPageClick(pageNum, me)" #me class="page-item">
+        <a class="page-link">{{pageNum}}</a>
+      </li>
+    </ng-container>
+
+    <li (click)="onPageClick('next', nextPage)" #nextPage class="page-item">
+      <a class="page-link">Next</a>
+    </li>
+
+    <li (click)="onPageClick('last', lastPage)" #lastPage class="page-item ">
+      <a class="page-link">Last</a>
+    </li>
+  </ul>
+</nav> -->

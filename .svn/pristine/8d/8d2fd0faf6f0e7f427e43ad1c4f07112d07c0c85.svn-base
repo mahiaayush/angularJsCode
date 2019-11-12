@@ -1,0 +1,23 @@
+import { Component, OnInit } from '@angular/core';
+
+import { ConstantService } from '../../../acore/services';
+
+@Component({
+  selector: 'app-create-vendor',
+  templateUrl: './create-vendor.component.html',
+  styleUrls: ['./create-vendor.component.css']
+})
+export class CreateVendorComponent implements OnInit {
+  myNavData: any = [];
+  activeLink: any = null;
+  constructor(
+    public constantService: ConstantService
+  ) {
+    this.myNavData = constantService.routerNav.USER_MANAGEMENT;
+    this.activeLink = constantService.routerNav.USER_MANAGEMENT.links[0];
+  }
+
+  ngOnInit() {
+  }
+
+}

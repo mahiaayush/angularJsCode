@@ -1,0 +1,74 @@
+
+
+export class TopMenuNavigationData {
+
+      public static PAD_PROJECT = {
+            links: [
+                  {
+                        label: 'Search Title',
+                        routerLink: ['pages', 'pad_project', 'search_title']
+                  },
+                  {
+                        label: 'Meta Data Upload',
+                        routerLink: ['pages', 'pad_project', 'meta_data_upload']
+                  },
+                  {
+                        label: 'Meta Data Processing',
+                        routerLink: ['pages', 'pad_project', 'meta_data_processing']
+                  },
+                  {
+                        label: 'Price Update',
+                        routerLink: ['pages', 'pad_project', 'price_update']
+                  }
+            ],
+            label: 'Pad Project'
+      };
+
+      public static REPORT = {
+            links: [
+                  {
+                        label: 'Title Stages',
+                        routerLink: ['pages', 'reports', 'stages']
+                  },
+                  {
+                        label: 'Title Overview',
+                        routerLink: ['pages', 'reports', 'overview']
+                  },
+                  {
+                        label: 'Title Processing',
+                        routerLink: ['pages', 'reports', 'processing']
+                  },
+                  {
+                        label: 'Title Deliveries',
+                        routerLink: ['pages', 'reports', 'deliveries']
+                  }
+            ],
+            label: 'Report'
+      };
+
+      public static USER_MANAGEMENT = {
+            links: [
+                  {
+                        label: 'Create Vendor',
+                        routerLink: ['pages', 'user_management', 'create_vendor']
+                  },
+                  {
+                        label: 'Search Vendor',
+                        routerLink: ['pages', 'user_management', 'search_vendor']
+                  },
+                  {
+                        label: 'Create User',
+                        routerLink: ['pages', 'user_management', 'create_user']
+                  },
+                  {
+                        label: 'Search User',
+                        routerLink: ['pages', 'user_management', 'search_user']
+                  }
+            ],
+            label: 'User Management'
+      };
+
+      public static dashboard = TopMenuNavigationData.PAD_PROJECT.links[0].routerLink;
+      public static dashboarHTMLlink = ['pad_project', 'search_title'];
+
+}

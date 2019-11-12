@@ -1,0 +1,67 @@
+<section class="container-fluid pt-5">
+  <div class="container ">
+    <div class="row">
+      <div class="col-md-12 py-2 ">
+        <div>
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link " href="javascript:;">Metadata </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="javascript:;">Content</a>
+            </li>
+          </ul>
+        </div>
+        <div class="bg-white border p-3">
+          <div class="row">
+            <div class="col-md-12">
+              <!--<h4 class="subHeading">Search Title</h4>-->
+
+              <div class="tableBox border-top mt-5 pt-3">
+                <div class="d-flex justify-content-between">
+                  <p class="mb-2 d-flex formtable">
+                    <span class="mr-2 mt-2">File Type:</span>
+                    <select name="fileType" style="width:154px" class="form-control">
+                      <option value="Cover">Covers</option>
+                      <option value="Interior">Interior Press PDF</option>
+                      <option value="DustJacket">Dust Jacket</option>
+                      <option value="Insert">Insert</option>
+                    </select>
+                  </p>
+                  <p class="mb-2 d-flex">
+                    <span class="mr-2 mt-2">Status:</span>
+                    <input type="text" readonly class="form-control" id="staticEmail" value="ApprovedByPV">
+                  </p>
+                </div>
+                <table class="spacing-table table-responsive text-nowrap" cellspacing="0" cellpadding="0" border="0">
+                  <thead>
+                    <tr>
+                      <th>Archived File Type</th>
+                      <th>Uploaded File Name</th>
+                      <th>Uploaded Date</th>
+                      <th>Archived File Name</th>
+                      <th>File Size</th>
+                      <th>Download</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr id="1" tabindex="-1" role="row" class="ui-widget-content jqgrow ui-row-ltr">
+                      <td> 9780470609705 </td>
+                      <td role="gridcell" style="" title="Green s Functions 3E" aria-describedby="list47_title">Green s Functions 3E</td>
+                      <td role="gridcell" style="text-align:center;" title="POD" aria-describedby="list47_titleType">POD</td>
+                      <td role="gridcell" style="" title=".,Stakgold;.,Holst" aria-describedby="list47_author">.,Stakgold;.,Holst</td>
+                      <td role="gridcell" style="text-align:center;" title="3" aria-describedby="list47_edition">3</td>
+                      <td role="gridcell" style="text-align:center;" title="01/28/2011" aria-describedby="list47_pubDate">01/28/2011</td>
+
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

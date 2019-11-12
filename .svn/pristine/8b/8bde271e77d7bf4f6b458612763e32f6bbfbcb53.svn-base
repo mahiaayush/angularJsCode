@@ -1,0 +1,29 @@
+import { Component, OnInit } from '@angular/core';
+
+import { ConstantService, ProjectService } from '../../../acore/services';
+import { UserManagementService } from '../user-management.service';
+import { BaseComponent } from '../../../acore/base';
+
+@Component({
+  selector: 'app-create-vendor',
+  templateUrl: './create-vendor.component.html',
+  styleUrls: ['./create-vendor.component.css']
+})
+export class CreateVendorComponent extends BaseComponent implements OnInit {
+  myNavData: any = {};
+  activeLink: any = null;
+  constructor(
+    public constantService: ConstantService,
+    protected projectService: ProjectService,
+    protected userManagementService: UserManagementService
+  ) {
+    super(userManagementService, projectService);
+
+    this.myNavData = constantService.routerNav.USER_MANAGEMENT;
+    this.activeLink = constantService.routerNav.USER_MANAGEMENT.links[0];
+  }
+
+  ngOnInit() {
+  }
+
+}

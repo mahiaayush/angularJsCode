@@ -1,0 +1,403 @@
+<app-tab-links [myNavData]="myNavData" [activeLink]="activeLink">
+</app-tab-links>
+<app-loader #baseLoader></app-loader>
+<div class="row">
+  <div class="col-md-12 pb-2 ">
+    <div class="bg-white p-3 mh320 border">
+      <div class="row">
+        <div class="col-md-12">
+          <h4 class="subHeading">Vendor Workflow Type </h4>
+          <div class="checkboxBlock">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" [(ngModel)]="createVendorModel.venderWorkflowType.value" name="inlineRadioOptions"
+                value="POD">
+              <label class="form-check-label" for="inlineRadio1">POD</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" [(ngModel)]="createVendorModel.venderWorkflowType.value" name="inlineRadioOptions"
+                value="Optimal Inventory">
+              <label class="form-check-label" for="inlineRadio1">Optimal Inventory</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" [(ngModel)]="createVendorModel.venderWorkflowType.value" name="inlineRadioOptions"
+                value="XBITS">
+              <label class="form-check-label" for="inlineRadio1">XBITS</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" [(ngModel)]="createVendorModel.venderWorkflowType.value" name="inlineRadioOptions"
+                value="Gap">
+              <label class="form-check-label" for="inlineRadio1">Gap</label>
+            </div>
+          </div>
+          <h4 class="subHeading">Vendor Details </h4>
+          <form #heroForm="ngForm">
+            <div class="form-group row">
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Vendor Name
+                  <sup class="text-danger">*</sup>
+                </label>
+                <input type="text" class="form-control" [(ngModel)]="createVendorModel.vendorName.value" name="vedorName" required>
+              </div>
+              <div class="col-md-4">
+                <label for="VendorCode" class=" col-form-label">Vendor Code
+                  <sup class="text-danger">*</sup>
+                </label>
+                <input type="text" class="form-control" [(ngModel)]="createVendorModel.vandorCode.value" [name]="createVendorModel.vandorCode.name"
+                  required>
+              </div>
+              <div class="col-md-4">
+                <label for="VendorSAN" class=" col-form-label">Vendor SAN</label>
+                <input type="text" class="form-control" [(ngModel)]="createVendorModel.vendorSAN.value" [name]="createVendorModel.vendorSAN.name"
+                  id="VendorSAN">
+              </div>
+            </div>
+            <h4 class="subHeading">Contact Details </h4>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Contact Name
+                  <sup class="text-danger">*</sup>
+                </label>
+                <input type="text" class="form-control" [(ngModel)]="createVendorModel.ContactName.value" name="ContactName" required>
+              </div>
+              <div class="col-md-4">
+                <label for="Address" class=" col-form-label">Address </label>
+                <input type="text" [(ngModel)]="createVendorModel.address.value" [name]="createVendorModel.address.name" class="form-control"
+                  id="Address">
+              </div>
+              <div class="col-md-4">
+                <label for="Email" class=" col-form-label">Email
+                  <sup class="text-danger">*</sup>
+                </label>
+                <input type="text" class="form-control" [(ngModel)]="createVendorModel.email.value" name="email" #email="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                  required>
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+                  <div *ngIf="email.errors.required">
+                    Email is required.
+                  </div>
+                  <div *ngIf="email.errors && email.errors.pattern">
+                    Email is invalid
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">City/Town</label>
+                <input type="text" class="form-control" [(ngModel)]="createVendorModel.city.value" name="city" id="Town">
+              </div>
+              <div class="col-md-4">
+                <label for="phone" class=" col-form-label">Phone </label>
+                <input type="text" class="form-control" [(ngModel)]="createVendorModel.phone.value" name="phone" id="phone">
+              </div>
+              <div class="col-md-4">
+                <label for="state" class=" col-form-label">State/Province </label>
+                <input type="text" class="form-control" [(ngModel)]="createVendorModel.state.value" name="state" id="state">
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Country </label>
+                <sup class="text-danger">*</sup>
+                <select class="form-control " [(ngModel)]="createVendorModel.country.value" name="country" required>
+                  <option value="">Choose Country</option>
+                  <option [value]="country.id" *ngFor="let country of countryDropList">
+                    {{country.name}}
+                  </option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label for="postzip" class=" col-form-label">Post/Zip Code </label>
+                <input type="text" class="form-control" [(ngModel)]="createVendorModel.zipCode.value" name="zipCode" id="postzip">
+              </div>
+            </div>
+            <h4 class="subHeading">Destination </h4>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Host
+                  <sup class="text-danger">*</sup>
+                </label>
+                <input type="text" class="form-control" required [(ngModel)]="createVendorModel.destinationHost.value" [name]="createVendorModel.destinationHost.name">
+              </div>
+              <div class="col-md-4">
+                <label for="login" class=" col-form-label">Login
+                  <sup class="text-danger">*</sup>
+                </label>
+                <input type="text" class="form-control" [(ngModel)]="createVendorModel.destinationlogin.value" [name]="createVendorModel.destinationlogin.name"
+                  required>
+              </div>
+              <div class="col-md-4">
+                <label for="inputPassword" class=" col-form-label">Password
+                  <sup class="text-danger">*</sup>
+                </label>
+                <input type="password" class="form-control" required [(ngModel)]="createVendorModel.destinationPassword.value" [name]="createVendorModel.destinationPassword.name">
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Port
+                  <sup class="text-danger">*</sup>
+                </label>
+                <select class="form-control" [(ngModel)]="createVendorModel.destinationPort.value" name="destinationport">
+                  <option value="21">21</option>
+                  <option value="22">22</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label for="Directory" class=" col-form-label">Target Directory
+                  <sup class="text-danger">*</sup>
+                </label>
+                <input type="text" class="form-control" required [(ngModel)]="createVendorModel.destinationTargetDir.value" [name]="createVendorModel.destinationTargetDir.name">
+              </div>
+            </div>
+            <h4 class="subHeading d-flex">
+              <span>Feedback Details</span>
+              <small class="form-group form-check ml-3 mb-0   text-info">
+                <input type="checkbox" class="form-check-input" (change)="feedbackChange($event)" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Please Click here if Destination is same as Feedback</label>
+              </small>
+            </h4>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Host
+                  <sup class="text-danger">*</sup>
+                </label>
+                <input type="text" class="form-control" [disabled]="feedbackDisabled" required [(ngModel)]="createVendorModel.feedbackHost.value"
+                  [name]="createVendorModel.feedbackHost.name">
+              </div>
+              <div class="col-md-4">
+                <label for="Login" class=" col-form-label">Login
+                  <sup class="text-danger">*</sup>
+                </label>
+                <input type="text" class="form-control" required [(ngModel)]="createVendorModel.feedbacklogin.value" [disabled]="feedbackDisabled"
+                  [name]="createVendorModel.feedbacklogin.name">
+              </div>
+              <div class="col-md-4">
+                <label for="Password" class=" col-form-label">Password
+                  <sup class="text-danger">*</sup>
+                </label>
+                <input type="password" class="form-control" required [disabled]="feedbackDisabled" [(ngModel)]="createVendorModel.feedbackPassword.value"
+                  [name]="createVendorModel.feedbackPassword.name">
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Port
+                  <sup class="text-danger">*</sup>
+                </label>
+                <select class="form-control" [(ngModel)]="createVendorModel.feedbackPort.value" [disabled]="feedbackDisabled" [name]="createVendorModel.feedbackPort.name"
+                  required>
+                  <option value="21">21</option>
+                  <option value="22">22</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label for="Directory1" class=" col-form-label">Target Directory
+                  <sup class="text-danger">*</sup>
+                </label>
+                <input type="text" class="form-control" [disabled]="feedbackDisabled" required [(ngModel)]="createVendorModel.feedbackTargetDir.value"
+                  [name]="createVendorModel.feedbackTargetDir.name">
+              </div>
+            </div>
+            <h4 class="subHeading">Content</h4>
+            <div class="form-inline formtable">
+              <table width="100%" cellspacing="0" cellpadding="3" border="0">
+                <tbody>
+                  <tr>
+                    <td valign="middle">&nbsp;</td>
+                    <td>
+                      <strong>Content</strong>
+                    </td>
+                    <td>
+                      <strong>Deliver</strong>
+                    </td>
+                    <td>
+                      <strong>Format</strong>
+                    </td>
+                    <td>
+                      <strong>Conversion</strong>
+                    </td>
+                    <td>
+                      <strong>Naming</strong>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="5"></td>
+                  </tr>
+                  <tr>
+                    <td valign="middle">&nbsp;</td>
+                    <td valign="middle">Interior</td>
+                    <td valign="middle">
+                      <select name="vmb.vcrInterior.ruleDeliver" [(ngModel)]="createVendorModel.contentInteriorDeliver.value" class="form-control form-control-sm"
+                        id="interiorId">
+                        <option [value]="lstval.dataValue" *ngFor="let lstval of staticResourceList['Interior-Deliver']">{{lstval.dataValue}}</option>
+                      </select>
+                    </td>
+                    <td valign="middle">
+                      <select name="InteriorFormat" [(ngModel)]="createVendorModel.contentInteriorFormat.value" class="form-control form-control-sm"
+                        disabled="disabled" id="interiorRuleFormat">
+                        <option [value]="lstval.dataValue" *ngFor="let lstval of staticResourceList['Interior-format']">{{lstval.dataValue}}</option>
+                      </select>
+                    </td>
+                    <td valign="middle">
+                      <select name="vmb.vcrInterior.ruleTransformation" [(ngModel)]="createVendorModel.contentInteriorConversion.value" class="form-control form-control-sm"
+                        id="ruleTransformation">
+                        <option [value]="lstval.dataValue" *ngFor="let lstval of staticResourceList['Interior-Transformation']">{{lstval.dataValue}}</option>
+                      </select>
+                    </td>
+                    <td valign="middle">
+                      <span class="formcolumfour">
+                        <select name="vmb.vcrInterior.naming" [(ngModel)]="createVendorModel.contentInteriorNaming.value" class="form-control form-control-sm"
+                          id="interiorNaming">
+                          <option [value]="lstval.dataValue" *ngFor="let lstval of staticResourceList['Interior-NamingConvention']">{{lstval.dataKey}}</option>
+                        </select>
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td valign="middle">&nbsp;</td>
+                    <td valign="middle">Metadata</td>
+                    <td valign="middle">
+                      <select name="vmb.vcrMetaData.ruleDeliver" [(ngModel)]="createVendorModel.contentMetadataDeliver.value" class="form-control form-control-sm"
+                        id="metadataId">
+                        <option [value]="lstval.dataValue" *ngFor="let lstval of staticResourceList['Metadata-Deliver']">{{lstval.dataValue}}</option>
+                      </select>
+                    </td>
+                    <td valign="middle">
+                      <select name="MetaDataFormat" [(ngModel)]="createVendorModel.contentMetadataFormat.value" class="form-control form-control-sm"
+                        disabled="disabled" id="ruleFormatMetadata">
+                        <option [value]="lstval.dataValue" *ngFor="let lstval of staticResourceList['Metadata-format']">{{lstval.dataValue}}</option>
+                      </select>
+                    </td>
+                    <td valign="middle">&nbsp;</td>
+                    <td valign="middle">
+                      <span class="formcolumfour">
+                        <select name="vmb.vcrMetaData.naming" [(ngModel)]="createVendorModel.contentMetadataNaming.value" class="form-control form-control-sm"
+                          id="namingMetadata">
+                          <option [value]="lstval.dataValue" *ngFor="let lstval of staticResourceList['Metadata-Naming']">{{lstval.dataKey}}</option>
+                        </select>
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td valign="middle">&nbsp;</td>
+                    <td valign="middle">Covers</td>
+                    <td valign="middle">
+                      <select name="vmb.vcrCovers.ruleDeliver" [(ngModel)]="createVendorModel.contentCoverDeliver.value" class="form-control form-control-sm"
+                        id="coverId">
+                        <option [value]="lstval.dataValue" *ngFor="let lstval of staticResourceList['Covers-Deliver']">{{lstval.dataValue}}</option>
+                      </select>
+                    </td>
+                    <td valign="middle">&nbsp;</td>
+                    <td valign="middle">&nbsp;</td>
+                    <td valign="middle">
+                      <span class="formcolumfour">
+                        <select name="vmb.vcrCovers.naming" [(ngModel)]="createVendorModel.contentCoverNaming.value" class="form-control form-control-sm"
+                          id="Cover-naming">
+                          <option [value]="lstval.dataValue" *ngFor="let lstval of staticResourceList['Covers-Naming']">{{lstval.dataKey}}</option>
+                        </select>
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td valign="middle">&nbsp;</td>
+                    <td valign="middle">Dust Jacket</td>
+                    <td valign="middle">
+                      <select name="vmb.vcrDustJacket.ruleDeliver" [(ngModel)]="createVendorModel.contentDustDeliver.value" class="form-control form-control-sm"
+                        id="dustJacketId">
+                        <option [value]="lstval.dataValue" *ngFor="let lstval of staticResourceList['Dust Jacket-Deliver']">{{lstval.dataValue}}</option>
+                      </select>
+                    </td>
+                    <td valign="middle">&nbsp;</td>
+                    <td valign="middle">&nbsp;</td>
+                    <td valign="middle">
+                      <span class="formcolumfour">
+                        <select name="vmb.vcrDustJacket.naming" [(ngModel)]="createVendorModel.contentDustNaming.value" class="form-control form-control-sm"
+                          id="DustJacket-naming">
+                          <option [value]="lstval.dataValue" *ngFor="let lstval of staticResourceList['Dust Jacket-Naming']">{{lstval.dataKey}}</option>
+                        </select>
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td valign="middle">&nbsp;</td>
+                    <td valign="middle">Insert</td>
+                    <td valign="middle">
+                      <input name="vmb.vcrInsert.id" value="0" type="hidden">
+                      <input name="vmb.vcrInsert.contentName" value="Insert" type="hidden">
+                      <select name="vmb.vcrInsert.ruleDeliver" [(ngModel)]="createVendorModel.contentInsertDeliver.value" class="form-control form-control-sm"
+                        id="insertId">
+                        <option [value]="lstval.dataValue" *ngFor="let lstval of staticResourceList['Insert-Deliver']">{{lstval.dataValue}}</option>
+                      </select>
+                    </td>
+                    <td valign="middle">&nbsp;</td>
+                    <td valign="middle">&nbsp;</td>
+                    <td valign="middle">
+                      <span class="formcolumfour">
+                        <select name="vmb.vcrInsert.naming" [(ngModel)]="createVendorModel.contentInsertNaming.value" class="form-control form-control-sm"
+                          id="Insert-naming">
+                          <option [value]="lstval.dataValue" *ngFor="let lstval of staticResourceList['Insert-Naming']">{{lstval.dataKey}}</option>
+                        </select>
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td valign="middle">&nbsp;</td>
+                    <td valign="middle">Copyright</td>
+                    <td valign="middle">
+                      <select name="vmb.vcrCopyright.ruleDeliver" [(ngModel)]="createVendorModel.contentCopyDeliver.value" class="form-control form-control-sm"
+                        id="copyRightId">
+                        <option [value]="lstval.dataValue" *ngFor="let lstval of staticResourceList['Copyright-Deliver']">{{lstval.dataValue}}</option>
+                      </select>
+                    </td>
+                    <td valign="middle">&nbsp;</td>
+                    <td valign="middle">&nbsp;</td>
+                    <td valign="middle">
+                      <span class="formcolumfour">
+                        <select name="vmb.vcrCopyright.naming" [(ngModel)]="createVendorModel.contentCopyNaming.value" class="form-control form-control-sm"
+                          id="Copyright-naming">
+                          <option [value]="lstval.dataValue" *ngFor="let lstval of staticResourceList['Copyright-Naming']">{{lstval.dataKey}}</option>
+                        </select>
+                      </span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h4 class="subHeading">Package </h4>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Package Format </label>
+                <select class="form-control" [(ngModel)]="createVendorModel.packageFormat.value" name="packageFormat">
+                  <option [value]="lstval.dataValue" *ngFor="let lstval of staticResourceList['package-format']">{{lstval.dataValue}}</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label for="ZIPFiles" class=" col-form-label">No. of ZIP Files </label>
+                <select class="form-control" [(ngModel)]="createVendorModel.packageZipCount.value" name="packageZipCount">
+                  <option [value]="lstval.dataValue" *ngFor="let lstval of staticResourceList['package-zips']">{{lstval.dataValue}}</option>
+                </select>
+              </div>
+            </div>
+            <p class="text-right mt-5 ">
+              <button type="button" class="btn btn-primary btn-sm" id="isActiveUserBtn" (click)="isActiveVendor()" *ngIf="routeLink === 'update_vendor'">{{btnString}}</button>
+              <button type="submit" class="btn btn-primary btn-sm " [disabled]="!heroForm.form.valid" id="updateUser" (click)="UpdateVendor()"
+                *ngIf="routeLink === 'update_vendor'">Save</button>
+              <button type="submit" class="btn btn-primary btn-sm " [disabled]="!heroForm.form.valid" id="CreateUser" (click)="createNewVendor()"
+                *ngIf="routeLink !== 'update_vendor'">Save</button>
+              <button type="button" class="btn btn-secondary btn-sm mr-2" (click)="doOnReset()" id="btnReset">Reset</button>
+            </p>
+            <div class="row">
+              <div class="col-8 offset-2">
+                <div [class.alert-success]="state" [class.alert-danger]="!state" class="alert mt-1 mb-1" id="Create-Vendor-Alert" role="alert"
+                  style="display: none; text-align: center;">
+                  <a href="#" class="close" data-dismiss="alert">&times;</a>
+                  {{message}}
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

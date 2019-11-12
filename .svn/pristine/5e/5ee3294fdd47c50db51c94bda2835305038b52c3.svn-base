@@ -1,0 +1,192 @@
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { BaseComponent, GridAPII } from '../../../acore/base';
+import { GridApi, ColumnApi, ColDef, GridOptions } from 'ag-grid';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Subject } from 'rxjs/Subject';
+import { PadProjectService } from '../pad-project.service';
+import { UpdateTitleModel } from './update-title.model';
+import { UrlConstants, SessionObject, ProjectUtils } from '../../../acore/utility';
+import { DataDropDownOptions, AutoCompleteModel, TabsComponent } from '../../../acore/components';
+import { columnDefs } from './update-title.data';
+import { ConstantService, ProjectService } from '../../../acore/services';
+
+@Component({
+  selector: 'app-update-title',
+  templateUrl: './update-title.component.html',
+  styleUrls: ['./update-title.component.css']
+})
+export class UpdateTitleComponent extends BaseComponent {
+
+  NAME_UPDATE_TITLE = 'UPDATE_TITLE';
+  NAME_VIEW_TITLE = 'VIEW_TITLE';
+  updateTitleModel: UpdateTitleModel;
+  myNavData: any = {};
+  activeLink: any = null;
+  isShow: boolean;
+  isVisible: boolean;
+  viewUpdateArray: any;
+
+  @ViewChild('contentUploadList') contentUploadTemplate;
+  @ViewChild('updateTitle') updateTitleTemplate;
+  @ViewChild('history') historyTemplate;
+  @ViewChild(TabsComponent) tabsComponent;
+  gridOptionsSearchTitle: GridOptions = {};
+
+  constructor(private padProjectService: PadProjectService,
+    public constantService: ConstantService,
+    protected projectService: ProjectService) {
+    super(padProjectService, projectService);
+    this.myNavData = constantService.routerNav.PAD_PROJECT;
+    this.activeLink = constantService.routerNav.PAD_PROJECT.links[0];
+    this.gridOptionsSearchTitle.onCellClicked = this.agCellClicked;
+    this.getViewTitle();
+
+  }
+
+
+
+
+  agCellClicked = (event) => {
+
+    const headerName: string = event.colDef.headerName;
+    const row = event['data'];
+  }
+
+  openListTab() {
+
+    this.tabsComponent.openTab('Content Upload',
+      this.contentUploadTemplate, {}, true, 'contentUploadTemplate');
+
+    this.tabsComponent.openTab('Update Title',
+      this.updateTitleTemplate, {}, true, 'updateTitleTemplate');
+  }
+
+  initSearchModels() {
+    this.updateTitleModel = new UpdateTitleModel();
+    const counterReportsSession = ProjectUtils.getCounterReports();
+    // this.setValueFromSession(this.updateTitleModel, counterReportsSession);
+
+  }
+
+
+  getSearchModel(name: string) {
+    if (name === this.NAME_UPDATE_TITLE) {
+      return this.updateTitleModel;
+    }
+  }
+
+  getNonSearchModelParams(name: any): string {
+    if (name === this.NAME_VIEW_TITLE) {
+      const obj = {
+        id: '11270',
+      };
+      const queryString = JSON.stringify(obj);
+      return queryString;
+    }
+
+  }
+
+  setSearchModel(name: string) {
+    const searchModel = this.getValueFromSearchModel(name);
+    if (name === this.NAME_UPDATE_TITLE) {
+      ProjectUtils.setCounterReports(searchModel);
+    }
+  }
+
+  getViewTitle() {
+    this.showLoader();
+    this.loadDataFromApi(this.NAME_VIEW_TITLE)
+      .subscribe(titleBean => {
+        this.viewUpdateArray = titleBean.titleBean;
+        const myVal = this.viewUpdateArray['content'].copyrightYearModified;
+        debugger
+        this.updateTitleModel.accountNumber.value = titleBean.titleBean.contentVendor.accountNumber;
+        this.updateTitleModel.activationCode.value = titleBean.titleBean.contentVendor.activationCode;
+        this.updateTitleModel.bindingstyleDescription.value = titleBean.titleBean.contentVendor.bindingstyleDescription;
+        this.updateTitleModel.bobUrl.value = titleBean.titleBean.content.bobUrl;
+        this.updateTitleModel.bookType.value = titleBean.titleBean.contentVendor.bookType;
+        this.updateTitleModel.copyrightYear.value = titleBean.titleBean.content.copyrightYear;
+        this.updateTitleModel.countryOfOrigin.value = titleBean.titleBean.content.countryOfOrigin;
+        this.updateTitleModel.coverColors.value = titleBean.titleBean.contentVendor.coverColors;
+        this.updateTitleModel.coverFinish.value = titleBean.titleBean.contentVendor.coverFinish;
+        this.updateTitleModel.coverLamination.value = titleBean.titleBean.contentVendor.coverLamination;
+        this.updateTitleModel.coverMaterial.value = titleBean.titleBean.contentVendor.coverMaterial;
+        this.updateTitleModel.coverSourceMaterial.value = titleBean.titleBean.contentVendor.coverSourceMaterial;
+        this.updateTitleModel.coverTypeDesc.value = titleBean.titleBean.contentVendor.coverTypeDesc;
+        this.updateTitleModel.edition.value = titleBean.titleBean.content.edition;
+        this.updateTitleModel.gapVendorFlag.value = titleBean.titleBean.contentVendor.gapVendorFlag;
+        this.updateTitleModel.id.value = titleBean.titleBean.contentVendor.id;
+        this.updateTitleModel.imprintName.value = titleBean.titleBean.content.imprintName;
+        this.updateTitleModel.insertTotalPages.value = titleBean.titleBean.contentVendor.insertTotalPages;
+        this.updateTitleModel.insideColors.value = titleBean.titleBean.contentVendor.insideColors;
+        this.updateTitleModel.isbn.value = titleBean.titleBean.content.isbn;
+        this.updateTitleModel.isbn10.value = titleBean.titleBean.content.isbn10;
+        this.updateTitleModel.jacketColors.value = titleBean.titleBean.contentVendor.jacketColors;
+        this.updateTitleModel.jacketFinish.value = titleBean.titleBean.contentVendor.jacketFinish;
+        this.updateTitleModel.jacketLamination.value = titleBean.titleBean.contentVendor.jacketLamination;
+        this.updateTitleModel.jacketRequired.value = titleBean.titleBean.contentVendor.jacketRequired;
+        this.updateTitleModel.jacketStock.value = titleBean.titleBean.contentVendor.jacketStock;
+        this.updateTitleModel.languageText.value = titleBean.titleBean.content.languageText;
+        this.updateTitleModel.medium.value = titleBean.titleBean.content.medium;
+        this.updateTitleModel.name.value = titleBean.titleBean.authors.name;
+        this.updateTitleModel.outsideColors.value = titleBean.titleBean.contentVendor.outsideColors;
+        this.updateTitleModel.padStatus.value = titleBean.titleBean.contentVendor.padStatus;
+        this.updateTitleModel.pages.value = titleBean.titleBean.contentVendor.pages;
+        this.updateTitleModel.paperStock.value = titleBean.titleBean.contentVendor.paperStock;
+        this.updateTitleModel.ppcDescription.value = titleBean.titleBean.content.ppcDescription;
+        this.updateTitleModel.productLine.value = titleBean.titleBean.content.productLine;
+        this.updateTitleModel.productSponsor.value = titleBean.titleBean.content.productSponsor;
+        this.updateTitleModel.promoCode.value = titleBean.titleBean.contentVendor.promoCode;
+        this.updateTitleModel.publicationDate.value = titleBean.titleBean.content.publicationDate;
+        this.updateTitleModel.publisherName.value = titleBean.titleBean.content.publisherName;
+        this.updateTitleModel.releaseDate.value = titleBean.titleBean.contentVendor.releaseDate;
+        this.updateTitleModel.subjectCode.value = titleBean.titleBean.content.subjectCode;
+        this.updateTitleModel.subMedium.value = titleBean.titleBean.content.subMedium;
+        this.updateTitleModel.textSourceMaterial.value = titleBean.titleBean.contentVendor.textSourceMaterial;
+        this.updateTitleModel.titleName.value = titleBean.titleBean.content.titleName;
+        this.updateTitleModel.titleStatus.value = titleBean.titleBean.content.titleStatus;
+        this.updateTitleModel.trimsizeDescription.value = titleBean.titleBean.content.trimsizeDescription;
+        this.updateTitleModel.discountGroup.value = titleBean.titleBean.content.discountGroup;
+        this.updateTitleModel.vendorId.value = titleBean.titleBean.content.vendorId;
+      });
+  }
+
+  setColumnDef(name: string): Array<ColDef> {
+    if (name === this.NAME_UPDATE_TITLE) {
+      return columnDefs;
+    }
+  }
+
+  getServiceUrl(name): string {
+    if (name === this.NAME_UPDATE_TITLE) {
+      return UrlConstants.UPDATE_TITLE;
+    } else if (name === this.NAME_VIEW_TITLE) {
+      return UrlConstants.VIEW_TITLE;
+    }
+  }
+
+  doOnSubmit(e) {
+    console.log('doOnSubmit', e);
+    this.OnSubmit(this.NAME_UPDATE_TITLE);
+
+  }
+
+  getGridApi(name: string): GridAPII {
+    if (name === this.NAME_UPDATE_TITLE) {
+      return {
+        gridApi: this.gridApi,
+        columnApi: this.columnApi
+      };
+    }
+  }
+
+  doOnGridReadySearchVenderReports(api) {
+    this.gridApi = api.api;
+    this.columnApi = api.columnApi;
+    this.doOnGridReady(this.NAME_UPDATE_TITLE);
+
+  }
+
+}
+
+

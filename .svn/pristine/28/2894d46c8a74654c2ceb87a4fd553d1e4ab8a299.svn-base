@@ -1,0 +1,29 @@
+import { NgModule } from '@angular/core';
+import { routing } from './login.routing';
+import { RootSharedModule } from '../../acore/sharedModules';
+import { CoreLoginComponent } from './core-login/core-login.component';
+import { LoginService } from './login.service';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { SecurityCheckComponent } from './security-check/security-check.component';
+import { ComponentModule } from '../../acore/components';
+import { DesktopModule } from '../desktop/desktop.module';
+
+@NgModule({
+      declarations: [
+            CoreLoginComponent,
+            ForgetPasswordComponent,
+            SecurityCheckComponent
+      ],
+      providers: [
+            LoginService
+      ],
+      imports: [
+            ComponentModule,
+            RootSharedModule,
+            routing
+
+      ]
+})
+
+export class LoginModule { }
+

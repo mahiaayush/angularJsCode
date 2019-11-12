@@ -1,0 +1,39 @@
+import { Injectable, isDevMode } from '@angular/core';
+import { Router } from '@angular/router';
+import { ProjectUtils } from '../../utility';
+
+@Injectable()
+
+export class SecurityService {
+
+
+
+      constructor(
+            private routor: Router
+      ) { }
+
+
+      applySecurity() {
+            if (isDevMode() === false) {
+                  this.restrictBrowserNav();
+                  this.restrictRefresh();
+            }
+      }
+
+      restrictBrowserNav() {
+            window.onpopstate = () => {
+                  ProjectUtils.clearSessionObjects();
+            };
+      }
+
+      restrictRefresh() {
+            window.onbeforeunload = () => {
+                  ProjectUtils.clearSessionObjects();
+            };
+      }
+
+      disableBrowserSecurity() {
+            window.onpopstate = null;
+            window.onbeforeunload = null;
+      }
+}

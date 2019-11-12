@@ -1,0 +1,57 @@
+<app-loader #baseLoader>
+</app-loader>
+<div>
+  <div class="d-flex justify-content-center bd-highlight mb-3 align-items-center" style="height:90vh">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-5 mx-auto">
+              <!-- form card login -->
+              <div class="card rounded15">
+                <h1 class="logo text-center">
+                  <a href="">
+                    <img [src]="constantService.path.imageLogo" />
+                  </a>
+                </h1>
+                <p class="mb-0 text-center pb-3 mt-3">Print Asset Delivery System (PAD) Login</p>
+                <div class="card-body">
+                  <form class="form" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST" #heroForm="ngForm">
+                    <div class="form-group">
+                      <label for="uname1">User Name
+                        <sup class="text-danger">*</sup>
+                      </label>
+                      <!-- <input type="text" class="form-control  rounded-0" name="uname1" id="uname1" required=""> -->
+                      <input type="text" [(ngModel)]="loginModel.userName.value" [placeholder]="loginModel.userName.placeholder" class="form-control  rounded-0" [name]="loginModel.userName.name"
+                        #login="ngModel" required>
+                      <small class="text-muted">(This should be an email address, for eg:jsmith@wiley.com)</small>
+                      <div class="invalid-feedback">Oops, you missed this one.</div>
+                    </div>
+                    <div class="form-group">
+                      <label>Password
+                        <sup class="text-danger">*</sup>
+                      </label>
+                      <input type="password" [(ngModel)]="loginModel.password.value " required [placeholder]="loginModel.password.placeholder
+                       " class="form-control " [name]="loginModel.password.name">
+                      <!--<input type="password" class="form-control  rounded-0" id="pwd1" required="" autocomplete="new-password"> -->
+                      <div class="invalid-feedback">Enter your password too!</div>
+                    </div>
+                    <button (click)="doOnSubmit()" type="submit" class="btn btn-primary   float-right mr-3" id="btnLogin" [disabled]="!heroForm.form.valid">Login</button>
+                    <button type="reset" class="btn btn-primary   float-right mr-3" id="btnReset" [disabled]="!heroForm.form.valid">Reset</button>
+                  </form>
+                </div>
+                <!--/card-block-->
+              </div>
+              <!-- /form card login -->
+            </div>
+          </div>
+          <!--/row-->
+        </div>
+        <!--/col-->
+      </div>
+      <!--/row-->
+    </div>
+    <!--/container-->
+  </div>
+</div>
+<app-footer></app-footer>

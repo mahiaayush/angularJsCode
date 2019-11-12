@@ -1,0 +1,117 @@
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { BaseComponent, GridAPII } from '../../../acore/base';
+import { GridApi, ColumnApi, ColDef, GridOptions } from 'ag-grid';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+// import { TabsComponent } from '../../../acore/components/ng-tabs';
+import { Subject } from 'rxjs/Subject';
+import { ContentUploadModel } from './content-upload.model';
+import { PadProjectService } from '../pad-project.service';
+import { UrlConstants, SessionObject, ProjectUtils } from '../../../acore/utility';
+import { DataDropDownOptions, AutoCompleteModel, TabsComponent } from '../../../acore/components';
+import { columnDefs } from './content-upload.data';
+import { ConstantService, ProjectService } from '../../../acore/services';
+
+
+@Component({
+  selector: 'app-content-upload',
+  templateUrl: './content-upload.component.html',
+  styleUrls: ['./content-upload.component.css']
+})
+export class ContentUploadComponent extends BaseComponent {
+
+  // CONTENT_UPLOAD: any;
+  // NAME_UPDATE_TITLE = 'UPDATE_TITLE';
+  NAME_CONTENT_UPLOAD = 'CONTENT_UPLOAD';
+  contentUploadModel: ContentUploadModel;
+
+  // @ViewChild('contentUploadList') contentUploadTemplate;
+  // @ViewChild('updateTitle') updateTitleTemplate;
+  // @ViewChild('history') historyTemplate;
+  // @ViewChild(TabsComponent) tabsComponent;
+  gridOptionsSearchTitle: GridOptions = {};
+
+  constructor(private padProjectService: PadProjectService,
+    public constantService: ConstantService,
+    protected projectService: ProjectService) {
+    super(padProjectService, projectService);
+    // this.myNavData = constantService.routerNav.PAD_PROJECT;
+    // this.activeLink = constantService.routerNav.PAD_PROJECT.links[0];
+    this.gridOptionsSearchTitle.onCellClicked = this.agCellClicked;
+    // this.isShow = false;
+    // this.isVisible = true;
+  }
+
+
+
+
+  agCellClicked = (event) => {
+
+    const headerName: string = event.colDef.headerName;
+    const row = event['data'];
+
+  }
+
+
+  xtBaseOnInit() {
+
+  }
+
+  initSearchModels() {
+    this.contentUploadModel = new ContentUploadModel();
+    const counterReportsSession = ProjectUtils.getCounterReports();
+    // this.setValueFromSession(this.contentUploadModel, counterReportsSession);
+
+  }
+
+
+  getSearchModel(name: string) {
+    if (name === this.NAME_CONTENT_UPLOAD) {
+      return this.contentUploadModel;
+    }
+  }
+
+
+  setSearchModel(name: string) {
+    const searchModel = this.getValueFromSearchModel(name);
+    if (name === this.NAME_CONTENT_UPLOAD) {
+      ProjectUtils.setCounterReports(searchModel);
+    }
+  }
+
+
+  setColumnDef(name: string): Array<ColDef> {
+    if (name === this.NAME_CONTENT_UPLOAD) {
+      return columnDefs;
+    }
+  }
+
+  getServiceUrl(name): string {
+    if (name === this.NAME_CONTENT_UPLOAD) {
+      return UrlConstants.CONTENT_UPLOAD;
+    }
+  }
+
+  doOnSubmit(e) {
+    console.log('doOnSubmit', e);
+    this.OnSubmit(this.NAME_CONTENT_UPLOAD);
+
+  }
+
+  getGridApi(name: string): GridAPII {
+    if (name === this.NAME_CONTENT_UPLOAD) {
+      return {
+        gridApi: this.gridApi,
+        columnApi: this.columnApi
+      };
+    }
+  }
+
+  doOnGridReadyContentUpload(api) {
+    this.gridApi = api.api;
+    this.columnApi = api.columnApi;
+    this.doOnGridReady(this.NAME_CONTENT_UPLOAD);
+
+  }
+
+}
+

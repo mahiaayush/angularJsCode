@@ -1,0 +1,39 @@
+<app-tab-links [myNavData]="myNavData" [activeLink]="activeLink">
+</app-tab-links>
+<div class="row">
+  <div class="col-md-12 pb-2 ">
+    <div class="bg-white p-3 border mh320">
+      <div class="row">
+        <form #myForm="ngForm">
+          <div class="col-md-12">
+            <p class="small  mt-2 mb-3 ">
+              <strong>[Only xls file is allowed.]</strong>
+            </p>
+
+            <label for="staticEmail" class="col-form-label">File </label>
+            <div class="input-group  mb-3">
+              <div class="custom-file">
+                <input required type="file" class="custom-file-input" (change)="fileChange($event)" placeholder="Upload file" name="file"
+                  [(ngModel)]="fileInput" accept=".xls">
+                <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+              </div>
+            </div>
+            <p class="text-right my-4">
+              <button [disabled]="!myForm.valid" (click)="upLoadFile()" class="btn btn-primary">Upload</button>
+            </p>
+
+            <p class="my-3">
+              <span (click)="getTemplate()" class="gridIcon">
+                <img class="curPointer" src="./assets/images/excel.svg" />
+                <a href="javascript:;">Sample Xls </a>
+                <small>(Click the link for downloading sample xls for price update.)</small>
+              </span>
+            </p>
+
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

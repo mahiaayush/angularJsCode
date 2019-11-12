@@ -1,0 +1,44 @@
+
+
+export class UrlConstants {
+      static WILEY_BASE_URL = 'http://betawileypadservice.mpstechnologies.com/wileypad-service/rest/';
+      // static WILEY_BASE_URL = 'http://ss.mpstechnologies.com/scholarlystats_alpha/services/';
+
+
+      // static WILEY_BASE_URL = 'http://10.50.8.220/scholarlystats_alpha/services/';
+      // scholarlystats_alpha/services/
+      static THIRD = UrlConstants.WILEY_BASE_URL + `platformReport/getPlatformSpecificReports`;
+
+      // "COUNTER &
+      // Custom Reports"	Reporting Period
+      //       Get Available Reports
+      //       Download Report
+      //       Get Chart
+
+
+      /* **************  USER DETAILS  *************** */
+      static LOGIN = UrlConstants.WILEY_BASE_URL + 'login';
+
+      /* **************  USER DETAILS  *************** */
+
+      /* **************  DASHBOARD  *************** */
+      /* **************  DASHBOARD  *************** */
+
+
+      /* **************  REPORTS  *************** */
+
+      // GET
+      /* **************  REPORTS  *************** */
+
+
+      /* **************  ADMINISTRATIVE FEATURES  *************** */
+      /* **************  ADMINISTRATIVE FEATURES  *************** */
+
+
+      /* **************  DATA ANALYSIS TOOL  *************** */
+
+      /* **************  DATA ANALYSIS TOOL  *************** */
+
+}
+
+

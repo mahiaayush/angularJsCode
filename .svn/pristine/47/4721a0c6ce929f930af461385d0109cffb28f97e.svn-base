@@ -1,0 +1,38 @@
+import { Injectable } from '@angular/core';
+
+import { BaseService } from '../../../acore/base';
+import { HttpService } from '../../services';
+
+import { Observable } from 'rxjs/Observable';
+import { ProjectUtils } from '../../utility';
+
+export interface MyBodyI {
+      key: string;
+      value: string;
+}
+
+
+@Injectable()
+export class AutoCompleteService extends BaseService {
+
+
+      constructor(
+            protected http: HttpService
+      ) {
+            super(http);
+      }
+
+      getServiceURL(): string {
+            return 'not in use';
+      }
+      // bXBzQDEyM34jfjMyMDN+I34yMDE=
+      getData(serviceURL: string, params: any): any {
+
+            if (params) {
+                  params = ProjectUtils.obj_MakeQueryStringFromObjStartWithAND(params);
+            }
+
+            return this.getDataFromAPI(serviceURL, params);
+      }
+}
+

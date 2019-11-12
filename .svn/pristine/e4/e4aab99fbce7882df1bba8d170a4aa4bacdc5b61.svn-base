@@ -1,0 +1,70 @@
+import { Injectable } from '@angular/core';
+import { BaseService } from '../../acore/base';
+import { HttpService } from '../../acore/services';
+
+import { TopMenuNavigationData } from '../desktop/top-menu/top-menu.navigation.data';
+import { ConstantService } from '../../acore/services';
+
+@Injectable()
+
+export class LoginService extends BaseService {
+
+      constructor(
+            protected http: HttpService,
+            private constService: ConstantService
+      ) {
+            super(http);
+      }
+
+      getBasicRequiredQueryString(url): string {
+            return url;
+      }
+
+      setAccess(navData: any) {
+
+            let linkData: Array<any> = Array.from(this.constService.routerNav.PAD_PROJECT.links);
+            this.constService.routerNav.PAD_PROJECT.links = [];
+
+
+            navData['PAD Project'].forEach(item => {
+                  const len = linkData.length;
+                  for (let i = 0; i < len; i++) {
+                        if (linkData[i]['label'] === item['resName']) {
+                              this.constService.routerNav.PAD_PROJECT.links.push(linkData[i]);
+                        }
+                  }
+            });
+
+
+            linkData = Array.from(this.constService.routerNav.USER_MANAGEMENT.links);
+            this.constService.routerNav.USER_MANAGEMENT.links = [];
+
+            navData['User Management'].forEach(item => {
+                  const len = linkData.length;
+                  for (let i = 0; i < len; i++) {
+                        if (linkData[i]['label'] === item['resName']) {
+                              this.constService.routerNav.USER_MANAGEMENT.links.push(linkData[i]);
+                        }
+                  }
+            });
+
+
+            linkData = Array.from(this.constService.routerNav.REPORT.links);
+            this.constService.routerNav.REPORT.links = [];
+
+            navData['Reports'].forEach(item => {
+                  const len = linkData.length;
+                  for (let i = 0; i < len; i++) {
+                        if (linkData[i]['label'] === item['resName']) {
+                              this.constService.routerNav.REPORT.links.push(linkData[i]);
+                        }
+                  }
+            });
+
+
+      }
+
+
+
+
+}

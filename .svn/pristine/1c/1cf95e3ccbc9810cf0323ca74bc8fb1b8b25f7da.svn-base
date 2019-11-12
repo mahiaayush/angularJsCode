@@ -1,0 +1,165 @@
+import { Component, OnInit } from '@angular/core';
+import { GridApi, ColumnApi, ColDef, GridOptions } from 'ag-grid';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Subject } from 'rxjs/Subject';
+import { BaseComponent, GridAPII } from '../../../acore/base';
+import { MetadataProcessiongStatusModel } from './metadata-processing-status.model';
+import { PadProjectService } from '../pad-project.service';
+import { columnDefsMetadataProcessing } from './metadata-processing-status.data';
+import { UrlConstants, SessionObject, ProjectUtils } from '../../../acore/utility';
+import { DataDropDownOptions, AutoCompleteModel } from '../../../acore/components';
+import { ConstantService, ProjectService } from '../../../acore/services';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-metadata-processing-status',
+  templateUrl: './metadata-processing-status.component.html',
+  styleUrls: ['./metadata-processing-status.component.css']
+})
+export class MetadataProcessingStatusComponent extends BaseComponent {
+  ngstatus: any;
+  NAME_METADATA_PROCESSING = 'METADATA_PROCESSING';
+  metadataProcessiongStatusModel: MetadataProcessiongStatusModel;
+  myNavData: any = {};
+  activeLink: any = null;
+
+  gridOptionsVenderReports: GridOptions = {};
+  ddOptionsStatus: DataDropDownOptions;
+  ddTriggerStatus: Subject<any> = new Subject();
+
+  constructor(private padProjectService: PadProjectService,
+    public constantService: ConstantService,
+    protected projectService: ProjectService,
+    private router: Router) {
+    super(padProjectService, projectService);
+    this.myNavData = constantService.routerNav.PAD_PROJECT;
+    this.activeLink = constantService.routerNav.PAD_PROJECT.links[2];
+    this.gridOptions.onCellClicked = this.agCellClicked;
+    this.doInitialSetup();
+  }
+
+  doInitialSetup() {
+
+    this.ddOptionsStatus = new DataDropDownOptions();
+    this.ddOptionsStatus.keyName = 'id';
+    this.ddOptionsStatus.keyDesc = 'value';
+    this.ddOptionsStatus.firstOptionText = 'Select a XML status';
+    this.ddOptionsStatus.modelName = 'xmlStatus';
+    this.ddOptionsStatus.loader = this.baseLoader;
+  }
+
+  xtBaseAfterViewInit() {
+    this.ddTriggerStatus.next(this.padProjectService.getDropdownType());
+  }
+
+  // initDropDowns() {
+  //   this.ddOptionsISSN = new DataDropDownOptions();
+  //   this.ddOptionsISSN.keyName = 'id';
+  //   this.ddOptionsISSN.keyDesc = 'value';
+  //   this.ddOptionsISSN.firstOptionText = 'Select Search Type';
+  //   this.ddOptionsISSN.modelName = 'search_type';
+  //   this.ddOptionsISSN.loader = this.baseLoader;
+
+  // }
+
+
+  agCellClicked = (event) => {
+
+    const headerName: string = event.colDef.headerName;
+    const row = event['data'];
+    debugger
+    if (headerName === 'XML File Name') {
+      this.router.navigate(['./pages/pad_project/meta_data_processing_details']);
+    }
+
+  }
+
+  // getDownloadQueryURL(ext: string, fileName: string, name: string): string {
+  //   const obj = {
+  //     user_id: this.sessionObject.userDetails.userID,
+  //     year: this.metadataProcessiongStatusModel.year.value,
+  //     month: '02',
+  //     report_name: fileName,
+  //     // fileName + headerName
+  //     report_format: ext
+  //   };
+
+  //   const retValue = ProjectUtils.obj_MakeQueryStringFromObj(obj);
+  //   return UrlConstants.REPORTS_DOWNLOAD_REPORTS + retValue;
+  // }
+
+  xtBaseOnInit() {
+
+  }
+
+  initSearchModels() {
+    this.metadataProcessiongStatusModel = new MetadataProcessiongStatusModel();
+    const counterReportsSession = ProjectUtils.getCounterReports();
+    // this.setValueFromSession(this.metadataProcessiongStatusModel, counterReportsSession);
+
+  }
+
+
+  getSearchModel(name: string) {
+    if (name === this.NAME_METADATA_PROCESSING) {
+      return this.metadataProcessiongStatusModel;
+    } else {
+      return this.metadataProcessiongStatusModel;
+    }
+  }
+
+  // getNonSearchModelParams(): string {
+  //   const obj = {
+  //     month: '01',
+  //     screen: 'LIVE'
+  //   };
+  //   const queryString = ProjectUtils.obj_MakeQueryStringFromObjStartWithAND(obj);
+  //   return queryString;
+  // }
+
+  setSearchModel(name: string) {
+    const searchModel = this.getValueFromSearchModel(name);
+    if (name === this.NAME_METADATA_PROCESSING) {
+      ProjectUtils.setCounterReports(searchModel);
+    } else {
+      ProjectUtils.setCounterReports(searchModel);
+    }
+  }
+
+
+  setColumnDef(name: string): Array<ColDef> {
+    if (name === this.NAME_METADATA_PROCESSING) {
+      return columnDefsMetadataProcessing;
+    }
+  }
+
+  getServiceUrl(name): string {
+    if (name === this.NAME_METADATA_PROCESSING) {
+      return UrlConstants.META_PROCESSING_STATUS;
+    }
+  }
+
+  doOnSubmit(e) {
+    console.log('doOnSubmit', e);
+    this.OnSubmit(this.NAME_METADATA_PROCESSING);
+
+  }
+
+  getGridApi(name: string): GridAPII {
+    if (name === this.NAME_METADATA_PROCESSING) {
+      return {
+        gridApi: this.gridApi,
+        columnApi: this.columnApi
+      };
+    }
+  }
+
+  doOnGridReadyMetaProcessingReports(api) {
+    this.gridApi = api.api;
+    this.columnApi = api.columnApi;
+    this.doOnGridReady(this.NAME_METADATA_PROCESSING);
+
+  }
+
+}
+

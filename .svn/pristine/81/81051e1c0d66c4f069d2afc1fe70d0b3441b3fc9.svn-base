@@ -1,0 +1,51 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { ColDef, GridOptions } from 'ag-grid';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
+import { Subject } from 'rxjs/Subject';
+import { BaseService } from '../../acore/base';
+import { HttpService } from '../../acore/services';
+import { Router } from '@angular/router';
+import { UtilityService, ProjectUtils } from '././../../acore/utility';
+
+
+@Injectable()
+
+export class ReportsService extends BaseService {
+      constructor(
+            protected http: HttpService,
+            protected router: Router,
+            private us: UtilityService
+      ) {
+            super(http);
+      }
+
+      makeColumns(): Array<ColDef> {
+            const columnDefs: Array<ColDef> = [
+                  {
+                        headerName: 'Description', field: 'Description', minWidth: ProjectUtils.ag_SetWidth(20)
+                  },
+                  {
+                        headerName: 'Report Type', field: 'Report Type', minWidth: ProjectUtils.ag_SetWidth(20)
+                  },
+                  {
+                        headerName: 'CSV',
+                        field: 'format',
+                        minWidth: ProjectUtils.ag_SetWidth(20)
+                  },
+                  {
+                        headerName: 'XLS',
+                        field: 'format',
+                        minWidth: ProjectUtils.ag_SetWidth(20)
+                  },
+                  {
+                        headerName: 'ZIP',
+                        field: 'format',
+                        minWidth: ProjectUtils.ag_SetWidth(20)
+                  }
+            ];
+            return columnDefs;
+      }
+
+}

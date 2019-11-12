@@ -1,0 +1,387 @@
+import { Component, OnInit } from '@angular/core';
+import { ConstantService, ProjectService } from '../../../acore/services';
+import { UserManagementService } from '../user-management.service';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { columnDefsCreateVendor } from './create-vendor.data';
+import { CreateVendorModel, UpdateVendorModel } from './create-vendor.model';
+import { BaseComponent, GridAPII } from '../../../acore/base';
+import { GridApi, ColumnApi, ColDef, GridOptions } from 'ag-grid';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Subject } from 'rxjs/Subject';
+import { UrlConstants, SessionObject, ProjectUtils } from '../../../acore/utility';
+import { DataDropDownOptions, AutoCompleteModel } from '../../../acore/components';
+import { UserProfileComponent } from '../../desktop/user-profile/user-profile.component';
+
+
+
+@Component({
+  selector: 'app-create-vendor',
+  templateUrl: './create-vendor.component.html',
+  styleUrls: ['./create-vendor.component.css']
+})
+export class CreateVendorComponent extends BaseComponent {
+
+  myNavData: any = {};
+  activeLink: any = null;
+  NAME_VIEW_VENDOR = 'VIEW_VENDOR';
+  NAME_COUNRTY_LIST = 'COUNRTY_LIST';
+  NAME_CREATE_VENDOR = 'CREATE_VENDOR';
+  NAME_UPDATE_VENDOR = 'UPDATE_VENDOR';
+  NAME_RESOURCE_LIST = 'RESOURCE_LIST';
+  NAME_ACTIVE_DEACTIVE_VENDOR = 'ACTIVE_DEACTIVE_VENDOR';
+  createVendorModel: CreateVendorModel;
+  updateVendorModel: UpdateVendorModel;
+  UserID: any;
+  btnString: string;
+  feedbackDetailsCheck: boolean;
+  routeLink: string;
+  isActive: any;
+  isActiveID: any;
+  feedbackDisabled: boolean;
+  countryDropList: Array<any> = [];
+  staticResourceList: Array<any> = [];
+  disabledField: Array<any> = [];
+  viewVendorArray: Array<any> = [];
+  state = true;
+  message: string;
+
+  constructor(
+    public constantService: ConstantService,
+    protected projectService: ProjectService,
+    private router: Router,
+    private route: ActivatedRoute,
+    protected userManagementService: UserManagementService
+  ) {
+    super(userManagementService, projectService);
+    this.btnString = '';
+    this.routeLink = '';
+    this.message = '';
+    this.route.data
+      .subscribe((data) => {
+        this.routeLink = data[0].type;
+        if (data[0].type === 'create_vendor') {
+          this.activeLink = constantService.routerNav.USER_MANAGEMENT.links[0] = constantService.routerNav.createVendor;
+        } else {
+          this.activeLink = constantService.routerNav.USER_MANAGEMENT.links[0] = constantService.routerNav.updateVendor;
+        }
+        this.myNavData = constantService.routerNav.USER_MANAGEMENT;
+
+      });
+  }
+
+  xtBaseOnInit() {
+    this.countryList();
+    this.feedbackDetailsCheck = false;
+    this.feedbackDisabled = false;
+    this.padStaticResource();
+    if (this.routeLink === 'update_vendor') {
+      this.route.queryParams.subscribe(params => {
+        this.UserID = params.id;
+        this.isActive = params.isActive;
+      });
+      if (this.isActive === 'Inactive') {
+        this.btnString = 'Activate';
+      } else {
+        this.btnString = 'Deactivate';
+      }
+      this.viewVendorDetails();
+    }
+  }
+
+  getServiceUrl(name): string {
+    if (name === this.NAME_CREATE_VENDOR) {
+      return UrlConstants.CREATE_VENDOR;
+    } else if (name === this.NAME_UPDATE_VENDOR) {
+      return UrlConstants.UPDATE_VENDOR;
+    } else if (name === this.NAME_VIEW_VENDOR) {
+      return UrlConstants.VIEW_VENDOR;
+    } else if (name === this.NAME_COUNRTY_LIST) {
+      return UrlConstants.COUNTRY_LIST;
+    } else if (name === this.NAME_RESOURCE_LIST) {
+      return UrlConstants.PAD_STATIC_RESOURCES;
+    } else if (name === this.NAME_ACTIVE_DEACTIVE_VENDOR) {
+      return UrlConstants.ACTIVE_DEACTIVE_VENDOR;
+    }
+  }
+
+  initSearchModels() {
+    this.createVendorModel = new CreateVendorModel();
+    this.createVendorModel.venderWorkflowType.value = 'POD';
+    this.updateVendorModel = new UpdateVendorModel();
+    const counterReportsSession = ProjectUtils.getCounterReports();
+  }
+
+  getSearchModel(name: string) {
+    if (name === this.NAME_CREATE_VENDOR) {
+      return this.createVendorModel;
+    } else if (name === this.NAME_UPDATE_VENDOR) {
+      return ProjectUtils.object.asignObjTofirstOne(this.updateVendorModel, this.createVendorModel);
+    }
+  }
+
+  setSearchModel(name: string) {
+    const searchModel = this.getValueFromSearchModel(name);
+    if (name === this.NAME_CREATE_VENDOR || name === this.NAME_UPDATE_VENDOR) {
+      ProjectUtils.setCounterReports(searchModel);
+    }
+  }
+
+  countryList() {
+    this.loadDataFromApi(this.NAME_COUNRTY_LIST)
+      .subscribe((data) => {
+        this.countryDropList = data.padCountry;
+      },
+        (err) => {
+        });
+  }
+
+  padStaticResource() {
+    this.loadDataFromApi(this.NAME_RESOURCE_LIST)
+      .subscribe((data) => {
+        this.staticResourceList = data;
+        this.createVendorModel.contentInteriorDeliver.value = this.staticResourceList['Interior-Deliver'][0].dataValue;
+        this.createVendorModel.contentInteriorFormat.value = this.staticResourceList['Interior-format'][0].dataValue;
+        this.createVendorModel.contentInteriorConversion.value = this.staticResourceList['Interior-Transformation'][0].dataValue;
+        this.createVendorModel.contentInteriorNaming.value = this.staticResourceList['Interior-NamingConvention'][0].dataKey;
+        this.createVendorModel.contentMetadataDeliver.value = this.staticResourceList['Metadata-Deliver'][0].dataValue;
+        this.createVendorModel.contentMetadataFormat.value = this.staticResourceList['Metadata-format'][0].dataValue;
+        this.createVendorModel.contentMetadataNaming.value = this.staticResourceList['Metadata-Naming'][0].dataKey;
+        this.createVendorModel.contentCoverDeliver.value = this.staticResourceList['Covers-Deliver'][0].dataValue;
+        this.createVendorModel.contentCoverNaming.value = this.staticResourceList['Covers-Naming'][0].dataKey;
+        this.createVendorModel.contentDustDeliver.value = this.staticResourceList['Dust Jacket-Deliver'][0].dataValue;
+        this.createVendorModel.contentDustNaming.value = this.staticResourceList['Dust Jacket-Naming'][0].dataKey;
+        this.createVendorModel.contentInsertDeliver.value = this.staticResourceList['Insert-Deliver'][0].dataValue;
+        this.createVendorModel.contentInsertNaming.value = this.staticResourceList['Insert-Naming'][0].dataKey;
+        this.createVendorModel.contentCopyDeliver.value = this.staticResourceList['Copyright-Deliver'][0].dataValue;
+        this.createVendorModel.contentCopyNaming.value = this.staticResourceList['Copyright-Naming'][0].dataKey;
+        this.createVendorModel.packageFormat.value = this.staticResourceList['package-format'][0].dataValue;
+        this.createVendorModel.packageZipCount.value = this.staticResourceList['package-zips'][0].dataValue;
+        this.createVendorModel.feedbackPort.value = '21';
+        this.createVendorModel.destinationPort.value = '21';
+      },
+        (err) => {
+        });
+  }
+
+  hardcodeField() {
+    this.createVendorModel.contentInteriorName.value = 'Interior';
+    this.createVendorModel.contentMetadataName.value = 'MetaData';
+    this.createVendorModel.contentCoverName.value = 'Covers';
+    this.createVendorModel.contentDustJacketName.value = 'DustJacket';
+    this.createVendorModel.contentInsertName.value = 'Insert';
+    this.createVendorModel.contentCopyName.value = 'Copyright';
+    this.createVendorModel.packageName.value = 'Package';
+    this.createVendorModel.packageDeliver.value = 'Always';
+  }
+
+  viewVendorDetails() {
+    this.showLoader();
+    this.loadDataFromApi(this.NAME_VIEW_VENDOR)
+      .subscribe(data => {
+        this.viewVendorArray = data;
+        this.hardcodeField();
+        this.updateVendorModel.isActive.value = data.user.isActive;
+        this.updateVendorModel.userId.value = data.user.id;
+        this.updateVendorModel.vendorId.value = data.vendor.id;
+        this.updateVendorModel.contentInteriorId.value = data.vcrInterior.id;
+        this.updateVendorModel.contentMetadataId.value = data.vcrMetaData.id;
+        this.updateVendorModel.contentDustJacketId.value = data.vcrDustJacket.id;
+        this.updateVendorModel.contentCoverId.value = data.vcrCovers.id;
+        this.updateVendorModel.contentCopyId.value = data.vcrCopyright.id;
+        this.updateVendorModel.contentInsertId.value = data.vcrInsert.id;
+        this.updateVendorModel.packageId.value = data.vcrPackage.id;
+        this.createVendorModel.venderWorkflowType.value = data.vendor.vendorProfileType;
+        this.createVendorModel.vendorName.value = data.vendor.name;
+        this.createVendorModel.vandorCode.value = data.vendor.code;
+        this.createVendorModel.vendorSAN.value = data.vendor.vendorSan;
+        this.createVendorModel.ContactName.value = data.user.firstName;
+        this.createVendorModel.address.value = data.user.address;
+        this.createVendorModel.email.value = data.user.email;
+        this.createVendorModel.city.value = data.user.addCity;
+        this.createVendorModel.phone.value = data.user.phoneNo;
+        this.createVendorModel.state.value = data.user.addState;
+        this.createVendorModel.country.value = data.user.countryId;
+        this.createVendorModel.zipCode.value = data.user.addPincode;
+        this.createVendorModel.destinationHost.value = data.vendor.host;
+        this.createVendorModel.destinationlogin.value = data.vendor.login;
+        this.createVendorModel.destinationPassword.value = data.vendor.password;
+        this.createVendorModel.destinationPort.value = data.vendor.port;
+        this.createVendorModel.destinationTargetDir.value = data.vendor.targetDir;
+        this.createVendorModel.feedbackHost.value = data.vendor.feedbackHost;
+        this.createVendorModel.feedbacklogin.value = data.vendor.feedbackLogin;
+        this.createVendorModel.feedbackPassword.value = data.vendor.feedbackPassword;
+        this.createVendorModel.feedbackPort.value = data.vendor.feedbackPort;
+        this.createVendorModel.feedbackTargetDir.value = data.vendor.feedBackTargetDir;
+        this.createVendorModel.contentInteriorDeliver.value = data.vcrInterior.ruleDeliver;
+        this.createVendorModel.contentInteriorFormat.value = data.vcrInterior.ruleFormat;
+        this.createVendorModel.contentInteriorConversion.value = data.vcrInterior.ruleTransformation;
+        this.createVendorModel.contentInteriorNaming.value = data.vcrInterior.naming;
+        this.createVendorModel.contentMetadataDeliver.value = data.vcrMetaData.ruleDeliver;
+        this.createVendorModel.contentMetadataFormat.value = data.vcrMetaData.ruleFormat;
+        this.createVendorModel.contentMetadataNaming.value = data.vcrMetaData.naming;
+        this.createVendorModel.contentCoverDeliver.value = data.vcrCovers.ruleDeliver;
+        this.createVendorModel.contentCoverNaming.value = data.vcrCovers.naming;
+        this.createVendorModel.contentDustDeliver.value = data.vcrDustJacket.ruleDeliver;
+        this.createVendorModel.contentDustNaming.value = data.vcrDustJacket.naming;
+        this.createVendorModel.contentInsertDeliver.value = data.vcrInsert.ruleDeliver;
+        this.createVendorModel.contentInsertNaming.value = data.vcrInsert.naming;
+        this.createVendorModel.contentCopyDeliver.value = data.vcrCopyright.ruleDeliver;
+        this.createVendorModel.contentCopyNaming.value = data.vcrCopyright.naming;
+        this.createVendorModel.packageFormat.value = data.vcrPackage.rulePackageFormat;
+        this.createVendorModel.packageZipCount.value = data.vcrPackage.rulePackageZips;
+        if (data.vendor.host === data.vendor.feedbackHost &&
+          data.vendor.login === data.vendor.feedbackLogin &&
+          data.vendor.password === data.vendor.feedbackPassword &&
+          data.vendor.port === data.vendor.feedbackPort &&
+          data.vendor.targetDir === data.vendor.feedBackTargetDir) {
+          this.feedbackDetailsCheck = true;
+          this.feedbackDisabled = true;
+        }
+        if (data.user.isActive === '1') {
+          this.isActiveID = '0';
+        } else {
+          this.isActiveID = '1';
+        }
+        this.hideLoader();
+      },
+        (err) => {
+          this.hideLoader();
+        });
+  }
+
+  isActiveVendor() {
+    this.showLoader();
+    this.loadDataFromApi(this.NAME_ACTIVE_DEACTIVE_VENDOR)
+      .subscribe((data) => {
+        this.disabledField = data.user;
+        this.state = true;
+        if (this.btnString === 'Activate') {
+          this.btnString = 'Deactivate';
+          this.message = 'User has been Activated successfully.';
+        } else {
+          this.btnString = 'Activate';
+          this.message = 'User has been Deactivated successfully.';
+        }
+        ProjectUtils.html.showMsgForDuration('Create-Vendor-Alert');
+        this.hideLoader();
+      }, (err) => {
+        this.state = false;
+        this.message = 'Something Went Wrong.';
+        ProjectUtils.html.showMsgForDuration('Create-Vendor-Alert');
+        this.hideLoader();
+      });
+  }
+
+  UpdateVendor() {
+    this.showLoader();
+    this.loadDataFromApi(this.NAME_UPDATE_VENDOR)
+      .subscribe((data) => {
+        this.state = true;
+        this.hideLoader();
+        this.message = 'Vendor has been updated successfully.';
+        ProjectUtils.html.showMsgForDuration('Create-Vendor-Alert');
+      }, (err) => {
+        this.state = false;
+        this.message = 'Service is unavailable. Please try after sometime.';
+        ProjectUtils.html.showMsgForDuration('Create-Vendor-Alert');
+        this.hideLoader();
+      });
+  }
+
+  createNewVendor() {
+    this.showLoader();
+    this.hardcodeField();
+    this.loadDataFromApi(this.NAME_CREATE_VENDOR)
+      .subscribe((data) => {
+        this.state = true;
+        this.hideLoader();
+        this.message = 'Vendor has been created successfully.';
+        ProjectUtils.html.showMsgForDuration('Create-Vendor-Alert');
+      }, (err) => {
+        this.state = false;
+        this.message = 'Service is unavailable. Please try after sometime.';
+        ProjectUtils.html.showMsgForDuration('Create-Vendor-Alert');
+        this.hideLoader();
+      });
+  }
+
+  getNonSearchModelParams(name: any): any {
+    if (name === this.NAME_VIEW_VENDOR) {
+      const obj = {
+        id: this.UserID
+      };
+      return obj;
+    } else if (name === this.NAME_ACTIVE_DEACTIVE_VENDOR) {
+      const obj = {
+        user: {
+          id: this.updateVendorModel.userId.value,
+          isActive: this.isActiveID
+        }
+      };
+      return obj;
+    }
+  }
+
+  doOnReset() {
+    if (this.viewVendorArray.length !== 0) {
+      this.createVendorModel.venderWorkflowType.value = this.viewVendorArray['vendor'].vendorProfileType;
+      this.createVendorModel.vendorName.value = this.viewVendorArray['vendor'].name;
+      this.createVendorModel.vandorCode.value = this.viewVendorArray['vendor'].code;
+      this.createVendorModel.vendorSAN.value = this.viewVendorArray['vendor'].vendorSan;
+      this.createVendorModel.ContactName.value = this.viewVendorArray['user'].firstName;
+      this.createVendorModel.address.value = this.viewVendorArray['user'].address;
+      this.createVendorModel.email.value = this.viewVendorArray['user'].email;
+      this.createVendorModel.city.value = this.viewVendorArray['user'].addCity;
+      this.createVendorModel.phone.value = this.viewVendorArray['user'].phoneNo;
+      this.createVendorModel.state.value = this.viewVendorArray['user'].addState;
+      this.createVendorModel.country.value = this.viewVendorArray['user'].countryId;
+      this.createVendorModel.zipCode.value = this.viewVendorArray['user'].addPincode;
+      this.createVendorModel.destinationHost.value = this.viewVendorArray['vendor'].host;
+      this.createVendorModel.destinationlogin.value = this.viewVendorArray['vendor'].login;
+      this.createVendorModel.destinationPassword.value = this.viewVendorArray['vendor'].password;
+      this.createVendorModel.destinationPort.value = this.viewVendorArray['vendor'].port;
+      this.createVendorModel.destinationTargetDir.value = this.viewVendorArray['vendor'].targetDir;
+      this.createVendorModel.feedbackHost.value = this.viewVendorArray['vendor'].feedbackHost;
+      this.createVendorModel.feedbacklogin.value = this.viewVendorArray['vendor'].feedbackLogin;
+      this.createVendorModel.feedbackPassword.value = this.viewVendorArray['vendor'].feedbackPassword;
+      this.createVendorModel.feedbackPort.value = this.viewVendorArray['vendor'].feedbackPort;
+      this.createVendorModel.feedbackTargetDir.value = this.viewVendorArray['vendor'].feedBackTargetDir;
+      this.createVendorModel.contentInteriorDeliver.value = this.viewVendorArray['vcrInterior'].ruleDeliver;
+      this.createVendorModel.contentInteriorFormat.value = this.viewVendorArray['vcrInterior'].ruleFormat;
+      this.createVendorModel.contentInteriorConversion.value = this.viewVendorArray['vcrInterior'].ruleTransformation;
+      this.createVendorModel.contentInteriorNaming.value = this.viewVendorArray['vcrInterior'].naming;
+      this.createVendorModel.contentMetadataDeliver.value = this.viewVendorArray['vcrMetaData'].ruleDeliver;
+      this.createVendorModel.contentMetadataFormat.value = this.viewVendorArray['vcrMetaData'].ruleFormat;
+      this.createVendorModel.contentMetadataNaming.value = this.viewVendorArray['vcrMetaData'].naming;
+      this.createVendorModel.contentCoverDeliver.value = this.viewVendorArray['vcrCovers'].ruleDeliver;
+      this.createVendorModel.contentCoverNaming.value = this.viewVendorArray['vcrCovers'].naming;
+      this.createVendorModel.contentDustDeliver.value = this.viewVendorArray['vcrDustJacket'].ruleDeliver;
+      this.createVendorModel.contentDustNaming.value = this.viewVendorArray['vcrDustJacket'].naming;
+      this.createVendorModel.contentInsertDeliver.value = this.viewVendorArray['vcrInsert'].ruleDeliver;
+      this.createVendorModel.contentInsertNaming.value = this.viewVendorArray['vcrInsert'].naming;
+      this.createVendorModel.contentCopyDeliver.value = this.viewVendorArray['vcrCopyright'].ruleDeliver;
+      this.createVendorModel.contentCopyNaming.value = this.viewVendorArray['vcrCopyright'].naming;
+      this.createVendorModel.packageFormat.value = this.viewVendorArray['vcrPackage'].rulePackageFormat;
+      this.createVendorModel.packageZipCount.value = this.viewVendorArray['vcrPackage'].rulePackageZips;
+    } else {
+      this.createVendorModel = new CreateVendorModel();
+    }
+  }
+
+  feedbackChange(values: any) {
+    this.feedbackDisabled = false;
+    if (values.currentTarget.checked === true) {
+      this.feedbackDisabled = true;
+      this.createVendorModel.feedbackHost.value = this.createVendorModel.destinationHost.value;
+      this.createVendorModel.feedbacklogin.value = this.createVendorModel.destinationlogin.value;
+      this.createVendorModel.feedbackPassword.value = this.createVendorModel.destinationPassword.value;
+      this.createVendorModel.feedbackPort.value = this.createVendorModel.destinationPort.value;
+      this.createVendorModel.feedbackTargetDir.value = this.createVendorModel.destinationTargetDir.value;
+    }
+  }
+
+  xtBaseOnDestroy() {
+    this.constantService.routerNav.USER_MANAGEMENT.links[0] = this.constantService.routerNav.createVendor;
+  }
+
+}

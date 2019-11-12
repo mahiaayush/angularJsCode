@@ -1,0 +1,124 @@
+<app-tab-links [myNavData]="myNavData" [activeLink]="activeLink" *ngIf="isVisible">
+</app-tab-links>
+
+<my-tabs #staticTabs *ngIf="isShow; else show">
+  <my-tab tabTitle="Search Title" [tabId]="NAME_SEARCH_TITLE">
+    <ng-container *ngTemplateOutlet="show"></ng-container>
+  </my-tab>
+</my-tabs>
+
+<ng-template #show>
+  <app-loader #baseLoader></app-loader>
+  <div class="row">
+    <div class="col-md-12 ">
+      <div class="bg-white border p-3 mh320">
+        <div class="row">
+          <div class="col-md-12">
+            <!--<h4 class="subHeading">Search Title</h4>-->
+            <form>
+              <div class="form-group row">
+                <div class="col-md-4">
+                  <label for="staticEmail" class="col-form-label">ISBN : </label>
+                  <input type="text" class="form-control" [(ngModel)]="searchTitleModel.conIsbn.value" [name]="searchTitleModel.conIsbn.name">
+                </div>
+                <div class="col-md-4">
+                  <label for="Author" class=" col-form-label">Author : </label>
+                  <input type="text" class="form-control" [(ngModel)]="searchTitleModel.autName.value" [name]="searchTitleModel.autName.name">
+                </div>
+                <div class="col-md-4">
+                  <label for="Title" class=" col-form-label">Title :</label>
+                  <input type="text" class="form-control" [(ngModel)]="searchTitleModel.conTitleName.value" [name]="searchTitleModel.conTitleName.name">
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-4">
+                  <label for="staticEmail" class="col-form-label">Title Type :</label>
+                  <select id="TitleType" class="form-control" multiple="multiple">
+                    <option value="POD">POD</option>
+                    <option value="NonPOD">Optimal Inventory</option>
+                    <option value="GAP">Gap</option>
+                  </select>
+                </div>
+                <div class="col-md-4">
+                  <label for="inputPassword" class=" col-form-label">Title Status :</label>
+                  <select id="TitleStatus" class="form-control" multiple="multiple">
+                    <option value="MetaDataReceived">MetaDataReceived</option>
+                    <option value="ContentUploaded">ContentUploaded</option>
+                    <option value="QCFail">QCFail</option>
+                    <option value="QCPass">QCPass</option>
+                    <option value="QAFail">QAFail</option>
+                    <option value="ReadyToRelease">ReadyToRelease</option>
+                    <option value="ReadyToReleaseAgain">ReadyToReleaseAgain</option>
+                    <option value="DistributionFailPV">DistributionFailPV</option>
+                    <option value="DistributionPassPV">DistributionPassPV</option>
+                    <option value="DistributionSVInProgress">DistributionSVInProgress</option>
+                    <option value="DisApprovedByPV">DisApprovedByPV</option>
+                    <option value="ApprovedByPV">ApprovedByPV</option>
+                    <option value="SVApprovalPending">SVApprovalPending</option>
+                    <option value="Pass">Pass</option>
+                    <option value="CoverPriceChangePending">CoverPriceChangePending</option>
+                    <option value="CoverPriceReadyToRelease">CoverPriceReadyToRelease</option>
+                    <option value="CoverPriceDistributionFail">CoverPriceDistributionFail</option>
+                    <option value="CoverPriceDistributionInProgress">CoverPriceDistributionInProgress</option>
+                    <option value="CoverPriceDistributionPass">CoverPriceDistributionPass</option>
+                    <option value="CoverPriceChangeQAFail">CoverPriceChangeQAFail</option>
+                    <option value="ScanFileReceived">ScanFileReceived</option>
+                    <option value="AutoScanFail">AutoScanFail</option>
+                    <option value="AutoScanPass">AutoScanPass</option>
+                    <option value="ScanReadyToRelease">ScanReadyToRelease</option>
+                    <option value="ScanQAFail">ScanQAFail</option>
+                    <option value="ContentUploadInProgress">ContentUploadInProgress</option>
+                    <option value="VendorDistributionInProgress">VendorDistributionInProgress</option>
+                    <option value="VendorApprovalPending">VendorApprovalPending</option>
+                  </select>
+                </div>
+              </div>
+            </form>
+            <p class="text-right my-4">
+              <button class="btn btn-primary btn-sm" (click)="doOnSubmit($event)">Search</button>
+              <!-- <a href="javascript:; " class="btn btn-primary " id="btnLogin" (click)="doOnSubmit($event)">Search</a> -->
+              <a href="javascript:; " class="btn btn-dark btn-sm mr-2 " id="btnLogin ">Clear</a>
+            </p>
+            <div class="tableBox border-top mt-5 pt-3 ">
+              <div class="d-flex justify-content-between ">
+                <p class="mb-2 ">Export Result As :
+                  <a href="# ">
+                    <img src="./assets/images/csv.png " style="width:25px; ">
+                  </a>
+                  <a href="# ">
+                    <img src="./assets/images/xlsx.png " style="width:25px; ">
+                  </a>
+                </p>
+                <p class="mb-2 ">Export All Title Details :
+                  <a href="# ">
+                    <img src="./assets/images/xlsx.png " style="width:25px; ">
+                  </a>
+                </p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 agGridSize curPointer">
+            <app-ag-grid [name]=" 'searchVender' " [myGridOptions]="gridOptionsSearchTitle " (myGridReady)="doOnGridReadySearchVenderReports($event) ">
+            </app-ag-grid>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #history>
+  <app-history [rowData]="rowData"></app-history>
+</ng-template>
+
+<ng-template #updateTitle>
+  <app-update-title></app-update-title>
+</ng-template>
+
+<ng-template #contentUploadList>
+  <app-content-upload></app-content-upload>
+</ng-template>

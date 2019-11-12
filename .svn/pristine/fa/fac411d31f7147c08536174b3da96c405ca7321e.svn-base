@@ -1,0 +1,133 @@
+<app-tab-links [myNavData]="myNavData" [activeLink]="activeLink">
+</app-tab-links>
+
+<div class="row">
+  <div class="col-md-12 py-2 ">
+    <div class="bg-white p-3 mh320 border">
+      <div class="row">
+        <div class="col-md-12">
+          <h4 class="subHeading">User Details</h4>
+          <form #heroForm="ngForm">
+            <div class="form-group row">
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Role
+                  <sup class="text-danger">*</sup>
+                </label>
+                <select class="form-control" [(ngModel)]="createUserModel.role.value" [name]="createUserModel.role.name" required>
+                  <option value="">Select Role</option>
+                  <option value="1">Super Admin</option>
+                  <option value="2">Admin</option>
+                  <option value="3">Vendor</option>
+                  <option value="4">Viewer</option>
+                  <option value="5">MPS Admin</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label for="fName" class=" col-form-label">First Name
+                  <sup class="text-danger">*</sup>
+                </label>
+                <input type="text" class="form-control" id="fName" placeholder="" [(ngModel)]="createUserModel.fName.value" [name]="createUserModel.fName.name"
+                  required>
+              </div>
+              <div class="col-md-4">
+                <label for="lName" class=" col-form-label">Last Name</label>
+                <sup class="text-danger">*</sup>
+                <input type="text" class="form-control" id="lName" placeholder="" [(ngModel)]="createUserModel.lName.value" [name]="createUserModel.lName.name"
+                  required>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <label for="Phone" class="col-form-label">Phone
+                  <!-- <sup class="text-danger">*</sup> -->
+                </label>
+                <input type="text" class="form-control" id="phone" placeholder="" [(ngModel)]="createUserModel.phone.value" [name]="createUserModel.phone.name">
+              </div>
+              <div class="col-md-4">
+                <label for="Adderss" class=" col-form-label">Address </label>
+                <input type="text" class="form-control" id="Adderss" placeholder="" [(ngModel)]="createUserModel.address.value" [name]="createUserModel.address.name">
+                <small>(Please write not more than 255 characters)</small>
+              </div>
+              <div class="col-md-4">
+                <label for="city" class=" col-form-label">City/Town
+                  <!-- <sup class="text-danger">*</sup> -->
+                </label>
+                <input type="text" class="form-control" id="city" placeholder="" [(ngModel)]="createUserModel.city.value" [name]="createUserModel.city.name">
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Email/Login</label>
+                <sup class="text-danger">*</sup>
+                <input type="text" class="form-control" id="email" placeholder="" [(ngModel)]="createUserModel.email.value" [name]="createUserModel.email.name"
+                  required #email="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+                  <div *ngIf="email.errors.required">
+                    Email is required.
+                  </div>
+                  <div *ngIf="email.errors && email.errors.pattern">
+                    Email is invalid
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label for="password" class=" col-form-label">Password </label>
+                <sup class="text-danger">*</sup>
+                <input type="password" class="form-control" required id="password" placeholder="" [(ngModel)]="createUserModel.password.value"
+                  [name]="createUserModel.password.name" #password="ngModel" pattern="(?=.*).{5,}">
+                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                  <div *ngIf="password.errors.required">
+                    Password is required.
+                  </div>
+                  <div *ngIf="password.errors && password.errors.pattern">
+                    Password is invalid.
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label for="cnfrmPass" class=" col-form-label">Confirm Password</label>
+                <sup class="text-danger">*</sup>
+                <input type="password" class=" form-control " id="confirmPassword" validateEqual="password" required placeholder="" [(ngModel)]="createUserModel.confirmPassword.value "
+                  [name]="createUserModel.confirmPassword.name" #confirmpassword="ngModel">
+                <div *ngIf=" (confirmpassword.dirty || confirmpassword.touched) ?  ((confirmpassword.value !== password.value)  ? true : false ) : false   "
+                  class="alert alert-danger">
+                  Password do not match !
+                </div>
+              </div>
+            </div>
+            <div class="form-group row ">
+              <div class="col-md-4 ">
+                <label for="state" class=" col-form-label ">State/Province </label>
+                <input type="text" class="form-control " id="state " placeholder="" [(ngModel)]="createUserModel.state.value" [name]="createUserModel.state.name ">
+              </div>
+              <div class="col-md-4 ">
+                <label for="zip" class=" col-form-label ">Post/Zip Code </label>
+                <input type="text" class="form-control " id="zip" placeholder=" " [(ngModel)]="createUserModel.zipCode.value" [name]="createUserModel.zipCode.name ">
+              </div>
+              <div class="col-md-4 ">
+                <label for="staticEmail " class="col-form-label ">Country </label>
+                <sup class="text-danger ">*</sup>
+                <select class="form-control " [(ngModel)]="createUserModel.country.value " [name]="createUserModel.country.name" required>
+                  <option value="">Choose Country</option>
+                  <option>India</option>
+                  <option [value]="query.key" *ngFor="let query of queryList">
+                    {{query.value}}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <p class="text-right mt-5 mb-5 ">
+              <button type="submit" class="btn btn-primary btn-sm" id="isActiveUserBtn " (click)="isActiveUser() " *ngIf="routeLink === 'update_user'">{{btnString}}</button>
+              <button type="submit" class="btn btn-primary btn-sm " [disabled]="!heroForm.form.valid" id="updateUser" (click)="UpdateUser()"
+                *ngIf="routeLink === 'update_user'">Save</button>
+              <button type="submit" class="btn btn-primary btn-sm " [disabled]="!heroForm.form.valid" id="CreateUser" (click)="createUser()"
+                *ngIf="routeLink !== 'update_user'">Save</button>
+              <button type="reset" class="btn btn-secondary btn-sm mr-2 " id="btnReset ">Reset</button>
+              <!-- <a href="javascript:; " class="btn btn-secondary btn-sm mr-2 " id="btnLogin ">Reset</a> -->
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

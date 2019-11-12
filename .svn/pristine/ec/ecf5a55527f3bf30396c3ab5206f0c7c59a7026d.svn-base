@@ -1,0 +1,81 @@
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { BaseComponent } from '../../../acore/base';
+import { DesktopService } from '../desktop.service';
+import { UrlConstants, SessionObject, ProjectUtils } from '../../../acore/utility';
+import { MakeDirectPaymentModel } from './make-direct-payment.model';
+
+@Component({
+  selector: 'app-make-direct-payment',
+  templateUrl: './make-direct-payment.component.html',
+  styleUrls: ['./make-direct-payment.component.css']
+})
+export class MakeDirectPaymentComponent extends BaseComponent implements OnInit {
+  makeDirectPaymentModel: MakeDirectPaymentModel;
+  NAME_CARD_DEATILS = 'CARD_DEATILS';
+  userName: any;
+  userEmail: any;
+  message: any;
+  constructor(private desktopService: DesktopService) {
+    super(desktopService);
+
+  }
+
+  initSearchModels() {
+    this.makeDirectPaymentModel = new MakeDirectPaymentModel();
+    const userData = ProjectUtils.getSessionObject();
+    this.makeDirectPaymentModel.Name.value = userData.userDetails.firstName + ' ' + userData.userDetails.lastName;
+    this.makeDirectPaymentModel.emailID.value = userData.userDetails.emailID;
+  }
+
+  getSearchModel(name: string) {
+    if (this.NAME_CARD_DEATILS === name) {
+      return this.makeDirectPaymentModel;
+    } else {
+      return {};
+    }
+  }
+
+  getServiceUrl(name): string {
+    if (name === this.NAME_CARD_DEATILS) {
+      return UrlConstants.MAKE_DIRECT_PAYMENT;
+    }
+  }
+
+  ngOnInit() {
+  }
+
+  sendQueryMail() {
+    this.showLoader();
+    this.loadDataFromApi(this.NAME_CARD_DEATILS)
+      .subscribe((data) => {
+        if (data.success) {
+          this.message = data.success;
+        } else if (data.error) {
+          this.message = data.error;
+        }
+        this.hideLoader();
+      },
+        (err) => {
+          this.hideLoader();
+          this.message = 'Something Went Wrong!!!';
+        });
+  }
+
+  getNonSearchModelParams(name: string): string {
+    if (this.NAME_CARD_DEATILS === name) {
+      const obj = {
+        emailID: this.makeDirectPaymentModel.emailID.value,
+        CardNumber: this.makeDirectPaymentModel.Cardnumber.value,
+        name: this.makeDirectPaymentModel.Name.value,
+        expiry_month: this.makeDirectPaymentModel.month.value,
+        expiry_year: this.makeDirectPaymentModel.year.value,
+        amount: this.makeDirectPaymentModel.price.value,
+        card_cvv: this.makeDirectPaymentModel.Card_CVV.value
+      };
+      const queryString = ProjectUtils.obj_MakeQueryStringFromObjStartWithAND(obj);
+      return queryString;
+    }
+  }
+
+}

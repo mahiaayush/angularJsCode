@@ -1,0 +1,76 @@
+<div class="container-fluid bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              Home
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Search Vendor </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="container-fluid">
+  <div class="container ">
+    <div class="row">
+      <div class="col-md-12 py-2 ">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link " href="javascript:;">Create Vendor</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="javascript:;">Search Vendor</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:;">Create User</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:;">Search User</a>
+          </li>
+        </ul>
+        <div class="bg-white p-3">
+
+          <div class="row">
+            <div class="col-md-12">
+
+              <form>
+                <div class="form-group row">
+                  <div class="col-md-4">
+                    <label for="staticEmail" class="col-form-label">Vendor Name
+                      <sup class="text-danger">*</sup>
+                    </label>
+
+                    <input type="text" class="form-control">
+
+                  </div>
+                  <div class="col-md-4">
+                    <label for="inputPassword1" class="col-form-label">Vendor Code
+                      <sup class="text-danger">*</sup>
+                    </label>
+
+                    <input type="text" class="form-control">
+
+                  </div>
+
+                </div>
+              </form>
+              <p class="text-right mt-5 ">
+                <a href="javascript:;" class="btn btn-primary btn-sm" id="btnLogin" (click)="doOnSubmit($event)">Search</a>
+                <a href="javascript:;" class="btn btn-secondary btn-sm mr-2" id="btnLogin">Reset</a>
+              </p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="agGridSize">
+      <app-ag-grid [name]="'searchVender'" [myGridOptions]="gridOptions" (myGridReady)="doOnGridReadySearchVenderReports($event)">
+      </app-ag-grid>
+    </div>
+  </div>
+</section>

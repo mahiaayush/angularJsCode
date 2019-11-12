@@ -1,0 +1,109 @@
+<div class="container-fluid">
+  <div class="row">
+
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 brand-home-right-bg">
+      <!-- <div class="text-center">
+        <img src="loginImgUrl" alt="AccessEdit">
+      </div> -->
+      <h3 class="home-subhead">Security Check</h3>
+
+      <p *ngIf="!ischanged">Enter your information below to complete security check:
+      </p>
+      <!-- <form class="form" name="form" #f="ngForm" ngNativeValidate (ngSubmit)="heroForm.form.valid"> -->
+      <form #heroForm="ngForm" (ngSubmit)="heroForm.form.valid" ngNativeValidate *ngIf="!ischanged">
+        <br/>
+        <div class="row">
+          <span class="input-group-addon" id="sizing-addon1">
+            <i class="fa fa-question-circle fa-1-5x"></i>
+          </span>
+          <label>{{securitycheckModel.security_que.value}}</label>
+
+
+
+
+          <!-- <input type="text" placeholder="Question" required id="security_que" name="security_que" class="form-control" aria-describedby="sizing-addon1"
+            [(ngModel)]="securitycheckModel.security_que" #security_que="ngModel">
+          <div *ngIf="security_que.invalid && (security_que.dirty || security_que.touched)" class="alert alert-danger">
+            <div *ngIf="security_que.errors.required">
+              Question is required.
+            </div> -->
+        </div>
+
+        <hr/>
+        <div class="row">
+
+          <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 brand-home-right-bg">
+
+
+            <input type="text" [readonly]="editCheck" name="security_ans" required placeholder="Answer" id="securityans" class="form-control select-class"
+              [(ngModel)]="securitycheckModel.security_ans.value" #securityans="ngModel">
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 brand-home-right-bg">
+
+            <div *ngIf=" (securityans.dirty || securityans.touched) ?  (securityans.value =='' || securityans.value ==null  ? true : false ) : false   "
+              class="alert alert-danger padding-top-0 p-0 p-0">
+              Please Enter Answer !
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 brand-home-right-bg">
+
+
+            <input type="password" placeholder="New Password" required id="password" name="Password" class="form-control select-class" [(ngModel)]="securitycheckModel.password.value"
+              #password="ngModel" autocomplete="new-password">
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 brand-home-right-bg">
+
+            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger padding-top-0 p-0 p-0">
+              <div *ngIf="password.errors.required">
+                Enter New Password !
+              </div>
+              <div *ngIf="password.errors && password.errors.pattern">
+                Password is invalid !
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="row">
+
+          <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 brand-home-right-bg">
+
+
+            <input type="password" placeholder="Confirm Password" required id="confirmpassword" name="Confirm Password" class="form-control select-class"
+              validateEqual="password" reverse="false" [(ngModel)]="securitycheckModel.confirmpassword.value" #confirmpassword="ngModel">
+          </div>
+
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 brand-home-right-bg">
+            <div *ngIf=" (confirmpassword.dirty || confirmpassword.touched) ?  ((confirmpassword.value !== password.value)  ? true : false ) : false   "
+              class="alert alert-danger padding-top-0 p-0 p-0 ">
+              Password do not match !
+
+            </div>
+          </div>
+
+        </div>
+
+        <hr/>
+        <div class="row">
+          <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 brand-home-right-bg">
+            <button type="submit" class="btn btn-primary btn-lg btn-block btn-dkblue" (click)="OnSubmit()" [disabled]="!heroForm.form.valid"> Submit </button>
+            <br/>
+            <p>{{error}}</p>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 brand-home-right-bg"></div>
+        </div>
+      </form>
+      <div *ngIf="ischanged">
+        <p>Your Password Change Successfully...</p>
+        <button type="submit" class="btn btn-primary btn-lg btn-block btn-dkblue" [routerLink]="['/']"> Go To Loging Page </button>
+      </div>
+      <!-- <a href="forgetPasswordController">Click for forget password</a> -->
+    </div>
+
+
+  </div>
+
+</div>

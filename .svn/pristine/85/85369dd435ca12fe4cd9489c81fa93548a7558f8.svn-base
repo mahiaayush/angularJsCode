@@ -1,0 +1,18 @@
+
+
+
+export class ObjectUtil {
+
+      ssignObjTofirstOne(first: any, ...others: Array<any>) {
+
+            others.forEach((other) => {
+                  Object.assign(first, other);
+            });
+            return first;
+
+      }
+
+
+
+
+}

@@ -1,0 +1,40 @@
+import { BasicSearchModelI } from '../../../acore/base';
+
+export class ContactModel {
+      subject: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'subject',
+            apiKey: 'subject',
+            placeholder: 'subject',
+            name: 'subject'
+      };
+
+      Query: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Query',
+            apiKey: 'query_type',
+            placeholder: 'Query',
+            name: 'Query'
+      };
+
+      mailCopy: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'mailCopy',
+            apiKey: 'mailCopy',
+            placeholder: 'mailCopy',
+            name: 'mailCopy'
+      };
+
+      message: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'message',
+            apiKey: 'message_body',
+            placeholder: 'message',
+            name: 'message'
+      };
+}
+

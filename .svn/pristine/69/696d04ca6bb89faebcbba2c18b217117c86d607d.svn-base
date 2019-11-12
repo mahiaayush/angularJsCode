@@ -1,0 +1,127 @@
+<app-loader #baseLoader>
+</app-loader>
+<p class="spacer_right pull-right">
+  <small>
+    <i>Fields marked as
+      <span class="mandatory"> * </span> are mandatory</i>
+  </small>
+</p>
+<div class="clearfix"></div>
+<div class="errorMes">
+</div>
+<form class="form-horizontal" autocomplete="new-password" #heroForm="ngForm">
+  <div class="clearfix"></div>
+  <input type="hidden" name="assignedCategory" value="" id="assignedCategory">
+  <div class="row">
+    <div class=" col-md-6">
+      <label for="First Name">First Name
+        <span class="mandatory">*</span>
+      </label>
+      <input type="text" placeholder="" required id="firstname" name="FirstName" class="form-control select-class" #firstname="ngModel"
+        [(ngModel)]="userProfileModel.firstName.value">
+    </div>
+    <div class=" col-md-6">
+      <label for="Last Name">Last Name
+        <span class="mandatory">*</span>
+      </label>
+      <input type="text" name="lastName" required placeholder="" id="lastName" class="form-control select-class" [(ngModel)]="userProfileModel.lastName.value"
+        #lastName="ngModel">
+    </div>
+  </div>
+  <div class="row">
+    <div class=" col-md-6">
+      <label for="Email">Email
+        <span class="mandatory">*</span>
+      </label>
+      <input type="text" name="Email" placeholder="" id="email" class="form-control select-class" [(ngModel)]="userProfileModel.emailID.value"
+        #email="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
+      <!-- <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+        <div *ngIf="email.errors.required">
+          Email is required.
+        </div>
+        <div *ngIf="email.errors && email.errors.pattern">
+          Email is invalid
+        </div>
+      </div> -->
+    </div>
+    <div class="col-md-6">
+      <div class="form-group row">
+        <label class="col-sm-12 control-label" for="password">Enter Current Password
+          <!-- <span class="mandatory"> *</span> -->
+        </label>
+        <div class="col-md-12">
+          <input type="password" placeholder="" id="currentpassword" name="currentpassword" class="form-control select-class" [(ngModel)]="userProfileModel.currentPassword.value"
+            #currentpassword="ngModel" pattern="(?=.*).{5,}">
+          <!-- <div *ngIf="currentpassword.invalid && (currentpassword.dirty || currentpassword.touched)" class="alert alert-danger">
+            <div *ngIf="currentpassword.errors.required">
+              Password is required.
+            </div>
+            <div *ngIf="currentpassword.errors && currentpassword.errors.pattern">
+              Password is invalid.
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group row">
+        <label class="col-sm-6 control-label" for="password">New Password
+          <!-- <span class="mandatory"> *</span> -->
+        </label>
+        <div class="col-md-12">
+          <input type="password" placeholder="" id="Newpassword" name="Newpassword" class="form-control select-class" [(ngModel)]="userProfileModel.password.value"
+            #password="ngModel" pattern="(?=.*).{5,}">
+          <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+            <div *ngIf="password.errors.required">
+              Password is required.
+            </div>
+            <div *ngIf="password.errors && password.errors.pattern">
+              Password is invalid.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group row">
+        <label class="col-sm-6 control-label" for="password">Confirm Password
+          <!-- <span class="mandatory"> *</span> -->
+        </label>
+        <div class="col-md-12">
+          <input type="password" placeholder="" id="confirmpassword" name="confirmpassword" class="form-control select-class" validateEqual="password"
+            reverse="false" [(ngModel)]="userProfileModel.confirm_password.value" #confirmpassword="ngModel">
+          <div *ngIf=" (confirmpassword.dirty || confirmpassword.touched) ?  ((confirmpassword.value !== password.value)  ? true : false ) : false   "
+            class="alert alert-danger">
+            Password do not match !
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class=" col-md-6">
+      <label for="Security Question">Security Question
+        <span class="mandatory">*</span>
+      </label>
+      <input type="text" placeholder="" required id="SecQues" name="SecurityQuestion" class="form-control select-class" #SecurityQuestion="ngModel"
+        [(ngModel)]="userProfileModel.SecurityQuestion.value">
+    </div>
+    <div class=" col-md-6">
+      <label for="Security Answer">Security Answer
+        <span class="mandatory">*</span>
+      </label>
+      <input type="text" placeholder="" required id="SecAns" name="SecurityAnswer" class="form-control select-class" #SecurityAnswer="ngModel"
+        [(ngModel)]="userProfileModel.SecurityAnswer.value">
+    </div>
+  </div>
+  <br>
+  <div>
+    <button type="submit" class="btn btn-primary btn-sm hoverable" id="updateUser" [disabled]="!heroForm.form.valid" (click)="UpdateUser()">Submit</button>&nbsp; &nbsp;
+    <span style="color: green; font-weight: 600" *ngIf="message === 'Successfully updated.'; else errorcondition">{{message}}</span>
+    <ng-template #errorcondition>
+      <span style="color:red; font-weight: 600">{{message}}</span>
+    </ng-template>
+  </div>
+</form>

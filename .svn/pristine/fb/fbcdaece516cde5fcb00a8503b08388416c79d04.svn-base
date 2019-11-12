@@ -1,0 +1,40 @@
+import { ColDef } from 'ag-grid';
+import { ProjectUtils } from '../../../acore/utility';
+
+export const columnDefsSearchTitle: Array<ColDef> = [
+      {
+            headerName: 'ISBN',
+            field: 'ISBN',
+            minWidth: ProjectUtils.ag_SetWidth(14)
+      },
+      {
+            headerName: 'Title',
+            field: 'FIELD2',
+            minWidth: ProjectUtils.ag_SetWidth(14)
+      },
+      {
+            headerName: 'Title Type',
+            field: 'FIELD3',
+            minWidth: ProjectUtils.ag_SetWidth(14)
+      },
+      {
+            headerName: 'Author',
+            field: 'FIELD4',
+            minWidth: ProjectUtils.ag_SetWidth(14)
+      },
+      {
+            headerName: 'Edition',
+            field: 'FIELD5',
+            minWidth: ProjectUtils.ag_SetWidth(14)
+      },
+      {
+            headerName: 'Pub Date',
+            field: 'FIELD6',
+            minWidth: ProjectUtils.ag_SetWidth(14)
+      },
+      {
+            headerName: 'Pad Status',
+            field: 'FIELD7',
+            minWidth: ProjectUtils.ag_SetWidth(14)
+      }
+];

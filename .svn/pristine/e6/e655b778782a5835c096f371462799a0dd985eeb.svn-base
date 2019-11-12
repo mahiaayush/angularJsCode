@@ -1,0 +1,20 @@
+import { Injectable } from '@angular/core';
+import { UrlConstants } from '../../../../app/acore/utility/constants/url';
+import { BaseService } from '../../../../app/acore/base//base.service';
+
+
+@Injectable()
+export class ForgetPasswordService extends BaseService {
+
+      getServiceURL(): string {
+            return '';
+      }
+
+      toresetuser(body: any): any {
+            return this.getDataFromAPI(UrlConstants.FORGETPASSWORD, body);
+      }
+
+      // getBasicRequiredQueryString(): string {
+      //       return '';
+      // }
+}

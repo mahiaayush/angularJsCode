@@ -1,0 +1,117 @@
+import { Component, OnInit, AfterViewInit, ViewChildren } from '@angular/core';
+import { Router } from '@angular/router';
+import { CustomModalPopUpModel, CustomModalPopUpService } from '../../../acore/components/custom-modal-pop-up';
+import { UrlConstants, SessionObject, ProjectUtils } from '../../../acore/utility';
+import { ConstantService, BreadCrumnService } from '../../../acore/services';
+
+import { DesktopService } from '../desktop.service';
+import { BaseComponent } from '../../../acore/base';
+
+import {
+  TopMenuNavigationData
+} from './top-menu.navigation.data';
+import { Utils } from 'ag-grid';
+
+@Component({
+  selector: 'app-top-menu',
+  templateUrl: './top-menu.component.html',
+  styleUrls: ['./top-menu.component.css']
+})
+export class TopMenuComponent extends BaseComponent implements OnInit, AfterViewInit {
+
+
+  breadCrumnData: Array<any> = [];
+  currentNavData: any = [];
+
+  // dashboard = TopMenuNavigationData.dashboarHTMLlink;
+  dashboarHTMLlink = TopMenuNavigationData.dashboarHTMLlink;
+  showModelPopup: boolean;
+
+  reportNav: any = {};
+  padNav: any = {};
+  userMagNav: any = {};
+
+  basicSetting: CustomModalPopUpModel;
+  LoginUserName: string;
+
+  constructor(
+    private customModalPopUpServiceprivate: CustomModalPopUpService,
+    private router: Router,
+    private desktopService: DesktopService,
+    public constantService: ConstantService,
+    private breadCrumnService: BreadCrumnService) {
+    super(desktopService);
+    this.reportNav = TopMenuNavigationData.REPORT;
+    this.padNav = TopMenuNavigationData.PAD_PROJECT;
+    this.userMagNav = TopMenuNavigationData.USER_MANAGEMENT;
+    this.createMyPopUpAdd();
+
+
+
+    const displayUserName = ProjectUtils.getSessionObject();
+    this.LoginUserName = displayUserName.userDetails.firstName + ' ' + displayUserName.userDetails.lastName;
+
+    this.subBreadCrumn();
+
+  }
+
+
+
+
+
+  onTabLookNavClick() {
+
+  }
+
+  ngOnInit() {
+  }
+
+  ngAfterViewInit() {
+  }
+
+
+  createMyPopUpAdd() {
+    this.basicSetting = new CustomModalPopUpModel();
+    this.basicSetting.id = 'profile';
+    this.basicSetting.title = 'Update Your Account';
+    this.basicSetting.noButtons = true;
+    this.basicSetting.upperCross = true;
+  }
+
+
+
+  loggedInUserDetail() {
+    this.customModalPopUpServiceprivate.show(this.basicSetting);
+    this.showModelPopup = !this.showModelPopup;
+  }
+
+  myNavFunc(link: Array<string>, linkIndex: number, linkLabel: string, linkData: any) {
+    this.router.navigate(link);
+  }
+
+
+  onClickLogout() {
+    localStorage.removeItem('sessionObject');
+    localStorage.removeItem('_AuthToken');
+    this.router.navigate(['']);
+  }
+
+
+  subBreadCrumn() {
+    this.breadCrumnService.sendBread
+      .subscribe((data: any) => {
+        this.currentNavData = data.navData;
+        this.breadCrumnData = data.activeLink.breadCrumb;
+        console.log(data);
+      });
+  }
+
+  onCrumnClick(crumn, index) {
+
+    if (this.currentNavData.label === crumn) {
+      this.router.navigate(this.currentNavData.links[0].routerLink);
+    }
+
+  }
+
+}

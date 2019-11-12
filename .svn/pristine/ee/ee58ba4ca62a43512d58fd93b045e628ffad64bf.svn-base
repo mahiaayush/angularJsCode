@@ -1,0 +1,13 @@
+.caption {
+  display: block;
+  width: 100%;
+  background: #3c89bc;
+  height: 40px;
+  padding-left: 10px;
+  color: #fff;
+  font-size: 20px;
+  line-height: 40px;
+  text-shadow: 1px 1px 1px #3C89BB;
+  box-sizing: border-box;
+  text-align: center;
+}

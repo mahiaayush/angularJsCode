@@ -1,0 +1,37 @@
+import { ColDef } from 'ag-grid';
+import { ProjectUtils } from '../../../acore/utility';
+
+export const columnDefs: Array<ColDef> = [
+      {
+            headerName: 'Date',
+            field: 'Date',
+            minWidth: ProjectUtils.ag_SetWidth(14)
+      },
+      {
+            headerName: 'Action/Field Name',
+            field: 'Action',
+            minWidth: ProjectUtils.ag_SetWidth(14)
+      },
+      {
+            headerName: 'Action By',
+            field: 'Action By',
+            minWidth: ProjectUtils.ag_SetWidth(14)
+      },
+      {
+            headerName: 'Previous',
+            field: 'Previous',
+            minWidth: ProjectUtils.ag_SetWidth(14)
+      },
+      {
+            headerName: 'Current',
+            field: 'Current',
+            minWidth: ProjectUtils.ag_SetWidth(14)
+      },
+      {
+            headerName: 'Comments',
+            field: 'Comments',
+            minWidth: ProjectUtils.ag_SetWidth(14),
+            cellRenderer: ProjectUtils.message
+      }
+
+];

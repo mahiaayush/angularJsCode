@@ -1,0 +1,29 @@
+import { BasicSearchModelI } from '../../../acore/base';
+
+export class MetadataProcessiongDetailsModel {
+
+      isbn: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'isbn',
+            placeholder: 'Select a isbn',
+            name: 'isbn'
+      };
+      xmlFileName: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'xmlFileName',
+            placeholder: 'Select a FileName',
+            name: 'xmlFileName'
+      };
+      xmlStatus: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'xmlStatus',
+            placeholder: 'Select a Status',
+            name: 'xmlStatus'
+      };
+}

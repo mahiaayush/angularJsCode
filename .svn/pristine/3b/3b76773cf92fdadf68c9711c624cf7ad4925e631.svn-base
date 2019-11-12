@@ -1,0 +1,25 @@
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { MakeDirectPaymentComponent } from './make-direct-payment.component';
+
+describe('MakeDirectPaymentComponent', () => {
+  let component: MakeDirectPaymentComponent;
+  let fixture: ComponentFixture<MakeDirectPaymentComponent>;
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [ MakeDirectPaymentComponent ]
+    })
+    .compileComponents();
+  }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(MakeDirectPaymentComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

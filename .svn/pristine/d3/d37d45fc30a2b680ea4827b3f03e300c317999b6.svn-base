@@ -1,0 +1,21 @@
+import { BasicSearchModelI } from '../../../acore/base';
+
+export class SearchVendorModel {
+
+      name: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'name',
+            placeholder: 'Select a Name',
+            name: 'name'
+      };
+      code: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'code',
+            placeholder: 'Select a Code',
+            name: 'code'
+      };
+}

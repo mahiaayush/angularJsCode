@@ -1,0 +1,437 @@
+import { BasicSearchModelI } from '../../../acore/base';
+
+export class UpdateTitleModel {
+
+      titleName: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'titleName',
+            placeholder: 'Select a titleName',
+            name: 'titleName'
+      };
+      isbn: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'isbn',
+            placeholder: 'Select a TitleName',
+            name: 'isbn'
+      };
+      isbn10: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'isbn10',
+            placeholder: 'Select a isbn10',
+            name: 'isbn10'
+      };
+      instructions: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Instructions',
+            apiKey: 'instructions',
+            placeholder: 'Select a instructions',
+            name: 'instructions'
+      };
+      edition: BasicSearchModelI = {
+            value: '1',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'edition',
+            placeholder: 'Select a Flag',
+            name: 'edition'
+      };
+      publicationDate: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'publicationDate',
+            placeholder: 'Select a publicationDate',
+            name: 'publicationDate'
+      };
+      name: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'name',
+            placeholder: 'Select a TitleName',
+            name: 'name'
+      };
+      copyrightYear: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'copyrightYear',
+            placeholder: 'Select a copyrightYear',
+            name: 'copyrightYear'
+      };
+      languageText: BasicSearchModelI = {
+            value: '1',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'languageText',
+            placeholder: 'Select a Flag',
+            name: 'languageText'
+      };
+      subjectCode: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'subjectCode',
+            placeholder: 'Select a subjectCode',
+            name: 'subjectCode'
+      };
+      publisherName: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'publisherName',
+            placeholder: 'Select a TitleName',
+            name: 'publisherName'
+      };
+      imprintName: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'imprintName',
+            placeholder: 'Select a imprintName',
+            name: 'imprintName'
+      };
+      titleStatus: BasicSearchModelI = {
+            value: '1',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'titleStatus',
+            placeholder: 'Select a Flag',
+            name: 'titleStatus'
+      };
+      productSponsor: BasicSearchModelI = {
+            value: '1',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'productSponsor',
+            placeholder: 'Select a productSponsor',
+            name: 'productSponsor'
+      };
+      countryOfOrigin: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'countryOfOrigin',
+            placeholder: 'Select a countryOfOrigin',
+            name: 'countryOfOrigin'
+      };
+      productLine: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'productLine',
+            placeholder: 'Select a TitleName',
+            name: 'productLine'
+      };
+      restrictions: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Restrictions',
+            apiKey: 'restrictions',
+            placeholder: 'Select',
+            name: 'restrictions'
+      };
+      ppcDescription: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'ppcDescription',
+            placeholder: 'Select a ppcDescription',
+            name: 'ppcDescription'
+      };
+      medium: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'medium',
+            placeholder: 'Select a Flag',
+            name: 'medium'
+      };
+      subMedium: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'subMedium',
+            placeholder: 'Select a Flag',
+            name: 'subMedium'
+      };
+      trimsizeDescription: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'trimsizeDescription',
+            placeholder: 'Select a Flag',
+            name: 'trimsizeDescription'
+      };
+      bobUrl: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'bobUrl',
+            placeholder: 'Select a Flag',
+            name: 'bobUrl'
+      };
+      pages: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'pages',
+            placeholder: 'Select a Flag',
+            name: 'pages'
+      };
+      gapVendorFlag: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'gapVendorFlag',
+            placeholder: 'Select a Flag',
+            name: 'gapVendorFlag'
+      };
+      firstFlag: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'firstFlag',
+            placeholder: 'Select a Flag',
+            name: 'firstFlag'
+      };
+      textSourceMaterial: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'textSourceMaterial',
+            placeholder: 'Select a Flag',
+            name: 'textSourceMaterial'
+      };
+      coverSourceMaterial: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'coverSourceMaterial',
+            placeholder: 'Select a Flag',
+            name: 'coverSourceMaterial'
+      };
+      activationCode: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'activationCode',
+            placeholder: 'Select a Flag',
+            name: 'activationCode'
+      };
+      releaseDate: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'releaseDate',
+            placeholder: 'Select a Flag',
+            name: 'releaseDate'
+      };
+      accountNumber: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'accountNumber',
+            placeholder: 'Select a Flag',
+            name: 'accountNumber'
+      };
+      bookType: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'bookType',
+            placeholder: 'Select a Flag',
+            name: 'bookType'
+      };
+      bindingstyleDescription: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'bindingstyleDescription',
+            placeholder: 'Select a Flag',
+            name: 'bindingstyleDescription'
+      };
+      paperStock: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'paperStock',
+            placeholder: 'Select a Flag',
+            name: 'paperStock'
+      };
+      promoCode: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'promoCode',
+            placeholder: 'Select a Flag',
+            name: 'promoCode'
+      };
+      insertTotalPages: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'insertTotalPages',
+            placeholder: 'Select a Flag',
+            name: 'insertTotalPages'
+      };
+      coverTypeDesc: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'coverTypeDesc',
+            placeholder: 'Select a Flag',
+            name: 'coverTypeDesc'
+      };
+      jacketRequired: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'jacketRequired',
+            placeholder: 'Select a Flag',
+            name: 'jacketRequired'
+      };
+      jacketColors: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'jacketColors',
+            placeholder: 'Select a Flag',
+            name: 'jacketColors'
+      };
+      jacketStock: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'jacketStock',
+            placeholder: 'Select a Flag',
+            name: 'jacketStock'
+      };
+      jacketLamination: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'jacketLamination',
+            placeholder: 'Select a Flag',
+            name: 'jacketLamination'
+      };
+      jacketFinish: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'jacketFinish',
+            placeholder: 'Select a Flag',
+            name: 'jacketFinish'
+      };
+      coverColors: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'coverColors',
+            placeholder: 'Select a Flag',
+            name: 'coverColors'
+      };
+      outsideColors: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'outsideColors',
+            placeholder: 'Select a Flag',
+            name: 'outsideColors'
+      };
+      insideColors: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'insideColors',
+            placeholder: 'Select a Flag',
+            name: 'insideColors'
+      };
+      coverMaterial: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'coverMaterial',
+            placeholder: 'Select a Flag',
+            name: 'coverMaterial'
+      };
+      coverLamination: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'coverLamination',
+            placeholder: 'Select a Flag',
+            name: 'coverLamination'
+      };
+      coverFinish: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'coverFinish',
+            placeholder: 'Select a Flag',
+            name: 'coverFinish'
+      };
+      id: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'id',
+            placeholder: 'Select a Flag',
+            name: 'id'
+      };
+      padStatus: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'padStatus',
+            placeholder: 'Select a Flag',
+            name: 'padStatus'
+      };
+      podDate: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'podDate',
+            placeholder: 'Select a Flag',
+            name: 'podDate'
+      };
+      vendor: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'vendor',
+            placeholder: 'Select a Flag',
+            name: 'vendor'
+      };
+      vendorInstructions: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Vendor Instructions',
+            apiKey: 'vendorInstructions',
+            placeholder: 'Select',
+            name: 'vendorInstructions'
+      };
+      vendorId: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'vendorId',
+            placeholder: 'Select a Flag',
+            name: 'vendorId'
+      };
+      discountGroup: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'discountGroup',
+            placeholder: 'Select a Flag',
+            name: 'discountGroup'
+      };
+}

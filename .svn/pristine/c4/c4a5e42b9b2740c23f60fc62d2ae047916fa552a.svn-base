@@ -1,0 +1,93 @@
+import { Component, OnInit } from '@angular/core';
+import { BaseComponent, GridAPII } from '../../../acore/base';
+import { GridApi, ColumnApi, ColDef, GridOptions } from 'ag-grid';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Subject } from 'rxjs/Subject';
+import { TitleDeliveriesModel } from './title-deliveries.model';
+import { UrlConstants, SessionObject, ProjectUtils } from '../../../acore/utility';
+import { DataDropDownOptions, AutoCompleteModel } from '../../../acore/components';
+import { columnDefsTitleDeliveries } from './title-deliveries.data';
+import { ReportsService } from '../reports.service';
+
+@Component({
+  selector: 'app-title-deliveries',
+  templateUrl: './title-deliveries.component.html',
+  styleUrls: ['./title-deliveries.component.css']
+})
+export class TitleDeliveriesComponent extends BaseComponent {
+
+  NAME_TITLE_DELIVERIES = 'TITLE_DELIVERIES';
+  titleDeliveriesModel: TitleDeliveriesModel;
+
+
+  gridOptionsSearchTitle: GridOptions = {};
+
+  constructor(private reportsService: ReportsService) {
+    super(reportsService);
+    this.gridOptions.onCellClicked = this.agCellClicked;
+  }
+
+  agCellClicked = (event) => {
+    const headerName: string = event.colDef.headerName;
+    const row = event['data'];
+  }
+
+  xtBaseOnInit() {
+  }
+
+  initSearchModels() {
+    this.titleDeliveriesModel = new TitleDeliveriesModel();
+    const counterReportsSession = ProjectUtils.getCounterReports();
+  }
+
+  getSearchModel(name: string) {
+    if (name === this.NAME_TITLE_DELIVERIES) {
+      return this.titleDeliveriesModel;
+    } else {
+      return this.titleDeliveriesModel;
+    }
+  }
+
+  setSearchModel(name: string) {
+    const searchModel = this.getValueFromSearchModel(name);
+    if (name === this.NAME_TITLE_DELIVERIES) {
+      ProjectUtils.setCounterReports(searchModel);
+    } else {
+      ProjectUtils.setCounterReports(searchModel);
+    }
+  }
+
+  setColumnDef(name: string): Array<ColDef> {
+    if (name === this.NAME_TITLE_DELIVERIES) {
+      return columnDefsTitleDeliveries;
+    }
+  }
+
+  getServiceUrl(name): string {
+    if (name === this.NAME_TITLE_DELIVERIES) {
+      return UrlConstants.TITLE_DELIVERIES;
+    }
+  }
+
+  doOnSubmit(e) {
+    console.log('doOnSubmit', e);
+    this.OnSubmit(this.NAME_TITLE_DELIVERIES);
+
+  }
+
+  getGridApi(name: string): GridAPII {
+    if (name === this.NAME_TITLE_DELIVERIES) {
+      return {
+        gridApi: this.gridApi,
+        columnApi: this.columnApi
+      };
+    }
+  }
+
+  doOnGridReadyTitleDeliveries(api) {
+    this.gridApi = api.api;
+    this.columnApi = api.columnApi;
+    this.doOnGridReady(this.NAME_TITLE_DELIVERIES);
+
+  }
+}

@@ -1,0 +1,21 @@
+import { Component, OnInit } from '@angular/core';
+import { ConstantService } from '../../../acore/services';
+
+@Component({
+  selector: 'app-metadata-upload',
+  templateUrl: './metadata-upload.component.html',
+  styleUrls: ['./metadata-upload.component.css']
+})
+export class MetadataUploadComponent implements OnInit {
+  myNavData: any = {};
+  activeLink: any = null;
+
+  constructor(public constantService: ConstantService) {
+    this.myNavData = constantService.routerNav.PAD_PROJECT;
+    this.activeLink = constantService.routerNav.PAD_PROJECT.links[1];
+  }
+
+  ngOnInit() {
+  }
+
+}

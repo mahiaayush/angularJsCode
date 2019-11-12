@@ -1,0 +1,19 @@
+import { BaseSearchModel, BasicSearchModelI } from '../../../acore/base';
+
+export class ForgetPasswordModel extends BaseSearchModel {
+
+
+      email: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'User Name',
+            apiKey: 'email',
+            placeholder: 'User Name',
+            name: 'userName'
+      };
+
+      // email: any;
+      // Question: any;
+      // Answer: any;
+
+}

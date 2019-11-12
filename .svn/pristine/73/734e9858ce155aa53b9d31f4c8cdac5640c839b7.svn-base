@@ -1,0 +1,5 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item" *ngFor="let nav of tabLookNav.links; index  as i;">
+    <a class="nav-link curPointer" #tabNavLinks (click)="myNavFunc(nav.routerLink, i, nav.label, tabLookNav)">{{nav.label}} </a>
+  </li>
+</ul>

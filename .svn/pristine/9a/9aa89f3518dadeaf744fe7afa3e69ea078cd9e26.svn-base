@@ -1,0 +1,26 @@
+<div class="container-fluid bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a>{{reportType}}</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">{{reportName}}</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <ul style="margin: 0 auto;" class="nav nav-tabs">
+    <li class="nav-item" *ngFor="let nav of tabLookNav.links; index  as i;">
+      <a class="nav-link curPointer" #tabNavLinks (click)="myNavFunc(nav.routerLink, i, nav.label, tabLookNav)">{{nav.label}} </a>
+    </li>
+  </ul>
+
+</div>

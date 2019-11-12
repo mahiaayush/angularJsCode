@@ -1,0 +1,30 @@
+import { ColDef } from 'ag-grid';
+import { ProjectUtils } from '../../../acore/utility';
+
+export const columnDefsMetadataProcessing: Array<ColDef> = [
+      {
+            headerName: 'XML File Name',
+            field: 'XML File Name',
+            minWidth: ProjectUtils.ag_SetWidth(20)
+      },
+      {
+            headerName: 'XML TYPE',
+            field: 'XML TYPE',
+            minWidth: ProjectUtils.ag_SetWidth(20)
+      },
+      {
+            headerName: 'Status',
+            field: 'Status',
+            minWidth: ProjectUtils.ag_SetWidth(20)
+      },
+      {
+            headerName: 'Comments',
+            field: 'Comments',
+            minWidth: ProjectUtils.ag_SetWidth(20)
+      },
+      {
+            headerName: 'Date',
+            field: 'Date',
+            minWidth: ProjectUtils.ag_SetWidth(20)
+      }
+];

@@ -1,0 +1,82 @@
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ForgetPasswordModel } from '../forget-password/forget-password.model';
+import { BaseComponent } from '../../../../app/acore/base/base.component';
+import { ForgetPasswordService } from '../forget-password/forget-password.service';
+import { ProjectUtils, UrlConstants } from '../../../acore/utility';
+@Component({
+  selector: 'app-forget-password',
+  templateUrl: './forget-password.component.html',
+  styleUrls: ['./forget-password.component.css'],
+  providers: [ForgetPasswordService]
+})
+export class ForgetPasswordComponent extends BaseComponent {
+
+  NAME_FORGET_PASSWORD = 'FORGET_PASSWORD';
+  forgetPasswordModel: ForgetPasswordModel;
+  ngModel: any;
+  resetUser: any;
+
+  constructor(private router: Router,
+
+    protected forgetPasswordService: ForgetPasswordService,
+  ) {
+    super(forgetPasswordService);
+  }
+
+  initSearchModels() {
+    this.forgetPasswordModel = new ForgetPasswordModel();
+  }
+
+  getSearchModel(name: string) {
+    if (name === this.NAME_FORGET_PASSWORD) {
+      return this.forgetPasswordModel;
+    }
+  }
+
+  getServiceUrl(name): string {
+    if (name === this.NAME_FORGET_PASSWORD) {
+      return UrlConstants.FORGETPASSWORD;
+    }
+  }
+  // showLoader() {
+
+
+  // }
+
+  doOnSubmit() {
+    // this.showLoader();
+    this.loadDataFromApi(this.NAME_FORGET_PASSWORD)
+      .subscribe((userDetails) => {
+        console.log('To_Reset_Username', userDetails);
+
+        this.router.navigate(['../../securityCheck'], {
+          queryParams: {
+            userid: userDetails[0]['id'],
+            question: userDetails[0]['question']
+          }
+        });
+        // this.router.navigate(['../../securityCheck'], { queryParams: { userid: 1, question: 'MPS QUESTION?.' } });
+      });
+
+  }
+
+
+  resetuserpass() {
+
+
+
+    // let body: any = '';
+    // body += this.forgetPasswordService.setParamValue(body, 'email', this.forgetPasswordModel.email);
+    // this.resetUser = this.forgetPasswordService.toresetuser(body).subscribe(data => {
+
+    //   console.log('To_Reset_Username', data);
+    //   // this.router.navigate(['../../securityCheck', { userid: data[0]['user_id'], question: data[0]['Question'] }]);
+    //   this.router.navigate(['../../securityCheck'], { queryParams: { userid: 1, question: 'MPS QUESTION?.' } });
+
+
+    // });
+
+  }
+
+}

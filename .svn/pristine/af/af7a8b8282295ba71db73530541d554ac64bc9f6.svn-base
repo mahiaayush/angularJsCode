@@ -1,0 +1,27 @@
+import { NgModule } from '@angular/core';
+import { httpServiceFactory, HttpService } from './custom-http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { IDGeneratorService } from './id-generator';
+import { ChartListService } from './chart-list';
+import { PathConstants } from './constants';
+
+@NgModule({
+      declarations: [
+
+      ],
+      providers: [
+            {
+                  provide: HttpService,
+                  useFactory: httpServiceFactory,
+                  deps: [HttpClient]
+            },
+            IDGeneratorService,
+            ChartListService,
+            PathConstants
+      ],
+      imports: [
+            HttpClientModule
+      ]
+})
+
+export class ServiceModule { }

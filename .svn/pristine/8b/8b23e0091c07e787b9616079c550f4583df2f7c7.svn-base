@@ -1,0 +1,37 @@
+<section id="about">
+  <div class="container">
+    <div class="card">
+      <div class="card-header">
+        <h1 class="title">About us</h1>
+      </div>
+      <div class="card-body">
+        <h2 class="subtitle">About MPSScholarlystats Library Service</h2>
+        <div class="col-sm-12">
+          <p>
+            <strong>MPSScholarlystats&nbsp;</strong>allows libraries to retrieve all customer-related information and COUNTER usage
+            reports through a single platform. Intuitive user interfaces and customized user access settings allow easy navigation
+            while retrieving consolidated usage reports that help make informed decisions.</p>
+          <p>MPSScholarlystats Library Service provides accurate and consistent stats based on COUNTER standards and a variety
+            of custom reports. These reports help in analyzing usage trends and in making informed decisions about subscriptions
+            and budgeting.</p>
+        </div>
+        <br>
+        <h2 class="subtitle">Benefits of MPSScholarlystats:</h2>
+        <div class="col-sm-12">
+          <ul class="list-home">
+            <li>Helps libraries in streamlining the process of title selection</li>
+            <li>Provides libraries with usage insights that help make better decisions and save money</li>
+            <li>Option to choose from COUNTER and a variety of custom reports</li>
+            <li>Helps libraries to validate existing content subscriptions, analyze content inventory, and choose and acquire
+              new content
+            </li>
+            <li>Cloud-based reporting with 24 x 7 support</li>
+            <li>Easy comparison of performance of various e-packages</li>
+            <li>Automated data harvesting through SUSHI</li>
+            <li>Option to assess usage costs</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

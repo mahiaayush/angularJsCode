@@ -1,0 +1,317 @@
+import { BasicSearchModelI } from '../../../acore/base';
+
+export class CreateVendorModel {
+
+      venderWorkflowType: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'venderWorkflowType',
+            apiKey: 'venderWorkflowType',
+            placeholder: '',
+            name: 'venderWorkflowType'
+      };
+      vendorName: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'vendorName',
+            apiKey: 'vendorName',
+            placeholder: '',
+            name: 'vendorName'
+      };
+      vandorCode: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'vandorCode',
+            apiKey: 'vandorCode',
+            placeholder: '',
+            name: 'vandorCode'
+      };
+      vendorSAN: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'vendorSAN',
+            apiKey: 'vendorSAN',
+            placeholder: '',
+            name: 'vendorSAN'
+      };
+      ContactName: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'ContactName',
+            apiKey: 'ContactName',
+            placeholder: '',
+            name: 'ContactName'
+      };
+      address: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'address',
+            apiKey: 'address',
+            placeholder: '',
+            name: 'address'
+      };
+      email: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Email',
+            apiKey: 'email',
+            placeholder: '',
+            name: 'email'
+      };
+      city: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'city',
+            apiKey: 'city',
+            placeholder: '',
+            name: 'city'
+      };
+      phone: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'phone',
+            apiKey: 'phone',
+            placeholder: '',
+            name: 'phone'
+      };
+      state: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'State',
+            apiKey: 'state',
+            placeholder: '',
+            name: 'state'
+      };
+      zipCode: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Zip Code',
+            apiKey: 'zipCode',
+            placeholder: '',
+            name: 'zipCode'
+      };
+      country: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Country',
+            apiKey: 'country',
+            placeholder: '',
+            name: 'country'
+      };
+      destinationHost: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'destinationHost',
+            apiKey: 'destinationHost',
+            placeholder: '',
+            name: 'destinationHost'
+      };
+      destinationlogin: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'destinationlogin',
+            apiKey: 'destinationlogin',
+            placeholder: '',
+            name: 'destinationlogin'
+      };
+      destinationPassword: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'destinationPassword',
+            apiKey: 'destinationPassword',
+            placeholder: '',
+            name: 'destinationPassword'
+      };
+      destinationPort: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'destinationPort',
+            apiKey: 'destinationPort',
+            placeholder: '',
+            name: 'destinationPort'
+      };
+      destinationTargetDir: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'destinationTargetDir',
+            apiKey: 'destinationTargetDir',
+            placeholder: '',
+            name: 'destinationTargetDir'
+      };
+      feedbackHost: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'feedbackHost',
+            apiKey: 'feedbackHost',
+            placeholder: '',
+            name: 'feedbackHost'
+      };
+      feedbacklogin: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'feedbacklogin',
+            apiKey: 'feedbacklogin',
+            placeholder: '',
+            name: 'feedbacklogin'
+      };
+      feedbackPassword: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'feedbackPassword',
+            apiKey: 'feedbackPassword',
+            placeholder: '',
+            name: 'feedbackPassword'
+      };
+      feedbackPort: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'feedbackPort',
+            apiKey: 'feedbackPort',
+            placeholder: '',
+            name: 'feedbackPort'
+      };
+      feedbackTargetDir: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'feedbackTargetDir',
+            apiKey: 'feedbackTargetDir',
+            placeholder: '',
+            name: 'feedbackTargetDir'
+      };
+      contentInteriorDeliver: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'contentInteriorDeliver',
+            apiKey: 'contentInteriorDeliver',
+            placeholder: '',
+            name: 'contentInteriorDeliver'
+      };
+      contentInteriorFormat: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'contentInteriorFormat',
+            apiKey: 'contentInteriorFormat',
+            placeholder: '',
+            name: 'contentInteriorFormat'
+      };
+      contentInteriorConversion: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'contentInteriorConversion',
+            apiKey: 'contentInteriorConversion',
+            placeholder: '',
+            name: 'contentInteriorConversion'
+      };
+      contentInteriorNaming: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'contentInteriorNaming',
+            apiKey: 'contentInteriorNaming',
+            placeholder: '',
+            name: 'contentInteriorNaming'
+      };
+      contentMetadataDeliver: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'contentMetadataDeliver',
+            apiKey: 'contentMetadataDeliver',
+            placeholder: '',
+            name: 'contentMetadataDeliver'
+      };
+      contentMetadataFormat: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'contentMetadataFormat',
+            apiKey: 'contentMetadataFormat',
+            placeholder: '',
+            name: 'contentMetadataFormat'
+      };
+      contentMetadataNaming: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'contentMetadataNaming',
+            apiKey: 'contentMetadataNaming',
+            placeholder: '',
+            name: 'contentMetadataNaming'
+      };
+      contentCoverDeliver: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'contentCoverDeliver',
+            apiKey: 'contentCoverDeliver',
+            placeholder: '',
+            name: 'contentCoverDeliver'
+      };
+      contentCoverNaming: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'contentCoverNaming',
+            apiKey: 'contentCoverNaming',
+            placeholder: '',
+            name: 'contentCoverNaming'
+      };
+      contentDustDeliver: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'contentDustDeliver',
+            apiKey: 'contentDustDeliver',
+            placeholder: '',
+            name: 'contentDustDeliver'
+      };
+      contentDustNaming: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'contentDustNaming',
+            apiKey: 'contentDustNaming',
+            placeholder: '',
+            name: 'contentDustNaming'
+      };
+      contentInsertDeliver: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'contentInsertDeliver',
+            apiKey: 'contentInsertDeliver',
+            placeholder: '',
+            name: 'contentInsertDeliver'
+      };
+      contentInsertNaming: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'contentInsertNaming',
+            apiKey: 'contentInsertNaming',
+            placeholder: '',
+            name: 'contentInsertNaming'
+      };
+      contentCopyDeliver: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'contentCopyDeliver',
+            apiKey: 'contentCopyDeliver',
+            placeholder: '',
+            name: 'contentCopyDeliver'
+      };
+      contentCopyNaming: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'contentCopyNaming',
+            apiKey: 'contentCopyNaming',
+            placeholder: '',
+            name: 'contentCopyNaming'
+      };
+      packageFormat: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'packageFormat',
+            apiKey: 'packageFormat',
+            placeholder: '',
+            name: 'packageFormat'
+      };
+      packageZipCount: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'packageZipCount',
+            apiKey: 'packageZipCount',
+            placeholder: '',
+            name: 'packageZipCount'
+      };
+}

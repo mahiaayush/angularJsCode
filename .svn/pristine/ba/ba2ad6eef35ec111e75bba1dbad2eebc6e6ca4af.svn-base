@@ -1,0 +1,219 @@
+<div class="container-fluid bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              Home
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Search User</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="container-fluid">
+  <div class="container ">
+    <div class="row">
+      <div class="col-md-12 py-2 ">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link " href="javascript:;">Create Vendor</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:;">Search Vendor</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="javascript:;">Create User</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="javascript:;">Search User</a>
+          </li>
+        </ul>
+        <div class="bg-white p-3">
+
+          <div class="row">
+            <div class="col-md-12">
+
+              <h4 class="subHeading">User Details</h4>
+
+              <form>
+                <div class="form-group row">
+
+                  <div class="col-md-4">
+                    <label for="inputPassword" class=" col-form-label">First Name
+                      <sup class="text-danger">*</sup>
+                    </label>
+
+                    <input type="text" class="form-control" id="inputPassword" placeholder="">
+
+                  </div>
+                  <div class="col-md-4">
+                    <label for="inputPassword" class=" col-form-label">Last Name</label>
+
+                    <input type="text" class="form-control" id="inputPassword" placeholder="">
+
+                  </div>
+                  <div class="col-md-4">
+                    <label for="staticEmail" class="col-form-label">Email/Login</label>
+
+                    <input type="text" class="form-control" id="inputPassword" placeholder="">
+
+                  </div>
+                </div>
+              </form>
+
+              <p class="text-right mt-5 mb-5">
+                <a href="javascript:;" class="btn btn-primary btn-sm" id="btnLogin">Search</a>
+                <a href="javascript:;" class="btn btn-secondary btn-sm mr-2" id="btnLogin1">Reset</a>
+              </p>
+
+              <div class="tableBox border-top mt-5 pt-3">
+                <p class="mb-2">Export Result As :
+                  <a href="#">
+                    <img src="images/csv.png" style="width:25px;">
+                  </a>
+                  <a href="#">
+                    <img src="images/xlsx.png" style="width:25px;">
+                  </a>
+                </p>
+                <table class="spacing-table table-responsive text-nowrap" cellspacing="0" cellpadding="0" border="0">
+                  <thead>
+                    <tr class="ui-jqgrid-labels" role="rowheader">
+                      <th style="width:4%;">
+
+                        <div id="jqgh_list2_email" class="ui-jqgrid-sortable">Email / Login
+                          <span class="s-ico" style="">
+                            <span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span>
+                            <span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span>
+                          </span>
+                        </div>
+                      </th>
+                      <th style="width:4%;">
+
+                        <div id="jqgh_list2_contactName" class="ui-jqgrid-sortable">Contact Name
+                          <span class="s-ico" style="display:none">
+                            <span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span>
+                            <span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span>
+                          </span>
+                        </div>
+                      </th>
+                      <th style="width:2%;">
+
+                        <div id="jqgh_list2_role" class="ui-jqgrid-sortable">Role
+                          <span class="s-ico" style="display:none">
+                            <span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span>
+                            <span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span>
+                          </span>
+                        </div>
+                      </th>
+                      <th style="width:2%;">
+
+                        <div id="jqgh_list2_state" class="ui-jqgrid-sortable">State
+                          <span class="s-ico" style="display:none">
+                            <span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span>
+                            <span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span>
+                          </span>
+                        </div>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                    <tr>
+                      <td role="gridcell" style="width:4%" title="pawan.saini@adi-mps.com" aria-describedby="list2_email">
+                        <a href="javascript:viewUser(1);">pawan.saini@adi-mps.com</a>
+                      </td>
+                      <td role="gridcell" style="width:4%" title="Admin Wiley" aria-describedby="list2_contactName">Admin Wiley</td>
+                      <td role="gridcell" style="width:2%" title="Super Admin" aria-describedby="list2_role">Super Admin</td>
+                      <td role="gridcell" style="width:2%" title="Active" class="text-success">Active</td>
+                    </tr>
+                    <tr>
+                      <td role="gridcell" style="" title="deepak.garg@adi-mps.com" aria-describedby="list2_email">
+                        <a href="javascript:viewUser(2);">deepak.garg@adi-mps.com</a>
+                      </td>
+                      <td role="gridcell" style="" title="Deepak Garg" aria-describedby="list2_contactName">Deepak Garg</td>
+                      <td role="gridcell" style="" title="Super Admin" aria-describedby="list2_role">Super Admin</td>
+                      <td role="gridcell" style="" title="Inactive" class="text-danger">Inactive</td>
+                    </tr>
+                    <tr>
+                      <td role="gridcell" style="" title="sadmin@wiley.com" aria-describedby="list2_email">
+                        <a href="javascript:viewUser(3);">sadmin@wiley.com</a>
+                      </td>
+                      <td role="gridcell" style="" title="Super Admin" aria-describedby="list2_contactName">Super Admin</td>
+                      <td role="gridcell" style="" title="Super Admin" aria-describedby="list2_role">Super Admin</td>
+                      <td role="gridcell" style="" title="Active" class="text-success">Active</td>
+                    </tr>
+                    <tr>
+                      <td role="gridcell" style="" title="ngurewit@wiley.com" aria-describedby="list2_email">
+                        <a href="javascript:viewUser(13);">ngurewit@wiley.com</a>
+                      </td>
+                      <td role="gridcell" style="" title="Noel Somerset Gurewitch" aria-describedby="list2_contactName">Noel Somerset Gurewitch</td>
+                      <td role="gridcell" style="" title="Super Admin" aria-describedby="list2_role">Super Admin</td>
+                      <td role="gridcell" style="" title="Inactive" class="text-danger">Inactive</td>
+                    </tr>
+                    <tr>
+                      <td role="gridcell" style="" title="lkazlaus@wiley.com" aria-describedby="list2_email">
+                        <a href="javascript:viewUser(14);">lkazlaus@wiley.com</a>
+                      </td>
+                      <td role="gridcell" style="" title="Linda Kaslauskas" aria-describedby="list2_contactName">Linda Kaslauskas</td>
+                      <td role="gridcell" style="" title="Super Admin" aria-describedby="list2_role">Super Admin</td>
+                      <td role="gridcell" style="" title="Active" class="text-success">Active</td>
+                    </tr>
+                    <tr>
+                      <td role="gridcell" style="" title="jpascale@wiley.com" aria-describedby="list2_email">
+                        <a href="javascript:viewUser(16);">jpascale@wiley.com</a>
+                      </td>
+                      <td role="gridcell" style="" title="Joe Pascale" aria-describedby="list2_contactName">Joe Pascale</td>
+                      <td role="gridcell" style="" title="Super Admin" aria-describedby="list2_role">Super Admin</td>
+                      <td role="gridcell" style="" title="Active" class="text-success">Active</td>
+                    </tr>
+                    <tr>
+                      <td role="gridcell" style="" title="lterhune@wiley.com" aria-describedby="list2_email">
+                        <a href="javascript:viewUser(17);">lterhune@wiley.com</a>
+                      </td>
+                      <td role="gridcell" style="" title="Lynn Terhune" aria-describedby="list2_contactName">Lynn Terhune</td>
+                      <td role="gridcell" style="" title="Super Admin" aria-describedby="list2_role">Super Admin</td>
+                      <td role="gridcell" style="" title="Active" class="text-success">Active</td>
+                    </tr>
+                    <tr>
+                      <td role="gridcell" style="" title="ivillegas@wiley.com" aria-describedby="list2_email">
+                        <a href="javascript:viewUser(18);">ivillegas@wiley.com</a>
+                      </td>
+                      <td role="gridcell" style="" title="Ingrid Villegas" aria-describedby="list2_contactName">Ingrid Villegas</td>
+                      <td role="gridcell" style="" title="Super Admin" aria-describedby="list2_role">Super Admin</td>
+                      <td role="gridcell" style="" title="Inactive" class="text-danger">Inactive</td>
+                    </tr>
+                    <tr>
+                      <td role="gridcell" style="" title="pgunnia@wiley.com" aria-describedby="list2_email">
+                        <a href="javascript:viewUser(25);">pgunnia@wiley.com</a>
+                      </td>
+                      <td role="gridcell" style="" title="Prathusha Gunnia" aria-describedby="list2_contactName">Prathusha Gunnia</td>
+                      <td role="gridcell" style="" title="Super Admin" aria-describedby="list2_role">Super Admin</td>
+                      <td role="gridcell" style="" title="Active" class="text-success">Active</td>
+                    </tr>
+                    <tr>
+                      <td role="gridcell" style="" title="cfaulkne@wiley.com" aria-describedby="list2_email">
+                        <a href="javascript:viewUser(26);">cfaulkne@wiley.com</a>
+                      </td>
+                      <td role="gridcell" style="" title="Chris Faulkner" aria-describedby="list2_contactName">Chris Faulkner</td>
+                      <td role="gridcell" style="" title="Super Admin" aria-describedby="list2_role">Super Admin</td>
+                      <td role="gridcell" style="" title="Inactive" class="text-danger">Inactive</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+
+
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

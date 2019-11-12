@@ -1,0 +1,1 @@
+export const environment = {"production":true,"version":"1.0.31","date":"Thu May 24 2018 12:44:57 GMT+0530 (India Standard Time)"};

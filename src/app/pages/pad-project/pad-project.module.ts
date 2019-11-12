@@ -1,0 +1,37 @@
+import { NgModule } from '@angular/core';
+import { RootSharedModule } from '../../acore/sharedModules';
+import { ComponentModule } from '../../acore/components';
+import { AgGridModule } from 'ag-grid-angular';
+import { routing } from './pad-project.routing';
+import { SearchTitleComponent } from './search-title/search-title.component';
+import { MetadataUploadComponent } from './metadata-upload/metadata-upload.component';
+import { PadProjectService } from './pad-project.service';
+import { MetadataProcessingStatusComponent } from './metadata-processing-status/metadata-processing-status.component';
+import { PriceUpdateComponent } from './price-update/price-update.component';
+import { UpdateTitleComponent } from './update-title/update-title.component';
+import { ContentUploadComponent } from './content-upload/content-upload.component';
+import { MetadataProcessingDetailsComponent } from './metadata-processing-details/metadata-processing-details.component';
+import { VendorDetailsComponent } from './vendor-details/vendor-details.component';
+
+@NgModule({
+      declarations: [
+            SearchTitleComponent,
+            MetadataUploadComponent,
+            MetadataProcessingStatusComponent,
+            PriceUpdateComponent,
+            ContentUploadComponent,
+            UpdateTitleComponent,
+            MetadataProcessingDetailsComponent,
+            VendorDetailsComponent],
+      providers: [
+            PadProjectService
+      ],
+      imports: [
+            routing,
+            RootSharedModule,
+            ComponentModule,
+            AgGridModule,
+      ]
+})
+
+export class PadProjectModule { }

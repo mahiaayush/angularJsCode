@@ -1,0 +1,135 @@
+<div id='scrollTest' #scrollMe>
+  <app-tab-links [myNavData]="myNavData" [activeLink]="activeLink" *ngIf="isVisible">
+  </app-tab-links>
+  <app-loader #baseLoader></app-loader>
+  <my-tabs #staticTabs *ngIf="isShow; else show">
+    <my-tab tabTitle="Search Title" [tabId]="NAME_SEARCH_TITLE">
+      <ng-container *ngTemplateOutlet="show"></ng-container>
+    </my-tab>
+  </my-tabs>
+
+  <ng-template #show>
+    <app-loader #baseLoader></app-loader>
+    <div class="row">
+      <div class="col-md-12 ">
+        <div class="bg-white border p-3 mh320">
+          <div class="row">
+            <div class="col-md-12">
+              <!--<h4 class="subHeading">Search Title</h4>-->
+              <form>
+                <div class="form-group row">
+                  <div class="col-md-4">
+                    <label for="staticEmail" class="col-form-label">ISBN : </label>
+                    <input type="text" class="form-control" [(ngModel)]="searchTitleModel.conIsbn.value" [name]="searchTitleModel.conIsbn.name"
+                      (drop)="onPaste($event)" (paste)="onPaste($event)" pattern="\d*" #conIsbn="ngModel" (keydown)="restrictNumeric($event)"
+                      (keypress)="restrictNumeric($event)">
+
+                    <!-- <div *ngIf="conIsbn.invalid && (conIsbn.dirty || conIsbn.touched)" class="alert alert-danger">
+                      <div *ngIf="conIsbn.errors && conIsbn.errors.pattern">
+                        Invalid ISBN.
+                      </div>
+                    </div> -->
+                  </div>
+                  <div class="col-md-4">
+                    <label for="Author" class=" col-form-label">Author : </label>
+                    <input type="text" class="form-control" [(ngModel)]="searchTitleModel.autName.value" [name]="searchTitleModel.autName.name">
+                  </div>
+                  <div class="col-md-4">
+                    <label for="Title" class=" col-form-label">Title :</label>
+                    <input type="text" class="form-control" [(ngModel)]="searchTitleModel.conTitleName.value" [name]="searchTitleModel.conTitleName.name">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <div class="col-md-4">
+                    <label for="staticEmail" class="col-form-label">Title Type :</label>
+                    <select id="titleType" class="form-control" multiple="multiple" [(ngModel)]="searchTitleModel.titleType.value" [name]="searchTitleModel.titleType.name">
+                      <option value="POD">POD</option>
+                      <option value="NonPOD">Optimal Inventory</option>
+                      <option value="GAP">Gap</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4">
+                    <label for="inputPassword" class=" col-form-label">Title Status :</label>
+                    <select id="TitleStatus" class="form-control" multiple="multiple" [(ngModel)]="searchTitleModel.searchTitleStatus.value"
+                      [name]="searchTitleModel.searchTitleStatus.name">
+                      <option value="MetaDataReceived">MetaDataReceived</option>
+                      <option value="ContentUploaded">ContentUploaded</option>
+                      <option value="QCFail">QCFail</option>
+                      <option value="QCPass">QCPass</option>
+                      <option value="QAFail">QAFail</option>
+                      <option value="ReadyToRelease">ReadyToRelease</option>
+                      <option value="ReadyToReleaseAgain">ReadyToReleaseAgain</option>
+                      <option value="DistributionFailPV">DistributionFailPV</option>
+                      <option value="DistributionPassPV">DistributionPassPV</option>
+                      <option value="DistributionSVInProgress">DistributionSVInProgress</option>
+                      <option value="DisApprovedByPV">DisApprovedByPV</option>
+                      <option value="ApprovedByPV">ApprovedByPV</option>
+                      <option value="SVApprovalPending">SVApprovalPending</option>
+                      <option value="Pass">Pass</option>
+                      <option value="CoverPriceChangePending">CoverPriceChangePending</option>
+                      <option value="CoverPriceReadyToRelease">CoverPriceReadyToRelease</option>
+                      <option value="CoverPriceDistributionFail">CoverPriceDistributionFail</option>
+                      <option value="CoverPriceDistributionInProgress">CoverPriceDistributionInProgress</option>
+                      <option value="CoverPriceDistributionPass">CoverPriceDistributionPass</option>
+                      <option value="CoverPriceChangeQAFail">CoverPriceChangeQAFail</option>
+                      <option value="ScanFileReceived">ScanFileReceived</option>
+                      <option value="AutoScanFail">AutoScanFail</option>
+                      <option value="AutoScanPass">AutoScanPass</option>
+                      <option value="ScanReadyToRelease">ScanReadyToRelease</option>
+                      <option value="ScanQAFail">ScanQAFail</option>
+                      <option value="ContentUploadInProgress">ContentUploadInProgress</option>
+                      <option value="VendorDistributionInProgress">VendorDistributionInProgress</option>
+                      <option value="VendorApprovalPending">VendorApprovalPending</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="d-flex justify-content-between ">
+
+                      <h5 class="my-4 ">Export All Title Details :
+                        <a href="javascript:;" (click)="exportAll()">
+                          <img src="./assets/images/xlsx.png " style="width:25px; ">
+                        </a>
+                      </h5>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <p class="text-right my-4">
+                      <button class="btn btn-primary btn-sm" (click)="doOnSubmit($event)">Search</button>
+                      <button type="reset" class="btn btn-dark btn-sm mr-2">Clear</button>
+                    </p>
+                  </div>
+                </div>
+              </form>
+
+              <div class="tableBox border-top mt-5 pt-3 ">
+              </div>
+            </div>
+          </div>
+          <div class="row" [style.display]="showGrid">
+            <div class="col-md-12 agGridSize curPointer">
+              <app-ag-grid [name]=" 'searchVender' " [myGridOptions]="gridOptionsSearchTitle " (myGridReady)="doOnGridReadySearchVenderReports($event) ">
+              </app-ag-grid>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>
+
+
+<ng-template #vendorDetails>
+  <app-vendor-details [customReInit]="customReInitVendorDetails" [rowData]="rowData"></app-vendor-details>
+</ng-template>
+
+<ng-template #updateTitle>
+  <app-update-title [customReInit]="customReInitUpdateTitle" [rowData]="rowData"></app-update-title>
+</ng-template>
+
+<ng-template #contentUploadList>
+  <app-content-upload [customReInit]="customReInitContenUpload" [rowData]="rowData"></app-content-upload>
+</ng-template>

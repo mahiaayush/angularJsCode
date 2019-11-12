@@ -1,0 +1,282 @@
+@charset "utf-8";
+/* CSS Document */
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts/icomoon.eot?v6fyl9');
+  src:  url('../fonts/icomoon.eot?v6fyl9#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?v6fyl9') format('truetype'),
+    url('../fonts/icomoon.woff?v6fyl9') format('woff'),
+    url('../fonts/icomoon.svg?v6fyl9#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-home:before {
+  content: "\e906";
+}
+.icon-close:before {
+  content: "\e905";
+}
+.icon-check-green:before {
+  content: "\e904";
+}
+.icon-noun_167932_cc:before {
+  content: "\e900";
+}
+.icon-noun_167933_cc:before {
+  content: "\e901";
+}
+.icon-noun_196520_cc:before {
+  content: "\e902";
+}
+.icon-noun_942875_cc:before {
+  content: "\e903";
+}
+.icon-eye:before {
+  content: "\e9ce";
+}
+ 
+body{font-size:1rem; font-family: 'Open Sans', sans-serif;font-weight:400;background:#f9f9fb;}
+p, h1, h2, h3, h4, h5, h6, ul{margin:0;padding:0; animation: mainmenufadein 2s; -moz-animation: mainmenufadein 2s;  -webkit-animation: mainmenufadein 2s; -o-animation: fadein 2s;}
+a, a:hover, a:active, a:focus{outline:none;}
+a{color:#098ff1;}
+.mainBg{background-color:#1f2532}
+.text-gray{color: #757b8c;}
+.fontsize13{font-size:0.8125rem;}
+.custWrapper{width:100%;max-width:1600px;margin:0 auto; }
+header{margin-bottom: 25px;}
+.logo{padding:10px 0;}
+.settingIcon{position: absolute;right: 0;background-color: #0f7acd;text-decoration: none;color: #fff;font-size: 34px;border-radius: 50%;padding: 0px 12px 0px 12px; top:5px;  transition:0.6s ease-in-out;z-index: 2;}
+.settingIcon a{ display: block; text-decoration:none;color:#fff;vertical-align: middle;}
+.settingIcon a i{vertical-align: middle;}
+.settingIcon a:hover{-webkit-animation: fa-spin 2s infinite linear; animation: fa-spin 2s infinite linear;}
+/* spin the seeting icon */
+@-webkit-keyframes fa-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@keyframes fa-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+ .rounded15{border-radius:15px !important; }
+ .ptb{padding-top:10%;padding-bottom:10%;}
+.settingIcon:hover{text-decoration:none;background-color:#E6212C;color:#fff;}
+.custNav > li{margin-right: 150px;}
+.custNav  li:last-child{margin-right:0px;}
+.custNav  li a{font-size:18px;}
+.custNav  li a i{font-size:20px;font-size: 30px;vertical-align: text-top;}
+
+.mainSubMenu{top:0;min-width: 300px;}
+.custNav li:nth-child(2) .mainSubMenu{min-width: 200px;}
+.submenuHeading{width:100%;padding:0 10px;color:#0b8ae9;position:relative;font-size:16px;}
+.submenuHeading .close{position:absolute;right:10px;}
+.sumenuLinks{margin:0;padding:10px;list-style:none;}
+.sumenuLinks li{padding:5px 0 7px 16px; border-bottom:1px solid #e6e8ec;line-height: 18px;position:relative;  }
+.sumenuLinks li:before{color:#828da1;content:'\e900';position:absolute;left:-4px;top:6px;font-family: 'icomoon' !important;filter: progid: DXImageTransform.Microsoft.BasicImage(rotation=0.5); -webkit-transform: rotate(-90deg); -moz-transform: rotate(-90deg); -ms-transform: rotate(-90deg); -o-transform: rotate(-90deg); transform: rotate(-90deg);font-size: 26px;}
+.sumenuLinks li:last-child:before{top:4px;}
+.sumenuLinks li a{color:#828da1;font-size:14px;}
+.sumenuLinks li a:hover{text-decoration:none;}
+.sumenuLinks li:last-child{line-height: normal;border-bottom: 0;padding-top: 4px;}
+#navbarSupportedContent .dropdown.show > a{opacity: 0; visibility: hidden;animation: mainmenufadeOut 0.5s; -moz-animation: mainmenufadeOut 0.5s;  -webkit-animation: mainmenufadeOut 0.5s;  -o-animation: mainmenufadeOut 0.5s; }
+#navbarSupportedContent .dropdown > a{ animation: mainmenufadein 2s; -moz-animation: mainmenufadein 2s;  -webkit-animation: mainmenufadein 2s; -o-animation: fadein 2s;}
+ 
+ 
+@keyframes mainmenufadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes mainmenufadein { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes mainmenufadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes mainmenufadein { /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+@keyframes mainmenufadeOut {
+    from {
+        opacity:1;
+    }
+    to {
+        opacity:0;
+    }
+}
+@-moz-keyframes mainmenufadeOut { /* Firefox */
+    from {
+        opacity:1;
+    }
+    to {
+        opacity:0;
+    }
+}
+@-webkit-keyframes mainmenufadeOut { /* Safari and Chrome */
+    from {
+        opacity:1;
+    }
+    to {
+        opacity:0;
+    }
+}
+@-o-keyframes mainmenufadeOut { /* Opera */
+    from {
+        opacity:1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.sidenav { padding-bottom: 90px;height: 100%; width: 0px; position: fixed; z-index: 3; top: 0;right: 0; background-color: #fff;overflow-x: hidden; transition: 0.5s; -webkit-box-shadow:  0px 0px 4px 0px rgba(0,0,0,0.61); -moz-box-shadow:  0px 0px 4px 0px rgba(0,0,0,0.61); box-shadow:  0px 0px 4px 0px rgba(0,0,0,0.61);}
+.sidenavBlock{padding:10px 20px 0 20px;}
+.sidemenuBackDrop{ background:rgba(0,0,0,0.5);width:100%;position: fixed;z-index: 3;left: 0;right: 0;top: 0;bottom: 0;}
+.buttonBlock{position:absolute;bottom:0;width:89%;text-align:center;border-top:1px solid #9ba4b4;padding:20px 0}
+.btnGray{background:#828da1;color:#fff;text-decoration:none;padding:5px 30px;line-height:normal;font-size:16px;}
+.btnGray:hover{background:#50586b;color:#fff;text-decoration:none;}
+.btnGreen{background:#33a525;color:#fff;text-decoration:none;padding:5px 30px;line-height:normal;font-size:16px;}
+.btnGreen:hover{background:#298b1d;color:#fff;text-decoration:none;}
+.mainHeading{color:#717788;font-size:18px;margin-bottom:10px;}
+.mainHeading a{float:right;font-size:13px;color:#0b8ae9;margin-top:8px;}
+.menuSubHeading{background:#0f7acd;font-size:14px;color:#fff;border-radius:5px;padding:5px 8px;font-weight:600;text-transform:uppercase;letter-spacing: 0.02rem;margin-bottom:10px;}
+.rightMenuLinks{margin:0 0 30px 0;padding:0;}
+.rightMenuLinks > li{margin-top:0px;list-style:none;padding-left:20px;position:relative;border-bottom:1px solid #e6e8ec;padding-bottom:5px;}
+.rightMenuLinks > li:after{content:'\e9ce';position:absolute;right:0;top:2px;font-family: 'icomoon' !important;color:#50586b;font-size:16px;display:none;}
+.rightMenuLinks > li:hover:after{display:block}
+.rightMenuLinks > li:last-child{border-bottom:0;}
+.rightMenuLinks > li:before{content:'\e904';position:absolute;left:0;top:2px;font-family: 'icomoon' !important;color:#189e02;font-size:20px}
+.rightMenuLinks > li.disabled:before{ color:#c6cbd3; }
+.rightMenuLinks > li a{color:#000;font-size:14px;}
+.rightMenuLinks > li a:hover{text-decoration:none;}
+.slider li {padding:0 20px;width:150px !important;}
+.slider li  img{border:1px solid #ccd1d8;position:relative;}
+.slider li a{float:left;position:relative;}
+.slider li a:hover{text-decoration:none;}
+.slider li a i{position:absolute;right:10px;top:10px;color:#189e02;font-size:20px;}
+.slider li a i.diable{color:#c6cbd3;}
+.slider li a span{display:block;font-size:12px;color:#828da1;text-align:center;font-weight:600;text-transform:uppercase}
+
+.graphBlock{-webkit-box-shadow: 0px 0px 27px 0px rgba(139,139,139,0.13);
+-moz-box-shadow: 0px 0px 27px 0px rgba(139,139,139,0.13);
+box-shadow: 0px 0px 27px 0px rgba(139,139,139,0.13);background-color:#fff;padding:10px;margin-top:25px;}
+.rightMenuLinks li .dropdown-menu{padding:10px;top:0;transform: translate3d(0px, 0, 0px) !important;width:100%;-webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);-moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);}
+.rightnavHeading{color:#0f7acd;font-size:14px;position:relative;padding-left:25px;}
+.rightnavHeading button{position:absolute;right:0;top:2px;font-size: 14px;color:#0f7acd;}
+.rightnavHeading button:hover, .rightnavHeading button:focus{color:#0f7acd;}
+.rightnavHeading:before{content:'\e904';position:absolute;left:0;top:-1px;font-family: 'icomoon' !important;color:#c6cbd3;font-size:20px}
+.menuContent{margin:10px 0;padding:10px;background:#efefef;}
+.menuContent li{margin-left:15px;line-height:16px;margin-bottom:8px;font-size:12px;}
+
+ /*change chart legends CSS*/
+#chart6 .highcharts-color-0 rect, #chart5 .highcharts-color-0 rect{fill: rgb(255,255,255); stroke-width: 4; stroke: #e58097;}
+	#chart6 .highcharts-color-1 rect, #chart5 .highcharts-color-1 rect{fill: rgb(255,255,255); stroke-width: 4; stroke: #86bd77;}
+	#chart6 .highcharts-color-2 rect, #chart5 .highcharts-color-2 rect{fill: rgb(255,255,255); stroke-width: 4; stroke: #8fcccd;}
+	#chart6 .highcharts-color-3 rect, #chart5 .highcharts-color-3 rect{fill: rgb(255,255,255); stroke-width: 4; stroke: #75babb;}
+	#chart6 .highcharts-color-4 rect, #chart5 .highcharts-color-4 rect{fill: rgb(255,255,255); stroke-width: 4; stroke: #f9e27a;}
+	#chart6 .highcharts-color-5 rect, #chart5 .highcharts-color-5 rect{fill: rgb(255,255,255); stroke-width: 4; stroke: #A4AA60;}
+	#chart6 .highcharts-color-6 rect, #chart5 .highcharts-color-6 rect{fill: rgb(255,255,255); stroke-width: 4; stroke: #FF0227;}
+	#chart6 .highcharts-color-7 rect, #chart5 .highcharts-color-7 rect{fill: rgb(255,255,255); stroke-width: 4; stroke: #FFA567;}
+	#chart6 .highcharts-color-8 rect, #chart5 .highcharts-color-8 rect{fill: rgb(255,255,255); stroke-width: 4; stroke: #6D4568;}
+	#chart6 .highcharts-color-9 rect, #chart5 .highcharts-color-9 rect{fill: rgb(255,255,255); stroke-width: 4; stroke: #FB6483;}
+	#chart6 .highcharts-color-10 rect, #chart5 .highcharts-color-10 rect{fill: rgb(255,255,255); stroke-width: 4; stroke: #F5CFCE;}
+	#chart6 .highcharts-color-11 rect, #chart5 .highcharts-color-11 rect{fill: rgb(255,255,255); stroke-width: 4; stroke: #7F5A8E;}
+	#chart6 .highcharts-color-12 rect, #chart5 .highcharts-color-12 rect{fill: rgb(255,255,255); stroke-width: 4; stroke: #6374F4;}
+	#chart6 .highcharts-color-13 rect, #chart5 .highcharts-color-13 rect{fill: rgb(255,255,255); stroke-width: 4; stroke: #947DE9;}
+	#chart6 .highcharts-legend-item-hidden rect, #chart5 .highcharts-color-14 rect{fill: rgb(255,255,255);stroke-width: 4;stroke: #cccccc;}
+
+ /*footer css*/	
+footer{padding:20px 0 5px 0}	
+.footer-right{color:#848b93;font-size:12px;text-transform:uppercase;}
+.copyrite{color:#848b93;font-weight:600;font-size:12px;}
+.copyrite	span{color:#c1c1c1}
+.graphPreview{text-align:center;padding:10px 0;}
+ 
+ /*header fix on scroll*/
+ .fix-header { top:0; width: 100%; z-index: 2 !important;position:fixed;background:#1F2532;-ms-transition: all 0.3s ease-out;   -moz-transition: all 0.3s ease-out; -webkit-transition: all 0.3s ease-out;  -o-transition: all 0.3s ease-out; transition:all 0.3s ease-out;} 
+.homeIcon{display:none;} 
+.fix-header .homeIcon{display:inline-block;margin-right:20px;padding-top: 5px;}
+.fix-header .homeIcon a span{font-size:32px;color:#757b8c;}  
+.fix-header .settingIcon{position: inherit;background-color: transparent;padding: 0;float: right;} 
+.fix-header .settingIcon a{color:#757b8c;transition: .6s all} 
+.fix-header .settingIcon:hover{background-color: transparent; }  
+.fix-header .settingIcon:hover a{color:#fff;}  
+.smallheaderLink{display:none;}  
+.fix-header .smallheaderLink{display:block;float:right;margin-top:2px;margin-right:20px;}  
+.fix-header	.settingIcon a i{vertical-align: top;margin-top: 2px;display: block;}
+.fix-header .smallheaderLink li.dropdown a{color:#757b8c}
+.fix-header .smallheaderLink li.dropdown a:hover,  
+.fix-header .smallheaderLink li.dropdown a:active,  
+.fix-header .smallheaderLink li.dropdown a:focus{color:#fff;} 
+.fix-header .smallheaderLink li.dropdown.show > a{opacity: 1 !important;visibility: visible !important;} 
+
+/* inner page css */
+.innerMainHeading{color:#0760a0;font-size:22px;font-weight:600;}
+.innerSubHeading{font-size:16px;color:#717788;margin-top:10px;}
+.reportDropdown{display:flex;float:right;width:240px;text-align:right;}
+.reportDropdown select{max-width:100px;margin-left:12px;}
+
+.custTabs{margin:0;padding:0;}
+.custTabs li a:hover{border-bottom:0px;}
+.custTabs li a.active, .custTabs li a:hover{border-top:0;border-left:0;border-right:0;color:#e8001e !important;}
+.custTabs li a.active span{border-bottom:5px solid #e8001e !important;padding-bottom:8px;}
+.tableStyle{width:100%;margin:20px 0;}
+.tableStyle tbody tr{margin-top:14px;  }
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link{border-bottom:2px }
+.nav-tabs .nav-link:focus{border:none;}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active,  .nav-tabs .nav-link:hover{border:0px;border-bottom:2px solid #098FF1;}
+.mainHeading{ margin: 10px 0px 10px 0px;  clear: both; font-size: 25px;  color: #A20101; border-bottom: 1px solid #64abcf; padding: 5px 0;  }
+.subHeading {
+    margin: 20px 0px;
+    font-size: 15px;
+    border-bottom: 1px solid #CCC;
+}
+    
+
+ 

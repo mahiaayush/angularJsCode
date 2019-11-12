@@ -1,0 +1,137 @@
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { BaseComponent, GridAPII } from '../../../acore/base';
+import { GridApi, ColumnApi, ColDef, GridOptions } from 'ag-grid';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Subject } from 'rxjs/Subject';
+import { TitleDeliveriesModel, TitleDeliveriesDateModel } from './title-deliveries.model';
+import { UrlConstants, SessionObject, ProjectUtils } from '../../../acore/utility';
+import { DataDropDownOptions, AutoCompleteModel, TabsComponent } from '../../../acore/components';
+import { columnDefsTitleDeliveries } from './title-deliveries.data';
+import { ReportsService } from '../reports.service';
+import { ConstantService, ProjectService } from '../../../acore/services';
+import { ActivatedRoute } from '@angular/router';
+
+@Component({
+  selector: 'app-title-deliveries',
+  templateUrl: './title-deliveries.component.html',
+  styleUrls: ['./title-deliveries.component.css']
+})
+export class TitleDeliveriesComponent extends BaseComponent {
+  myNavData: any = {};
+  activeLink: any = null;
+  NAME_TITLE_DELIVERIES = 'TITLE_DELIVERIES';
+  titleDeliveriesModel: TitleDeliveriesModel;
+  titleDeliveriesDateModel: TitleDeliveriesDateModel;
+  rowData: Array<any>;
+  isShow: boolean;
+  isVisible: boolean;
+  status: any;
+
+
+  @ViewChild('history') historyTemplate;
+  @ViewChild(TabsComponent) tabsComponent;
+  gridOptions: GridOptions = {};
+
+  constructor(private reportsService: ReportsService,
+    public constantService: ConstantService,
+    private projectService: ProjectService,
+    private route: ActivatedRoute) {
+    super(reportsService, projectService);
+    this.gridOptions.onCellClicked = this.agCellClicked;
+    this.myNavData = constantService.routerNav.REPORT;
+    this.activeLink = constantService.routerNav.REPORT.links[3];
+    this.status = this.route.params['value'].status;
+    console.log(status);
+    this.isShow = false;
+    this.isVisible = true;
+  }
+
+  agCellClicked = (event) => {
+    const headerName: string = event.colDef.headerName;
+    const row = event['data'];
+    if (headerName === 'History') {
+      this.rowData = [event['data']];
+      this.openListTab();
+    }
+  }
+
+  xtBaseOnInit() {
+  }
+
+  initSearchModels() {
+    this.titleDeliveriesModel = new TitleDeliveriesModel();
+    const titleDeliveriesSession = ProjectUtils.getTitleDeliveries();
+    this.titleDeliveriesDateModel = new TitleDeliveriesDateModel();
+    // this.setValueFromSession(this.titleDeliveriesModel, titleDeliveriesSession);
+  }
+
+  getSearchModel(name: string) {
+    if (name === this.NAME_TITLE_DELIVERIES) {
+      return this.titleDeliveriesModel;
+    }
+  }
+
+  restrictNumeric(e: any) {
+    return ProjectUtils.html.numericValidation(e);
+
+  }
+
+  onPaste(event) {
+    ProjectUtils.html.numericValidationOnPaste(event);
+  }
+
+  getDateModel() {
+    return this.titleDeliveriesDateModel;
+  }
+
+  setSearchModel(name: string) {
+    const searchModel = this.getValueFromSearchModel(name);
+    if (name === this.NAME_TITLE_DELIVERIES) {
+      ProjectUtils.setTitleDeliveries(searchModel);
+    }
+  }
+
+  setColumnDef(name: string): Array<ColDef> {
+    if (name === this.NAME_TITLE_DELIVERIES) {
+      return columnDefsTitleDeliveries;
+    }
+  }
+
+  openListTab() {
+    this.tabsComponent.openTab('History',
+      this.historyTemplate, {}, true, 'historyTemplate');
+
+  }
+
+  getServiceUrl(name): string {
+    if (name === this.NAME_TITLE_DELIVERIES) {
+      return UrlConstants.TITLE_DELIVERIES;
+    }
+  }
+
+  doOnSubmit(e) {
+    console.log('doOnSubmit', e);
+    this.OnSubmit(this.NAME_TITLE_DELIVERIES);
+    this.isShow = true;
+    this.isVisible = false;
+
+  }
+
+  getGridApi(name: string): GridAPII {
+    if (name === this.NAME_TITLE_DELIVERIES) {
+      return {
+        gridApi: this.gridApi,
+        columnApi: this.columnApi
+      };
+    }
+  }
+
+  doOnGridReadyTitleDeliveries(api) {
+    this.gridApi = api.api;
+    this.columnApi = api.columnApi;
+    this.doOnGridReady(this.NAME_TITLE_DELIVERIES);
+    if (this.status === '1') {
+      this.OnSubmit(this.NAME_TITLE_DELIVERIES);
+    }
+  }
+}

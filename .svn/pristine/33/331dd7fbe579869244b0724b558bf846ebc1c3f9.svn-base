@@ -1,0 +1,17 @@
+
+export class UserDetails {
+      emailID: string;
+      firstName: string;
+      lastName: string;
+      role: string;
+      token: string;
+      userCode: string;
+      userID: string;
+      userStatus: string;
+      userType: string;
+      constructor() {
+
+      }
+}
+
+

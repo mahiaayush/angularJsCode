@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>PRINT ASSET DELIVERY SYSTEM (PAD)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="/">
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--===========font style==========-->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- <link rel="stylesheet" href="css/bootstrap.min.css"  />
+  <link rel="stylesheet" href="css/style.css"  />
+  <link rel="stylesheet" href="css/responsive.css"  /> -->
+  <!-- Required plugin - Animate.css -->
+  <!-- <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/jquery.bxslider.css"> -->
+
+  <!-- <script src="./assets/css/style.css"></script>
+  <script src="./assets/css/responsive.css"></script>
+  <script src="./assets/css/animate.css"></script>
+  <script src="./assets/css/jquery.bxslider.css"></script> -->
+
+
+
+
+  <!-- Bootstrap core JS via googleapis CDN -->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+<script src="https://code.highcharts.com/modules/variable-pie.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+
+<script src="js/popper.min.js" ></script>
+<script src="js/bootstrap.min.js" ></script>
+<script src="js/mainMenu.js" ></script>
+<script src="js/jquery.bxslider.min.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/functions.js"></script> -->
+
+
+  <!-- <script src="../node_modules/highcharts/highcharts.js"></script>
+  <script src="../node_modules/highcharts/highcharts-more.js"></script>
+  <script src="../node_modules/highcharts/modules/solid-gauge.js"></script>
+  <script src="../node_modules/highcharts/modules/variable-pie.js"></script>
+  <script src="../node_modules/highcharts/modules/exporting.js"></script>
+  <script src="../node_modules/highcharts/"></script>
+
+  <script src="./assets/js/mainMenu.js"></script>
+  <script src="./assets/js/jquery.bxslider.min.js"></script>
+  <script src="./assets/js/charts.js"></script>
+  <script src="./assets/js/functions.js"></script> -->
+
+</head>
+
+
+<body>
+  <!-- <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+  <script src="https://code.highcharts.com/modules/heatmap.js"></script>
+  <script src="https://code.highcharts.com/modules/treemap.js"></script>
+
+  <script src="../node_modules/highcharts/js/modules/drilldown.js"></script>
+  <script src="../node_modules/highcharts/js/modules/heatmap.js"></script>
+  <script src="../node_modules/highcharts/js/modules/treemap.js"></script> -->
+
+  <!-- <link rel="stylesheet" href="../bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css">
+  <script src="../bower_components/jquery-ui-month-picker/demo/MonthPicker.min.css">
+  </script>
+  <script src="../bower_components/jquery-ui/jquery-ui.min.js">
+  </script>
+  <script src="./assets/js/jquery-maskedinput/jquery.maskedinput.min.js">
+  </script>
+  <script src="../bower_components/jquery-ui-month-picker/demo/MonthPicker.min.js">
+  </script> -->
+
+  <app-root></app-root>
+</body>
+
+</html>

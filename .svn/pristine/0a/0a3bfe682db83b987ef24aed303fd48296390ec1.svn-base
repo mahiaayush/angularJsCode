@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col-md-12 py-2 ">
+    <div class="bg-white p-3 mh320 border">
+
+      <div class="row">
+        <div class="col-md-12">
+
+          <form>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Vendor Name
+                  <sup class="text-danger">*</sup>
+                </label>
+
+                <input type="text" class="form-control">
+
+              </div>
+              <div class="col-md-4">
+                <label for="inputPassword1" class="col-form-label">Vendor Code
+                  <sup class="text-danger">*</sup>
+                </label>
+
+                <input type="text" class="form-control">
+
+              </div>
+
+            </div>
+          </form>
+          <p class="text-right mt-5 ">
+            <a href="javascript:;" class="btn btn-primary btn-sm" id="btnLogin" (click)="doOnSubmit($event)">Search</a>
+            <a href="javascript:;" class="btn btn-secondary btn-sm mr-2" id="btnLogin">Reset</a>
+          </p>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 agGridSize">
+          <app-ag-grid [name]="'searchVender'" [myGridOptions]="gridOptions" (myGridReady)="doOnGridReadySearchVenderReports($event)">
+          </app-ag-grid>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

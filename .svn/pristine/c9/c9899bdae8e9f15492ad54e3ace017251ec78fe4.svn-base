@@ -1,0 +1,106 @@
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/interval';
+import { Subscription } from 'rxjs/Subscription';
+import { Subject } from 'rxjs/Subject';
+import { SessionObject, ProjectUtils } from '../../utility';
+
+
+import { Router } from '@angular/router';
+
+@Injectable()
+export class SessionExpService {
+
+      CHECKINTERVAL = 1000 * 1 * 1; // ms
+      TIMEOUT_LIMIT = 60 * 10;  // in sec  10mins
+      NAME_SESSION_TIMER = 'TIMER';
+
+      myInterval: Observable<any> = Observable.interval(this.CHECKINTERVAL);
+      SubMyInterval: Subscription;
+      LogOutAtTimeOut: Subject<any> = new Subject<any>();
+
+      constructor(
+            private router: Router
+      ) {
+      }
+
+      clearSession() {
+            ProjectUtils.clearSessionObjects();
+      }
+
+      autoLogout(): void {
+            this.LogOutAtTimeOut.next(this.SubMyInterval);
+      }
+
+      getTimeOutDateTime(): number {
+            const dateTime = parseInt(ProjectUtils.getStorage(this.NAME_SESSION_TIMER), 10);
+            return isNaN(dateTime) ? 0 : dateTime;
+      }
+
+
+      setSessionTimer() {
+            const dateTime = Date.now();
+            ProjectUtils.setStorage(this.NAME_SESSION_TIMER, dateTime.toString());
+      }
+
+      isExp(): Promise<boolean> {
+            return new Promise((resolve, reject) => {
+                  const currentTime = Date.now();
+                  const dateTimeDiff = (currentTime - this.getTimeOutDateTime()) / 1000;
+                  console.log('dateTimeDiff', dateTimeDiff);
+
+                  if (dateTimeDiff > this.TIMEOUT_LIMIT) {
+                        console.log('Logging out');
+                        ProjectUtils.unsubscribe(this.SubMyInterval);
+                        ProjectUtils.removeStorage(this.NAME_SESSION_TIMER);
+                        resolve(true);
+                  }
+                  reject(false);
+            });
+      }
+
+      sub_SESSION_TIMER() {
+            this.isTimerSubClosed()
+                  .then(() => {
+                        this.SubMyInterval = this.myInterval
+                              .subscribe(() => {
+                                    this.isExp()
+                                          .then(() => {
+                                                this.autoLogout();
+                                          })
+                                          .catch(() => {
+                                          });
+                              });
+                  })
+                  .catch(() => {
+                        console.log('Running sub_SESSION_TIMER');
+                  });
+      }
+
+      unsubscribeTimer() {
+            ProjectUtils.unsubscribe(this.SubMyInterval);
+      }
+
+      checkUserNSub_SESSION_TIMER() {
+            const sessionObj: SessionObject = ProjectUtils.getSessionObject();
+            if (ProjectUtils.getUserDetailStatus(sessionObj)) {
+                  this.setSessionTimer();
+                  this.sub_SESSION_TIMER();
+            }
+      }
+
+      isTimerSubClosed() {
+            return new Promise((resolve, reject) => {
+                  if (this.SubMyInterval) {
+                        if (this.SubMyInterval.closed) {
+                              resolve();
+                        }
+                  } else {
+                        resolve();
+                  }
+                  reject();
+            });
+      }
+
+}
+

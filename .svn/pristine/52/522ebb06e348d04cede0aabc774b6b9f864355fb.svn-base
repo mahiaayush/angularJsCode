@@ -1,0 +1,20 @@
+import { ColDef } from 'ag-grid';
+import { ProjectUtils } from '../../../acore/utility';
+
+export const columnDefs: Array<ColDef> = [
+      {
+            headerName: 'ISBN',
+            field: 'isbn',
+            minWidth: ProjectUtils.ag_SetWidth(20)
+      },
+      {
+            headerName: 'Comments',
+            field: 'Comments',
+            minWidth: ProjectUtils.ag_SetWidth(20)
+      },
+      {
+            headerName: 'Date',
+            field: 'Date',
+            minWidth: ProjectUtils.ag_SetWidth(20)
+      }
+];

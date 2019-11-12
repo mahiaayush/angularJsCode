@@ -1,0 +1,15 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-title-overview',
+  templateUrl: './title-overview.component.html',
+  styleUrls: ['./title-overview.component.css']
+})
+export class TitleOverviewComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}

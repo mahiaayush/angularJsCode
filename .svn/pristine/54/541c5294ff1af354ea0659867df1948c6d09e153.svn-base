@@ -1,0 +1,62 @@
+import { BasicSearchModelI } from '../../../acore/base';
+
+
+
+export class PostSearchModel {
+      a: BasicSearchModelI = {
+            value: '',
+            defaultValue: 'abc',
+            label: 'aaaaa',
+            apiKey: 'aaaa',
+            placeholder: 'aaaaaaaaaa'
+      };
+
+      b: BasicSearchModelI = {
+            value: '',
+            defaultValue: 'abc',
+            label: 'bbbbbb',
+            apiKey: 'bbbb',
+            placeholder: 'bbbbbbbbbbb'
+      };
+
+      c: BasicSearchModelI = {
+            value: '',
+            defaultValue: 'xyz',
+            label: 'ccccc',
+            apiKey: 'cccc',
+            placeholder: 'ccccccccc'
+      };
+
+}
+
+
+
+export class SecSearchModel {
+      a: BasicSearchModelI = {
+            value: '',
+            defaultValue: 'abc',
+            label: 'aaaaa',
+            apiKey: 'aaaa',
+            placeholder: 'aaaaaaaaaa'
+      };
+
+      b: BasicSearchModelI = {
+            value: '',
+            defaultValue: 'abc',
+            label: 'bbbbbb',
+            apiKey: 'bbbb',
+            placeholder: 'bbbbbbbbbbb'
+      };
+
+      c: BasicSearchModelI = {
+            value: '',
+            defaultValue: 'xyz',
+            label: 'ccccc',
+            apiKey: 'cccc',
+            placeholder: 'ccccccccc'
+      };
+}
+
+
+
+

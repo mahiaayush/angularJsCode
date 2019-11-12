@@ -1,0 +1,84 @@
+<div id='scrollTest' #scrollMe>
+  <app-tab-links [myNavData]="myNavData" [activeLink]="activeLink" *ngIf="isVisible">
+  </app-tab-links>
+  <app-loader #baseLoader></app-loader>
+  <my-tabs #staticTabs *ngIf="isShow; else show">
+    <my-tab tabTitle="Metadata Processing Status" [tabId]="NAME_METADATA_PROCESSING">
+      <ng-container *ngTemplateOutlet="show"></ng-container>
+    </my-tab>
+  </my-tabs>
+</div>
+
+
+<ng-template #show>
+  <div class="row">
+    <div class="col-md-12 pb-2 ">
+      <div class="bg-white border p-3 mh250">
+        <div class="row">
+          <div class="col-md-12">
+            <!--<h4 class="subHeading">Search Title</h4>-->
+            <form>
+              <div class="form-group row">
+                <div class="col-md-4">
+                  <label for="staticEmail" class="col-form-label">ISBN : </label>
+                  <input type="number" class="form-control" [(ngModel)]="metadataProcessiongStatusModel.isbn.value" [name]="metadataProcessiongStatusModel.isbn.name">
+                </div>
+                <div class="col-md-4">
+                  <label for="inputPassword" class=" col-form-label">Xml file name: </label>
+                  <input type="text" class="form-control" [(ngModel)]="metadataProcessiongStatusModel.xmlFileName.value" [name]="metadataProcessiongStatusModel.xmlFileName.name">
+                </div>
+
+                <!-- <div class="col-sm-4">
+                  <label for="inputPassword" class=" col-form-label">Status:</label>
+                  <app-dropdown [(ngModel)]="ngstatus" #status [(ngModel)]="metadataProcessiongStatusModel.xmlStatus.value" [name]="metadataProcessiongStatusModel.xmlStatus.name"
+                    [ddOptions]="ddOptionsStatus" [triggerHardCore]="ddTriggerStatus" required="required">
+                  </app-dropdown>
+                </div> -->
+                <div class="col-md-4">
+                  <label for="status" class=" col-form-label">Status:</label>
+                  <select class="form-control" [(ngModel)]="metadataProcessiongStatusModel.xmlStatus.value" [name]="metadataProcessiongStatusModel.xmlStatus.name">
+                    <option value="">Select a Status</option>
+                    <option value="Processed">Processed</option>
+                    <option value="Partially Processed">Partially Processed</option>
+                    <option value="Failed">Failed</option>
+                  </select>
+                </div>
+
+              </div>
+              <div class="text-right my-4">
+                <button class="btn btn-primary btn-sm" (click)="doOnSubmit($event)">Search</button>
+                <button type="reset" class="btn btn-dark btn-sm  mr-2">Reset</button>
+              </div>
+
+            </form>
+
+            <div class="tableBox border-top mt-5 pt-3">
+              <div class="d-flex justify-content-between">
+                <!-- <p class="mb-2">Export Result As :
+                  <a href="#">
+                    <img src="/assets/images/csv.png" style="width:25px;">
+                  </a>
+                  <a href="#">
+                    <img src="assets/images/xlsx.png" style="width:25px;">
+                  </a>
+                </p> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" [style.display]="showGrid">
+          <div class="col-md-12 agGridSize">
+            <app-ag-grid [name]="'metaProcessingStatus'" [myGridOptions]="gridOptions" (myGridReady)="doOnGridReadyMetaProcessingReports($event)">
+            </app-ag-grid>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+
+<ng-template #metadataProcessingDetails>
+  <app-metadata-processing-details [customReInit]="customReInitMetadataDetails" [rowData]="rowData"></app-metadata-processing-details>
+</ng-template>

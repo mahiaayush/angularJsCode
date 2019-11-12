@@ -1,0 +1,67 @@
+<div class="row">
+  <div class="col-md-12 pb-2 ">
+    <div class="bg-white p-3 mh320 border">
+      <div class="row">
+        <div class="col-md-12">
+          <app-loader #baseLoader></app-loader>
+          <h4 class="subHeading">Testing Interface</h4>
+          <div class="caption">POD Titles : Cron Process</div>
+          <table class="table">
+            <tbody>
+              <tr *ngFor="let PODCron of testingInterfaceService.PODTitlesCron">
+                <th scope="row" style="width:80%">{{PODCron.display}}</th>
+                <td>
+                  <button class="btn btn-primary btn-sm" (click)="callCron(PODCron.croneValue)">Start</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <br>
+          <div class="caption">Non-POD Titles : Cron Process</div>
+          <table class="table">
+            <tbody>
+              <tr *ngFor="let NONPODCron of testingInterfaceService.NonPODTitlesCron">
+                <th scope="row" style="width:80%">{{NONPODCron.display}}</th>
+                <td>
+                  <button class="btn btn-primary btn-sm" (click)="callCron(NONPODCron.croneValue)">Start</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <br>
+          <div class="caption">Price Change Work Flow</div>
+          <table class="table">
+            <tbody>
+              <tr *ngFor="let priceChnage of testingInterfaceService.PriceChangeWorkFlow">
+                <th scope="row" style="width:80%">{{priceChnage.display}}</th>
+                <td>
+                  <button class="btn btn-primary btn-sm" (click)="callCron(priceChnage.croneValue)">Start</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <br>
+          <div class="caption">Test Connections</div>
+          <table class="table">
+            <tbody>
+              <tr *ngFor="let testCon of testingInterfaceService.TestConnections">
+                <th scope="row" style="width:80%">{{testCon.display}}</th>
+                <td>
+                  <button class="btn btn-primary btn-sm" (click)="callCron(testCon.croneValue)">Start</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-8 offset-2">
+          <div class="alert alert-success mt-1 mb-1" role="alert" style="text-align: center" *ngIf="message !== ''">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            {{message}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

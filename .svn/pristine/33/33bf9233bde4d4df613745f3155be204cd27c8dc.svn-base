@@ -1,0 +1,113 @@
+/* You can add global styles to this file, and also import other style files */
+
+.agGridSize {
+  width: 860px;
+  min-height: 452px;
+  height: 452px;
+}
+
+/*********** dropdown component **********/
+
+.dropdown-menu {
+  max-height: 250px;
+}
+
+.ownLoader {
+  position: relative;
+  z-index: 1011;
+  font-size: 34px;
+  color: blue;
+  bottom: 31px;
+  left: 84%;
+}
+
+.outerBox {
+  position: relative;
+}
+
+.containerDiv button.dropdown-toggle {
+  min-height: 27px;
+}
+
+.containerDiv,
+.containerDiv .dropdown-menu {
+  width: 100%;
+}
+
+.containerDiv .dropdown-menu li {
+  border-bottom: 1px solid #efefef;
+  display: block;
+  margin: 0;
+  padding: 0;
+  white-space: inherit;
+}
+
+.containerDiv .dropdown-menu li a {
+  border: none !important;
+  display: block;
+  margin: 0;
+  padding: 3px 5px 3px 30px !important;
+}
+
+.containerDiv button.dropdown-toggle {
+  padding-right: 30px;
+  text-overflow: ellipsis;
+  min-height: 27px;
+  background: #fff;
+  text-align: left;
+  color: #495057;
+  font-weight: normal;
+  font-size: 13px;
+  padding-left: 7px;
+  overflow: hidden;
+}
+
+.containerDiv button.dropdown-toggle .caret:before {
+  content: ' ';
+  position: absolute;
+  left: -18px;
+  top: -15px;
+  color: #fcf;
+  height: 26px;
+  background: #d1d9de;
+  width: 1px;
+}
+
+.containerDiv span.caret {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top: 6px dashed;
+  border-top: 6px solid\9;
+  border-right: 6px solid transparent;
+  border-left: 6px solid transparent;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.containerDiv ul.dropdown-item {
+  max-height: 250px;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+button.dropdown-toggle {
+  min-width: 200px;
+  border: 1px solid #999998;
+  line-height: 10px;
+}
+
+.curPointer {
+  cursor: pointer;
+}
+
+.nav-tabs {
+  border-bottom: 0px solid #dee2e6;
+}
+
+/*********** dropdown component **********/

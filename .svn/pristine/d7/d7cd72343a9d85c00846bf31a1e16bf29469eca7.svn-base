@@ -1,0 +1,44 @@
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
+import { RootSharedModule } from './acore/sharedModules';
+import { AppComponent } from './app.component';
+import { routing } from './app.routing';
+import { AgGridModule } from 'ag-grid-angular';
+import { UtilityModule } from './acore/utility';
+import { ServiceModule } from './acore/services';
+import { GuardModules } from './acore/guards';
+
+
+import { AGModule } from './acore/components/ag-component';
+
+import { FileUploadModule } from 'ng2-file-upload';
+import { ComponentModule } from './acore/components';
+// import { TestingInterfaceComponent } from './pages/testing-interface/testing-interface.component';
+
+@NgModule({
+  declarations: [
+    AppComponent
+    // TestingInterfaceComponent
+  ],
+  imports: [
+    routing,
+    BrowserModule,
+    FormsModule,
+    RootSharedModule,
+
+    AGModule,
+    UtilityModule,
+    ServiceModule,
+    GuardModules,
+    FileUploadModule,
+    ComponentModule
+  ],
+  providers: [
+  ],
+  bootstrap: [
+    AppComponent
+  ]
+})
+export class AppModule { }

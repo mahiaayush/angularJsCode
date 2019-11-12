@@ -1,0 +1,67 @@
+import { BasicSearchModelI } from '../../../acore/base';
+
+export class MakeDirectPaymentModel {
+      Name: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Name',
+            apiKey: 'Name',
+            placeholder: 'Name',
+            name: 'Name'
+      };
+
+      Cardnumber: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Cardnumber',
+            apiKey: 'Cardnumber',
+            placeholder: 'Cardnumber',
+            name: 'Cardnumber'
+      };
+
+      emailID: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'emailID',
+            apiKey: 'emailID',
+            placeholder: 'emailID',
+            name: 'emailID'
+      };
+
+      Card_CVV: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'CVV',
+            apiKey: 'CVV',
+            placeholder: 'CVV',
+            name: 'CVV'
+      };
+
+      month: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'month',
+            apiKey: 'month',
+            placeholder: 'month',
+            name: 'month'
+      };
+
+      year: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'year',
+            apiKey: 'year',
+            placeholder: 'year',
+            name: 'year'
+      };
+
+      price: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'price',
+            apiKey: 'price',
+            placeholder: 'price',
+            name: 'price'
+      };
+}
+

@@ -1,0 +1,137 @@
+import { Component, OnInit } from '@angular/core';
+import { GridApi, ColumnApi, ColDef, GridOptions } from 'ag-grid';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Subject } from 'rxjs/Subject';
+import { BaseComponent, GridAPII } from '../../../acore/base';
+import { SearchVendorModel } from './search-vendor.model';
+import { UserManagementService } from '../user-management.service';
+import { columnDefsVendorReports } from './search-vendor.data';
+import { UrlConstants, SessionObject, ProjectUtils } from '../../../acore/utility';
+import { DataDropDownOptions, AutoCompleteModel } from '../../../acore/components';
+
+import { ConstantService } from '../../../acore/services';
+
+@Component({
+  selector: 'app-search-vendor',
+  templateUrl: './search-vendor.component.html',
+  styleUrls: ['./search-vendor.component.css']
+})
+export class SearchVendorComponent extends BaseComponent {
+
+  NAME_SEARCH_VENDOR = 'SEARCH_VENDOR';
+  searchVendorModel: SearchVendorModel;
+
+  gridOptionsVenderReports: GridOptions = {};
+
+  myNavData: any = [];
+  activeLink: any = null;
+
+  constructor(private userManagementService: UserManagementService,
+    public constantService: ConstantService) {
+    super(userManagementService);
+
+    this.gridOptions.onCellClicked = this.agCellClicked;
+    this.myNavData = constantService.routerNav.USER_MANAGEMENT;
+    this.activeLink = constantService.routerNav.USER_MANAGEMENT.links[1];
+  }
+
+
+
+
+  agCellClicked = (event) => {
+
+    const headerName: string = event.colDef.headerName;
+    const row = event['data'];
+
+  }
+
+  // getDownloadQueryURL(ext: string, fileName: string, name: string): string {
+  //   const obj = {
+  //     user_id: this.sessionObject.userDetails.userID,
+  //     year: this.searchVendorModel.year.value,
+  //     month: '02',
+  //     report_name: fileName,
+  //     // fileName + headerName
+  //     report_format: ext
+  //   };
+
+  //   const retValue = ProjectUtils.obj_MakeQueryStringFromObj(obj);
+  //   return UrlConstants.REPORTS_DOWNLOAD_REPORTS + retValue;
+  // }
+
+  xtBaseOnInit() {
+
+  }
+
+  initSearchModels() {
+    this.searchVendorModel = new SearchVendorModel();
+    const counterReportsSession = ProjectUtils.getCounterReports();
+    // this.setValueFromSession(this.searchVendorModel, counterReportsSession);
+
+  }
+
+
+  getSearchModel(name: string) {
+    if (name === this.NAME_SEARCH_VENDOR) {
+      return this.searchVendorModel;
+    } else {
+      return this.searchVendorModel;
+    }
+  }
+
+  // getNonSearchModelParams(): string {
+  //   const obj = {
+  //     month: '01',
+  //     screen: 'LIVE'
+  //   };
+  //   const queryString = ProjectUtils.obj_MakeQueryStringFromObjStartWithAND(obj);
+  //   return queryString;
+  // }
+
+  setSearchModel(name: string) {
+    const searchModel = this.getValueFromSearchModel(name);
+    if (name === this.NAME_SEARCH_VENDOR) {
+      ProjectUtils.setCounterReports(searchModel);
+    } else {
+      ProjectUtils.setCounterReports(searchModel);
+    }
+  }
+
+
+  setColumnDef(name: string): Array<ColDef> {
+    if (name === this.NAME_SEARCH_VENDOR) {
+      return columnDefsVendorReports;
+    }
+  }
+
+  getServiceUrl(name): string {
+    if (name === this.NAME_SEARCH_VENDOR) {
+      debugger
+      return UrlConstants.SEARCH_VENDOR;
+    }
+  }
+
+  doOnSubmit(e) {
+    console.log('doOnSubmit', e);
+    this.OnSubmit(this.NAME_SEARCH_VENDOR);
+
+  }
+
+  getGridApi(name: string): GridAPII {
+    if (name === this.NAME_SEARCH_VENDOR) {
+      return {
+        gridApi: this.gridApi,
+        columnApi: this.columnApi
+      };
+    }
+  }
+
+  doOnGridReadySearchVenderReports(api) {
+    this.gridApi = api.api;
+    this.columnApi = api.columnApi;
+    this.doOnGridReady(this.NAME_SEARCH_VENDOR);
+
+  }
+
+}
+

@@ -1,0 +1,15 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-title-stages',
+  templateUrl: './title-stages.component.html',
+  styleUrls: ['./title-stages.component.css']
+})
+export class TitleStagesComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}

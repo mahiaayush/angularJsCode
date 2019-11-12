@@ -1,0 +1,75 @@
+import { BasicSearchModelI } from '../../../acore/base';
+
+export class UserProfileModel {
+      firstName: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'firstName',
+            apiKey: 'firstName',
+            placeholder: 'firstName',
+            name: 'firstName'
+      };
+
+      lastName: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'lastName',
+            apiKey: 'lastName',
+            placeholder: 'lastName',
+            name: 'lastName'
+      };
+
+      emailID: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'emailID',
+            apiKey: 'emailID',
+            placeholder: 'emailID',
+            name: 'emailID'
+      };
+
+      currentPassword: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'currentPassword',
+            apiKey: 'currentPassword',
+            placeholder: 'currentPassword',
+            name: 'currentPassword'
+      };
+
+      password: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'password',
+            apiKey: 'password',
+            placeholder: 'password',
+            name: 'password'
+      };
+
+      confirm_password: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'confirm_password',
+            apiKey: 'confirm_password',
+            placeholder: 'confirm_password',
+            name: 'confirm_password'
+      };
+
+      SecurityQuestion: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'SecurityQuestion',
+            apiKey: 'question',
+            placeholder: 'SecurityQuestion',
+            name: 'SecurityQuestion'
+      };
+      SecurityAnswer: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'SecurityAnswer',
+            apiKey: 'answer',
+            placeholder: 'SecurityAnswer',
+            name: 'SecurityAnswer'
+      };
+}
+

@@ -1,0 +1,54 @@
+import { Component, OnInit, ViewChildren } from '@angular/core';
+import { DesktopService } from '../desktop.service';
+
+
+@Component({
+  selector: 'app-tab-links',
+  templateUrl: './tab-links.component.html',
+  styleUrls: ['./tab-links.component.css']
+})
+export class TabLinksComponent implements OnInit {
+
+  @ViewChildren('tabNavLinks') tabNavLinks: any;
+  firstNavIndex: number;
+
+  reportType: string;
+  reportName: string;
+  tabLookNav = {};
+
+
+  constructor(
+    private desktopService: DesktopService
+  ) {
+
+    this.sub();
+
+  }
+
+  ngOnInit() {
+  }
+
+  myNavFunc() {
+  }
+
+  setClassActiveToNavLinks(index: number = 0) {
+    setTimeout(() => {
+      this.tabNavLinks._results.forEach(element => {
+        element.nativeElement.classList.remove('active');
+      });
+      if (this.tabNavLinks._results[index]) {
+        this.tabNavLinks._results[index].nativeElement.classList.add('active');
+      }
+
+    }, 50);
+  }
+
+
+  sub() {
+    this.desktopService.tabLinks
+      .subscribe((data) => {
+        console.log(data);
+      })
+  }
+
+}

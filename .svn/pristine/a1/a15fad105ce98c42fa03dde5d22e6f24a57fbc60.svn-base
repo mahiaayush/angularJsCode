@@ -1,0 +1,28 @@
+import { Injectable } from '@angular/core';
+import { BaseService } from '../../acore/base';
+import { HttpService } from '../../acore/services';
+import { Router } from '@angular/router';
+import { Subject } from 'rxjs/Subject';
+@Injectable()
+
+export class DesktopService extends BaseService {
+
+      tabLinks = new Subject();
+      tabLiksToToMenu = new Subject();
+
+      constructor(
+            protected http: HttpService,
+            protected router: Router
+      ) {
+            super(http);
+      }
+
+      sendTabLinks(data) {
+            this.tabLinks.next(data);
+      }
+
+      sendTabLinkToTopMenu(data) {
+            this.tabLiksToToMenu.next(data);
+      }
+
+}

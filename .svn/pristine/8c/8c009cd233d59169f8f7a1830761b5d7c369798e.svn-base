@@ -1,0 +1,436 @@
+import { OnInit, OnDestroy, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
+import { GridApi, ColumnApi, GridOptions, ColDef } from 'ag-grid';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/timer';
+
+import { BaseSearchModel, BasicSearchModelI } from './base.search.model';
+import { BaseService } from './base.service';
+import { SessionObject, ProjectUtils } from '../utility';
+
+export interface GridAPII {
+      gridApi: GridApi;
+      columnApi: ColumnApi;
+}
+
+import { ProjectService } from '../services';
+
+export abstract class BaseComponent implements OnInit, OnDestroy, AfterViewInit {
+      @ViewChild('scrollMe') myScrollContainer: ElementRef;
+
+      @ViewChild('baseLoader') baseLoader: any;
+      showGrid: 'none' | 'block' = 'none';
+
+      get sessionObject(): SessionObject {
+            return ProjectUtils.getSessionObject();
+      }
+      gridOptions: GridOptions = {};
+      gridApi: GridApi;
+      columnApi: ColumnApi;
+      GRIDPAGESIZE = 10;
+      jsonbody: any = {};
+
+      activeLink = [];
+      myNavData: any = {};
+
+      untouchData: any = null;
+
+      ngOnInit() {
+            this.xtBaseOnInit();
+      }
+
+      xtBaseOnInit() {
+      }
+
+      ngAfterViewInit() {
+            this.xtBaseAfterViewInit();
+            this.sendBreadCrumn();
+      }
+      xtBaseAfterViewInit() {
+      }
+
+      constructor(
+            protected baseService: BaseService,
+            protected breadCrumnService?: ProjectService
+      ) {
+            this.xtBaseConstructor();
+            this.initSearchModels();
+      }
+      xtBaseConstructor() {
+      }
+
+
+      initSearchModels() {
+      }
+
+      getSearchModel(name: string) {
+
+      }
+
+      getDateModel() {
+      }
+
+      addDateModelToSearchModel(searchModel: any) {
+            const dateModel: any = this.getDateModel();
+
+            if (typeof dateModel === 'object') {
+                  ProjectUtils.object.asignObjTofirstOne(dateModel.startDate, dateModel.dbStart);
+
+                  if (dateModel.endDate) {
+                        ProjectUtils.object.asignObjTofirstOne(dateModel.endDate, dateModel.dbEnd);
+                  }
+                  const newDateModel = ProjectUtils.assignNewCopy(dateModel);
+                  ProjectUtils.object.deleteKeys(newDateModel, 'dbStart', 'dbEnd');
+                  ProjectUtils.object.asignObjTofirstOne(searchModel, newDateModel);
+
+            }
+
+
+
+      }
+
+
+
+
+      setSearchModel(name: string) {
+      }
+
+
+      ngOnDestroy() {
+            this.xtBaseOnDestroy();
+      }
+      xtBaseOnDestroy() {
+      }
+
+
+      setColumnDef(name: string): ColDef | any {
+            return [];
+      }
+
+      sendBreadCrumn() {
+            if (this.breadCrumnService) {
+                  this.breadCrumnService.sendBreadCurmData({
+                        activeLink: this.activeLink,
+                        navData: this.myNavData
+                  });
+            }
+      }
+
+      doOnGridReady(name: string) {
+            this.xtBaseDoOnGridReady(name);
+            const gridAPIS = this.getGridApi(name);
+            if (gridAPIS.gridApi) {
+                  const gridApi = gridAPIS.gridApi;
+                  gridApi.hideOverlay();
+                  gridApi.setColumnDefs(this.setColumnDef(name));
+                  gridApi.sizeColumnsToFit();
+            }
+      }
+      xtBaseDoOnGridReady(name: string) {
+      }
+
+
+
+      OnSubmit(name: string, bindDataToGrid = true, ...otherGridNames: Array<string>) {
+
+            otherGridNames.forEach((otherName) => {
+                  const gridAPIS = this.getGridApi(name);
+                  if (gridAPIS.gridApi) {
+                        const otherGridApi = gridAPIS.gridApi;
+                        otherGridApi.paginationSetPageSize(this.GRIDPAGESIZE);
+                        otherGridApi.showLoadingOverlay();
+                  }
+            });
+
+            const gridAPIS = this.getGridApi(name);
+            if (gridAPIS.gridApi) {
+                  const gridApi = gridAPIS.gridApi;
+                  gridApi.paginationSetPageSize(this.GRIDPAGESIZE);
+                  gridApi.showLoadingOverlay();
+            }
+
+
+            this.setSearchModel(name);
+            this.loadDataFromApiNSetGrid(name, bindDataToGrid);
+      }
+
+
+      loadDataFromApiNSetGrid(name: string, bindDataToGrid = false) {
+            // const paramsBody = this.getParamsBody(name);
+            // const url = this.getServiceUrl(name);
+            this.showLoader();
+            this.showGrid = 'block';
+            const { url, params } = this.getQueryUrl(name);
+
+            this.baseService.getDataFromAPI(url, params)
+                  .subscribe((data) => {
+
+
+                        this.scrollToElement(name);
+                        data = this.filterDataFromDataKey(data);
+                        this.xtBaseLoadDataFromApiProcessData(name, data);
+                        if (bindDataToGrid) {
+                              this.bindDataToGrid(name, data);
+                        }
+                        this.hideLoader();
+                        //  this.autoSizeColumns(name);
+                  }, (e) => {
+                        this.hideLoader();
+                  });
+      }
+
+      bindDataToGrid(name: string, data: Array<any>) {
+
+            const gridAPIS = this.getGridApi(name);
+            if (gridAPIS.gridApi) {
+                  const gridApi = gridAPIS.gridApi;
+                  gridApi.setRowData(data);
+
+                  gridApi['excelCreator'] = this.untouchData;
+            }
+
+      }
+
+      filterDataFromDataKey(data: any) {
+            let retValue = null;
+            if (data['data']) {
+                  retValue = data['data'];
+            } else {
+                  retValue = data;
+            }
+
+            this.untouchData = retValue;
+            return retValue;
+      }
+
+      loadDataFromApi(name: string): Observable<any> {
+            //  const paramsBody = this.getParamsBody(name);
+            //  const url = this.getServiceUrl(name);
+
+            const { url, params } = this.getQueryUrl(name);
+            this.scrollToElement(name);
+            return this.baseService.getDataFromAPI(url, params);
+
+            // Old One
+            // return this.baseService.getDataFromAPI(url, paramsBody);
+      }
+
+
+
+
+
+
+      autoSizeColumns(name: string) {
+            // var allColumnIds = [];
+            // this.gridColumnApi.getAllColumns().forEach(function(column) {
+            //   allColumnIds.push(column.colId);
+            // });
+            // this.gridColumnApi.autoSizeColumns(allColumnIds);
+            const gridAPIS = this.getGridApi(name);
+            if (gridAPIS.gridApi) {
+
+
+                  const columnApi = gridAPIS.columnApi;
+                  const gridApi = gridAPIS.gridApi;
+                  const allColumnIds = [];
+                  columnApi.getAllColumns()
+                        .forEach(function (column: any) {
+                              allColumnIds.push(column.colId);
+                        });
+
+
+                  if (gridApi.getDisplayedRowCount() !== 0) {
+                        const timer = Observable.timer(50, 100);
+                        const timerSub = timer.subscribe((data) => {
+
+                              if (data === 5) {
+                                    timerSub.unsubscribe();
+                              }
+                              columnApi.autoSizeColumns(allColumnIds);
+                        });
+                  }
+
+            }
+            //    gridApi.sizeColumnsToFit();
+      }
+
+      xtBaseLoadDataFromApiProcessData(name: string, data: any | Array<any>): any | Array<any> {
+            return null;
+      }
+
+      getGridApi(name: string): GridAPII {
+            return {
+                  gridApi: this.gridApi,
+                  columnApi: this.columnApi
+            };
+      }
+
+      getServiceUrl(name: string): string {
+            return null;
+      }
+
+      // getParamsBody(name: string): any {
+      //       return null;
+      // }
+
+
+      getValueFromSearchModel(name: string): any {
+            const searchModel = this.getSearchModel(name) || {};
+            this.addDateModelToSearchModel(searchModel);
+            const retValue = {};
+            const keys = Object.keys(searchModel);
+            keys.forEach((key) => {
+                  retValue[key] = searchModel[key].value;
+            });
+            return retValue;
+      }
+
+      setValueFromSession(searchModel: any, sessionModel: any) {
+            const keys = Object.keys(sessionModel || {});
+            keys.forEach((key) => {
+                  searchModel[key].value = sessionModel[key];
+            });
+      }
+
+      getParamsBody(name: string) {
+            const searchModel = this.getSearchModel(name) || {};
+            this.addDateModelToSearchModel(searchModel);
+            const retValue = {};
+            const keys = Object.keys(searchModel);
+            keys.forEach((key) => {
+                  const val: BasicSearchModelI = searchModel[key];
+                  retValue[val.apiKey] = val.value;
+            });
+            return retValue;
+      }
+
+
+      getQueryParams(name: string) {
+
+            const searchModel = this.getSearchModel(name) || {};
+            this.addDateModelToSearchModel(searchModel);
+            const retValue = {};
+            const keys = Object.keys(searchModel);
+            if (keys.length !== 0) {
+                  keys.forEach((key) => {
+                        const val: BasicSearchModelI = searchModel[key];
+                        retValue[val.apiKey] = val.value;
+                  });
+                  return retValue;
+            } else {
+                  const nonSearchModel = this.getNonSearchModelParams(name);
+                  return nonSearchModel;
+            }
+
+            // const nonSearchModel = this.getNonSearchModelParams(name);
+
+
+            // let retValue = '';
+            // const keys = Object.keys(searchModel);
+            // keys.forEach((key) => {
+
+            //       const val: BasicSearchModelI = searchModel[key];
+            //       if (Array.isArray(val.value)) {
+            //             retValue += '&' + (val.apiKey) + '=' + (val.value).join(',');
+            //       } else {
+            //             retValue += '&' + (val.apiKey) + '=' + (val.value);
+            //       }
+
+            // });
+            // retValue = retValue.substring(1);
+            // const nonSearchModel = this.getNonSearchModelParams(name);
+            // return retValue + nonSearchModel;
+      }
+
+
+
+      getNonSearchModelParams(name?: string): string {
+            return '';
+      }
+
+
+      getQueryUrl(name: string) {
+            const url = this.getServiceUrl(name);
+            const params = this.getQueryParams(name);
+            return {
+                  url: url,
+                  params: params
+            };
+      }
+
+
+      doOnTabChange(name: string) {
+            this.xtBaseDoOnTabChange(name);
+            this.autoSizeColumns(name);
+      }
+
+      xtBaseDoOnTabChange(name: string) {
+      }
+
+
+      hideLoader(...loaders: Array<| any>) {
+            if (this.baseLoader) {
+                  this.baseLoader.show = false;
+            }
+            if (Array.isArray(loaders)) {
+                  loaders.forEach((loader) => {
+                        loader.show = false;
+                  });
+            }
+      }
+
+      showLoader(...loaders: Array<any>) {
+            if (this.baseLoader) {
+                  this.baseLoader.show = true;
+            }
+
+            if (Array.isArray(loaders)) {
+                  loaders.forEach((loader) => {
+                        loader.show = true;
+                  });
+            }
+      }
+
+
+      createDynamicColumns(obj: any, name: any) {
+            const columns: Array<ColDef> = [];
+            const keys = Object.keys(obj);
+
+            const len = keys.length;
+
+            let width = 10;
+            width = 100 / len;
+
+            keys.forEach((key) => {
+                  columns.push({
+                        headerName: key.split('_').join(' '),
+                        field: key,
+                        minWidth: ProjectUtils.ag_SetWidth(width)
+                  });
+            });
+
+            const gridAPIS = this.getGridApi(name);
+            if (gridAPIS.gridApi) {
+                  const gridApi = gridAPIS.gridApi;
+                  gridApi.hideOverlay();
+                  gridApi.setColumnDefs(columns);
+                  gridApi.sizeColumnsToFit();
+            }
+      }
+
+
+      getScrollCordinates(name: string) {
+            return {
+                  x: null,
+                  y: null
+            };
+      }
+
+      scrollToElement(name: string) {
+            const scrollCordinates = this.getScrollCordinates(name);
+            ProjectUtils.html.scrollToCordinates(scrollCordinates.x, scrollCordinates.y);
+      }
+
+
+}
+
+

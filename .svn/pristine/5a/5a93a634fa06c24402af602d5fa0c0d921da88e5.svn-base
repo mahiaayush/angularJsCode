@@ -1,0 +1,141 @@
+import { Component, OnInit } from '@angular/core';
+import { ConstantService, ProjectService } from '../../../acore/services';
+import { UserManagementService } from '../user-management.service';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { columnDefsCreateVendor } from './create-vendor.data';
+import { CreateVendorModel } from './create-vendor.model';
+import { BaseComponent, GridAPII } from '../../../acore/base';
+import { GridApi, ColumnApi, ColDef, GridOptions } from 'ag-grid';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Subject } from 'rxjs/Subject';
+import { UrlConstants, SessionObject, ProjectUtils } from '../../../acore/utility';
+import { DataDropDownOptions, AutoCompleteModel } from '../../../acore/components';
+import { UserProfileComponent } from '../../desktop/user-profile/user-profile.component';
+
+
+
+@Component({
+  selector: 'app-create-vendor',
+  templateUrl: './create-vendor.component.html',
+  styleUrls: ['./create-vendor.component.css']
+})
+export class CreateVendorComponent extends BaseComponent {
+
+  myNavData: any = {};
+  activeLink: any = null;
+  NAME_VIEW_VENDOR = 'VIEW_VENDOR';
+  NAME_COUNRTY_LIST = 'COUNRTY_LIST';
+  NAME_CREATE_VENDOR = 'CREATE_VENDOR';
+  NAME_UPDATE_VENDOR = 'UPDATE_VENDOR';
+  createVendorModel: CreateVendorModel;
+  routeLink: string;
+  UserID: any;
+  countryDropList: Array<any> = [];
+
+  constructor(
+    public constantService: ConstantService,
+    protected projectService: ProjectService,
+    private router: Router,
+    private route: ActivatedRoute,
+    protected userManagementService: UserManagementService
+  ) {
+    super(userManagementService, projectService);
+    this.route.data
+      .subscribe((data) => {
+        this.routeLink = data[0].type;
+        if (data[0].type === 'create_vendor') {
+          this.activeLink = constantService.routerNav.USER_MANAGEMENT.links[0] = constantService.routerNav.createVendor;
+        } else {
+          this.activeLink = constantService.routerNav.USER_MANAGEMENT.links[0] = constantService.routerNav.updateVendor;
+        }
+        this.myNavData = constantService.routerNav.USER_MANAGEMENT;
+
+      });
+  }
+
+  xtBaseOnInit() {
+    this.countryList();
+    this.route.queryParams.subscribe(params => {
+      if (this.routeLink === 'update_vendor') {
+        this.UserID = params.id;
+        this.viewVendorDetails();
+      }
+    });
+  }
+
+  getServiceUrl(name): string {
+    if (name === this.NAME_CREATE_VENDOR) {
+      return UrlConstants.CREATE_VENDOR;
+    } else if (name === this.NAME_UPDATE_VENDOR) {
+      return UrlConstants.UPDATE_VENDOR;
+    } else if (name === this.NAME_VIEW_VENDOR) {
+      return UrlConstants.VIEW_VENDOR;
+    } else if (name === this.NAME_COUNRTY_LIST) {
+      return UrlConstants.COUNTRY_LIST;
+    }
+  }
+
+  initSearchModels() {
+    this.createVendorModel = new CreateVendorModel();
+    const counterReportsSession = ProjectUtils.getCounterReports();
+  }
+
+  countryList() {
+    this.loadDataFromApi(this.NAME_COUNRTY_LIST)
+      .subscribe((data) => {
+        this.countryDropList = data.padCountry;
+      },
+        (err) => {
+        });
+  }
+
+  viewVendorDetails() {
+    this.loadDataFromApi(this.NAME_VIEW_VENDOR)
+      .subscribe(data => {
+        this.createVendorModel.city = data.user.addCity;
+        this.createVendorModel.zipCode = data.user.addPincode;
+        this.createVendorModel.address = data.user.address;
+        this.createVendorModel.state = data.user.addState;
+        this.createVendorModel.country = data.user.countryId;
+        this.createVendorModel.email = data.user.email;
+        this.createVendorModel.vendorName = data.user.firstName;
+        this.createVendorModel.phone = data.user.phoneNo;
+        console.log(data);
+      });
+  }
+
+  UpdateVendorUser() {
+
+  }
+
+  getSearchModel(name: string) {
+    if (name === this.NAME_CREATE_VENDOR || name === this.NAME_UPDATE_VENDOR) {
+      return this.createVendorModel;
+    }
+  }
+
+  setSearchModel(name: string) {
+    const searchModel = this.getValueFromSearchModel(name);
+    if (name === this.NAME_CREATE_VENDOR || name === this.NAME_UPDATE_VENDOR) {
+      ProjectUtils.setCounterReports(searchModel);
+    }
+  }
+
+  getNonSearchModelParams(name: any): any {
+    if (name === this.NAME_VIEW_VENDOR) {
+      const obj = {
+        id: this.UserID
+      };
+      const queryString = JSON.stringify(obj);
+      return queryString;
+    }
+  }
+
+  doOnReset() {
+  }
+
+  xtBaseOnDestroy() {
+    this.constantService.routerNav.USER_MANAGEMENT.links[0] = this.constantService.routerNav.createVendor;
+  }
+
+}

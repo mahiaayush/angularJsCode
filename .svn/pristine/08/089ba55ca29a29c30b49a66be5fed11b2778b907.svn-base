@@ -1,0 +1,245 @@
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { BaseComponent, GridAPII } from '../../../acore/base';
+import { GridApi, ColumnApi, ColDef, GridOptions } from 'ag-grid';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Subject } from 'rxjs/Subject';
+import { PadProjectService } from '../pad-project.service';
+import { UpdateTitleModel } from './update-title.model';
+import { UrlConstants, SessionObject, ProjectUtils } from '../../../acore/utility';
+import { DataDropDownOptions, AutoCompleteModel, TabsComponent } from '../../../acore/components';
+import { columnDefs } from './update-title.data';
+import { ConstantService, ProjectService } from '../../../acore/services';
+
+@Component({
+  selector: 'app-update-title',
+  templateUrl: './update-title.component.html',
+  styleUrls: ['./update-title.component.css']
+})
+export class UpdateTitleComponent extends BaseComponent {
+
+  NAME_UPDATE_TITLE = 'UPDATE_TITLE';
+  NAME_VIEW_TITLE = 'VIEW_TITLE';
+  updateTitleModel: UpdateTitleModel;
+  myNavData: any = {};
+  activeLink: any = null;
+  isShow: boolean;
+  isVisible: boolean;
+  viewUpdateArray: any;
+
+  @ViewChild('contentUploadList') contentUploadTemplate;
+  @ViewChild('updateTitle') updateTitleTemplate;
+  @ViewChild('history') historyTemplate;
+  @ViewChild(TabsComponent) tabsComponent;
+  gridOptionsSearchTitle: GridOptions = {};
+
+  constructor(private padProjectService: PadProjectService,
+    public constantService: ConstantService,
+    protected projectService: ProjectService) {
+    super(padProjectService, projectService);
+    this.myNavData = constantService.routerNav.PAD_PROJECT;
+    this.activeLink = constantService.routerNav.PAD_PROJECT.links[0];
+    this.gridOptionsSearchTitle.onCellClicked = this.agCellClicked;
+    this.getViewTitle();
+
+  }
+
+
+
+
+  agCellClicked = (event) => {
+
+    const headerName: string = event.colDef.headerName;
+    const row = event['data'];
+  }
+
+  openListTab() {
+
+    this.tabsComponent.openTab('Content Upload',
+      this.contentUploadTemplate, {}, true, 'contentUploadTemplate');
+
+    this.tabsComponent.openTab('Update Title',
+      this.updateTitleTemplate, {}, true, 'updateTitleTemplate');
+  }
+
+  initSearchModels() {
+    this.updateTitleModel = new UpdateTitleModel();
+    const counterReportsSession = ProjectUtils.getCounterReports();
+    // this.setValueFromSession(this.updateTitleModel, counterReportsSession);
+
+  }
+
+
+  getSearchModel(name: string) {
+    if (name === this.NAME_UPDATE_TITLE) {
+      return this.updateTitleModel;
+    }
+  }
+
+  getNonSearchModelParams(name: any): string {
+    if (name === this.NAME_VIEW_TITLE) {
+      const obj = {
+        id: '11270',
+      };
+      const queryString = JSON.stringify(obj);
+      return queryString;
+    }
+
+  }
+
+  setSearchModel(name: string) {
+    const searchModel = this.getValueFromSearchModel(name);
+    if (name === this.NAME_UPDATE_TITLE) {
+      ProjectUtils.setCounterReports(searchModel);
+    }
+  }
+
+  getViewTitle() {
+    this.showLoader();
+    this.loadDataFromApi(this.NAME_VIEW_TITLE)
+      .subscribe(titleBean => {
+        this.viewUpdateArray = titleBean.titleBean;
+        // const myVal = this.viewUpdateArray['content'].copyrightYearModified;
+        this.updateTitleModel.accountNumber.value = this.viewUpdateArray.contentVendor.accountNumber;
+        this.updateTitleModel.activationCode.value = this.viewUpdateArray.contentVendor.activationCode;
+        this.updateTitleModel.bindingstyleDescription.value = this.viewUpdateArray.contentVendor.bindingstyleDescription;
+        this.updateTitleModel.bobUrl.value = this.viewUpdateArray.content.bobUrl;
+        this.updateTitleModel.bookType.value = this.viewUpdateArray.contentVendor.bookType;
+        this.updateTitleModel.copyrightYear.value = this.viewUpdateArray.content.copyrightYear;
+        this.updateTitleModel.countryOfOrigin.value = this.viewUpdateArray.content.countryOfOrigin;
+        this.updateTitleModel.coverColors.value = this.viewUpdateArray.contentVendor.coverColors;
+        this.updateTitleModel.coverFinish.value = this.viewUpdateArray.contentVendor.coverFinish;
+        this.updateTitleModel.coverLamination.value = this.viewUpdateArray.contentVendor.coverLamination;
+        this.updateTitleModel.coverMaterial.value = this.viewUpdateArray.contentVendor.coverMaterial;
+        this.updateTitleModel.coverSourceMaterial.value = this.viewUpdateArray.contentVendor.coverSourceMaterial;
+        this.updateTitleModel.coverTypeDesc.value = this.viewUpdateArray.contentVendor.coverTypeDesc;
+        this.updateTitleModel.edition.value = this.viewUpdateArray.content.edition;
+        this.updateTitleModel.gapVendorFlag.value = this.viewUpdateArray.contentVendor.gapVendorFlag;
+        this.updateTitleModel.id.value = this.viewUpdateArray.contentVendor.id;
+        this.updateTitleModel.imprintName.value = this.viewUpdateArray.content.imprintName;
+        this.updateTitleModel.insertTotalPages.value = this.viewUpdateArray.contentVendor.insertTotalPages;
+        this.updateTitleModel.insideColors.value = this.viewUpdateArray.contentVendor.insideColors;
+        this.updateTitleModel.isbn.value = this.viewUpdateArray.content.isbn;
+        this.updateTitleModel.isbn10.value = this.viewUpdateArray.content.isbn10;
+        this.updateTitleModel.jacketColors.value = this.viewUpdateArray.contentVendor.jacketColors;
+        this.updateTitleModel.jacketFinish.value = this.viewUpdateArray.contentVendor.jacketFinish;
+        this.updateTitleModel.jacketLamination.value = this.viewUpdateArray.contentVendor.jacketLamination;
+        this.updateTitleModel.jacketRequired.value = this.viewUpdateArray.contentVendor.jacketRequired;
+        this.updateTitleModel.jacketStock.value = this.viewUpdateArray.contentVendor.jacketStock;
+        this.updateTitleModel.languageText.value = this.viewUpdateArray.content.languageText;
+        this.updateTitleModel.medium.value = this.viewUpdateArray.content.medium;
+        this.updateTitleModel.name.value = this.viewUpdateArray.authors.name;
+        this.updateTitleModel.outsideColors.value = this.viewUpdateArray.contentVendor.outsideColors;
+        this.updateTitleModel.padStatus.value = this.viewUpdateArray.contentVendor.padStatus;
+        this.updateTitleModel.pages.value = this.viewUpdateArray.contentVendor.pages;
+        this.updateTitleModel.paperStock.value = this.viewUpdateArray.contentVendor.paperStock;
+        this.updateTitleModel.ppcDescription.value = this.viewUpdateArray.content.ppcDescription;
+        this.updateTitleModel.productLine.value = this.viewUpdateArray.content.productLine;
+        this.updateTitleModel.productSponsor.value = this.viewUpdateArray.content.productSponsor;
+        this.updateTitleModel.promoCode.value = this.viewUpdateArray.contentVendor.promoCode;
+        this.updateTitleModel.publicationDate.value = this.viewUpdateArray.content.publicationDate;
+        this.updateTitleModel.publisherName.value = this.viewUpdateArray.content.publisherName;
+        this.updateTitleModel.releaseDate.value = this.viewUpdateArray.contentVendor.releaseDate;
+        this.updateTitleModel.subjectCode.value = this.viewUpdateArray.content.subjectCode;
+        this.updateTitleModel.subMedium.value = this.viewUpdateArray.content.subMedium;
+        this.updateTitleModel.textSourceMaterial.value = this.viewUpdateArray.contentVendor.textSourceMaterial;
+        this.updateTitleModel.titleName.value = this.viewUpdateArray.content.titleName;
+        this.updateTitleModel.titleStatus.value = this.viewUpdateArray.content.titleStatus;
+        this.updateTitleModel.trimsizeDescription.value = this.viewUpdateArray.content.trimsizeDescription;
+        this.updateTitleModel.discountGroup.value = this.viewUpdateArray.content.discountGroup;
+        this.updateTitleModel.vendorId.value = this.viewUpdateArray.content.vendorId;
+      });
+  }
+
+  setColumnDef(name: string): Array<ColDef> {
+    if (name === this.NAME_UPDATE_TITLE) {
+      return columnDefs;
+    }
+  }
+
+  getServiceUrl(name): string {
+    if (name === this.NAME_UPDATE_TITLE) {
+      return UrlConstants.UPDATE_TITLE;
+    } else if (name === this.NAME_VIEW_TITLE) {
+      return UrlConstants.VIEW_TITLE;
+    }
+  }
+
+  doOnSubmit(e) {
+    console.log('doOnSubmit', e);
+    this.OnSubmit(this.NAME_UPDATE_TITLE);
+
+  }
+
+  getGridApi(name: string): GridAPII {
+    if (name === this.NAME_UPDATE_TITLE) {
+      return {
+        gridApi: this.gridApi,
+        columnApi: this.columnApi
+      };
+    }
+  }
+
+  doOnGridReadySearchVenderReports(api) {
+    this.gridApi = api.api;
+    this.columnApi = api.columnApi;
+    this.doOnGridReady(this.NAME_UPDATE_TITLE);
+
+  }
+
+  doOnReset() {
+    this.updateTitleModel.accountNumber.value = this.viewUpdateArray.contentVendor.accountNumber;
+    this.updateTitleModel.activationCode.value = this.viewUpdateArray.contentVendor.activationCode;
+    this.updateTitleModel.bindingstyleDescription.value = this.viewUpdateArray.contentVendor.bindingstyleDescription;
+    this.updateTitleModel.bobUrl.value = this.viewUpdateArray.content.bobUrl;
+    this.updateTitleModel.bookType.value = this.viewUpdateArray.contentVendor.bookType;
+    this.updateTitleModel.copyrightYear.value = this.viewUpdateArray.content.copyrightYear;
+    this.updateTitleModel.countryOfOrigin.value = this.viewUpdateArray.content.countryOfOrigin;
+    this.updateTitleModel.coverColors.value = this.viewUpdateArray.contentVendor.coverColors;
+    this.updateTitleModel.coverFinish.value = this.viewUpdateArray.contentVendor.coverFinish;
+    this.updateTitleModel.coverLamination.value = this.viewUpdateArray.contentVendor.coverLamination;
+    this.updateTitleModel.coverMaterial.value = this.viewUpdateArray.contentVendor.coverMaterial;
+    this.updateTitleModel.coverSourceMaterial.value = this.viewUpdateArray.contentVendor.coverSourceMaterial;
+    this.updateTitleModel.coverTypeDesc.value = this.viewUpdateArray.contentVendor.coverTypeDesc;
+    this.updateTitleModel.edition.value = this.viewUpdateArray.content.edition;
+    this.updateTitleModel.gapVendorFlag.value = this.viewUpdateArray.contentVendor.gapVendorFlag;
+    this.updateTitleModel.id.value = this.viewUpdateArray.contentVendor.id;
+    this.updateTitleModel.imprintName.value = this.viewUpdateArray.content.imprintName;
+    this.updateTitleModel.insertTotalPages.value = this.viewUpdateArray.contentVendor.insertTotalPages;
+    this.updateTitleModel.insideColors.value = this.viewUpdateArray.contentVendor.insideColors;
+    this.updateTitleModel.isbn.value = this.viewUpdateArray.content.isbn;
+    this.updateTitleModel.isbn10.value = this.viewUpdateArray.content.isbn10;
+    this.updateTitleModel.jacketColors.value = this.viewUpdateArray.contentVendor.jacketColors;
+    this.updateTitleModel.jacketFinish.value = this.viewUpdateArray.contentVendor.jacketFinish;
+    this.updateTitleModel.jacketLamination.value = this.viewUpdateArray.contentVendor.jacketLamination;
+    this.updateTitleModel.jacketRequired.value = this.viewUpdateArray.contentVendor.jacketRequired;
+    this.updateTitleModel.jacketStock.value = this.viewUpdateArray.contentVendor.jacketStock;
+    this.updateTitleModel.languageText.value = this.viewUpdateArray.content.languageText;
+    this.updateTitleModel.medium.value = this.viewUpdateArray.content.medium;
+    this.updateTitleModel.name.value = this.viewUpdateArray.authors.name;
+    this.updateTitleModel.outsideColors.value = this.viewUpdateArray.contentVendor.outsideColors;
+    this.updateTitleModel.padStatus.value = this.viewUpdateArray.contentVendor.padStatus;
+    this.updateTitleModel.pages.value = this.viewUpdateArray.contentVendor.pages;
+    this.updateTitleModel.paperStock.value = this.viewUpdateArray.contentVendor.paperStock;
+    this.updateTitleModel.ppcDescription.value = this.viewUpdateArray.content.ppcDescription;
+    this.updateTitleModel.productLine.value = this.viewUpdateArray.content.productLine;
+    this.updateTitleModel.productSponsor.value = this.viewUpdateArray.content.productSponsor;
+    this.updateTitleModel.promoCode.value = this.viewUpdateArray.contentVendor.promoCode;
+    this.updateTitleModel.publicationDate.value = this.viewUpdateArray.content.publicationDate;
+    this.updateTitleModel.publisherName.value = this.viewUpdateArray.content.publisherName;
+    this.updateTitleModel.releaseDate.value = this.viewUpdateArray.contentVendor.releaseDate;
+    this.updateTitleModel.subjectCode.value = this.viewUpdateArray.content.subjectCode;
+    this.updateTitleModel.subMedium.value = this.viewUpdateArray.content.subMedium;
+    this.updateTitleModel.textSourceMaterial.value = this.viewUpdateArray.contentVendor.textSourceMaterial;
+    this.updateTitleModel.titleName.value = this.viewUpdateArray.content.titleName;
+    this.updateTitleModel.titleStatus.value = this.viewUpdateArray.content.titleStatus;
+    this.updateTitleModel.trimsizeDescription.value = this.viewUpdateArray.content.trimsizeDescription;
+    this.updateTitleModel.discountGroup.value = this.viewUpdateArray.content.discountGroup;
+    this.updateTitleModel.vendorId.value = this.viewUpdateArray.content.vendorId;
+    this.updateTitleModel.instructions.value = '';
+    this.updateTitleModel.vendorInstructions.value = '';
+    this.updateTitleModel.restrictions.value = '';
+  }
+
+}
+
+

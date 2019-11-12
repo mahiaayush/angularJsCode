@@ -1,0 +1,62 @@
+<div id='scrollTest' #scrollMe>
+
+  <app-tab-links [myNavData]="myNavData" [activeLink]="activeLink">
+  </app-tab-links>
+  <app-loader #baseLoader></app-loader>
+
+
+  <div class="row">
+    <div class="col-md-12 pb-2 ">
+      <div class="bg-white p-3 mh320 border">
+        <div class="row">
+          <div class="col-md-12">
+            <h4 class="subHeading">User Details</h4>
+            <form>
+              <div class="form-group row">
+                <div class="col-md-4">
+                  <label for="inputPassword" class=" col-form-label">First Name
+                    <!-- <sup class="text-danger">*</sup> -->
+                  </label>
+                  <input type="text" class="form-control" [(ngModel)]="searchUserModel.firstName.value" [name]="searchUserModel.firstName.name">
+                </div>
+                <div class="col-md-4">
+                  <label for="inputPassword" class=" col-form-label">Last Name</label>
+                  <input type="text" class="form-control" [(ngModel)]="searchUserModel.lastName.value" [name]="searchUserModel.lastName.name">
+                </div>
+                <div class="col-md-4">
+                  <label for="staticEmail" class="col-form-label">Email/Login</label>
+                  <input type="text" class="form-control" [(ngModel)]="searchUserModel.email.value" [name]="searchUserModel.email.name">
+                </div>
+              </div>
+            </form>
+
+            <p class="text-right mt-5 mb-5">
+              <a href="javascript:;" class="btn btn-primary btn-sm" (click)="doOnSubmit($event)">Search</a>
+              <a href="javascript:;" class="btn btn-dark btn-sm mr-2" (click)="doOnReset()">Reset</a>
+            </p>
+
+            <!-- <div class="tableBox border-top mt-5 pt-3">
+              <p class="mb-2">Export Result As :
+                <a href="#">
+                  <img src="assets/images/csv.svg" style="width:25px;">
+                </a>
+                <a href="#">
+                  <img src="assets/images/excel.svg" style="width:25px;">
+                </a>
+              </p>
+
+            </div> -->
+          </div>
+        </div>
+        <div class="tableBox border-top mt-5 pt-3 ">
+        </div>
+        <div class="row" [style.display]="showGrid">
+          <div class="col-md-12 agGridSize">
+            <app-ag-grid [name]="'searchUser'" [myGridOptions]="gridOptions" (myGridReady)="doOnGridReadySearchUserReports($event)">
+            </app-ag-grid>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

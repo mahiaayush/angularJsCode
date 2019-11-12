@@ -1,0 +1,118 @@
+import { Component, OnInit } from '@angular/core';
+import { GridApi, ColumnApi, ColDef } from 'ag-grid';
+
+
+import { BaseComponent, GridAPII } from '../../../acore/base';
+import { UrlConstants, SessionObject, ProjectUtils } from '../../../acore/utility';
+
+import { DashBoardService } from '../dashboard.service';
+import { PostSearchModel, SecSearchModel } from './dummy.model';
+
+@Component({
+  selector: 'app-dashboard-dummy',
+  templateUrl: './dummy.component.html',
+})
+export class DummyDashboardComponent extends BaseComponent {
+
+  postSearchModel: PostSearchModel;
+  secSearchModel: SecSearchModel;
+
+  GRID1 = 'POST';
+  GRID2 = 'SEC';
+
+  gridApi2: GridApi;
+  columnApi2: ColumnApi;
+
+  constructor(
+    private dashBoardService: DashBoardService
+  ) {
+    super(dashBoardService);
+  }
+
+  initSearchModels() {
+    this.postSearchModel = new PostSearchModel();
+    const postSessionModel = ProjectUtils.getDashBoardPost();
+    this.setValueFromSession(this.postSearchModel, postSessionModel);
+
+    this.secSearchModel = new SecSearchModel();
+    const secSessionModel = ProjectUtils.getDashBoardSec();
+    this.setValueFromSession(this.secSearchModel, secSessionModel);
+  }
+
+  getSearchModel(name: string) {
+    if (name === this.GRID1) {
+      // this.getPostSearchModel();
+      return this.postSearchModel;
+    } else if (name === this.GRID2) {
+      return this.secSearchModel;
+      // this.getSecSearchModel();
+    }
+  }
+
+  setSearchModel(name: string) {
+    const searchModel = this.getValueFromSearchModel(name);
+    if (name === this.GRID1) {
+
+      ProjectUtils.setDashBoardPost(searchModel);
+    } else if (name === this.GRID2) {
+      ProjectUtils.setDashBoardSec(searchModel);
+    }
+  }
+
+  getSecSearchModel() {
+    console.log('getSecSearchModel');
+  }
+
+  setColumnDef(name: string): Array<ColDef> {
+    if (name === this.GRID1) {
+      return this.dashBoardService.makeColumns();
+    } else if (name = this.GRID2) {
+      return this.dashBoardService.makeColumns2();
+    }
+  }
+
+  getServiceUrl(name): string {
+
+    if (name === this.GRID1) {
+      return UrlConstants.THIRD;
+    } if (name === this.GRID2) {
+      return UrlConstants.THIRD;
+    }
+  }
+
+  doOnSubmit() {
+    this.OnSubmit(this.GRID1);
+  }
+
+  doOnSubmit2() {
+    this.OnSubmit(this.GRID2);
+  }
+
+  getGridApi(name: string): GridAPII {
+    if (name === this.GRID1) {
+      return {
+        gridApi: this.gridApi,
+        columnApi: this.columnApi
+      };
+    } else if (name === this.GRID2) {
+      return {
+        gridApi: this.gridApi2,
+        columnApi: this.columnApi2
+      };
+    }
+
+
+  }
+
+  doOnGridReady1(api) {
+    this.gridApi = api.api;
+    this.columnApi = api.columnApi;
+    this.doOnGridReady(this.GRID1);
+  }
+  doOnGridReady2(api: any) {
+    this.gridApi2 = api.api;
+    this.columnApi2 = api.columnApi2;
+    this.doOnGridReady(this.GRID2);
+  }
+
+}

@@ -1,0 +1,20 @@
+import { Injectable } from '@angular/core';
+import { BaseService } from '../../acore/base';
+import { HttpService } from '../../acore/services';
+
+
+
+@Injectable()
+
+export class LoginService extends BaseService {
+
+      constructor(
+            protected http: HttpService
+      ) {
+            super(http);
+      }
+
+      getBasicRequiredQueryString(url): string {
+            return url;
+      }
+}

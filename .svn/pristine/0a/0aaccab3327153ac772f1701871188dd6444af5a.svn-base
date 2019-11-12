@@ -1,0 +1,99 @@
+import { Component, VERSION, Version } from '@angular/core';
+import { Router } from '@angular/router';
+import { AppService } from './app.service';
+
+import { FileUploader } from 'ng2-file-upload';
+
+const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+  providers: [
+    AppService
+  ]
+})
+export class AppComponent {
+
+
+  public uploader: FileUploader = new FileUploader({ url: URL });
+  public hasBaseDropZoneOver: boolean = false;
+  public hasAnotherDropZoneOver: boolean = false;
+
+
+
+
+
+
+
+
+
+
+
+
+
+  filesToUpload: Array<File>;
+
+  constructor(
+    private router: Router,
+    private appService: AppService
+  ) {
+    // console.log(this.router.config);
+  }
+
+
+
+
+
+  public fileOverBase(e: any): void {
+    debugger
+    this.hasBaseDropZoneOver = e;
+  }
+
+  public fileOverAnother(e: any): void {
+    this.hasAnotherDropZoneOver = e;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  fileChangeEvent(fileInput: any) {
+    if (fileInput.target.files.length) {
+      this.filesToUpload = <Array<File>>fileInput.target.files;
+      //  this.product.photo = fileInput.target.files[0]['name'];
+
+    }
+  }
+
+  upload() {
+    debugger
+    const formData: any = new FormData();
+    const files: Array<File> = this.filesToUpload;
+    if (files.length > 0) {
+      formData.append('uploads[]', files[0], files[0]['name']);
+      this.appService.uploadData('url', formData)
+        .subscribe(() => {
+          console.log('a')
+        })
+
+    }
+
+
+  }
+}
+

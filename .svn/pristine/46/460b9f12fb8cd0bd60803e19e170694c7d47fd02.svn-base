@@ -1,0 +1,15 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-metadata-processing-status',
+  templateUrl: './metadata-processing-status.component.html',
+  styleUrls: ['./metadata-processing-status.component.css']
+})
+export class MetadataProcessingStatusComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}

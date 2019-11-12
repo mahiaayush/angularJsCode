@@ -1,0 +1,58 @@
+<app-tab-links [myNavData]="myNavData" [activeLink]="activeLink">
+</app-tab-links>
+<div class="row">
+  <div class="col-md-12 py-2 ">
+    <div class="bg-white border p-3 mh320">
+      <div class="row">
+        <div class="col-md-12">
+          <!--<h4 class="subHeading">Search Title</h4>-->
+          <form>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">ISBN : </label>
+                <input type="text" class="form-control" placeholder="">
+              </div>
+              <div class="col-md-4">
+                <label for="inputPassword" class=" col-form-label">Xml file name: </label>
+                <input type="text" class="form-control" placeholder="">
+              </div>
+              <div class="col-md-4">
+                <label for="inputPassword" class=" col-form-label">Status:</label>
+                <select class="form-control">
+                  <option value="">Select</option>
+                  <option value="Processed">Processed</option>
+                  <option value="Partially Processed">Partially Processed</option>
+                  <option value="Failed">Failed</option>
+                </select>
+
+              </div>
+            </div>
+          </form>
+          <p class="text-right my-4">
+            <a href="javascript:;" class="btn btn-primary btn-sm" (click)="doOnSubmit($event)">Search</a>
+            <a href="javascript:;" class="btn btn-dark btn-sm  mr-2">Reset</a>
+          </p>
+          <div class="tableBox border-top mt-5 pt-3">
+            <div class="d-flex justify-content-between">
+              <p class="mb-2">Export Result As :
+                <a href="#">
+                  <img src="/assets/images/csv.png" style="width:25px;">
+                </a>
+                <a href="#">
+                  <img src="assets/images/xlsx.png" style="width:25px;">
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 agGridSize">
+          <app-ag-grid [name]="'metaProcessingStatus'" [myGridOptions]="gridOptions" (myGridReady)="doOnGridReadyMetaProcessingReports($event)">
+          </app-ag-grid>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

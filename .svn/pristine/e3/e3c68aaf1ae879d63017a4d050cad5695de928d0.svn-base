@@ -1,0 +1,118 @@
+
+
+export interface LinkI {
+      label: string;
+      routerLink: Array<string>;
+      breadCrumb: Array<string>;
+}
+
+export class TopMenuNavigationData {
+
+      PAD_PROJECT = {
+            links: [
+                  {
+                        label: 'Search Title',
+                        routerLink: ['pages', 'pad_project', 'search_title'],
+                        breadCrumb: ['Pad Project', 'Search Title']
+                  },
+                  {
+                        label: 'Metadata Upload',
+                        routerLink: ['pages', 'pad_project', 'meta_data_upload'],
+                        breadCrumb: ['Pad Project', 'Meta Data Upload']
+                  },
+                  {
+                        label: 'Metadata Processing Status',
+                        routerLink: ['pages', 'pad_project', 'meta_data_processing'],
+                        breadCrumb: ['Pad Project', 'Meta Data Processing']
+                  },
+                  {
+                        label: 'Price Update',
+                        routerLink: ['pages', 'pad_project', 'price_update'],
+                        breadCrumb: ['Pad Project', 'Price Update']
+                  }
+            ],
+            label: 'Pad Project'
+      };
+
+      REPORT = {
+            links: [
+                  {
+                        label: 'Title Stages',
+                        routerLink: ['pages', 'reports', 'stages'],
+                        breadCrumb: ['Report', 'Title States']
+                  },
+                  {
+                        label: 'Title Overview',
+                        routerLink: ['pages', 'reports', 'overview'],
+                        breadCrumb: ['Report', 'Title Overview']
+                  },
+                  {
+                        label: 'Title Processing',
+                        routerLink: ['pages', 'reports', 'processing'],
+                        breadCrumb: ['Report', 'Title Processing']
+                  },
+                  {
+                        label: 'Title Deliveries',
+                        routerLink: ['pages', 'reports', 'deliveries'],
+                        breadCrumb: ['Report', 'Title Deliveries']
+                  }
+            ],
+            label: 'Report'
+      };
+
+      createUser = {
+            label: 'Create User',
+            routerLink: ['pages', 'user_management', 'create_user'],
+            breadCrumb: ['User Management', 'Create User']
+      };
+      updateUser = {
+            label: 'Update User',
+            routerLink: ['pages', 'user_management', 'update_user'],
+            breadCrumb: ['User Management', 'Update User']
+      };
+      createVendor = {
+            label: 'Create Vendor',
+            routerLink: ['pages', 'user_management', 'create_vendor'],
+            breadCrumb: ['User Management', 'Create Vendor']
+      };
+      updateVendor = {
+            label: 'Update Vendor',
+            routerLink: ['pages', 'user_management', 'update_vendor'],
+            breadCrumb: ['User Management', 'Update Vendor']
+      };
+
+
+      USER_MANAGEMENT = {
+            links: [
+                  this.createVendor,
+                  {
+                        label: 'Search Vendor',
+                        routerLink: ['pages', 'user_management', 'search_vendor'],
+                        breadCrumb: ['User Management', 'Search Vendor']
+                  },
+                  this.createUser,
+                  {
+                        label: 'Search User',
+                        routerLink: ['pages', 'user_management', 'search_user'],
+                        breadCrumb: ['User Management', 'Search User']
+                  }
+            ],
+            label: 'User Management'
+      };
+
+
+
+
+      dashboard = this.PAD_PROJECT.links[0].routerLink;
+      dashboarHTMLlink = ['pad_project', 'search_title'];
+
+      myAccount = {
+            links: [{
+                  label: 'My Account',
+                  routerLink: ['pages', 'pad_project', 'search_title'],
+                  breadCrumb: ['My Account']
+            }],
+            label: 'User Management'
+      };
+
+}

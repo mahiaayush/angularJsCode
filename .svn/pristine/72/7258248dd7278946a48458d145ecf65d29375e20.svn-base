@@ -1,0 +1,38 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { ColDef, GridOptions } from 'ag-grid';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
+import { Subject } from 'rxjs/Subject';
+import { BaseService } from '../../acore/base';
+import { HttpService } from '../../acore/services';
+import { UtilityService, ProjectUtils } from '././../../acore/utility';
+
+
+@Injectable()
+
+export class PadProjectService extends BaseService {
+      constructor(
+            protected http: HttpService,
+            private us: UtilityService
+      ) {
+            super(http);
+      }
+
+      getDropdownType(ddTriggerISSN?: Subject<any>) {
+            return [
+                  {
+                        'id': '1',
+                        'value': 'Processed'
+                  }, {
+                        'id': '2',
+                        'value': 'Partially Processed'
+                  }, {
+                        'id': '3',
+                        'value': 'Failed'
+                  }
+            ];
+
+      }
+
+}

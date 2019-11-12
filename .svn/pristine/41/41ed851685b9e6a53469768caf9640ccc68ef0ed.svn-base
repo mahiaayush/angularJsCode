@@ -1,0 +1,59 @@
+<!-- <ag-grid-angular style="width: 902px; height: 400px;" class="ag-theme-balham" [animateRows]='true' [pagination]="true" (gridReady)="onGridReady($event)">
+</ag-grid-angular> -->
+
+
+<form ngForm="myForm">
+
+  <div class="row">
+
+    <div class="col">
+      <label for="">{{postSearchModel.a.label}}</label>
+      <input type="text" [(ngModel)]="postSearchModel.a.value" [placeholder]="postSearchModel.a.placeholder" name="a">
+    </div>
+    <div class="col">
+      <label for="">{{postSearchModel.b.label}}</label>
+      <input type="text" [(ngModel)]="postSearchModel.b.value" [placeholder]="postSearchModel.b.placeholder" name="b">
+    </div>
+    <div class="col">
+      <label for="">{{postSearchModel.c.label}}</label>
+      <input type="text" [(ngModel)]="postSearchModel.c.value" [placeholder]="postSearchModel.c.placeholder" name="c">
+    </div>
+
+  </div>
+
+</form>
+
+
+<button (click)="doOnSubmit()"> Submit </button>
+
+<br>
+<br>
+<br>
+
+<app-ag-grid [name]="'VImal'" (myGridReady)="doOnGridReady1($event)">
+
+</app-ag-grid>
+
+
+
+<button (click)="doOnSubmit2()"> Submit </button>
+<form ngForm="myForm">
+
+  <div class="row">
+
+    <div class="col">
+      <input type="text" [(ngModel)]="secSearchModel.a.value" name="a">
+    </div>
+    <div class="col">
+      <input type="text" [(ngModel)]="secSearchModel.b.value" name="b">
+    </div>
+    <div class="col">
+      <input type="text" [(ngModel)]="secSearchModel.c.value" name="c">
+    </div>
+
+  </div>
+
+</form>
+<app-ag-grid [name]="'Bimal'" (myGridReady)="doOnGridReady2($event)">
+
+</app-ag-grid>

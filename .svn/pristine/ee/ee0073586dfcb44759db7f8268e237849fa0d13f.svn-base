@@ -1,0 +1,106 @@
+import { UserDetails } from '../../../pages/login/core-login/user-details.model';
+
+export class SessionObject {
+      /* **************  USER DETAILS  *************** */
+
+
+
+      userDetails: UserDetails | any;
+      userDetailsStatusKey = 'status';
+      userDetailStatusValue = 'SUCCESS';
+
+      liveYear: any;
+      liveMonth: any;
+      /* **************  USER DETAILS  *************** */
+
+      /* **************  DASHBOARD  *************** */
+      dashBoardPost: any;
+      dashBoardSec: any;
+
+
+      dashBoardCharts: any;
+
+      /* **************  DASHBOARD  *************** */
+
+
+
+
+      /* **************  REPORTS  *************** */
+      counterReports: any;
+      customReports: any;
+      sourceReports: any;
+      dynamicReports: any;
+      issnIsbnReports: any;
+      /* **************  REPORTS  *************** */
+
+
+
+      /* **************  ADMINISTRATIVE FEATURES  *************** */
+      counterReportsSession: any;
+      /* **************  ADMINISTRATIVE FEATURES  *************** */
+
+
+
+      /* **************  DATA ANALYSIS TOOL  *************** */
+      zeroUsageJournal: any;
+      /* **************  DATA ANALYSIS TOOL  *************** */
+
+
+
+
+
+
+
+      constructor() {
+
+
+
+
+
+
+            /* **************  USER DETAILS  *************** */
+            this.userDetails = null;
+            this.liveYear = null;
+            this.liveMonth = null;
+            /* **************  USER DETAILS  *************** */
+
+            /* **************  DASHBOARD  *************** */
+            this.dashBoardPost = null;
+            this.dashBoardSec = null;
+            this.dashBoardCharts = null;
+            /* **************  DASHBOARD  *************** */
+
+
+
+
+            /* **************  REPORTS  *************** */
+            this.counterReports = null;
+            this.customReports = null;
+            this.dynamicReports = null;
+            this.sourceReports = null;
+            this.issnIsbnReports = null;
+            /* **************  REPORTS  *************** */
+
+
+
+            /* **************  ADMINISTRATIVE FEATURES  *************** */
+            this.counterReportsSession = null;
+            /* **************  ADMINISTRATIVE FEATURES  *************** */
+
+
+
+            /* **************  DATA ANALYSIS TOOL  *************** */
+            this.zeroUsageJournal = null;
+            /* **************  DATA ANALYSIS TOOL  *************** */
+
+
+
+
+
+
+
+
+
+
+      }
+}

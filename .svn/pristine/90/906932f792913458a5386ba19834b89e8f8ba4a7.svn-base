@@ -1,0 +1,12 @@
+import { Injectable } from '@angular/core';
+import { BaseService } from '../../acore/base';
+import { HttpService } from '../../acore/services';
+@Injectable()
+
+export class DesktopService extends BaseService {
+      constructor(
+            protected http: HttpService
+      ) {
+            super(http);
+      }
+}

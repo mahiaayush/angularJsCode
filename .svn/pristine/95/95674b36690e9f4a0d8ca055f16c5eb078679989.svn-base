@@ -1,0 +1,118 @@
+import { Component, OnInit, Input } from '@angular/core';
+import { GridApi, ColumnApi, ColDef, GridOptions } from 'ag-grid';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Subject } from 'rxjs/Subject';
+import { BaseComponent, GridAPII } from '../../../acore/base';
+import { MetadataProcessiongDetailsModel } from './metadata-processing-details.model';
+import { PadProjectService } from '../pad-project.service';
+import { columnDefs } from './metadata-processing-details.data';
+import { UrlConstants, SessionObject, ProjectUtils } from '../../../acore/utility';
+import { DataDropDownOptions, AutoCompleteModel } from '../../../acore/components';
+import { ConstantService, ProjectService } from '../../../acore/services';
+import { ActivatedRoute } from '@angular/router';
+
+@Component({
+  selector: 'app-metadata-processing-details',
+  templateUrl: './metadata-processing-details.component.html',
+  styleUrls: ['./metadata-processing-details.component.css']
+})
+export class MetadataProcessingDetailsComponent extends BaseComponent {
+
+  NAME_METADATA_PROCESSING_DETAILS = 'METADATA_PROCESSING_DETAILS';
+  metadataProcessiongDetailsModel: MetadataProcessiongDetailsModel;
+  myNavData: any = {};
+  activeLink: any = null;
+  id: any;
+  fileName: any;
+  @Input() rowData: any;
+
+  gridOptions: GridOptions = {};
+
+  constructor(private padProjectService: PadProjectService,
+    public constantService: ConstantService,
+    protected projectService: ProjectService,
+    private route: ActivatedRoute) {
+    super(padProjectService, projectService);
+    this.myNavData = constantService.routerNav.PAD_PROJECT;
+    this.activeLink = constantService.routerNav.PAD_PROJECT.links[2];
+    this.gridOptions.onCellClicked = this.agCellClicked;
+
+  }
+
+  agCellClicked = (event) => {
+    const headerName: string = event.colDef.headerName;
+    const row = event['data'];
+  }
+
+  initSearchModels() {
+    this.metadataProcessiongDetailsModel = new MetadataProcessiongDetailsModel();
+    const counterReportsSession = ProjectUtils.getCounterReports();
+    // this.setValueFromSession(this.metadataProcessiongStatusModel, counterReportsSession);
+
+  }
+
+  getSearchModel(name: string) {
+    if (name === this.NAME_METADATA_PROCESSING_DETAILS) {
+      return this.metadataProcessiongDetailsModel;
+    }
+  }
+
+  getNonSearchModelParams(name: any): string | any {
+
+    if (name === this.NAME_METADATA_PROCESSING_DETAILS) {
+      const obj = {
+        xmlId: this.rowData['xmlId'],
+        xmlFileName: this.rowData.uploadedfilename || ''
+      };
+      return obj;
+    }
+  }
+
+  setSearchModel(name: string) {
+    const searchModel = this.getValueFromSearchModel(name);
+    if (name === this.NAME_METADATA_PROCESSING_DETAILS) {
+      ProjectUtils.setCounterReports(searchModel);
+    }
+  }
+
+
+  setColumnDef(name: string): Array<ColDef> {
+    if (name === this.NAME_METADATA_PROCESSING_DETAILS) {
+      return columnDefs;
+    }
+  }
+
+  getServiceUrl(name): string {
+    if (name === this.NAME_METADATA_PROCESSING_DETAILS) {
+      return UrlConstants.META_PROCESSING_DETAILS;
+    }
+  }
+
+  doOnSubmit(e) {
+    console.log('doOnSubmit', e);
+    this.OnSubmit(this.NAME_METADATA_PROCESSING_DETAILS);
+
+  }
+
+  restrictNumeric(e: any) {
+    return ProjectUtils.html.numericValidation(e);
+  }
+
+  getGridApi(name: string): GridAPII {
+    if (name === this.NAME_METADATA_PROCESSING_DETAILS) {
+      return {
+        gridApi: this.gridApi,
+        columnApi: this.columnApi
+      };
+    }
+  }
+
+  doOnGridReadyMetaProcessingDetails(api) {
+    this.gridApi = api.api;
+    this.columnApi = api.columnApi;
+    this.doOnGridReady(this.NAME_METADATA_PROCESSING_DETAILS);
+
+  }
+
+}
+

@@ -1,0 +1,30 @@
+import { Routes, RouterModule } from '@angular/router';
+import { ModuleWithProviders } from '@angular/core';
+
+
+import { CreateVendorComponent } from './create-vendor/create-vendor.component';
+import { SearchVendorComponent } from './search-vendor/search-vendor.component';
+import { CreateUserComponent } from './create-user/create-user.component';
+import { SearchUserComponent } from './search-user/search-user.component';
+
+export const routes: Routes = [
+      {
+            path: 'create_vendor',
+            component: CreateVendorComponent
+      },
+      {
+            path: 'search_vendor',
+            component: SearchVendorComponent
+      },
+      {
+            path: 'create_user',
+            component: CreateUserComponent
+      },
+      {
+            path: 'search_user',
+            component: SearchUserComponent
+      }
+];
+
+
+export const routing: ModuleWithProviders = RouterModule.forChild(routes);

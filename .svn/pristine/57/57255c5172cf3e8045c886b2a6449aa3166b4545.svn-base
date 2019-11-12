@@ -1,0 +1,18 @@
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { TabsComponent } from '../../../acore/components/ng-tabs';
+
+@Component({
+  selector: 'app-content-upload',
+  templateUrl: './content-upload.component.html',
+  styleUrls: ['./content-upload.component.css']
+})
+export class ContentUploadComponent implements OnInit {
+
+  @ViewChild(TabsComponent) tabsComponent;
+  constructor() { }
+
+  ngOnInit() {
+
+  }
+
+}

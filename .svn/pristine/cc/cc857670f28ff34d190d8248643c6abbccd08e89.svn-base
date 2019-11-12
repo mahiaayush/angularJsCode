@@ -1,0 +1,23 @@
+import { BasicSearchModelI } from '../../../acore/base';
+
+export class LoginModel {
+
+      userName: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'User Name',
+            apiKey: 'user',
+            placeholder: 'User Name',
+            name: 'userName'
+      };
+
+
+      password: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Password',
+            apiKey: 'pwd',
+            placeholder: 'Password',
+            name: 'password'
+      };
+}

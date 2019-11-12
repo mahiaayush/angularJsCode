@@ -1,0 +1,107 @@
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { CustomModalPopUpModel, CustomModalPopUpService } from '../../../acore/components/custom-modal-pop-up';
+import { BaseComponent } from '../../../acore/base';
+import { DesktopService } from '../desktop.service';
+import { UserProfileModel } from './user-profile.model';
+import { UrlConstants, SessionObject, ProjectUtils } from '../../../acore/utility';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+@Component({
+  selector: 'app-user-profile',
+  templateUrl: './user-profile.component.html',
+  styleUrls: ['./user-profile.component.css']
+})
+export class UserProfileComponent extends BaseComponent implements OnChanges {
+
+  @Input() showModelPopup;
+
+  NAME_UPDATE_USER = 'UPDATE_USER';
+  NAME_LOGGEDIN_USER = 'LOGGEDIN_USER';
+  userProfileModel: UserProfileModel;
+  message: any;
+  constructor(private desktopService: DesktopService) {
+    super(desktopService);
+  }
+
+  ngOnChanges() {
+    if (this.showModelPopup !== undefined) {
+      this.message = '';
+      this.userProfileModel.firstName.value = '';
+      this.userProfileModel.lastName.value = '';
+      this.userProfileModel.emailID.value = '';
+      this.userProfileModel.password.value = '';
+      this.userProfileModel.currentPassword.value = '';
+      this.userProfileModel.confirm_password.value = '';
+      this.userProfileModel.SecurityAnswer.value = '';
+      this.userProfileModel.SecurityQuestion.value = '';
+      this.loggedInUserDetail();
+    }
+  }
+
+  initSearchModels() {
+    this.userProfileModel = new UserProfileModel();
+  }
+
+  getSearchModel(name: string) {
+    if (this.NAME_LOGGEDIN_USER === name || this.NAME_LOGGEDIN_USER === name) {
+      return this.userProfileModel;
+    } else {
+      return {};
+    }
+  }
+
+  getServiceUrl(name): string {
+    if (name === this.NAME_LOGGEDIN_USER) {
+      return UrlConstants.LOGGED_IN_USER;
+    } else if (name === this.NAME_UPDATE_USER) {
+      return UrlConstants.UPDATE_PROFILE;
+    }
+  }
+
+  getNonSearchModelParams(name: string): string {
+    if (this.NAME_UPDATE_USER === name) {
+      const obj = {
+        emailID: this.userProfileModel.emailID.value,
+        firstName: this.userProfileModel.firstName.value,
+        lastName: this.userProfileModel.lastName.value,
+        current_password: this.userProfileModel.currentPassword.value,
+        confirm_password: this.userProfileModel.password.value,
+        question: this.userProfileModel.SecurityQuestion.value,
+        answer: this.userProfileModel.SecurityAnswer.value
+      };
+      const queryString = ProjectUtils.obj_MakeQueryStringFromObjStartWithAND(obj);
+      return queryString;
+    }
+  }
+
+  UpdateUser() {
+    this.message = '';
+    this.showLoader();
+    this.loadDataFromApi(this.NAME_UPDATE_USER)
+      .subscribe((data) => {
+        if (data.success) {
+          this.message = data.success;
+        } else if (data.error) {
+          this.message = data.error;
+        }
+        this.hideLoader();
+      },
+        (err) => {
+          this.hideLoader();
+          this.message = 'Something Went Wrong!!!';
+        });
+  }
+
+  loggedInUserDetail() {
+    this.showLoader();
+    this.loadDataFromApi(this.NAME_LOGGEDIN_USER)
+      .subscribe((data) => {
+        this.userProfileModel.firstName.value = data[0].firstName;
+        this.userProfileModel.lastName.value = data[0].lastName;
+        this.userProfileModel.emailID.value = data[0].emailID;
+        this.userProfileModel.SecurityAnswer.value = data[0].answer;
+        this.userProfileModel.SecurityQuestion.value = data[0].question;
+        this.hideLoader();
+      });
+  }
+}

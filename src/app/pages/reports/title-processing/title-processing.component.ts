@@ -1,0 +1,147 @@
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { GridApi, ColumnApi, ColDef, GridOptions } from 'ag-grid';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Subject } from 'rxjs/Subject';
+import { BaseComponent, GridAPII } from '../../../acore/base';
+import { TitleProcessingModel, TitleProcessingDateModel } from './title-processing.model';
+import { ReportsService } from '../reports.service';
+import { columnDefs } from './title-processing.data';
+import { UrlConstants, SessionObject, ProjectUtils } from '../../../acore/utility';
+import { DataDropDownOptions, AutoCompleteModel, TabsComponent } from '../../../acore/components';
+import { ConstantService, ProjectService } from '../../../acore/services';
+import { Router, ActivatedRoute } from '@angular/router';
+
+
+@Component({
+  selector: 'app-title-processing',
+  templateUrl: './title-processing.component.html',
+  styleUrls: ['./title-processing.component.css'],
+  providers: [ReportsService]
+})
+export class TitleProcessingComponent extends BaseComponent {
+
+  NAME_TITLE_PROCESSING = 'TITLE_PROCESSING';
+  titleProcessingModel: TitleProcessingModel;
+  titleProcessingDateModel: TitleProcessingDateModel;
+  gridOptionsTitleReports: GridOptions = {};
+  myNavData: any = {};
+  activeLink: any = null;
+  isShow: boolean;
+  rowData: Array<any>;
+  isVisible: boolean;
+  UserID: any;
+  status: any;
+  @Input() TitleStages = 'titleStages';
+
+  @ViewChild('history') historyTemplate;
+  @ViewChild(TabsComponent) tabsComponent;
+
+  constructor(private reportsService: ReportsService,
+    public constantService: ConstantService,
+    private projectService: ProjectService,
+    private router: Router,
+    private route: ActivatedRoute) {
+    super(reportsService, projectService);
+    this.gridOptions.onCellClicked = this.agCellClicked;
+    this.myNavData = constantService.routerNav.REPORT;
+    this.activeLink = constantService.routerNav.REPORT.links[2];
+    this.isShow = false;
+    this.isVisible = true;
+    this.status = this.route.params['value'].status;
+    console.log(status);
+  }
+
+  agCellClicked = (event) => {
+    const headerName: string = event.colDef.headerName;
+    if (headerName === 'History') {
+      this.rowData = [event['data']];
+      this.openListTab();
+    }
+  }
+
+  openListTab() {
+    this.tabsComponent.openTab('History',
+      this.historyTemplate, {}, true, 'historyTemplate');
+  }
+
+  xtBaseOnInit() {
+
+  }
+
+  initSearchModels() {
+    this.titleProcessingModel = new TitleProcessingModel();
+    const titleProcessingSession = ProjectUtils.getTitleProcessing();
+    this.titleProcessingDateModel = new TitleProcessingDateModel();
+    // this.setValueFromSession(this.titleProcessingModel, titleProcessingSession);
+  }
+
+
+  getSearchModel(name: string) {
+    if (name === this.NAME_TITLE_PROCESSING) {
+      return this.titleProcessingModel;
+    }
+  }
+
+  getDateModel() {
+    return this.titleProcessingDateModel;
+  }
+
+  setSearchModel(name: string) {
+    const searchModel = this.getValueFromSearchModel(name);
+    if (name === this.NAME_TITLE_PROCESSING) {
+      ProjectUtils.setTitleProcessing(searchModel);
+    }
+  }
+
+  setColumnDef(name: string): Array<ColDef> {
+    if (name === this.NAME_TITLE_PROCESSING) {
+      return columnDefs;
+    }
+  }
+
+  restrictNumeric(e: any) {
+    return ProjectUtils.html.numericValidation(e);
+
+  }
+
+  onPaste(event) {
+    ProjectUtils.html.numericValidationOnPaste(event);
+  }
+
+  getServiceUrl(name): string {
+    if (name === this.NAME_TITLE_PROCESSING) {
+      return UrlConstants.TITLE_PROCESSING;
+    }
+  }
+
+  doOnSubmit(e) {
+    console.log('doOnSubmit', e);
+    this.OnSubmit(this.NAME_TITLE_PROCESSING);
+    this.isShow = true;
+    this.isVisible = false;
+
+  }
+
+  getGridApi(name: string): GridAPII {
+    if (name === this.NAME_TITLE_PROCESSING) {
+      return {
+        gridApi: this.gridApi,
+        columnApi: this.columnApi
+      };
+    }
+  }
+
+  doOnGridReadyTitleProcessingReports(api) {
+    this.gridApi = api.api;
+    this.columnApi = api.columnApi;
+    this.doOnGridReady(this.NAME_TITLE_PROCESSING);
+    if (this.status === '1') {
+      this.isShow = true;
+      this.isVisible = false;
+      this.OnSubmit(this.NAME_TITLE_PROCESSING);
+    }
+
+  }
+
+
+}

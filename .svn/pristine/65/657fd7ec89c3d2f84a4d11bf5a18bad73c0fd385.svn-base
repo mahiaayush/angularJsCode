@@ -1,0 +1,81 @@
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UrlConstants, SessionObject, ProjectUtils } from '../../../acore/utility';
+import { ContactModel } from './contact.model';
+import { BaseComponent, GridAPII } from '../../../acore/base';
+import { DashBoardService } from '../dashboard.service';
+
+@Component({
+  selector: 'app-contact',
+  templateUrl: './contact.component.html',
+  styleUrls: ['./contact.component.css']
+})
+export class ContactComponent extends BaseComponent {
+  contactModel: ContactModel;
+  form: FormGroup;
+  NAME_CONTACT_QUERY_LIST = 'CONTACT_QUERY_LIST';
+  NAME_SEND_QUERY_MAIL = 'SEND_QUERY_MAIL';
+  queryList: Array<any>;
+  UserEmail: any;
+  constructor(private dashBoardService: DashBoardService,
+    private formBuilder: FormBuilder) {
+    super(dashBoardService);
+    const UserEmailAddress = ProjectUtils.getSessionObject();
+    this.UserEmail = UserEmailAddress.userDetails.emailID;
+    this.ContactQueryList();
+  }
+
+  initSearchModels() {
+    this.contactModel = new ContactModel();
+  }
+  getServiceUrl(name): string {
+    if (name === this.NAME_CONTACT_QUERY_LIST) {
+      return UrlConstants.CONTACT_QUERY_LIST;
+    } else if (name === this.NAME_SEND_QUERY_MAIL) {
+      return UrlConstants.SEND_QUERY_MAIL;
+    }
+  }
+
+  getNonSearchModelParams(name: string): string {
+    if (this.NAME_CONTACT_QUERY_LIST === name) {
+      const obj = {
+        email_category: 'LIBRARY_CONTACT',
+      };
+      const queryString = ProjectUtils.obj_MakeQueryStringFromObjStartWithAND(obj);
+      return queryString;
+    } else if (this.NAME_SEND_QUERY_MAIL === name) {
+      const obj = {
+        subject: this.contactModel.subject.value,
+        query_type: this.contactModel.Query.value,
+        message_body: this.contactModel.message.value
+        // email: this.UserEmail,
+        // mailCopy: this.contactModel.mailCopy.value
+      };
+      const queryString = ProjectUtils.obj_MakeQueryStringFromObjStartWithAND(obj);
+      return queryString;
+    }
+  }
+
+  ContactQueryList() {
+    this.showLoader();
+    this.loadDataFromApi(this.NAME_CONTACT_QUERY_LIST)
+      .subscribe((data) => {
+        this.queryList = data;
+        this.hideLoader();
+      },
+        (err) => {
+          this.hideLoader();
+        });
+  }
+
+  sendQueryMail() {
+    this.showLoader();
+    this.loadDataFromApi(this.NAME_SEND_QUERY_MAIL)
+      .subscribe((data) => {
+        this.hideLoader();
+      },
+        (err) => {
+          this.hideLoader();
+        });
+  }
+}

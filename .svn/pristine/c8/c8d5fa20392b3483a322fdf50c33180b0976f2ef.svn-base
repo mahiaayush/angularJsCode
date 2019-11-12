@@ -1,0 +1,109 @@
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { BaseComponent, GridAPII } from '../../../acore/base';
+import { UserManagementService } from '../user-management.service';
+import { GridApi, ColumnApi, ColDef, GridOptions } from 'ag-grid';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Subject } from 'rxjs/Subject';
+import { CreateUserModel } from './create-user.model';
+import { columnDefsCreateUser } from './create-user.data';
+import { UrlConstants, SessionObject, ProjectUtils } from '../../../acore/utility';
+import { DataDropDownOptions, AutoCompleteModel } from '../../../acore/components';
+import { ConstantService, ProjectService } from '../../../acore/services';
+import { Router, ActivatedRoute } from '@angular/router';
+
+
+@Component({
+  selector: 'app-create-user',
+  templateUrl: './create-user.component.html',
+  styleUrls: ['./create-user.component.css']
+})
+export class CreateUserComponent extends BaseComponent implements OnInit {
+  myNavData: any = {};
+  activeLink: any = null;
+  NAME_CREATE_USER = 'CREATE_USER';
+  createUserModel: CreateUserModel;
+  Id: any;
+
+  constructor(
+    public constantService: ConstantService,
+    protected userManagementService: UserManagementService,
+    protected projectService: ProjectService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    super(userManagementService, projectService);
+
+    this.route.data
+      .subscribe((data) => {
+        console.log('ActivatedRoute', data);
+
+        if (data[0].type === 'create_user') {
+          this.activeLink = constantService.routerNav.USER_MANAGEMENT.links[2] = constantService.routerNav.createUser;
+        } else {
+          this.activeLink = constantService.routerNav.USER_MANAGEMENT.links[2] = constantService.routerNav.updateUser;
+        }
+        this.myNavData = constantService.routerNav.USER_MANAGEMENT;
+
+      });
+
+
+  }
+
+
+
+  xtBaseOnInit() {
+    debugger
+    this.route.queryParams.subscribe(params => {
+      console.log(params);
+    });
+  }
+
+
+  initSearchModels() {
+    this.createUserModel = new CreateUserModel();
+    const counterReportsSession = ProjectUtils.getCounterReports();
+  }
+
+  getSearchModel(name: string) {
+    if (name === this.NAME_CREATE_USER) {
+      return this.createUserModel;
+    } else {
+      return this.createUserModel;
+    }
+  }
+
+  setSearchModel(name: string) {
+    const searchModel = this.getValueFromSearchModel(name);
+    if (name === this.NAME_CREATE_USER) {
+      ProjectUtils.setCounterReports(searchModel);
+    } else {
+      ProjectUtils.setCounterReports(searchModel);
+    }
+  }
+
+  doOnReset() {
+  }
+
+
+  getServiceUrl(name): string {
+    if (name === this.NAME_CREATE_USER) {
+      return UrlConstants.CREATE_USER;
+    }
+  }
+
+  doOnSubmit(e) {
+    this.OnSubmit(this.NAME_CREATE_USER);
+  }
+
+  createNewUser() {
+    this.loadDataFromApi(this.NAME_CREATE_USER)
+      .subscribe((data) => {
+
+      });
+  }
+
+
+  xtBaseOnDestroy() {
+    this.constantService.routerNav.USER_MANAGEMENT.links[2] = this.constantService.routerNav.createUser;
+  }
+}

@@ -1,0 +1,45 @@
+<div class="container ">
+  <div class="row">
+    <div class="col-md-12 py-2 ">
+      <div class="bg-white border p-3 mh320">
+        <div class="row">
+          <div class="col-md-12">
+            <!--   <h4 class="subHeading">Metadata Upload</h4>-->
+            <p class="small   mt-2 mb-3 ">
+              <strong>File size upto 40 MB (XML Only)</strong>
+            </p>
+            <div class="checkboxBlock">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                <label class="form-check-label" for="inlineRadio1">POD</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                <label class="form-check-label" for="inlineRadio1">Optimal Inventory</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                <label class="form-check-label" for="inlineRadio1">XBITS</label>
+              </div>
+            </div>
+            <label for="staticEmail" class="col-form-label mt-2">File </label>
+            <div class="input-group  mb-3">
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="inputGroupFile02">
+                <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+              </div>
+            </div>
+            <p class="text-right my-4">
+              <a href="javascript:;" class="btn btn-primary " id="btnLogin">Upload</a>
+            </p>
+            <p class="small  my-3">
+              <em>
+                <strong>Note</strong> : Please upload file via FTP if file size more than
+                <strong> 40 MB</strong>.</em>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

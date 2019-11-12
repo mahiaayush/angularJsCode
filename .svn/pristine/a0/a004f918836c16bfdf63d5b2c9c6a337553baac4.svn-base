@@ -1,0 +1,41 @@
+import { Component, OnInit } from '@angular/core';
+import { ConstantService, ProjectService } from '../../../acore/services';
+import { BaseComponent } from '../../../acore/base';
+import { PadProjectService } from '../pad-project.service';
+import { UrlConstants, SessionObject, ProjectUtils } from '../../../acore/utility';
+
+@Component({
+  selector: 'app-price-update',
+  templateUrl: './price-update.component.html',
+  styleUrls: ['./price-update.component.css']
+})
+export class PriceUpdateComponent extends BaseComponent {
+  myNavData: any = {};
+  activeLink: any = null;
+
+  constructor(private padProjectService: PadProjectService,
+    public constantService: ConstantService,
+    protected projectService: ProjectService) {
+    super(padProjectService, projectService);
+    this.myNavData = constantService.routerNav.PAD_PROJECT;
+    this.activeLink = constantService.routerNav.PAD_PROJECT.links[3];
+  }
+
+  // ngOnInit() {
+  // }
+  // getDownloadQueryURL(): string {
+  //   const obj = {
+  //     user_id: '1864470', // this.sessionObject.userDetails.userID,
+  //   };
+
+  //   const retValue = ProjectUtils.obj_MakeQueryStringFromObj(obj);
+  //   return UrlConstants.DOWNLOAD_PRICE_UPDATE + retValue;
+
+  // }
+
+
+  getTemplate() {
+    ProjectUtils.downloadGET(UrlConstants.DOWNLOAD_PRICE_UPDATE);
+  }
+
+}

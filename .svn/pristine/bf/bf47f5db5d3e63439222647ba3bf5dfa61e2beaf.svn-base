@@ -1,0 +1,50 @@
+import { ColDef } from 'ag-grid';
+import { ProjectUtils } from '../../../acore/utility';
+
+export const columnDefs: Array<ColDef> = [
+      {
+            headerName: 'Vendor',
+            field: 'isbn',
+            minWidth: ProjectUtils.ag_SetWidth(25)
+      },
+      {
+            headerName: 'Vendor Is',
+            field: 'title',
+            minWidth: ProjectUtils.ag_SetWidth(25)
+      },
+      {
+            headerName: 'Release Date',
+            field: 'authorname',
+            minWidth: ProjectUtils.ag_SetWidth(25)
+      },
+      {
+            headerName: 'Text Source',
+            field: 'ps',
+            minWidth: ProjectUtils.ag_SetWidth(25)
+      },
+      {
+            headerName: 'Cover Source',
+            field: 'pl',
+            minWidth: ProjectUtils.ag_SetWidth(25)
+      },
+      {
+            headerName: 'Ultrashort Flag',
+            field: 'ppc',
+            minWidth: ProjectUtils.ag_SetWidth(25)
+      },
+      {
+            headerName: 'Activation Code',
+            field: 'vendorcode',
+            minWidth: ProjectUtils.ag_SetWidth(25)
+      },
+      {
+            headerName: 'Vendor Status',
+            field: 'vendoris',
+            minWidth: ProjectUtils.ag_SetWidth(25)
+      },
+      {
+            headerName: 'History',
+            field: 'metadata',
+            minWidth: ProjectUtils.ag_SetWidth(25)
+      }
+];

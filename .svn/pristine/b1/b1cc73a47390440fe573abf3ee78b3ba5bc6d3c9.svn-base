@@ -1,0 +1,196 @@
+import { Component, OnInit, Output, EventEmitter, Input, OnChanges } from '@angular/core';
+import { GridOptions, GridApi, ColumnApi, ColDef, RowNode } from 'ag-grid';
+
+import { Subject } from 'rxjs/Subject';
+import { Observable } from 'rxjs/Observable';
+import { ProjectUtils } from '../../utility';
+import { AGServerRequest } from './server-requests/server-requests';
+
+
+@Component({
+  selector: 'app-ag-grid',
+  templateUrl: './ag-grid.component.html',
+  styleUrls: ['./ag-grid.component.css']
+})
+export class AgGridComponent implements OnInit, OnChanges {
+
+  agServerReq = new AGServerRequest();
+
+  @Input() context: any;
+  @Input() frameworkComponents: any;
+  @Input() getRowHeight: any;
+  @Input() paging = true;
+  @Input() export = true;
+  @Input() name;
+  @Input() myGridOptions: GridOptions = {};
+  @Input() rowSelection: any;
+  @Input() fileName: string;
+  @Output() myGridReady: EventEmitter<any> = new EventEmitter();
+  @Input() newSetup: Subject<any> = new Subject();
+
+  overlayLoadingTemplate: any;
+  overlayNoRowsTemplate: any;
+
+  totalEntries: number = null;
+  pageSize: number = null;
+  gridApi: GridApi | any;
+  columnApi: ColumnApi;
+  totalPages: number = null;
+  pagesArray: Array<number> = [];
+  lastSelectedPageEle: any = null;
+  lastSelectedPage = 0;
+  gridOptions: GridOptions;
+  columnDefs: any[];
+  rowData: any[];
+  constructor() {
+    this.gridOptions = <GridOptions>{};
+
+    this.overlayLoadingTemplate =
+      '<span class="ag-overlay-loading-center">Please wait while your rows are loading</span>';
+    this.overlayNoRowsTemplate =
+      '<span class="ag-overlay-loading-center">No data to show</span>';
+    // `<span style=\"padding: 10px; border: 2px solid #444; background: lightgoldenrodyellow;\">No data to show</span>`;
+
+  }
+
+  ngOnChanges() {
+    this.gridOptions = this.myGridOptions;
+  }
+
+  ngOnInit() {
+    this.rowSelection = (this.rowSelection !== undefined) ? this.rowSelection : 'multiple';
+    console.log('rowSelection', this.rowSelection);
+  }
+
+  onPageSizeChanged(newPageSize) {
+    this.pageSize = Number(newPageSize);
+    this.myGridOptions.api.paginationSetPageSize(Number(newPageSize));
+    this.newSetup.next(this.gridApi.paginationGetTotalPages());
+
+    this.agServerReq.setPaginationModel(this.pageSize, null);
+
+
+  }
+
+  onGridReady(api) {
+    this.gridApi = api.api;
+    this.columnApi = api.columnApi;
+    this.myGridReady.emit(api);
+    this.onRowDataChanged(null);
+  }
+
+  onSortChanged(event) {
+    this.agServerReq.setSortKey(this.gridApi);
+  }
+
+  onRowDataChanged(event) {
+    // this.totalPages = 0;
+    // this.totalPages = this.gridApi.paginationGetTotalPages();
+    if (this.gridApi) {
+      this.pageSize = this.gridApi.paginationGetPageSize() || this.gridOptions.paginationPageSize;
+      this.totalEntries = this.gridApi.totalRowCount || (this.gridOptions.rowData && this.gridOptions.rowData.length) || 0;
+      this.newSetup.next(this.gridApi.paginationGetTotalPages());
+      // this.generatePages();
+      console.log('onRowDataChanged', this.totalPages);
+      const allColumnIds = [];
+      this.columnApi.getAllColumns()
+        .forEach(function (column: any) {
+          allColumnIds.push(column.colId);
+        });
+      this.columnApi.autoSizeColumns(allColumnIds);
+    }
+  }
+
+  onRowDataUpdated(event) {
+    console.log('onRowDataUpdated');
+  }
+
+  onQuickFilterChanged($event) {
+    this.gridApi.setQuickFilter($event.target.value);
+    this.agServerReq.setFilterKey($event.target.value);
+    this.newSetup.next(this.gridApi.paginationGetTotalPages());
+  }
+
+  onBtExport() {
+    const params: any = {
+      skipHeader: false,
+      skipFooters: true,
+      skipGroups: true,
+      fileName: this.fileName || 'export.csv'
+    };
+    this.gridApi.exportDataAsCsv(params);
+  }
+
+  onBtExportExcel() {
+
+    const allColumns = this.columnApi.getAllColumns();
+    let keys: any = [];
+    const heads = [];
+    allColumns.forEach((col: any) => {
+      if (!col.colDef.cellRenderer) {
+        keys.push(col.colDef.field);
+        heads.push(col.colDef.headerName);
+      }
+    });
+
+    const temp = this.gridApi['excelCreator'];
+    const inputData = [];
+    this.gridApi.forEachNodeAfterFilterAndSort((rowNode: RowNode) => {
+      inputData.push(ProjectUtils.arrayUtil.objToValuesArrayOnly(rowNode.data, keys));
+    });
+
+
+
+    if (inputData) {
+      ProjectUtils.xlsx.generateExcelFromAgFilter([heads].concat(inputData), this.fileName || 'Sheet');
+    }
+
+    // ProjectUtils.xlsx.generateExcel(this.gridApi['excelCreator'], 'Sheeeet')
+  }
+
+
+
+
+
+
+  onBtFirst() {
+    this.gridApi.paginationGoToFirstPage();
+  }
+
+  onBtLast() {
+    this.gridApi.paginationGoToLastPage();
+  }
+
+  onBtNext() {
+    this.gridApi.paginationGoToNextPage();
+  }
+
+  onBtPrevious() {
+    this.gridApi.paginationGoToPreviousPage();
+  }
+
+  onNthPage(num: number) {
+    this.gridApi.paginationGoToPage(num);
+  }
+
+  onPageChanged(val: string | number) {
+    this.agServerReq.setPaginationModel(null, <number>val - 1);
+    switch (val) {
+      case 'first': this.gridApi.paginationGoToFirstPage();
+        break;
+      case 'last': this.gridApi.paginationGoToLastPage();
+        break;
+      case 'next': this.gridApi.paginationGoToNextPage();
+        break;
+      case 'prev': this.gridApi.paginationGoToPreviousPage();
+        break;
+      default: this.gridApi.paginationGoToPage(<number>val - 1);
+        break;
+    }
+  }
+
+  onFilterChanged(api) {
+    this.newSetup.next(this.gridApi.paginationGetTotalPages());
+  }
+
+}

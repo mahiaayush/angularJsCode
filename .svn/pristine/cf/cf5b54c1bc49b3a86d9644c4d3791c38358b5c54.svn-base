@@ -1,0 +1,215 @@
+<div class="container-fluid bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              Home
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Search Vendor </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="container-fluid">
+  <div class="container ">
+    <div class="row">
+      <div class="col-md-12 py-2 ">
+        <!-- <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link " href="create-vendor.html">Create Vendor</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="search-vendor.html">Search Vendor</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="create-user.html">Create User</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="search-user.html">Search User</a>
+          </li>
+        </ul> -->
+        <div class="bg-white p-3">
+
+          <div class="row">
+            <div class="col-md-12">
+
+              <form>
+                <div class="form-group row">
+                  <div class="col-md-4">
+                    <label for="staticEmail" class="col-form-label">Vendor Name
+                      <sup class="text-danger">*</sup>
+                    </label>
+
+                    <input type="text" class="form-control" id="inputPassword" placeholder="">
+
+                  </div>
+                  <div class="col-md-4">
+                    <label for="inputPassword" class=" col-form-label">Vendor Code
+                      <sup class="text-danger">*</sup>
+                    </label>
+
+                    <input type="text" class="form-control" id="inputPassword" placeholder="">
+
+                  </div>
+
+                </div>
+              </form>
+              <p class="text-right mt-5 ">
+                <a href="javascript:;" class="btn btn-primary btn-sm" id="btnLogin">Search</a>
+                <a href="javascript:;" class="btn btn-secondary btn-sm mr-2" id="btnLogin">Reset</a>
+              </p>
+
+
+
+              <!-- <table id="list47" tabindex="1" class="spacing-table" cellspacing="0" cellpadding="0" border="0">
+                  <thead>
+                    <tr>
+                      <th>
+                        <span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span>
+                        <div id="jqgh_list47_vendorCode" class="ui-jqgrid-sortable">Vendor Code
+                          <span class="s-ico" style="">
+                            <span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span>
+                            <span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span>
+                          </span>
+                        </div>
+                      </th>
+                      <th>
+                        <span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span>
+                        <div id="jqgh_list47_vendorName" class="ui-jqgrid-sortable">Vendor Name
+                          <span class="s-ico" style="display:none">
+                            <span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span>
+                            <span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span>
+                          </span>
+                        </div>
+                      </th>
+                      <th>
+                        <span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span>
+                        <div id="jqgh_list47_vendorProfileType" class="ui-jqgrid-sortable">Vendor Workflow Type
+                          <span class="s-ico" style="display:none">
+                            <span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span>
+                            <span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span>
+                          </span>
+                        </div>
+                      </th>
+                      <th>
+                        <span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span>
+                        <div id="jqgh_list47_state" class="ui-jqgrid-sortable">State
+                          <span class="s-ico" style="display:none">
+                            <span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span>
+                            <span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span>
+                          </span>
+                        </div>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr id="1" tabindex="-1" role="row" class="ui-widget-content jqgrow ui-row-ltr">
+                      <td role="gridcell" style="" title="AMAZON" aria-describedby="list47_vendorCode">
+                        <a href="javascript:viewVendor(1);">AMAZON</a>
+                      </td>
+                      <td role="gridcell" style="" title="Amazon" aria-describedby="list47_vendorName">Amazon</td>
+                      <td role="gridcell" style="" title="POD" aria-describedby="list47_vendorProfileType">POD</td>
+                      <td role="gridcell" style="" title="Activated" aria-describedby="list47_state">Activated</td>
+                    </tr>
+                    <tr id="2" tabindex="-1" role="row" class="ui-widget-content jqgrow ui-row-ltr">
+                      <td role="gridcell" style="" title="LSI" aria-describedby="list47_vendorCode">
+                        <a href="javascript:viewVendor(2);">LSI</a>
+                      </td>
+                      <td role="gridcell" style="" title="Lightning Source" aria-describedby="list47_vendorName">Lightning Source</td>
+                      <td role="gridcell" style="" title="POD" aria-describedby="list47_vendorProfileType">POD</td>
+                      <td role="gridcell" style="" title="Activated" aria-describedby="list47_state">Activated</td>
+                    </tr>
+                    <tr id="3" tabindex="-1" role="row" class="ui-widget-content jqgrow ui-row-ltr">
+                      <td role="gridcell" style="" title="INGRAM" aria-describedby="list47_vendorCode">
+                        <a href="javascript:viewVendor(3);">INGRAM</a>
+                      </td>
+                      <td role="gridcell" style="" title="INGRAM" aria-describedby="list47_vendorName">INGRAM</td>
+                      <td role="gridcell" style="" title="POD" aria-describedby="list47_vendorProfileType">POD</td>
+                      <td role="gridcell" style="" title="Inactive" aria-describedby="list47_state">Inactive</td>
+                    </tr>
+                    <tr id="4" tabindex="-1" role="row" class="ui-widget-content jqgrow ui-row-ltr">
+                      <td role="gridcell" style="" title="B&amp;T" aria-describedby="list47_vendorCode">
+                        <a href="javascript:viewVendor(4);">B&amp;T</a>
+                      </td>
+                      <td role="gridcell" style="" title="B&amp;T" aria-describedby="list47_vendorName">B&amp;T</td>
+                      <td role="gridcell" style="" title="POD" aria-describedby="list47_vendorProfileType">POD</td>
+                      <td role="gridcell" style="" title="Activated" aria-describedby="list47_state">Activated</td>
+                    </tr>
+                    <tr id="5" tabindex="-1" role="row" class="ui-widget-content jqgrow ui-row-ltr">
+                      <td role="gridcell" style="" title="BNB" aria-describedby="list47_vendorCode">
+                        <a href="javascript:viewVendor(5);">BNB</a>
+                      </td>
+                      <td role="gridcell" style="" title="BNB" aria-describedby="list47_vendorName">BNB</td>
+                      <td role="gridcell" style="" title="POD" aria-describedby="list47_vendorProfileType">POD</td>
+                      <td role="gridcell" style="" title="Activated" aria-describedby="list47_state">Activated</td>
+                    </tr>
+                    <tr id="6" tabindex="-1" role="row" class="ui-widget-content jqgrow ui-row-ltr">
+                      <td role="gridcell" style="" title="df2sads" aria-describedby="list47_vendorCode">
+                        <a href="javascript:viewVendor(6);">df2sads</a>
+                      </td>
+                      <td role="gridcell" style="" title="LIGARE" aria-describedby="list47_vendorName">LIGARE</td>
+                      <td role="gridcell" style="" title="POD" aria-describedby="list47_vendorProfileType">POD</td>
+                      <td role="gridcell" style="" title="Inactive" aria-describedby="list47_state">Inactive</td>
+                    </tr>
+                    <tr id="7" tabindex="-1" role="row" class="ui-widget-content jqgrow ui-row-ltr">
+                      <td role="gridcell" style="" title="BOOKSURGE" aria-describedby="list47_vendorCode">
+                        <a href="javascript:viewVendor(7);">BOOKSURGE</a>
+                      </td>
+                      <td role="gridcell" style="" title="BOOKSURGE" aria-describedby="list47_vendorName">BOOKSURGE</td>
+                      <td role="gridcell" style="" title="POD" aria-describedby="list47_vendorProfileType">POD</td>
+                      <td role="gridcell" style="" title="Inactive" aria-describedby="list47_state">Inactive</td>
+                    </tr>
+                    <tr id="8" tabindex="-1" role="row" class="ui-widget-content jqgrow ui-row-ltr">
+                      <td role="gridcell" style="" title="BNB" aria-describedby="list47_vendorCode">
+                        <a href="javascript:viewVendor(8);">BNB</a>
+                      </td>
+                      <td role="gridcell" style="" title="MPS test PV" aria-describedby="list47_vendorName">MPS test PV</td>
+                      <td role="gridcell" style="" title="POD" aria-describedby="list47_vendorProfileType">POD</td>
+                      <td role="gridcell" style="" title="Inactive" aria-describedby="list47_state">Inactive</td>
+                    </tr>
+                    <tr id="9" tabindex="-1" role="row" class="ui-widget-content jqgrow ui-row-ltr">
+                      <td role="gridcell" style="" title="B&amp;T" aria-describedby="list47_vendorCode">
+                        <a href="javascript:viewVendor(9);">B&amp;T</a>
+                      </td>
+                      <td role="gridcell" style="" title="MPS test SV1" aria-describedby="list47_vendorName">MPS test SV1</td>
+                      <td role="gridcell" style="" title="POD" aria-describedby="list47_vendorProfileType">POD</td>
+                      <td role="gridcell" style="" title="Activated" aria-describedby="list47_state">Activated</td>
+                    </tr>
+                    <tr id="10" tabindex="-1" role="row" class="ui-widget-content jqgrow ui-row-ltr">
+                      <td role="gridcell" style="" title="AMAZON" aria-describedby="list47_vendorCode">
+                        <a href="javascript:viewVendor(10);">AMAZON</a>
+                      </td>
+                      <td role="gridcell" style="" title="MPS test SV2" aria-describedby="list47_vendorName">MPS test SV2</td>
+                      <td role="gridcell" style="" title="POD" aria-describedby="list47_vendorProfileType">POD</td>
+                      <td role="gridcell" style="" title="Inactive" aria-describedby="list47_state">Inactive</td>
+                    </tr>
+                  </tbody>
+                </table> -->
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="agGridSize">
+      <app-ag-grid [name]="'searchVender'" [myGridOptions]="gridOptions" (myGridReady)="doOnGridReadySearchVenderReports($event)">
+      </app-ag-grid>
+    </div>
+  </div>
+</section>
+<!-- <footer class="container-fluid">
+
+    <div class="custWrapper">
+      <div class="row">
+        <div class="col-md-12 ">
+          <p class="copyrite text-center">Copyright © 2006-2018 MPS Ltd. </p>
+        </div>
+
+      </div>
+    </div>
+  </footer> -->

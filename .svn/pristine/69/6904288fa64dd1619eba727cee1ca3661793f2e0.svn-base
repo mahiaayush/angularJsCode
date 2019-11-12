@@ -1,0 +1,55 @@
+<app-tab-links [myNavData]="myNavData" [activeLink]="activeLink">
+</app-tab-links>
+<app-loader #baseLoader></app-loader>
+<div class="row">
+  <div class="col-md-12 pb-2 ">
+    <div class="bg-white p-3 mh320 border">
+      <div class="row">
+        <div class="col-md-12">
+          <h4 class="subHeading">Search Vendor</h4>
+          <form>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Vendor Name
+                  <!-- <sup class="text-danger">*</sup> -->
+                </label>
+                <app-auto-complete name="Search" [basicSetting]="autoBasic" [(ngModel)]="searchVendorModel.name.value">
+                </app-auto-complete>
+
+
+
+
+
+                <!-- <input type="text" name="searchVendorcode" class="form-control" id="searchVendorcode" list="productName" />
+                <datalist id="productName">
+                  <option value="Pen">Pen</option>
+                </datalist> -->
+                <!-- <input type="text" class="form-control" [(ngModel)]="searchVendorModel.name.value" [name]="searchVendorModel.name.name"> -->
+              </div>
+              <div class="col-md-4">
+                <label for="inputPassword1" class="col-form-label">Vendor Code
+                  <!-- <sup class="text-danger">*</sup> -->
+                </label>
+                <app-auto-complete name="code" [basicSetting]="autoBasicCode" [(ngModel)]="searchVendorModel.code.value">
+                </app-auto-complete>
+                <!-- <input type="text" class="form-control" [(ngModel)]="searchVendorModel.code.value" [name]="searchVendorModel.code.name"> -->
+              </div>
+            </div>
+            <p class="text-right my-4 ">
+              <a href="javascript:;" class="btn btn-primary btn-sm" id="btnLogin" (click)="doOnSubmit($event)">Search</a>
+              <button type="reset" class="btn btn-secondary btn-sm mr-2" id="btnReset">Reset</button>
+            </p>
+          </form>
+        </div>
+      </div>
+      <div class="tableBox border-top mt-5 pt-3 ">
+      </div>
+      <div class="row" [style.display]="showGrid">
+        <div class="col-md-12 agGridSize">
+          <app-ag-grid [name]="'searchVender'" [myGridOptions]="gridOptions" (myGridReady)="doOnGridReadySearchVenderReports($event)">
+          </app-ag-grid>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

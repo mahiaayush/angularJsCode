@@ -1,0 +1,92 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { ColDef, GridOptions } from 'ag-grid';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
+
+import { BaseService } from '../../acore/base';
+import { HttpService } from '../../acore/services';
+import { UtilityService } from '././../../acore/utility';
+@Injectable()
+
+export class DashBoardService extends BaseService {
+      constructor(
+            protected http: HttpService,
+            private us: UtilityService
+      ) {
+            super(http);
+      }
+
+
+
+      makeColumns(): Array<ColDef> {
+
+            //   this.us.ag.defaultColDef(gridOption);
+            //    this.us.ag.basicSetting(gridOption);
+
+            const columnDefs: Array<ColDef> = [
+                  { headerName: 'Category', field: 'Category', width: 300 },
+                  { headerName: 'Description', field: 'Description', width: 300 },
+                  { headerName: 'ReportType', field: 'ReportType', width: 300 },
+                  { headerName: 'fileName', field: 'fileName', width: 100 },
+                  { headerName: 'frequency', field: 'frequency', width: 100 },
+                  { headerName: 'reportID', field: 'reportID', width: 100 },
+            ];
+
+            return columnDefs;
+      }
+
+
+
+
+      makeColumns2(): Array<ColDef> {
+
+            //   this.us.ag.defaultColDef(gridOption);
+            //    this.us.ag.basicSetting(gridOption);
+
+            const columnDefs: Array<ColDef> = [
+                  { headerName: 'Category', field: 'Category', width: 300 },
+                  { headerName: 'fileName', field: 'fileName', width: 300 },
+                  { headerName: 'reportID', field: 'reportID', width: 300 },
+            ];
+            return columnDefs;
+      }
+
+
+
+
+      // getDataFromAPI(url: string): Observable<any> {
+      //       const rowData = [
+      //             { make: 'Toyota', model: 'Celica', price: 35000 },
+      //             { make: 'Ford', model: 'Mondeo', price: 32000 },
+      //             { make: 'Porsche', model: 'Boxter', price: 72000 },
+      //             { make: 'Toyota', model: 'Celica', price: 35000 },
+      //             { make: 'Ford', model: 'Mondeo', price: 32000 },
+      //             { make: 'Porsche', model: 'Boxter', price: 72000 },
+      //             { make: 'Toyota', model: 'Celica', price: 35000 },
+      //             { make: 'Ford', model: 'Mondeo', price: 32000 },
+      //             { make: 'Porsche', model: 'Boxter', price: 72000 },
+      //             { make: 'Toyota', model: 'Celica', price: 35000 },
+      //             { make: 'Ford', model: 'Mondeo', price: 32000 },
+      //             { make: 'Porsche', model: 'Boxter', price: 72000 },
+      //             { make: 'Toyota', model: 'Celica', price: 35000 },
+      //             { make: 'Ford', model: 'Mondeo', price: 32000 },
+      //             { make: 'Porsche', model: 'Boxter', price: 72000 },
+      //             { make: 'Toyota', model: 'Celica', price: 35000 },
+      //             { make: 'Ford', model: 'Mondeo', price: 32000 },
+      //             { make: 'Porsche', model: 'Boxter', price: 72000 },
+      //             { make: 'Toyota', model: 'Celica', price: 35000 },
+      //             { make: 'Ford', model: 'Mondeo', price: 32000 },
+      //             { make: 'Porsche', model: 'Boxter', price: 72000 },
+      //             { make: 'Toyota', model: 'Celica', price: 35000 },
+      //             { make: 'Ford', model: 'Mondeo', price: 32000 },
+      //             { make: 'Porsche', model: 'Boxter', price: 72000 },
+      //             { make: 'Toyota', model: 'Celica', price: 35000 },
+      //             { make: 'Ford', model: 'Mondeo', price: 32000 },
+      //             { make: 'Porsche', model: 'Boxter', price: 72000 }
+      //       ];
+      //       return Observable.of(rowData);
+      // }
+
+
+}

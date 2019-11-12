@@ -1,0 +1,15 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-metadata-upload',
+  templateUrl: './metadata-upload.component.html',
+  styleUrls: ['./metadata-upload.component.css']
+})
+export class MetadataUploadComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}

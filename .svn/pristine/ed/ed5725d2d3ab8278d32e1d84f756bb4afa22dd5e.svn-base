@@ -1,0 +1,59 @@
+import { Component, OnInit } from '@angular/core';
+
+import { ConstantService, ProjectService } from '../../../acore/services';
+import { UserManagementService } from '../user-management.service';
+import { BaseComponent } from '../../../acore/base';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+
+@Component({
+  selector: 'app-create-vendor',
+  templateUrl: './create-vendor.component.html',
+  styleUrls: ['./create-vendor.component.css']
+})
+export class CreateVendorComponent extends BaseComponent implements OnInit {
+  myNavData: any = {};
+  activeLink: any = null;
+  NAME_VIEW_VENDOR: 'VIEW_VENDOR';
+  constructor(
+    public constantService: ConstantService,
+    protected projectService: ProjectService,
+    private router: Router,
+    private route: ActivatedRoute,
+    protected userManagementService: UserManagementService
+  ) {
+    super(userManagementService, projectService);
+
+    this.route.data
+      .subscribe((data) => {
+        console.log('ActivatedRoute', data);
+
+        if (data[0].type === 'create_vendor') {
+          this.activeLink = constantService.routerNav.USER_MANAGEMENT.links[0] = constantService.routerNav.createVendor;
+        } else {
+          this.activeLink = constantService.routerNav.USER_MANAGEMENT.links[0] = constantService.routerNav.updateVendor;
+        }
+        this.myNavData = constantService.routerNav.USER_MANAGEMENT;
+
+      });
+  }
+
+  xtBaseOnInit() {
+    this.route.queryParams.subscribe(params => {
+      console.log(params);
+    });
+  }
+
+  ngOnInit() {
+  }
+
+  viewVendorDetails(id: any) {
+    this.loadDataFromApi(this.NAME_VIEW_VENDOR)
+      .subscribe(data => {
+        console.log(data);
+      });
+  }
+  xtBaseOnDestroy() {
+    this.constantService.routerNav.USER_MANAGEMENT.links[0] = this.constantService.routerNav.createVendor;
+  }
+
+}

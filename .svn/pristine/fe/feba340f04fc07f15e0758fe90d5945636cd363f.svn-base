@@ -1,0 +1,23 @@
+body {
+  margin-top: 20px;
+}
+
+.panel-title {
+  display: inline;
+  font-weight: bold;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+.Len {
+  width: 100%;
+  margin-bottom: 16px;
+  margin-left: 14px;
+  margin-right: 14px;
+}

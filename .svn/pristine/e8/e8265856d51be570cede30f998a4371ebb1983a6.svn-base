@@ -1,0 +1,499 @@
+<div class="container-fluid bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="dashboard.html">Home</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">PAD Project</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="container-fluid">
+  <div class="container ">
+    <div class="row">
+      <div class="col-md-12 py-2 ">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" href="create-vendor.html">Create Vendor</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="search-vendor.html">Search Vendor</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="create-user.html">Create User</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="search-user.html">Search User</a>
+          </li>
+        </ul>
+        <div class="bg-white p-3">
+          <div class="row">
+            <div class="col-md-12">
+              <h4 class="subHeading">Vendor Workflow Type </h4>
+              <div class="checkboxBlock">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                  <label class="form-check-label" for="inlineRadio1">POD</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                  <label class="form-check-label" for="inlineRadio1">Optimal Inventory</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                  <label class="form-check-label" for="inlineRadio1">Optimal Inventory</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                  <label class="form-check-label" for="inlineRadio1">Gap</label>
+                </div>
+              </div>
+              <h4 class="subHeading">Vendor Details </h4>
+              <form>
+                <div class="form-group row">
+                  <div class="col-md-4">
+                    <label for="staticEmail" class="col-form-label">Vendor Name
+                      <sup class="text-danger">*</sup>
+                    </label>
+                    <input type="text" class="form-control" id="inputPassword" placeholder="">
+                  </div>
+                  <div class="col-md-4">
+                    <label for="inputPassword" class=" col-form-label">Vendor Code
+                      <sup class="text-danger">*</sup>
+                    </label>
+                    <input type="text" class="form-control" id="inputPassword" placeholder="">
+                  </div>
+                  <div class="col-md-4">
+                    <label for="inputPassword" class=" col-form-label">Vendor SAN</label>
+                    <input type="text" class="form-control" id="inputPassword" placeholder="">
+                  </div>
+                </div>
+              </form>
+              <h4 class="subHeading">Contact Details </h4>
+              <form>
+                <div class="form-group row">
+                  <div class="col-md-4">
+                    <label for="staticEmail" class="col-form-label">Contact Name
+                      <sup class="text-danger">*</sup>
+                    </label>
+                    <input type="text" class="form-control" id="inputPassword" placeholder="">
+                  </div>
+                  <div class="col-md-4">
+                    <label for="inputPassword" class=" col-form-label">Address </label>
+                    <input type="text" class="form-control" id="inputPassword" placeholder="">
+                  </div>
+                  <div class="col-md-4">
+                    <label for="inputPassword" class=" col-form-label">Email
+                      <sup class="text-danger">*</sup>
+                    </label>
+                    <input type="text" class="form-control" id="inputPassword" placeholder="">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-md-4">
+                    <label for="staticEmail" class="col-form-label">City/Town</label>
+                    <input type="text" class="form-control" id="inputPassword" placeholder="">
+                  </div>
+                  <div class="col-md-4">
+                    <label for="inputPassword" class=" col-form-label">Phone </label>
+                    <input type="text" class="form-control" id="inputPassword" placeholder="">
+                  </div>
+                  <div class="col-md-4">
+                    <label for="inputPassword" class=" col-form-label">State/Province </label>
+                    <input type="text" class="form-control" id="inputPassword" placeholder="">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-md-4">
+                    <label for="staticEmail" class="col-form-label">Country </label>
+                    <select class="form-control">
+                      <option>Choose Country</option>
+                      <option>India</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4">
+                    <label for="inputPassword" class=" col-form-label">Post/Zip Code </label>
+                    <input type="text" class="form-control" id="inputPassword" placeholder="">
+                  </div>
+                </div>
+              </form>
+              <h4 class="subHeading">Destination </h4>
+              <form>
+                <div class="form-group row">
+                  <div class="col-md-4">
+                    <label for="staticEmail" class="col-form-label">Host
+                      <sup class="text-danger">*</sup>
+                    </label>
+                    <select class="form-control">
+                      <option>21</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4">
+                    <label for="inputPassword" class=" col-form-label">Login
+                      <sup class="text-danger">*</sup>
+                    </label>
+                    <input type="text" class="form-control" id="inputPassword" placeholder="">
+                  </div>
+                  <div class="col-md-4">
+                    <label for="inputPassword" class=" col-form-label">Password
+                      <sup class="text-danger">*</sup>
+                    </label>
+                    <input type="text" class="form-control" id="inputPassword" placeholder="">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-md-4">
+                    <label for="staticEmail" class="col-form-label">Port
+                      <sup class="text-danger">*</sup>
+                    </label>
+                    <input type="text" class="form-control" id="inputPassword" placeholder="">
+                  </div>
+                  <div class="col-md-4">
+                    <label for="inputPassword" class=" col-form-label">Target Directory
+                      <sup class="text-danger">*</sup>
+                    </label>
+                    <input type="text" class="form-control" id="inputPassword" placeholder="">
+                  </div>
+                </div>
+              </form>
+              <h4 class="subHeading d-flex">
+                <span>Feedback Details</span>
+                <small class="form-group form-check ml-3 mb-0   text-info">
+                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                  <label class="form-check-label" for="exampleCheck1">Please Click here if Destination is same as Feedback</label>
+                </small>
+              </h4>
+              <form>
+                <div class="form-group row">
+                  <div class="col-md-4">
+                    <label for="staticEmail" class="col-form-label">Host
+                      <sup class="text-danger">*</sup>
+                    </label>
+
+                    <select class="form-control">
+                      <option>21</option>
+                    </select>
+
+                  </div>
+                  <div class="col-md-4">
+                    <label for="inputPassword" class=" col-form-label">Login
+                      <sup class="text-danger">*</sup>
+                    </label>
+
+                    <input type="text" class="form-control" id="inputPassword" placeholder="">
+
+                  </div>
+                  <div class="col-md-4">
+                    <label for="inputPassword" class=" col-form-label">Password
+                      <sup class="text-danger">*</sup>
+                    </label>
+
+                    <input type="text" class="form-control" id="inputPassword" placeholder="">
+
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-md-4">
+                    <label for="staticEmail" class="col-form-label">Port
+                      <sup class="text-danger">*</sup>
+                    </label>
+
+                    <input type="text" class="form-control" id="inputPassword" placeholder="">
+
+                  </div>
+                  <div class="col-md-4">
+                    <label for="inputPassword" class=" col-form-label">Target Directory
+                      <sup class="text-danger">*</sup>
+                    </label>
+
+                    <input type="text" class="form-control" id="inputPassword" placeholder="">
+
+                  </div>
+
+                </div>
+              </form>
+              <h4 class="subHeading">Content</h4>
+              <div class="form-inline formtable">
+                <table width="100%" cellspacing="0" cellpadding="3" border="0">
+                  <tbody>
+                    <tr>
+                      <td valign="middle">&nbsp;</td>
+                      <td>
+                        <strong>Content</strong>
+                      </td>
+                      <td>
+                        <strong>Deliver</strong>
+                      </td>
+                      <td>
+                        <strong>Format</strong>
+                      </td>
+                      <td>
+                        <strong>Conversion</strong>
+                      </td>
+                      <td>
+                        <strong>Naming</strong>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="5"></td>
+                    </tr>
+                    <tr>
+                      <td valign="middle">&nbsp;</td>
+                      <td valign="middle">Interior</td>
+
+                      <td valign="middle">
+                        <select name="vmb.vcrInterior.ruleDeliver" class="form-control form-control-sm" id="interiorId">
+                          <option value="Always">Always</option>
+                        </select>
+                      </td>
+
+
+
+                      <td valign="middle">
+                        <select name="vmb.vcrInterior.ruleFormat" class="form-control form-control-sm" disabled="disabled" id="interiorRuleFormat">
+                          <option value="PressPDF">PressPDF</option>
+
+                          <option value="Dart">Dart</option>
+                        </select>
+                      </td>
+
+
+
+                      <!-- <td valign="middle" style="display:none;"> -->
+
+                      <td valign="middle">
+                        <select name="vmb.vcrInterior.ruleTransformation" class="form-control form-control-sm" id="ruleTransformation">
+                          <option value="UnConcatenated">UnConcatenated</option>
+
+                          <option value="Concatenated">Concatenated</option>
+                        </select>
+                      </td>
+
+
+                      <td valign="middle">
+                        <span class="formcolumfour">
+                          <select name="vmb.vcrInterior.naming" class="form-control form-control-sm" id="interiorNaming">
+                            <option value="<ISBN_interior.pdf>">&lt;ISBN&gt;_&lt;interior&gt;.&lt;pdf&gt;</option>
+
+                            <option value="<ISBN_dart.zip>">&lt;ISBN&gt;_&lt;dart&gt;.&lt;zip&gt;</option>
+
+                            <option value="<ISBN_TX.pdf>">&lt;ISBN&gt;_&lt;TX&gt;.&lt;pdf&gt;</option>
+
+                            <option value="<ISBN_text.pdf>">&lt;ISBN&gt;_&lt;text&gt;.&lt;pdf&gt;</option>
+                          </select>
+                        </span>
+                      </td>
+
+                    </tr>
+
+
+                    <tr>
+                      <td valign="middle">&nbsp;</td>
+                      <td valign="middle">Metadata</td>
+                      <td valign="middle">
+                        <select name="vmb.vcrMetaData.ruleDeliver" class="form-control form-control-sm" id="metadataId">
+                          <option value="Always">Always</option>
+                        </select>
+                      </td>
+
+
+
+                      <td valign="middle">
+                        <select name="vmb.vcrMetaData.ruleFormat" class="form-control form-control-sm" disabled="disabled" id="ruleFormatMetadata">
+                          <option value="onix">onix</option>
+
+                          <option value="xlsx">xlsx</option>
+
+                          <option value="XBITS">XBITS</option>
+                        </select>
+                      </td>
+
+
+
+                      <td valign="middle">&nbsp;</td>
+                      <td valign="middle">
+                        <span class="formcolumfour">
+                          <select name="vmb.vcrMetaData.naming" class="form-control form-control-sm" id="namingMetadata">
+                            <option value="<ISBN.xml>">&lt;ISBN&gt;.&lt;xml&gt;</option>
+
+                            <option value="<ISBN.xlsx>">&lt;ISBN&gt;.&lt;xls&gt;</option>
+
+                            <option value="<ISBN_BS.xml>">&lt;ISBN&gt;_&lt;BS&gt;.&lt;xml&gt;</option>
+
+                            <option value="<ISBN_BookSpecMetadata.xml>">&lt;ISBN&gt;_&lt;BookSpecMetadata&gt;.&lt;xml&gt;</option>
+                          </select>
+                        </span>
+                      </td>
+                    </tr>
+
+
+
+
+
+
+                    <tr>
+                      <td valign="middle">&nbsp;</td>
+                      <td valign="middle">Covers</td>
+                      <td valign="middle">
+                        <select name="vmb.vcrCovers.ruleDeliver" class="form-control form-control-sm" id="coverId">
+                          <option value="Always">Always</option>
+
+                          <option value="Optional">Optional</option>
+
+                          <option value="Never">Never</option>
+                        </select>
+                      </td>
+
+                      <td valign="middle">&nbsp;</td>
+                      <td valign="middle">&nbsp;</td>
+
+
+                      <td valign="middle">
+                        <span class="formcolumfour">
+                          <select name="vmb.vcrCovers.naming" class="form-control form-control-sm" id="Cover-naming">
+                            <option value="<ISBN_cover.pdf>">&lt;ISBN&gt;_&lt;cover&gt;.&lt;pdf&gt;</option>
+
+                            <option value="<ISBN_CV.pdf>">&lt;ISBN&gt;_&lt;CV&gt;.&lt;pdf&gt;</option>
+
+                            <option value="<ISBN_cover.pdf>">&lt;ISBN&gt;_&lt;cover&gt;.&lt;pdf&gt;</option>
+                          </select>
+                        </span>
+                      </td>
+                    </tr>
+
+
+                    <tr>
+                      <td valign="middle">&nbsp;</td>
+                      <td valign="middle">Dust Jacket</td>
+                      <td valign="middle">
+                        <select name="vmb.vcrDustJacket.ruleDeliver" class="form-control form-control-sm" id="dustJacketId">
+                          <option value="Always">Always</option>
+
+                          <option value="Optional">Optional</option>
+
+                          <option value="Never">Never</option>
+                        </select>
+                      </td>
+
+                      <td valign="middle">&nbsp;</td>
+                      <td valign="middle">&nbsp;</td>
+
+
+                      <td valign="middle">
+                        <span class="formcolumfour">
+                          <select name="vmb.vcrDustJacket.naming" class="form-control form-control-sm" id="DustJacket-naming">
+                            <option value="<ISBN_dustjacket.pdf>">&lt;ISBN&gt;_&lt;dustjacket&gt;.&lt;pdf&gt;</option>
+
+                            <option value="<ISBN_dustjacket.pdf>">&lt;ISBN&gt;_&lt;dustjacket&gt;.&lt;pdf&gt;</option>
+                          </select>
+                        </span>
+                      </td>
+                    </tr>
+
+
+                    <tr>
+                      <td valign="middle">&nbsp;</td>
+                      <td valign="middle">Insert</td>
+                      <td valign="middle">
+                        <input name="vmb.vcrInsert.id" value="0" type="hidden">
+                        <input name="vmb.vcrInsert.contentName" value="Insert" type="hidden">
+                        <select name="vmb.vcrInsert.ruleDeliver" class="form-control form-control-sm" id="insertId">
+                          <option value="Always">Always</option>
+
+                          <option value="Optional">Optional</option>
+
+                          <option value="Never">Never</option>
+                        </select>
+                      </td>
+
+                      <td valign="middle">&nbsp;</td>
+                      <td valign="middle">&nbsp;</td>
+
+                      <td valign="middle">
+                        <span class="formcolumfour">
+                          <select name="vmb.vcrInsert.naming" class="form-control form-control-sm" id="Insert-naming">
+                            <option value="<ISBN_insert.pdf>">&lt;ISBN&gt;_&lt;insert&gt;.&lt;pdf&gt;</option>
+
+                            <option value="<ISBN_IS.pdf>">&lt;ISBN&gt;_&lt;IS&gt;.&lt;pdf&gt;</option>
+
+                            <option value="<ISBN_insert.pdf>">&lt;ISBN&gt;_&lt;insert&gt;.&lt;pdf&gt;</option>
+                          </select>
+                        </span>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td valign="middle">&nbsp;</td>
+                      <td valign="middle">Copyright</td>
+                      <td valign="middle">
+                        <select name="vmb.vcrCopyright.ruleDeliver" class="form-control form-control-sm" id="copyRightId">
+                          <option value="Always">Always</option>
+
+                          <option value="Optional">Optional</option>
+
+                          <option value="Never">Never</option>
+                        </select>
+                      </td>
+
+                      <td valign="middle">&nbsp;</td>
+                      <td valign="middle">&nbsp;</td>
+
+                      <td valign="middle">
+                        <span class="formcolumfour">
+                          <select name="vmb.vcrCopyright.naming" class="form-control form-control-sm" id="Copyright-naming">
+                            <option value="<ISBN_copyright.pdf>">&lt;ISBN&gt;_&lt;copyright&gt;.&lt;pdf&gt;</option>
+                          </select>
+                        </span>
+                      </td>
+                    </tr>
+                    <!-- //start 
+            
+            
+            <!-- end -->
+                  </tbody>
+                </table>
+              </div>
+              <h4 class="subHeading">Package </h4>
+              <form>
+                <div class="form-group row">
+                  <div class="col-md-4">
+                    <label for="staticEmail" class="col-form-label">Package Format </label>
+
+                    <select class="form-control">
+                      <option>Zipped</option>
+                      <option>Un-Zipped</option>
+                    </select>
+
+                  </div>
+                  <div class="col-md-4">
+                    <label for="inputPassword" class=" col-form-label">No. of ZIP Files </label>
+
+                    <select class="form-control">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>0</option>
+                    </select>
+
+                  </div>
+
+                </div>
+
+              </form>
+              <p class="text-right mt-5 ">
+                <a href="javascript:;" class="btn btn-primary " id="btnLogin">Save</a>
+                <a href="javascript:;" class="btn btn-primary   mr-2" id="btnLogin">Reset</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

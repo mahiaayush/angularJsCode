@@ -1,0 +1,461 @@
+<div class="row">
+  <div class="col-md-12 py-2 ">
+    <div class="bg-white border p-3 mh320">
+      <div class="row">
+        <div class="col-md-12">
+          <h4 class="subHeading">Title Details</h4>
+          <form>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <label for="" class=" col-form-label">Title :</label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.titleName.value" [name]="updateTitleModel.titleName.name">
+              </div>
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">ISBN : </label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.isbn.value" [name]="updateTitleModel.isbn.name">
+              </div>
+
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">ISBN10: </label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.isbn10.value" [name]="updateTitleModel.isbn10.name">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Author:</label>
+                <div class="d-flex">
+                  <div>
+                    <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.name.value" [name]="updateTitleModel.name.name">
+                  </div>
+                  <div class="pl-1">
+                    <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.name.value" [name]="updateTitleModel.name.name">
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Edition:</label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.edition.value" [name]="updateTitleModel.edition.name">
+              </div>
+
+
+              <div class="col-md-4">
+                <label for="" class=" col-form-label">Publication Date:</label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.publicationDate.value" [name]="updateTitleModel.publicationDate.name">
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Copyright Year:</label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.copyrightYear.value" [name]="updateTitleModel.copyrightYear.name">
+              </div>
+
+
+
+
+
+
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Language of Text: </label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.languageText.value" [name]="updateTitleModel.languageText.name">
+              </div>
+
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Subject Code:</label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.subjectCode.value" [name]="updateTitleModel.subjectCode.name">
+
+              </div>
+
+            </div>
+
+            <br>
+
+            <h4 class="subHeading">Publisher Details</h4>
+
+            <div class="form-group row">
+
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Publisher: </label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.publisherName.value" [name]="updateTitleModel.publisherName.name">
+              </div>
+
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Imprint:</label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.imprintName.value" [name]="updateTitleModel.imprintName.name">
+              </div>
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Title Status :</label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.titleStatus.value" [name]="updateTitleModel.titleStatus.name">
+
+              </div>
+
+            </div>
+            <div class="form-group row">
+
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Restrictions: </label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.restrictions.value" [name]="updateTitleModel.restrictions.name">
+              </div>
+
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Product Sponsor:</label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.productSponsor.value" [name]="updateTitleModel.productSponsor.name">
+              </div>
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Country of Origin:</label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.countryOfOrigin.value" [name]="updateTitleModel.countryOfOrigin.name">
+
+              </div>
+
+            </div>
+
+
+            <div class="form-group row">
+
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Product Line: </label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.productLine.value" [name]="updateTitleModel.productLine.name">
+              </div>
+
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">PPC:</label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.ppcDescription.value" [name]="updateTitleModel.ppcDescription.name">
+              </div>
+
+
+            </div>
+
+
+
+            <br>
+
+            <h4 class="subHeading">Title Specification</h4>
+
+            <div class="form-group row">
+
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Medium:</label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.medium.value" [name]="updateTitleModel.medium.name">
+              </div>
+
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Sub Medium:</label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.subMedium.value" [name]="updateTitleModel.subMedium.name">
+
+              </div>
+
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Trim Size:</label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.trimsizeDescription.value" [name]="updateTitleModel.trimsizeDescription.name">
+              </div>
+
+
+            </div>
+
+
+            <div class="form-group row">
+
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">BOB URL:</label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.bobUrl.value" [name]="updateTitleModel.bobUrl.name">
+              </div>
+
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Internal Instructions:</label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.instructions.value" [name]="updateTitleModel.instructions.name">
+
+              </div>
+
+
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Number of Pages:</label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.pages.value" [name]="updateTitleModel.pages.name">
+              </div>
+
+
+            </div>
+
+
+            <br>
+
+            <div class="d-flex justify-content-start subHeading">
+              <p class="mr-2 ">Vendor Specification </p>
+              <p class="col-sm-4 form-group mb-0">
+                <select class="form-control" [(ngModel)]="updateTitleModel.vendorId.value" [name]="updateTitleModel.vendorId.name">
+
+                  <option value="5" selected="selected">BNB</option>
+                </select>
+              </p>
+              <p class="small text-dark pt-2">
+                <small>(Refresh title details by selecting different vendors)</small>
+              </p>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Vendor:</label>
+                <select class="form-control" disabled [(ngModel)]="updateTitleModel.vendor.value" [name]="updateTitleModel.vendor.name">
+                  <option value="1">Primary</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Text Source:</label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.textSourceMaterial.value" [name]="updateTitleModel.textSourceMaterial.name">
+              </div>
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Cover Source:</label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.coverSourceMaterial.value" [name]="updateTitleModel.coverSourceMaterial.name">
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Active Code:</label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.activationCode.value" [name]="updateTitleModel.activationCode.name">
+              </div>
+
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Release Date:</label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.releaseDate.value" [name]="updateTitleModel.releaseDate.name">
+              </div>
+
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Proposed POD Date:</label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.podDate.value" [name]="updateTitleModel.podDate.name">
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-8">
+                <label for="staticEmail" class="col-form-label">Vendor Instructions:</label>
+                <textarea class="form-control" disabled [(ngModel)]="updateTitleModel.vendorInstructions.value" [name]="updateTitleModel.vendorInstructions.name"></textarea>
+
+              </div>
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Account Number:</label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.accountNumber.value" [name]="updateTitleModel.accountNumber.name">
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class=" col-md-12">
+                <div class="border-top my-3"></div>
+              </div>
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Book Type:</label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.bookType.value" [name]="updateTitleModel.bookType.name">
+              </div>
+
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Binding Style:</label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.bindingstyleDescription.value" [name]="updateTitleModel.bindingstyleDescription.name">
+
+              </div>
+
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Paper Stock:</label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.paperStock.value" [name]="updateTitleModel.paperStock.name">
+              </div>
+
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Promo Code:</label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.promoCode.value" [name]="updateTitleModel.promoCode.name">
+              </div>
+              <div class=" col-md-12">
+                <div class="border-top my-3"></div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Inserts Total Pages:</label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.insertTotalPages.value" [name]="updateTitleModel.insertTotalPages.name">
+              </div>
+              <div class="col-md-12 mt-3">
+                <label for="staticEmail" class="col-form-label">Inserts:</label>
+                <table class="spacing-table   text-nowrap" cellspacing="0" cellpadding="0" border="0">
+                  <thead>
+                    <tr>
+                      <th>Insert</th>
+                      <th>Page Count</th>
+                      <th>Instructions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr id="1" tabindex="-1" role="row" class="ui-widget-content jqgrow ui-row-ltr">
+                      <td colspan="3" class="text-center py-3">Records Not Found </td>
+
+                    </tr>
+
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class=" col-md-12">
+                <div class="border-top my-3"></div>
+              </div>
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Cover Type:</label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.coverTypeDesc.value" [name]="updateTitleModel.coverTypeDesc.name">
+              </div>
+
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Jacket Required:</label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.jacketRequired.value" [name]="updateTitleModel.jacketRequired.name">
+
+              </div>
+
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Jacket Colors:</label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.jacketColors.value" [name]="updateTitleModel.jacketColors.name">
+              </div>
+
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Jacket Stock:</label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.jacketStock.value" [name]="updateTitleModel.jacketStock.name">
+              </div>
+
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Jacket Lamination:</label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.jacketLamination.value" [name]="updateTitleModel.jacketLamination.name">
+
+              </div>
+
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Jacket Finish:</label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.jacketFinish.value" [name]="updateTitleModel.jacketFinish.name">
+              </div>
+
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Cover Colors:</label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.coverColors.value" [name]="updateTitleModel.coverColors.name">
+              </div>
+
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Outside Colors:</label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.outsideColors.value" [name]="updateTitleModel.outsideColors.name">
+
+              </div>
+
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Inside Colors:</label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.insideColors.value" [name]="updateTitleModel.insideColors.name">
+              </div>
+
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Cover Material:</label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.coverMaterial.value" [name]="updateTitleModel.coverMaterial.name">
+              </div>
+
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Cover Lamination:</label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.coverLamination.value" [name]="updateTitleModel.coverLamination.name">
+
+              </div>
+
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">Cover Finish:</label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.coverFinish.value" [name]="updateTitleModel.coverFinish.name">
+              </div>
+
+            </div>
+            <div class="form-group row">
+              <div class="col-md-12">
+                <div class="border-top my-3"></div>
+                <label for="staticEmail" class="col-form-label">Jacket Stock:</label>
+                <table class="spacing-table table-responsive text-nowrap" cellspacing="0" cellpadding="0" border="0">
+                  <thead>
+                    <tr style="text-align:center">
+                      <th class="tableheader" width="112">Location</th>
+                      <th class="tableheader" width="185">Currency</th>
+                      <th class="tableheader" width="199">List Price</th>
+                      <th class="tableheader" width="112">Net Price</th>
+                      <th class="tableheader" width="185">Proposed List Price</th>
+                      <th class="tableheader tbl_col_last">Proposed Net Price</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let stockdata of JacketStockData">
+                      <td>Canada</td>
+                      <td>CAD</td>
+                      <td>{{stockdata.listPrice}}</td>
+                      <td>{{stockdata.netPrice}}</td>
+                      <td>{{stockdata.proposedListPrice}}</td>
+                      <td>{{stockdata.proposedNetPrice}}</td>
+                    </tr>
+                    <!-- <tr>
+                      <td>United States</td>
+                      <td>USD</td>
+                      <td>{{stockdata.listPrice}}</td>
+                      <td>{{stockdata.netPrice}}</td>
+                      <td>{{stockdata.proposedListPrice}}</td>
+                      <td>{{stockdata.proposedNetPrice}}</td>
+                    </tr> -->
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="col-md-4 mt-3">
+                <label for="staticEmail" class="col-form-label disabled">Discount:</label>
+                <input type="text" class="form-control" disabled [(ngModel)]="updateTitleModel.discountGroup.value" [name]="updateTitleModel.discountGroup.name">
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class=" col-md-12">
+                <div class="border-top my-3"></div>
+              </div>
+              <div class="col-md-4">
+                <label for="staticEmail" class="col-form-label">PAD Status:</label>
+                <select [(ngModel)]="updateTitleModel.padStatus.value" [name]="updateTitleModel.padStatus.name" style="width: auto; position: relative;">
+                  <option value="3">MetaDataReceived</option>
+                  <option value="29" disabled="disabled">ContentUploadInProgress</option>
+                  <option value="25" disabled="disabled">ScanFileReceived</option>
+                  <option value="4">ContentUploaded</option>
+                  <option value="26" disabled="disabled">AutoScanFail</option>
+                  <option value="27" disabled="disabled">AutoScanPass</option>
+                  <option value="5" disabled="disabled">QCFail</option>
+                  <option value="6">QCPass</option>
+                  <option value="28" disabled="disabled">ScanReadyToRelease</option>
+                  <option value="7">ReadyToRelease</option>
+                  <option value="8">ReadyToReleaseAgain</option>
+                  <option value="10" disabled="disabled">DistributionFailPV</option>
+                  <option value="12" disabled="disabled">DistributionPassPV</option>
+                  <option value="13" disabled="disabled">DistributionSVInProgress</option>
+                  <option value="15" disabled="disabled">DisApprovedByPV</option>
+                  <option value="17" selected="selected">ApprovedByPV</option>
+                  <option value="18" disabled="disabled">SVApprovalPending</option>
+                  <option value="19" disabled="disabled">Pass</option>
+                  <option value="20" disabled="disabled">CoverPriceChangePending</option>
+                  <option value="21" disabled="disabled">CoverPriceReadyToRelease</option>
+                  <option value="22" disabled="disabled">CoverPriceDistributionFail</option>
+                  <option value="23" disabled="disabled">CoverPriceDistributionInProgress</option>
+                  <option value="24" disabled="disabled">CoverPriceDistributionPass</option>
+                  <option value="30" disabled="disabled">VendorDistributionInProgress</option>
+                  <option value="31" disabled="disabled">VendorApprovalPending</option>
+                  <option value="32" disabled="disabled">QAFail</option>
+                  <option value="33" disabled="disabled">ScanQAFail</option>
+                  <option value="34" disabled="disabled">CoverPriceChangeQAFail</option>
+                </select>
+              </div>
+              <div class="col-md-8">
+                <p class="text-right my-4">
+                  <button class="btn btn-primary" (click)="doOnSubmit($event)">Save</button>
+                  <button class="btn btn-dark mr-2" (click)="doOnReset()">Cancel</button>
+                </p>
+              </div>
+
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

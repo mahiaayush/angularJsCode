@@ -1,0 +1,78 @@
+<div class="container-fluid bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              Home
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Title Stages</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="container-fluid">
+  <div class="container ">
+    <div class="row">
+      <div class="col-md-12 py-2 ">
+        <div class="bg-white p-3">
+
+          <div class="row">
+            <div class="col-md-12">
+              <form>
+                <div class="form-group row">
+                  <div class="col-md-4">
+                    <label for="staticEmail" class="col-form-label">Product Sponsor:
+                    </label>
+
+                  </div>
+                  <div class="col-md-4">
+
+                    <input type="checkbox" id="ge">
+                    <label for="ge"> GE </label>
+                    <input type="checkbox" id="pd" title="PD">
+                    <label for="pd"> PD </label>
+                    <input type="checkbox" id="gr" title="GR">
+                    <label for="gr"> GR </label>
+
+
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <div class="col-md-4">
+                    <label for="inputPassword" class=" col-form-label">Product Line:
+                    </label>
+                  </div>
+                  <div class="col-md-4">
+
+                    <select name="vmb.vcrCovers.naming" class="form-control form-control-sm" id="Cover-naming">
+                      <option value="<ISBN_cover.pdf>">&lt;ISBN&gt;_&lt;cover&gt;.&lt;pdf&gt;</option>
+                      <option value="<ISBN_CV.pdf>">&lt;ISBN&gt;_&lt;CV&gt;.&lt;pdf&gt;</option>
+                      <option value="<ISBN_cover.pdf>">&lt;ISBN&gt;_&lt;cover&gt;.&lt;pdf&gt;</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <div class="col-md-4">
+
+                  </div>
+                  <div class="col-md-4">
+                    <p class=" mt-5 mb-5">
+                      <a href="javascript:;" class="btn btn-primary btn-sm" id="btnLogin">Save</a>
+                      <a href="javascript:;" class="btn btn-secondary btn-sm mr-2" id="btnLogin">Reset</a>
+                    </p>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

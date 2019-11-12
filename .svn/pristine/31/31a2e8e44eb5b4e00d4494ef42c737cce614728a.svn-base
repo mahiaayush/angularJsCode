@@ -1,0 +1,93 @@
+import { ColDef } from 'ag-grid';
+import { ProjectUtils } from '../../../acore/utility';
+
+export const columnDefsTitleOverview: Array<ColDef> = [
+      {
+            headerName: 'ISBN',
+            field: 'ISBN',
+            minWidth: ProjectUtils.ag_SetWidth(14)
+      },
+      {
+            headerName: 'Title',
+            field: 'Title',
+            minWidth: ProjectUtils.ag_SetWidth(14)
+      },
+      {
+            headerName: 'Author',
+            field: 'Author',
+            minWidth: ProjectUtils.ag_SetWidth(14)
+      },
+      {
+            headerName: 'PS',
+            field: 'PS',
+            minWidth: ProjectUtils.ag_SetWidth(14)
+      },
+      {
+            headerName: 'PL',
+            field: 'PL',
+            minWidth: ProjectUtils.ag_SetWidth(14)
+      },
+      {
+            headerName: 'PPC',
+            field: 'PPC',
+            minWidth: ProjectUtils.ag_SetWidth(14)
+      },
+      {
+            headerName: 'Vendor Code',
+            field: 'Vendor Code',
+            minWidth: ProjectUtils.ag_SetWidth(14)
+      },
+      {
+            headerName: 'Vendor Is',
+            field: 'Vendor Is',
+            minWidth: ProjectUtils.ag_SetWidth(14)
+      },
+      {
+            headerName: 'Metadata Received date',
+            field: 'Metadata Received date',
+            minWidth: ProjectUtils.ag_SetWidth(14)
+      },
+      {
+            headerName: 'Last Content Upload Date',
+            field: 'Last Content Upload Date',
+            minWidth: ProjectUtils.ag_SetWidth(14)
+      },
+      {
+            headerName: 'QCed Date',
+            field: 'QCed Date',
+            minWidth: ProjectUtils.ag_SetWidth(14)
+      },
+      {
+            headerName: 'Ready To Release Date',
+            field: 'Ready To Release Date',
+            minWidth: ProjectUtils.ag_SetWidth(14)
+      },
+      {
+            headerName: 'Distribution Date',
+            field: 'Distribution Date',
+            minWidth: ProjectUtils.ag_SetWidth(14)
+      },
+      {
+            headerName: 'Vendor Confirmation Date',
+            field: 'Vendor Confirmation Date',
+            minWidth: ProjectUtils.ag_SetWidth(14)
+      },
+      {
+            headerName: 'Vendor Status',
+            field: 'Vendor Status',
+            minWidth: ProjectUtils.ag_SetWidth(14)
+      },
+      {
+            headerName: 'Current Pad Status',
+            field: 'Current Pad Status',
+            minWidth: ProjectUtils.ag_SetWidth(14)
+      },
+      {
+            headerName: 'History',
+            field: 'History',
+            minWidth: ProjectUtils.ag_SetWidth(14),
+            cellRenderer: function (params: any) {
+                  return '<a href="javascript:;"><img src="assets/images/history.png" style="width:20px"/></a>';
+            }
+      }
+];

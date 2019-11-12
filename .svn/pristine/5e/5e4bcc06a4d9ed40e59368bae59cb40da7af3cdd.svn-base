@@ -1,0 +1,17 @@
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
+
+@Injectable()
+
+export class BreadCrumnService {
+
+      sendBread = new Subject<any>();
+
+      sendBreadCurmData(data: any) {
+            this.sendBread.next(data);
+      }
+
+      constructor() {
+
+      }
+}

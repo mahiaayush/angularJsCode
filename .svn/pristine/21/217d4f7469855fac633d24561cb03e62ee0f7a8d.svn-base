@@ -1,0 +1,44 @@
+
+
+export class UrlConstants {
+      static WILEY_BASE_URL = 'http://betawileypadservice.mpstechnologies.com/wileypad-service/rest/';
+
+      /* **************  USER DETAILS  *************** */
+      static LOGIN = UrlConstants.WILEY_BASE_URL + 'login';
+      static USERACCOUNT = UrlConstants.WILEY_BASE_URL + 'ViewAdminUser';
+      /* **************  USER DETAILS  *************** */
+
+      /* **************  PAD PROJECT  *************** */
+
+      /* **************  PAD PROJECT  *************** */
+
+      /* **************  User Management  *************** */
+      static CREATE_VENDOR = UrlConstants.WILEY_BASE_URL + 'createVendor';
+      static CREATE_USER = UrlConstants.WILEY_BASE_URL + 'createUser';
+      static SEARCH_VENDOR = UrlConstants.WILEY_BASE_URL + 'searchVendor';
+      static VIEW_VENDOR = UrlConstants.WILEY_BASE_URL + 'viewVendor';
+      static UPDATE_VENDOR = UrlConstants.WILEY_BASE_URL + 'updateVendor';
+      static SEARCH_USER = UrlConstants.WILEY_BASE_URL + 'searchAdminUser';
+      static UPDATE_USER = UrlConstants.WILEY_BASE_URL + 'updateAdminUser';
+      static VIEW_ADMIN_USER = UrlConstants.WILEY_BASE_URL + 'viewAdminUser';
+      static SEARCH_TITLE = UrlConstants.WILEY_BASE_URL + 'searchTitle';
+      /* **************  User Management  *************** */
+
+
+      /* **************  REPORTS  *************** */
+      static META_PROCESSING_STATUS = UrlConstants.WILEY_BASE_URL + 'searchVendor';
+      static TITLE_STAGES = UrlConstants.WILEY_BASE_URL + 'titleStages';
+      static TITLE_OVERVIEW = UrlConstants.WILEY_BASE_URL + 'titleOverview';
+      static TITLE_DELIVERIES = UrlConstants.WILEY_BASE_URL + 'titleDeliveries';
+      static TITLE_DELIVERIES_HISTORY = UrlConstants.WILEY_BASE_URL + 'contentHistory';
+      static TITLE_PROCESSING = UrlConstants.WILEY_BASE_URL + 'titleProcessing';
+      static TITLE_PROCESSING_HISTORY = UrlConstants.WILEY_BASE_URL + 'exportHistory';
+      // static TITLE_DELIVERIES = 'https://mysocietyconnect.com/mps/wiley/titleDeliveries.json';
+      // static TITLE_DELIVERIES_HISTORY = 'https://mysocietyconnect.com/mps/wiley/History.json';
+
+
+      /* **************  REPORTS  *************** */
+
+}
+
+

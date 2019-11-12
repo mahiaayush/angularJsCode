@@ -1,0 +1,14 @@
+<br>
+<ng-container *ngFor="let item of rowData">
+  <h5>Details of ISBN ({{item.isbn}}) for {{item.vendorcode}}</h5>
+  <br>
+  <div class="agGridSize">
+    <app-ag-grid [name]="'searchUser'" [myGridOptions]="gridOptions" (myGridReady)="doOnGridReadyHistory($event)">
+    </app-ag-grid>
+  </div>
+  <app-custom-modal-pop-up [basicSetting]="basicSetting" [template]="History"></app-custom-modal-pop-up>
+  <ng-template #History>
+    <!-- <app-message></app-message> -->
+    <p>{{comments}} !!!</p>
+  </ng-template>
+</ng-container>

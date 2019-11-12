@@ -1,0 +1,15 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-title-deliveries',
+  templateUrl: './title-deliveries.component.html',
+  styleUrls: ['./title-deliveries.component.css']
+})
+export class TitleDeliveriesComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}

@@ -1,0 +1,260 @@
+<app-tab-links [myNavData]="myNavData" [activeLink]="activeLink">
+</app-tab-links>
+<app-loader #baseLoader></app-loader>
+<div class="row">
+  <div class="col-md-12 pb-2 ">
+    <div class="border bg-white p-3 mh320 border">
+      <div class="row">
+        <div class="col-md-12">
+          <form>
+            <div class="row">
+              <div class="col-md-6">
+                <label for="staticEmail" class="col-form-label">Product Sponsor </label>
+                <div class="col-md-12 pl-0 mb-3">
+                  <div class="form-check form-check-inline mr-5">
+                    <input class="form-check-input" [(ngModel)]="titleStagesModel.productSponsor.value" required type="radio" name="inlineRadioOptions"
+                      id="inlineRadio2" value="0">
+                    <label class="form-check-label" for="inlineCheckbox">GE</label>
+                  </div>
+                  <div class="form-check form-check-inline mr-5">
+                    <input class="form-check-input" [(ngModel)]="titleStagesModel.productSponsor.value" required type="radio" name="inlineRadioOptions"
+                      id="inlineRadio2" value="1">
+                    <label class="form-check-label" for="inlineCheckbox">PD</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" [(ngModel)]="titleStagesModel.productSponsor.value" required type="radio" name="inlineRadioOptions"
+                      id="inlineRadio3" value="2">
+                    <label class="form-check-label" for="inlineCheckbox">GR</label>
+                  </div>
+                </div>
+
+                <label for="inputPassword" class=" col-form-label">Product Line </label>
+                <select name="productLine" multiple="multiple" class="form-control" [(ngModel)]="titleStagesModel.productLine.value" [name]="titleStagesModel.productLine.name">
+                  <optgroup label="Global Education">
+                    <option value="4">4-Accounting</option>
+                    <option value="5L">5L-HE Imports Under Consideration</option>
+                    <option value="8">8-Phys &amp; Social Sci; World Langs</option>
+                    <option value="A">A-Wiley International Editions</option>
+                    <option value="AM">AM-Applied Markets</option>
+                    <option value="C">C-Life Sciences and Chemistry</option>
+                    <option value="C1">C1-Math and Statistics</option>
+                    <option value="D">D-Business</option>
+                    <option value="EL">EL-WILEY E LEARNING</option>
+                    <option value="MS">MS-Microsoft Academic Curriculum</option>
+                    <option value="U">U-Science Imports</option>
+                    <option value="UA">UA-Math &amp; Statistics Imports</option>
+                    <option value="UB">UB-Engineering Imports</option>
+                    <option value="UC">UC-Social Science Imports</option>
+                    <option value="UD">UD-Business/Accounting Imports</option>
+                    <option value="W">W-Engineering &amp; Computer Science</option>
+                    <option value="Z3">Z3-Culinary / Hospitality</option>
+                  </optgroup>
+                  <optgroup label="Professional Development">
+                    <option value="5K">5K-Ex-Oxford PD titles to Wiley</option>
+                    <option value="5Z">5Z-Ex STMS Fashion (UK)</option>
+                    <option value="AJ">AJ-Business Journals</option>
+                    <option value="BJ">BJ-Education Journals</option>
+                    <option value="BT">BT-Assessments/Training</option>
+                    <option value="BX">BX-Business</option>
+                    <option value="BY">BY-Education</option>
+                    <option value="BZ">BZ-JB Higher Adult Educ/Religion</option>
+                    <option value="E">E-Finance</option>
+                    <option value="EJ">EJ-Finance Journals</option>
+                    <option value="F">F-Subsidiary PD Titles</option>
+                    <option value="H">H-Business</option>
+                    <option value="K">K-General Interest</option>
+                    <option value="N">N-Subsidiary Business &amp; Finance</option>
+                    <option value="PJ">PJ-Psychology Journals</option>
+                    <option value="PS">PS-Psychology</option>
+                    <option value="R">R-Accounting/Tax</option>
+                    <option value="TA">TA-Dummies Tech</option>
+                    <option value="TB">TB-Consumer Tech</option>
+                    <option value="TD">TD-Professional Tech</option>
+                    <option value="TH">TH-Lifestyles/Pets/Education</option>
+                    <option value="TI">TI-Travel</option>
+                    <option value="TK">TK-Consumer Dummies</option>
+                    <option value="TL">TL-Cooking/Gardening</option>
+                    <option value="TM">TM-Webster`s Reference</option>
+                    <option value="UJ">UJ-Computer Journals</option>
+                    <option value="Z1">Z1-Architecture/Engineering</option>
+                    <option value="Z2">Z2-Open</option>
+                  </optgroup>
+                  <optgroup label="Sci/Tech/Med/Scholarly">
+                    <option value="3">3-Chemistry</option>
+                    <option value="3A">3A-Open</option>
+                    <option value="3B">3B-Databases</option>
+                    <option value="3C">3C-Amer Inst Chemical Engineers</option>
+                    <option value="3D">3D-American Ceramic Society</option>
+                    <option value="3E">3E-Singapore STMS Physical Scienc</option>
+                    <option value="3F">3F-Scrivener Co-Publishing</option>
+                    <option value="3M">3M-Minerals Metals&amp;Materials Soc</option>
+                    <option value="5">5-Subsidiary Journals</option>
+                    <option value="5F">5F-STMS / Polity</option>
+                    <option value="5H">5H-STMS / Mac Keith</option>
+                    <option value="5J">5J-STMS / Schlutersche</option>
+                    <option value="5P">5P-STMS / Manson-Professional</option>
+                    <option value="5Q">5Q-STMS / Manson-Life Sciences</option>
+                    <option value="5R">5R-STMS / Manson-Medicine</option>
+                    <option value="5S">5S-STMS - BSAVA</option>
+                    <option value="5T">5T-STMS - Thomson PDR</option>
+                    <option value="5U">5U-STMS-Amer.Soc.Microbiology Med</option>
+                    <option value="5V">5V-STMS-Int`l Soc. Neuropathology</option>
+                    <option value="5W">5W-STMS-Amer.Soc.Microbio.Life Sc</option>
+                    <option value="I">I-Mathematics &amp; Statistics</option>
+                    <option value="IA">IA-Elec Engg &amp; Telecommunications</option>
+                    <option value="IB">IB-Wiley-IEEE</option>
+                    <option value="IC">IC-Wiley-IEEE Computer Society</option>
+                    <option value="ID">ID-ISTE Co-publishing</option>
+                    <option value="IS">IS-IEEE Standards Info Network</option>
+                    <option value="J">J-Subsidiary Physical Sciences</option>
+                    <option value="L">L-Technical Insights</option>
+                    <option value="LA">LA-STMS Online Books</option>
+                    <option value="LB">LB-Backfiles</option>
+                    <option value="LT">LT-STMS -Social Sciences-Malden</option>
+                    <option value="M">M-Medical Sciences</option>
+                    <option value="P">P-Periodicals</option>
+                    <option value="PR">PR-STMS NADV Journals</option>
+                    <option value="Q">Q-Encyclopedias</option>
+                    <option value="S">S-Chichester Life Sciences</option>
+                    <option value="SH">SH-STMS Soc Sci&amp;Humanities Jrnls</option>
+                    <option value="SM">SM-Chichester Medicine</option>
+                    <option value="UE">UE-UK Electronic Product</option>
+                    <option value="V">V-VCH Physical Sciences</option>
+                    <option value="VE">VE-VCH Electronic Product</option>
+                    <option value="VL">VL-VCH Life Sciences</option>
+                    <option value="VM">VM-VCH Medicine</option>
+                    <option value="VP">VP-VCH Professional</option>
+                    <option value="X">X-Medicine</option>
+                    <option value="XY">XY-STMS-Blackwell - UK Product</option>
+                    <option value="XZ">XZ-STMS-Blackwell - US Product</option>
+                    <option value="Y">Y-Life Sciences</option>
+                    <option value="YC">YC-Current Protocols</option>
+                    <option value="YG">YG-American Geophysical Union</option>
+                  </optgroup>
+                </select>
+              </div>
+            </div>
+          </form>
+          <p class="text-right mt-5 mb-5">
+            <a href="javascript:;" class="btn btn-primary btn-sm" (click)="doOnSubmit($event)">Search</a>
+            <a href="javascript:;" class="btn btn-dark btn-sm mr-2" click>Reset</a>
+          </p>
+        </div>
+      </div>
+      <div class="tableBox border-top mt-5 pt-3 ">
+      </div>
+      <!-- <div class="row"> -->
+      <!-- <div class="col-md-12 agGridSize">
+          <app-ag-grid [name]="'titleStages'" [myGridOptions]="gridOptions" (myGridReady)="doOnGridReadyTitleStagesReports($event)">
+          </app-ag-grid>
+        </div> -->
+      <div *ngFor="let item of stagesData">
+        <!-- <table class="spacing-table table-responsive text-nowrap" cellspacing="0" cellpadding="0" border="0">
+            <thead>
+              <tr class="ui-jqgrid-labels" role="rowheader">
+                <th>
+                  <div id="jqgh_list47_recvFile" class="ui-jqgrid-sortable">Receiving Files
+                    <span class="s-ico" style="">
+                      <span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span>
+                      <span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span>
+                    </span>
+                  </div>
+                </th>
+                <th>
+                  <div id="jqgh_list47_inQC" class="ui-jqgrid-sortable">In QC
+                    <span class="s-ico" style="display:none">
+                      <span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span>
+                      <span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span>
+                    </span>
+                  </div>
+                </th>
+                <th>
+                  <div id="jqgh_list47_pd" class="ui-jqgrid-sortable">Primary Distribution
+                    <span class="s-ico" style="display:none">
+                      <span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span>
+                      <span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span>
+                    </span>
+                  </div>
+                </th>
+                <th>
+                  <div id="jqgh_list47_sd" class="ui-jqgrid-sortable">Secondary Distribution
+                    <span class="s-ico" style="display:none">
+                      <span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span>
+                      <span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span>
+                    </span>
+                  </div>
+                </th>
+                <th>
+                  <div id="jqgh_list47_complete" class="ui-jqgrid-sortable">Pass
+                    <span class="s-ico" style="display:none">
+                      <span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span>
+                      <span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span>
+                    </span>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr id="1" tabindex="-1" role="row" class="ui-widget-content jqgrow ui-row-ltr">
+                <td role="gridcell" style="" title="1046" aria-describedby="list47_recvFile">
+                  <a [routerLink]="['../processing']">1046</a>
+                </td>
+                <td role="gridcell" style="" title="263" aria-describedby="list47_inQC">
+                  <a [routerLink]="['../processing']">263</a>
+                </td>
+                <td role="gridcell" style="" title="4830" aria-describedby="list47_pd">
+                  <a [routerLink]="['../deliveries']">4830</a>
+                </td>
+                <td role="gridcell" style="" title="3638" aria-describedby="list47_sd">
+                  <a [routerLink]="['../deliveries']">3638</a>
+                </td>
+                <td role="gridcell" style="" title="4315" aria-describedby="list47_complete">
+                  <a [routerLink]="['../overview']">4315</a>
+                </td>
+              </tr>
+            </tbody>
+          </table> -->
+
+        <table class="table table-hover">
+          <thead>
+            <tr style="text-align: center">
+              <th colspan="2">Title Processing</th>
+              <th colspan="2">Title Deliveries</th>
+              <th>Title Overview</th>
+            </tr>
+
+
+            <tr class="table table-secondary">
+              <th scope="col">Receiving Files</th>
+              <th scope="col">In QC</th>
+              <th scope="col">Primary Distribution</th>
+              <th scope="col">Secondary Distribution</th>
+              <th scope="col">Pass</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr id="1" tabindex="-1" role="row" class="ui-widget-content jqgrow ui-row-ltr">
+              <td role="gridcell" title={{item.recvFile}}>
+                <a href="javascript:;" (click)="navigate('processing', 1)">{{item.recvFile}}</a>
+              </td>
+              <td role="gridcell" title={{item.inQC}}>
+                <a href="javascript:;" (click)="navigate('processing', 1)">{{item.inQC}}</a>
+              </td>
+              <td role="gridcell" title={{item.pd}}>
+                <a href="javascript:;" (click)="navigate('deliveries', 1)">{{item.pd}}</a>
+              </td>
+              <td role="gridcell" title={{item.sd}}>
+                <a href="javascript:;" (click)="navigate('deliveries', 1)">{{item.sd}}</a>
+              </td>
+              <td role="gridcell" title={{item.complete}}>
+                <a href="javascript:;" (click)="navigate('overview', 1)">{{item.complete}}</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- </div> -->
+    </div>
+  </div>
+</div>

@@ -1,0 +1,73 @@
+<app-tab-links [myNavData]="myNavData" [activeLink]="activeLink">
+</app-tab-links>
+<div class="row">
+  <div class="col-md-12 pb-2 ">
+    <div class="bg-white border p-3 mh320">
+
+      <form #myForm="ngForm">
+        <div class="row">
+
+          <div class="col-md-12">
+            <!--   <h4 class="subHeading">Metadata Upload</h4>-->
+            <p class="small   mt-2 mb-3 ">
+              <strong>File size upto 40 MB (XML Only)</strong>
+            </p>
+            <div class="checkboxBlock">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" [(ngModel)]="metadataUploadModel.podXML.value" required type="radio" name="inlineRadioOptions"
+                  id="inlineRadio1" value="0">
+                <label class="form-check-label" for="inlineRadio1">POD</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" [(ngModel)]="metadataUploadModel.podXML.value" required type="radio" name="inlineRadioOptions"
+                  id="inlineRadio2" value="1">
+                <label class="form-check-label" for="inlineRadio2">Optimal Inventory</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" [(ngModel)]="metadataUploadModel.podXML.value" required type="radio" name="inlineRadioOptions"
+                  id="inlineRadio3" value="2">
+                <label class="form-check-label" for="inlineRadio3">XBITS</label>
+              </div>
+            </div>
+
+
+            <label for="staticEmail" class="col-form-label mt-2">File: {{fileInput}}</label>
+            <div class="input-group  mb-3">
+              <div class="custom-file">
+                <input required type="file" class="custom-file-input filename" (change)="fileChange($event)" placeholder="Upload file" name="file"
+                  [(ngModel)]="fileInput" accept=".xml">
+                <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+              </div>
+            </div>
+            <div class="text-right my-4">
+              <button [disabled]="!myForm.valid" (click)="upLoadFile()" class="btn btn-primary">Upload</button>
+            </div>
+
+            <div class="alert alert-danger" *ngIf="errorMsg && fileInput === null">
+              <strong>{{errorMsg}}.</strong>
+            </div>
+            <!-- <div class="alert alert-success" *ngIf="msg">
+              <strong>Success!!! {{msg}}.</strong>
+            </div> -->
+
+            <p class="small  my-3">
+              <em>
+                <strong>Note</strong> : Please upload file via FTP if file size more than
+                <strong> 40 MB</strong>.</em>
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8 offset-2">
+            <div [class.alert-success]="state" [class.alert-danger]="!state" class="alert mt-1 mb-1" id="MetaData-Upload-Form" role="alert"
+              style="display: none; text-align: center">
+              <a href="#" class="close" data-dismiss="alert">&times;</a>
+              {{msg}}
+            </div>
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>

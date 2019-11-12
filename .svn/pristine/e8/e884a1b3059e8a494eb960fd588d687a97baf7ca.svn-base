@@ -1,0 +1,15 @@
+<div (click)="onDesktopClick()">
+
+
+  <app-top-menu>
+  </app-top-menu>
+  <section class="container-fluid pt-5">
+    <app-tab-links>
+    </app-tab-links>
+
+    <router-outlet>
+    </router-outlet>
+  </section>
+  <app-footer>
+  </app-footer>
+</div>

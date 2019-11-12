@@ -1,0 +1,28 @@
+import { Component, OnInit } from '@angular/core';
+import { ConstantService, ProjectService } from '../../../acore/services';
+import { BaseComponent } from '../../../acore/base';
+import { UserManagementService } from '../user-management.service';
+
+
+@Component({
+  selector: 'app-create-user',
+  templateUrl: './create-user.component.html',
+  styleUrls: ['./create-user.component.css']
+})
+export class CreateUserComponent extends BaseComponent implements OnInit {
+  myNavData: any = {};
+  activeLink: any = null;
+  constructor(
+    public constantService: ConstantService,
+    protected userManagementService: UserManagementService,
+    protected projectService: ProjectService
+  ) {
+    super(userManagementService, projectService);
+    this.myNavData = constantService.routerNav.USER_MANAGEMENT;
+    this.activeLink = constantService.routerNav.USER_MANAGEMENT.links[2];
+  }
+
+  ngOnInit() {
+  }
+
+}

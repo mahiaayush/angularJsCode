@@ -1,0 +1,4 @@
+<div class="agGridSize">
+  <app-ag-grid [name]="'searchUser'" [myGridOptions]="gridOptions" (myGridReady)="doOnGridReadyTitleOverview($event)">
+  </app-ag-grid>
+</div>

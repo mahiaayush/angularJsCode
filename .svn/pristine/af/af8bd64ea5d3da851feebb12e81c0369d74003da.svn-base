@@ -1,0 +1,85 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { ColDef, GridOptions } from 'ag-grid';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
+
+import { BaseService } from '../../acore/base';
+import { HttpService } from '../../acore/services';
+import { UrlConstants } from '../../acore/utility';
+
+@Injectable()
+
+export class DashBoardService extends BaseService {
+      constructor(
+            protected http: HttpService
+      ) {
+            super(http);
+      }
+
+
+      getGraphDataDeniedCatg(): Observable<any> {
+            return this.getDataFromAPI(UrlConstants.DASHBOARD_GRAPH_DENIED_CATEGORY_PERC, '');
+      }
+
+      getGraphDataHighestZeroUsage(): Observable<any> {
+            return this.getDataFromAPI(UrlConstants.DASHBOARD_GRAPH_HIGHEST_ZERO_USAGE, '');
+      }
+
+      getGraphDataTopJournalTitles(): Observable<any> {
+            return this.getDataFromAPI(UrlConstants.DASHBOARD_GRAPH_TOP_JOURNALS, '');
+      }
+
+      getGraphDataLowUsageStats(): Observable<any> {
+            return this.getDataFromAPI(UrlConstants.DASHBOARD_GRAPH_HIGHEST_LOW_USAGESTATS, '');
+      }
+
+      getGraphDataTopAccessDenail(): Observable<any> {
+            return this.getDataFromAPI(UrlConstants.DASHBOARD_GRAPH_JOURNAL_TOP_ACCESS_DENAIL, '');
+      }
+
+      getGraphDataPlatformContribution(): Observable<any> {
+            return this.getDataFromAPI(UrlConstants.DASHBOARD_GRAPH_PLATFORM_CONTRIBUTION, '');
+      }
+
+      getGraphDataTopBookPlatorm(): Observable<any> {
+            return this.getDataFromAPI(UrlConstants.DASHBOARD_GRAPH_TOP_BOOK_PLATFORM, '');
+      }
+
+      getGraphDataPlatformsAverage(): Observable<any> {
+            return this.getDataFromAPI(UrlConstants.DASHBOARD_GRAPH_PLATFORM_PLATFORM_AVERAGE_FULLTEXT_VIEW, '');
+      }
+
+      getGraphDataZeroUsagePerc(): Observable<any> {
+            return this.getDataFromAPI(UrlConstants.DASHBOARD_GRAPH_ZERO_USAGE_JOURNALS, '');
+      }
+
+
+
+      // zeroUsagePerc        ring
+      // lowUsageStats        ring
+      // topAccessDenail      bi-bar-vertical
+      // topJournalTitles     bi-bar-horizontal
+
+      // deniedCategoryPerc   3dPie
+      // platformContribution half donut
+      // platformsAverage     line
+      // topBookPlatorm       heat map
+      // highestZeroUsage     3d donut
+
+
+      // -- zeroUsagePerc
+      // -- topAccessDenail
+      // -- deniedCategoryPerc
+      // -- platformContribution
+      // -- platformsAverage
+      // -- highestZeroUsage
+      // -- lowUsageStats
+      // -- topJournalTitles
+      // -- topBookPlatorm
+
+
+
+
+
+}

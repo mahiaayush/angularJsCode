@@ -1,0 +1,101 @@
+import { BasicSearchModelI } from '../../../acore/base';
+
+export class UserAccountModel {
+      role: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'ROLE',
+            apiKey: 'roleId',
+            placeholder: '',
+            name: 'role'
+      };
+      fName: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'First Name',
+            apiKey: 'firstName',
+            placeholder: '',
+            name: 'fName'
+      };
+      lName: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Last Name',
+            apiKey: 'lastName',
+            placeholder: '',
+            name: 'lName'
+      };
+      phone: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Phone',
+            apiKey: 'phoneNo',
+            placeholder: '',
+            name: 'phone'
+      };
+      address: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Address',
+            apiKey: 'address',
+            placeholder: '',
+            name: 'address'
+      };
+      city: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'City',
+            apiKey: 'addCity',
+            placeholder: '',
+            name: 'city'
+      };
+      email: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Email',
+            apiKey: 'email',
+            placeholder: '',
+            name: 'email'
+      };
+      password: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Password',
+            apiKey: 'password',
+            placeholder: '',
+            name: 'password'
+      };
+      confirmPassword: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Confirm Password',
+            apiKey: 'confirmPassword',
+            placeholder: '',
+            name: 'confirmPassword'
+      };
+      state: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'State',
+            apiKey: 'addState',
+            placeholder: '',
+            name: 'state'
+      };
+      zipCode: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Zip Code',
+            apiKey: 'addPincode',
+            placeholder: '',
+            name: 'zipCode'
+      };
+      country: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Country',
+            apiKey: 'countryId',
+            placeholder: '',
+            name: 'country'
+      };
+}
+

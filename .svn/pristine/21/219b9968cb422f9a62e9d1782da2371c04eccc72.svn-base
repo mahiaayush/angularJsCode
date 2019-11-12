@@ -1,0 +1,75 @@
+<div class="row justify-content-between mt-3">
+  <div class="col-2 pt-2 ">
+    <select (change)="onPageSizeChanged($event.target.value)" id="page-size">
+      <option value="10" selected>10</option>
+      <!-- <option value="25">25</option> -->
+      <option value="50">50</option>
+      <option value="100">100</option>
+      <option value="500">500</option>
+      <option value="1000">1000</option>
+    </select>
+    Entries
+  </div>
+  <div class="  col-5 d-flex flex-row-reverse">
+    <span *ngIf="export" class="ml-1">
+      <button class="btn btn-primary" (click)="onBtExport()">
+        <i class="fa fa-download"></i>
+      </button>
+    </span>
+    <!-- <span class="ml-1">
+      <button   class="btn btn-primary">
+        <i class="fa fa-bars"></i>
+      </button>
+    </span> -->
+    <div class="d-flex">
+      <label class="pr-2 pt-2">Search</label>
+      <input (keyup)="onQuickFilterChanged($event)" style="width: 175px" class="form-control" placeholder="Type text to search..."
+      />
+    </div>
+  </div>
+</div>
+
+<ag-grid-angular suppressColumnVirtualisation=true (filterChanged)="onFilterChanged($event)" [getRowHeight]="getRowHeight"
+  [context]="context" [frameworkComponents]="frameworkComponents" paginationSetPageSize=true pagination=true style="width: 100%; height: 80%;"
+  animateRows="true" enableColResize="true" class="ag-theme-balham my-2" enableSorting="true" [rowSelection]="rowSelection"
+  enableFilter="true" [gridOptions]="gridOptions" (rowDataChanged)="onRowDataChanged($event)" (rowDataUpdated)="onRowDataUpdated($event)"
+  (gridReady)="onGridReady($event)">
+</ag-grid-angular>
+
+<div>
+  <app-pagination *ngIf="paging" [pageSize]="pageSize" [totalEntries]="totalEntries" [newSetup]="newSetup" (pageChanged)="onPageChanged($event)">
+  </app-pagination>
+</div>
+
+<!-- <app-pagination [newSetup]="newSetup" (pageChanged)="onPageChanged($event)"> -->
+
+
+<!-- </app-pagination> -->
+
+<!-- <nav aria-label="...">
+  <ul class="pagination">
+    <li (click)="onPageClick('first', firstPage)" #firstPage class="page-item">
+      <a class="page-link">First</a>
+    </li>
+
+
+    <li (click)="onPageClick('prev', prePage)" #prePage class="page-item ">
+      <a class="page-link">Previous</a>
+    </li>
+
+    <ng-container *ngFor="let pageNum of pagesArray">
+      <li (click)="onPageClick(pageNum, me)" #me class="page-item">
+        <a class="page-link">{{pageNum}}</a>
+      </li>
+    </ng-container>
+
+    <li (click)="onPageClick('next', nextPage)" #nextPage class="page-item">
+      <a class="page-link">Next</a>
+    </li>
+
+    <li (click)="onPageClick('last', lastPage)" #lastPage class="page-item ">
+      <a class="page-link">Last</a>
+    </li>
+
+  </ul>
+</nav> -->

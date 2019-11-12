@@ -1,0 +1,12 @@
+.logo img {
+  width: auto;
+  height: auto;
+  max-height: 100%;
+  max-width: 130px;
+  display: inline-block;
+  vertical-align: text-bottom;
+}
+
+.dropdown-menu {
+  max-height: 290px;
+}

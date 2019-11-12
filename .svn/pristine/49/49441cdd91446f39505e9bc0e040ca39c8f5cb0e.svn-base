@@ -1,0 +1,4 @@
+.modal-content {
+  width: 1080px;
+  margin-left: -140px;
+}

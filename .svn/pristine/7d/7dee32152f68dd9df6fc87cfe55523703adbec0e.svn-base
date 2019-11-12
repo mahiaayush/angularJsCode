@@ -1,0 +1,172 @@
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { BaseComponent, GridAPII } from '../../../acore/base';
+import { GridApi, ColumnApi, ColDef, GridOptions } from 'ag-grid';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Subject } from 'rxjs/Subject';
+import { PadProjectService } from '../pad-project.service';
+import { UpdateTitleModel } from './update-title.model';
+import { UrlConstants, SessionObject, ProjectUtils } from '../../../acore/utility';
+import { DataDropDownOptions, AutoCompleteModel, TabsComponent } from '../../../acore/components';
+import { columnDefs } from './update-title.data';
+import { ConstantService, ProjectService } from '../../../acore/services';
+
+@Component({
+  selector: 'app-update-title',
+  templateUrl: './update-title.component.html',
+  styleUrls: ['./update-title.component.css']
+})
+export class UpdateTitleComponent extends BaseComponent {
+
+  NAME_UPDATE_TITLE = 'UPDATE_TITLE';
+  NAME_VIEW_TITLE = 'VIEW_TITLE';
+  updateTitleModel: UpdateTitleModel;
+  myNavData: any = {};
+  activeLink: any = null;
+  isShow: boolean;
+  isVisible: boolean;
+  viewData: any;
+
+  @ViewChild('contentUploadList') contentUploadTemplate;
+  @ViewChild('updateTitle') updateTitleTemplate;
+  @ViewChild('history') historyTemplate;
+  @ViewChild(TabsComponent) tabsComponent;
+  gridOptionsSearchTitle: GridOptions = {};
+
+  constructor(private padProjectService: PadProjectService,
+    public constantService: ConstantService,
+    protected projectService: ProjectService) {
+    super(padProjectService, projectService);
+    this.myNavData = constantService.routerNav.PAD_PROJECT;
+    this.activeLink = constantService.routerNav.PAD_PROJECT.links[0];
+    this.gridOptionsSearchTitle.onCellClicked = this.agCellClicked;
+    this.getViewTitle();
+
+  }
+
+
+
+
+  agCellClicked = (event) => {
+
+    const headerName: string = event.colDef.headerName;
+    const row = event['data'];
+  }
+
+  openListTab() {
+
+    this.tabsComponent.openTab('Content Upload',
+      this.contentUploadTemplate, {}, true, 'contentUploadTemplate');
+
+    this.tabsComponent.openTab('Update Title',
+      this.updateTitleTemplate, {}, true, 'updateTitleTemplate');
+    // } else if (headerName === 'History') {
+    //   this.tabsComponent.openTab('History',
+    //     this.historyTemplate, {}, true, 'historyTemplate');
+    // }
+  }
+
+  // getDownloadQueryURL(ext: string, fileName: string, name: string): string {
+  //   const obj = {
+  //     user_id: this.sessionObject.userDetails.userID,
+  //     year: this.searchTitleModel.year.value,
+  //     month: '02',
+  //     report_name: fileName,
+  //     // fileName + headerName
+  //     report_format: ext
+  //   };
+
+  //   const retValue = ProjectUtils.obj_MakeQueryStringFromObj(obj);
+  //   return UrlConstants.REPORTS_DOWNLOAD_REPORTS + retValue;
+  // }
+
+  initSearchModels() {
+    this.updateTitleModel = new UpdateTitleModel();
+    const counterReportsSession = ProjectUtils.getCounterReports();
+    // this.setValueFromSession(this.updateTitleModel, counterReportsSession);
+
+  }
+
+
+  getSearchModel(name: string) {
+    if (name === this.NAME_UPDATE_TITLE) {
+      return this.updateTitleModel;
+    }
+  }
+
+  getNonSearchModelParams(name: any): string {
+    if (name === this.NAME_VIEW_TITLE) {
+      const obj = {
+        id: '11270',
+      };
+      const queryString = JSON.stringify(obj);
+      return queryString;
+    }
+
+  }
+
+
+  // xtBaseOnInit() {
+  //   if (this.routeLink === 'update_user') {
+  //     this.route.queryParams.subscribe(params => {
+  //       this.UserID = params.id;
+  //       this.getViewTitle();
+  //     });
+  //   }
+  // }
+
+
+  setSearchModel(name: string) {
+    const searchModel = this.getValueFromSearchModel(name);
+    if (name === this.NAME_UPDATE_TITLE) {
+      ProjectUtils.setCounterReports(searchModel);
+    }
+  }
+
+  getViewTitle() {
+    this.showLoader();
+    this.loadDataFromApi(this.NAME_VIEW_TITLE)
+      .subscribe(data => {
+
+
+      });
+  }
+
+  setColumnDef(name: string): Array<ColDef> {
+    if (name === this.NAME_UPDATE_TITLE) {
+      return columnDefs;
+    }
+  }
+
+  getServiceUrl(name): string {
+    if (name === this.NAME_UPDATE_TITLE) {
+      return UrlConstants.UPDATE_TITLE;
+    } else if (name === this.NAME_VIEW_TITLE) {
+      return UrlConstants.VIEW_TITLE;
+    }
+  }
+
+  doOnSubmit(e) {
+    console.log('doOnSubmit', e);
+    this.OnSubmit(this.NAME_UPDATE_TITLE);
+
+  }
+
+  getGridApi(name: string): GridAPII {
+    if (name === this.NAME_UPDATE_TITLE) {
+      return {
+        gridApi: this.gridApi,
+        columnApi: this.columnApi
+      };
+    }
+  }
+
+  doOnGridReadySearchVenderReports(api) {
+    this.gridApi = api.api;
+    this.columnApi = api.columnApi;
+    this.doOnGridReady(this.NAME_UPDATE_TITLE);
+
+  }
+
+}
+
+

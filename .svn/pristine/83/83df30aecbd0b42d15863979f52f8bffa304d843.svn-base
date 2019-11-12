@@ -1,0 +1,40 @@
+<div class="container">
+  <app-loader #baseLoader>
+  </app-loader>
+  <form id="contact" class="form-horizontal" #heroForm="ngForm">
+    <h3>Contact Us</h3>
+    <hr>
+    <br>
+    <h4>Fields marked as
+      <span style="color: red">*</span>
+      are mandatory</h4>
+    <label for="Subject">Subject</label>
+    <span style="color: red">*</span>
+    <fieldset>
+      <input placeholder="Subject" type="text" tabindex="1" name="subject" required #subject="ngModel" [(ngModel)]="contactModel.subject.value">
+    </fieldset>
+    <fieldset>
+      <label for="Query">Type of Query</label>
+      <span style="color: red">*</span>
+      <select name="queryType" id="queryType" required tabindex="2" [(ngModel)]="contactModel.Query.value">
+        <option value="-1">Select Category</option>
+        <option [value]="query.key" *ngFor="let query of queryList">
+          {{query.value}}
+        </option>
+      </select>
+    </fieldset>
+    <fieldset>
+      <label for="Message">Message</label>
+      <span style="color: red">*</span>
+      <textarea placeholder="Type your message here...." tabindex="3" required #Message="ngModel" [(ngModel)]="contactModel.message.value"
+        name="message"></textarea>
+    </fieldset>
+    <fieldset>
+      <input type="checkbox" name="mailCopy" id="mailCopy" tabindex="4" [(ngModel)]="contactModel.mailCopy.value">
+      <span style="font-size:3.5mm; font-weight: 700">Send me a copy of email</span>
+    </fieldset>
+    <fieldset>
+      <button name="submit" type="submit" id="contact-submit" tabindex="5" [disabled]="!heroForm.form.valid" (click)="sendQueryMail()">Send</button>
+    </fieldset>
+  </form>
+</div>

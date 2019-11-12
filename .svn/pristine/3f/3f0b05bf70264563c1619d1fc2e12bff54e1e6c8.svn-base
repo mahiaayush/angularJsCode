@@ -1,0 +1,80 @@
+
+
+export class TopMenuNavigationData {
+
+
+
+
+
+      public static PAD_PROJECT = [
+            {
+                  label: 'Search Title',
+                  routerLink: ['./pad_project/search_title']
+            },
+            {
+                  label: 'Meta Data Upload',
+                  routerLink: ['./pad_project/meta_data_upload']
+            },
+            {
+                  label: 'Meta Data Processing',
+                  routerLink: ['./pad_project/meta_data_processing']
+            },
+            {
+                  label: 'Price Update',
+                  routerLink: ['./pad_project/price_update']
+            }
+      ];
+
+
+
+      public static REPORT = [
+            {
+                  label: 'Report Stage',
+                  routerLink: ['./reports/stages']
+            },
+            {
+                  label: 'Report Overview',
+                  routerLink: ['./reports/overview']
+            },
+            {
+                  label: 'Report Processing',
+                  routerLink: ['./reports/processing']
+            },
+            {
+                  label: 'Report Deliveries',
+                  routerLink: ['./reports/deliveries']
+            }
+      ];
+
+
+
+      public static USER_MANAGEMENT = [
+            {
+                  label: 'Create Vendor',
+                  routerLink: ['./user_management/create_vendor']
+            },
+            {
+                  label: 'Search Vendor',
+                  routerLink: ['./user_management/search_vendor']
+            },
+            {
+                  label: 'Create User',
+                  routerLink: ['./user_management/create_user']
+            },
+            {
+                  label: 'Search User',
+                  routerLink: ['./user_management/search_user']
+            }
+      ];
+
+
+
+
+
+
+
+
+
+
+
+}

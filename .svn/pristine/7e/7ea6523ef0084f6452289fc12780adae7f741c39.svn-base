@@ -1,0 +1,53 @@
+import { BasicSearchModelI } from '../../../acore/base';
+
+export class TitleProcessingModel {
+
+      isbn: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'isbn',
+            placeholder: 'Select a ISBN',
+            name: 'isbn'
+      };
+      title: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'title',
+            placeholder: 'Select a title',
+            name: 'title'
+      };
+      author: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'author',
+            placeholder: 'Select a author',
+            name: 'author'
+      };
+      firstFlag: BasicSearchModelI = {
+            value: '1',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'firstFlag',
+            placeholder: 'Select a firstFlag',
+            name: 'firstFlag'
+      };
+      toDate: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'toDate',
+            placeholder: 'Select a toDate',
+            name: 'toDate'
+      };
+      fromDate: BasicSearchModelI = {
+            value: '',
+            defaultValue: null,
+            label: 'Reporting period',
+            apiKey: 'fromDate',
+            placeholder: 'Select a fromDate',
+            name: 'fromDate'
+      };
+}

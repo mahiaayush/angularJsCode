@@ -1,0 +1,42 @@
+import { Injectable } from '@angular/core';
+import {
+      Router, CanActivate, CanLoad, CanActivateChild,
+      ActivatedRouteSnapshot,
+      RouterStateSnapshot
+} from '@angular/router';
+import { SessionObject, ProjectUtils } from '../../utility';
+
+@Injectable()
+
+export class AuthGuard implements CanActivate, CanLoad, CanActivateChild {
+
+
+      constructor(
+            private router: Router
+      ) { }
+
+      authUser(): Promise<boolean> {
+            const sessionOj: SessionObject = ProjectUtils.getSessionObject();
+            return new Promise((resolve, reject) => {
+                  if (ProjectUtils.isEmpty(ProjectUtils.getUserDetailStatus(sessionOj))) {
+                        resolve(false);
+                        this.router.navigate(['/']);
+                  } else {
+                        resolve(true);
+                  }
+            });
+      }
+
+      canActivate(): Promise<boolean> {
+            return this.authUser();
+
+      }
+
+      canLoad(): Promise<boolean> {
+            return this.authUser();
+      }
+
+      canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
+            return this.authUser();
+      }
+}

@@ -1,0 +1,25 @@
+import { ColDef } from 'ag-grid';
+import { ProjectUtils } from '../../../acore/utility';
+
+export const columnDefsVendorReports: Array<ColDef> = [
+      {
+            headerName: 'Vendor Code',
+            field: 'Vendor Code',
+            minWidth: ProjectUtils.ag_SetWidth(25)
+      },
+      {
+            headerName: 'Vendor Name',
+            field: 'Vendor Name',
+            minWidth: ProjectUtils.ag_SetWidth(25)
+      },
+      {
+            headerName: 'Vendor Workflow Type',
+            field: 'Vendor Workflow Type',
+            minWidth: ProjectUtils.ag_SetWidth(25)
+      },
+      {
+            headerName: 'State',
+            field: 'State',
+            minWidth: ProjectUtils.ag_SetWidth(25)
+      }
+];

@@ -1,0 +1,31 @@
+
+
+export class UrlConstants {
+      static WILEY_BASE_URL = 'http://betawileypadservice.mpstechnologies.com/wileypad-service/rest/';
+
+      /* **************  USER DETAILS  *************** */
+      static LOGIN = UrlConstants.WILEY_BASE_URL + 'login';
+      /* **************  USER DETAILS  *************** */
+
+      /* **************  PAD PROJECT  *************** */
+
+      /* **************  PAD PROJECT  *************** */
+
+      /* **************  User Management  *************** */
+      static SEARCH_VENDOR = UrlConstants.WILEY_BASE_URL + 'searchVendor';
+      static SEARCH_USER = 'https://mysocietyconnect.com/mps/wiley/searchUser.json';
+      static SEARCH_TITLE = 'https://mysocietyconnect.com/mps/wiley/searchTitle.json';
+      static TITLE_PROCESSING = 'https://mysocietyconnect.com/mps/wiley/titlProcessing.json';
+      /* **************  User Management  *************** */
+
+
+      /* **************  REPORTS  *************** */
+      static META_PROCESSING_STATUS = 'https://mysocietyconnect.com/mps/wiley/metaprocessingStatus.json';
+      static TITLE_STAGES = 'https://mysocietyconnect.com/mps/wiley/titleStages.json';
+      static TITLE_OVERVIEW = 'https://mysocietyconnect.com/mps/wiley/TitleOverview.json';
+      static TITLE_DELIVERIES = 'https://mysocietyconnect.com/mps/wiley/titleDeliveries.json';
+      /* **************  REPORTS  *************** */
+
+}
+
+

@@ -1,0 +1,86 @@
+import { Component, OnInit } from '@angular/core';
+import { GridApi, ColumnApi, ColDef, GridOptions } from 'ag-grid';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Subject } from 'rxjs/Subject';
+import { BaseComponent, GridAPII } from '../../../acore/base';
+import { TitleProcessingModel } from './title-processing.model';
+import { ReportsService } from '../reports.service';
+import { columnDefsTitleProcessing } from './title-processing.data';
+import { UrlConstants, SessionObject, ProjectUtils } from '../../../acore/utility';
+import { DataDropDownOptions, AutoCompleteModel } from '../../../acore/components';
+import { ConstantService, ProjectService } from '../../../acore/services';
+
+@Component({
+  selector: 'app-title-processing',
+  templateUrl: './title-processing.component.html',
+  styleUrls: ['./title-processing.component.css'],
+  providers: [ReportsService]
+})
+export class TitleProcessingComponent extends BaseComponent {
+
+  NAME_TITLE_PROCESSING = 'TITLE_PROCESSING';
+  searchVendorModel: TitleProcessingModel;
+  gridOptionsTitleReports: GridOptions = {};
+  myNavData: any = {};
+  activeLink: any = null;
+
+  constructor(private reportsService: ReportsService,
+    public constantService: ConstantService,
+    private projectService: ProjectService) {
+    super(reportsService, projectService);
+    this.gridOptions.onCellClicked = this.agCellClicked;
+    this.myNavData = constantService.routerNav.REPORT;
+    this.activeLink = constantService.routerNav.REPORT.links[2];
+  }
+
+  agCellClicked = (event) => {
+    const headerName: string = event.colDef.headerName;
+    const row = event['data'];
+  }
+
+  getGridApi(name: string): GridAPII {
+    if (name === this.NAME_TITLE_PROCESSING) {
+      return {
+        gridApi: this.gridApi,
+        columnApi: this.columnApi
+      };
+    }
+  }
+
+  getServiceUrl(name): string {
+    if (name === this.NAME_TITLE_PROCESSING) {
+      return UrlConstants.SEARCH_VENDOR;
+    }
+  }
+
+  setSearchModel(name: string) {
+    const searchModel = this.getValueFromSearchModel(name);
+    if (name === this.NAME_TITLE_PROCESSING) {
+      ProjectUtils.setCounterReports(searchModel);
+    } else {
+      ProjectUtils.setCounterReports(searchModel);
+    }
+  }
+
+  initSearchModels() {
+    this.searchVendorModel = new TitleProcessingModel();
+    const counterReportsSession = ProjectUtils.getCounterReports();
+  }
+
+  setColumnDef(name: string): Array<ColDef> {
+    if (name === this.NAME_TITLE_PROCESSING) {
+      return columnDefsTitleProcessing;
+    }
+  }
+
+  doOnGridReadySearchVenderReports(api) {
+    this.gridApi = api.api;
+    this.columnApi = api.columnApi;
+    this.doOnGridReady(this.NAME_TITLE_PROCESSING);
+  }
+
+  doOnSubmit(e) {
+    console.log('doOnSubmit', e);
+    this.OnSubmit(this.NAME_TITLE_PROCESSING);
+  }
+}

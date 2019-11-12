@@ -1,0 +1,58 @@
+<!-- <app-tab-links [myNavData]="myNavData" [activeLink]="activeLink">
+</app-tab-links> -->
+<div class="row">
+  <div class="col-md-12 pb-2 ">
+    <div class="bg-white border p-3 mh320">
+      <div class="row">
+        <div class="col-md-12">
+          <!--<h4 class="subHeading">Search Title</h4>-->
+          <form>
+            <div class="form-group row">
+              <div class="col-md-3">
+                <!-- <label for="staticEmail" class="col-form-label">ISBN : </label>
+                <input type="text" class="form-control" [(ngModel)]="metadataProcessiongDetailsModel.isbn.value" [name]="metadataProcessiongDetailsModel.isbn.name"> -->
+              </div>
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label for="staticEmail" class="col-sm-2 col-form-label">ISBN : </label>
+                  <div class="col-sm-10">
+                    <input type="number" class="form-control" [(ngModel)]="metadataProcessiongDetailsModel.isbn.value" [name]="metadataProcessiongDetailsModel.isbn.name">
+                  </div>
+                </div>
+              </div>
+
+
+
+            </div>
+          </form>
+          <p class="text-right my-4">
+            <button class="btn btn-primary btn-sm" (click)="doOnSubmit($event)">Search</button>
+            <button type="reset" class="btn btn-dark btn-sm  mr-2">Reset</button>
+          </p>
+          <div class="tableBox border-top mt-5 pt-3">
+            <div class="d-flex justify-content-between">
+              <!-- <p class="mb-2">Export Result As :
+                <a href="#">
+                  <img src="/assets/images/csv.png" style="width:25px;">
+                </a>
+                <a href="#">
+                  <img src="assets/images/xlsx.png" style="width:25px;">
+                </a>
+              </p> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <P>Details of
+        <strong>{{rowData.uploadedfilename}}</strong>
+      </P>
+      <div class="row">
+        <div class="col-md-12 agGridSize">
+          <app-ag-grid [name]="'metaProcessingStatus'" [myGridOptions]="gridOptions" (myGridReady)="doOnGridReadyMetaProcessingDetails($event)">
+          </app-ag-grid>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

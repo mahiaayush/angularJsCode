@@ -1,0 +1,96 @@
+import { Component, OnInit, AfterViewInit, ViewChildren } from '@angular/core';
+import { Router } from '@angular/router';
+import { UrlConstants, SessionObject, ProjectUtils } from '../../../acore/utility';
+import { ConstantService, ProjectService } from '../../../acore/services';
+
+import { DesktopService } from '../desktop.service';
+import { BaseComponent } from '../../../acore/base';
+
+import {
+  TopMenuNavigationData
+} from './top-menu.navigation.data';
+import { Utils } from 'ag-grid';
+
+@Component({
+  selector: 'app-top-menu',
+  templateUrl: './top-menu.component.html',
+  styleUrls: ['./top-menu.component.css']
+})
+export class TopMenuComponent implements OnInit, AfterViewInit {
+
+
+  breadCrumnData: Array<any> = [];
+  currentNavData: any = [];
+
+  dashboarHTMLlink = TopMenuNavigationData.dashboarHTMLlink;
+  showModelPopup: boolean;
+
+  reportNav: any = {};
+  padNav: any = {};
+  userMagNav: any = {};
+
+  LoginUserName: string;
+
+  constructor(
+    private router: Router,
+    private desktopService: DesktopService,
+    public constantService: ConstantService,
+    private breadCrumnService: ProjectService) {
+    this.reportNav = TopMenuNavigationData.REPORT;
+    this.padNav = TopMenuNavigationData.PAD_PROJECT;
+    this.userMagNav = TopMenuNavigationData.USER_MANAGEMENT;
+
+
+    const displayUserName = ProjectUtils.getSessionObject();
+    this.LoginUserName = displayUserName.userDetails.firstName + ' ' + displayUserName.userDetails.lastName;
+
+    this.subBreadCrumn();
+
+  }
+
+
+
+
+
+  onTabLookNavClick() {
+
+  }
+
+  ngOnInit() {
+  }
+
+  ngAfterViewInit() {
+  }
+
+
+
+  myNavFunc(link: Array<string>, linkIndex: number, linkLabel: string, linkData: any) {
+    this.router.navigate(link);
+  }
+
+
+  onClickLogout() {
+    ProjectUtils.clearSessionObjects();
+    this.router.navigate(['']);
+  }
+
+
+  subBreadCrumn() {
+    this.breadCrumnService.sendBread
+      .subscribe((data: any) => {
+
+        this.currentNavData = data.navData;
+        this.breadCrumnData = data.activeLink.breadCrumb;
+        console.log(data);
+      });
+  }
+
+  onCrumnClick(crumn, index) {
+
+    if (this.currentNavData.label === crumn) {
+      this.router.navigate(this.currentNavData.links[0].routerLink);
+    }
+
+  }
+
+}

@@ -1,0 +1,82 @@
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
+import { SessionExpService } from '../session-exp.service';
+import { IDGeneratorService } from '../../../services';
+import { Router } from '@angular/router';
+import { ProjectUtils, SessionObject } from '../../../utility';
+
+declare var $;
+
+@Component({
+  selector: 'app-time-out',
+  templateUrl: './time-out.component.html',
+  styleUrls: ['./time-out.component.css']
+})
+export class TimeOutComponent implements OnInit {
+  id: string = null;
+  timeCountingStr = `Session will time out in `;
+  timeEndStr = `Session Timed Out!`;
+  outStr = null;
+  myTimer: Observable<any> = Observable.interval(1000);
+  subMyTimer: Subscription;
+
+  btnText: string;
+  btnTextCounting = `Don't`;
+  btnTextEnd = 'Ok!';
+
+  secCount = 0;
+  TIMER_LIMIT = 10;
+
+  constructor(
+    private sessionExpService: SessionExpService,
+    private idGeneratorService: IDGeneratorService,
+    private router: Router
+  ) {
+    this.id = this.idGeneratorService.generateNormalIDs('popup');
+  }
+
+  ngOnInit() {
+    this.sub_SessionExp();
+    this.sub_SESSION_TIMER();
+  }
+
+  sub_SessionExp() {
+    this.sessionExpService.LogOutAtTimeOut
+      .subscribe(() => {
+        console.log('sessionExpService.LogOutAtTimeOut.subscribe(()');
+        this.btnText = this.btnTextCounting;
+        $(`#${this.id}`).modal('show');
+        this.outStr = this.timeCountingStr + this.TIMER_LIMIT + ' secs!';
+        this.pupUpTimer();
+      });
+  }
+
+  pupUpTimer() {
+    this.subMyTimer = this.myTimer
+      .subscribe((sec) => {
+        this.outStr = this.timeCountingStr + (this.TIMER_LIMIT - sec) + ' secs!';
+        if (sec === this.TIMER_LIMIT) {
+
+          this.btnText = this.btnTextEnd;
+          ProjectUtils.unsubscribe(this.subMyTimer);
+          this.outStr = this.timeEndStr;
+          this.sessionExpService.clearSession();
+          this.router.navigate(['']);
+        }
+      });
+  }
+
+  onButtonClick(txt: string) {
+    $(`#${this.id}`).modal('hide');
+    if (txt === this.btnTextCounting) {
+      this.sub_SESSION_TIMER();
+    }
+    ProjectUtils.unsubscribe(this.subMyTimer);
+  }
+
+  sub_SESSION_TIMER() {
+    this.sessionExpService.checkUserNSub_SESSION_TIMER();
+  }
+
+}

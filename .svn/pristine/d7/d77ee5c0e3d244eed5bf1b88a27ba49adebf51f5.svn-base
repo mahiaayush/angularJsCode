@@ -1,0 +1,12 @@
+
+
+export class PathConstants {
+
+      imageLogo = './assets/images/logo.png';
+
+      constructor() {
+      }
+
+}
+
+
